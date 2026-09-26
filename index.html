@@ -560,7 +560,7 @@
         <div>
           <article class="comparison" aria-live="polite">
             <h3>衣服与鞋子｜两人采购对比</h3>
-            <p>只统计归属到个人的“衣服”和“鞋子”，共同采购不计入输赢。</p>
+            <p>只统计归属到个人的“衣服”和“鞋子”，用于查看两人的采购金额与结构；共同采购单独记录。</p>
             <div class="compare-row"><span>没头脑</span><div class="compare-track"><span id="personABar"></span></div><strong id="personATotal">¥0.00</strong></div>
             <div class="compare-row alt"><span>不高兴</span><div class="compare-track"><span id="personBBar"></span></div><strong id="personBTotal">¥0.00</strong></div>
             <div class="compare-result" id="compareResult">还没有衣服或鞋子记录</div>
@@ -1318,7 +1318,7 @@
       </table>
       <div class="grid two" style="margin-top:16px">
         <article class="card"><span class="badge must">试香节奏</span><h3>先纸签，再左右手</h3><p>第一轮最多 4 款纸签；只把最喜欢的 2 款分别喷左右手腕，记录时间，至少走 20—30 分钟再决定。不要摩擦手腕，也不要用咖啡豆强行“重置”嗅觉；到户外呼吸更有效。</p></article>
-        <article class="card"><span class="badge opt">情侣买法</span><h3>各自选一款，共同留一款</h3><p>两人分别写下“最像自己”的一款，再共同选择一款旅行记忆香。记账时分类选“香氛”，项目写品牌 + 香名 + 容量，方便比较没头脑与不高兴谁买得更多。</p></article>
+        <article class="card"><span class="badge opt">情侣买法</span><h3>各自选一款，共同留一款</h3><p>两人分别写下“最像自己”的一款，再共同选择一款旅行记忆香。记账时分类选“香氛”，项目写品牌 + 香名 + 容量，便于回看两人的香氛采购金额与偏好。</p></article>
       </div>
       <div class="note"><strong>路线取舍：</strong>10/6 MY ONLY FRAGRANCE 是布用定制体验；10/10 LE LABO 是东京限定与皮肤香水主购；10/11 CHANEL + FUEGUIA 1833 是风格对照。NOSE SHOP、SHIRO 与 THE FLAVOR DESIGN 都是机动项，不要求全部完成。</div>
 
@@ -1903,11 +1903,8 @@
         $('personABar').style.width = personA / maxPerson * 100 + '%';
         $('personBBar').style.width = personB / maxPerson * 100 + '%';
         if (personA === 0 && personB === 0) $('compareResult').textContent = '还没有衣服或鞋子记录';
-        else if (Math.abs(personA - personB) < 0.01) $('compareResult').textContent = '两个人目前花得一样多';
-        else {
-          const leader = personA > personB ? '没头脑' : '不高兴';
-          $('compareResult').textContent = `${leader}多花了 ${rmb(Math.abs(personA - personB))}`;
-        }
+        else if (Math.abs(personA - personB) < 0.01) $('compareResult').textContent = `两人当前记录金额一致：${rmb(personA)}`;
+        else $('compareResult').textContent = `没头脑 ${rmb(personA)} · 不高兴 ${rmb(personB)} · 金额差 ${rmb(Math.abs(personA - personB))}`;
         $('sharedFashionNote').textContent = sharedFashion > 0 ? `共同采购：${rmb(sharedFashion)}（不计入个人对比）` : '';
         renderPersonList('没头脑', 'personAList', 'personACardTotal');
         renderPersonList('不高兴', 'personBList', 'personBCardTotal');
