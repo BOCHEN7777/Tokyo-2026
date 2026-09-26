@@ -79,8 +79,10 @@
     .sketch-map .spot-label{font:700 20px var(--serif);fill:#16231d}.sketch-map .spot-sub{font:700 13px var(--sans);fill:#657069}.sketch-map .map-title{font:700 25px var(--serif);fill:#16231d}.sketch-map .map-note{font:700 13px var(--sans);fill:#7f2d22;letter-spacing:.08em}
     .map-caption{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:11px 15px;border-top:1px dashed #d8cdb8;color:var(--muted);font-size:.76rem}.map-caption span{display:inline-flex;align-items:center;gap:6px}.map-caption i{width:24px;height:0;border-top:3px dashed currentColor}.map-caption .air{color:#315b69}.map-caption .city{color:#58745f}.map-caption .trip{color:#b74634}.map-caption em{font-style:normal;margin-left:auto}
     .todo-dashboard{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;background:linear-gradient(135deg,#16231d,#2d4538);color:#fff;border-radius:18px;padding:16px 18px;margin-bottom:14px}.todo-dashboard strong{font:700 1.7rem var(--serif)}.todo-dashboard small{display:block;color:#bdcbc2}.todo-meter{height:10px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}.todo-meter span{display:block;height:100%;width:0;background:#d4bb83;border-radius:inherit;transition:width .25s}.todo-dashboard p{margin:5px 0 0;color:#c8d3cb;font-size:.73rem}
-    .checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{display:flex;gap:10px;align-items:flex-start;background:#fffdf8;border:1px solid var(--line);padding:12px 13px;border-radius:13px}.check input{margin-top:5px;accent-color:var(--red);transform:scale(1.12)}.check label{font-size:.88rem;cursor:pointer}.check input:checked+label{text-decoration:line-through;color:#8a918d}
+    .todo-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 13px}.todo-filter{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:13px;background:var(--card);padding:10px 12px;color:var(--ink);font:800 .78rem var(--sans);cursor:pointer}.todo-filter strong{font:700 1.15rem var(--serif);color:var(--red)}.todo-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}.todo-filter.active strong{color:#d9c28f}
+    .checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{display:flex;gap:10px;align-items:flex-start;background:#fffdf8;border:1px solid var(--line);padding:12px 13px;border-radius:13px}.check input{margin-top:5px;accent-color:var(--red);transform:scale(1.12)}.check label{font-size:.88rem;cursor:pointer}.check input:checked+label{text-decoration:line-through;color:#8a918d}.check.todo-hidden,.custom-todo.todo-hidden{display:none}
     .custom-todo-box{margin-top:16px}.custom-todo-form{display:grid;grid-template-columns:1.3fr .65fr .7fr auto;gap:9px;align-items:end}.custom-todo-form .field{min-width:0}.custom-todos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}.custom-todo{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:start;background:#fffdf8;border:1px solid var(--line);border-radius:13px;padding:11px 12px}.custom-todo input{margin-top:5px;accent-color:var(--red);transform:scale(1.1)}.custom-todo strong{display:block;font-size:.86rem}.custom-todo small{display:block;color:var(--muted);font-size:.69rem}.custom-todo.done strong{text-decoration:line-through;color:#8a918d}.icon-btn{border:0;background:#f2e8e4;color:var(--red-2);width:29px;height:29px;border-radius:8px;cursor:pointer;font-weight:900}
+    .sync-shell{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:14px}.sync-overview{background:linear-gradient(135deg,#16231d,#315b69);color:#fff;border-radius:22px;padding:19px;box-shadow:var(--shadow)}.sync-overview h3{font:700 1.24rem var(--serif);margin:10px 0 5px}.sync-overview p{color:#c9d8d0;font-size:.8rem;margin:0}.sync-state{display:flex;align-items:center;justify-content:space-between;gap:12px}.sync-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(255,255,255,.12);padding:7px 10px;font-size:.72rem;font-weight:900}.sync-badge i{width:8px;height:8px;border-radius:50%;background:#efbd67;box-shadow:0 0 0 5px rgba(239,189,103,.14)}.sync-badge.online i{background:#75d49a;box-shadow:0 0 0 5px rgba(117,212,154,.14)}.sync-members{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.sync-member{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.1);padding:6px 9px;font-size:.7rem}.sync-member i{width:7px;height:7px;border-radius:50%;background:#81918a}.sync-member.online i{background:#75d49a}.sync-updated{display:block;color:#aebfb6;font-size:.68rem;margin-top:8px}.sync-setup{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:17px}.sync-setup>summary{cursor:pointer;font:800 .9rem var(--sans);list-style:none}.sync-setup>summary::-webkit-details-marker{display:none}.sync-setup>summary:after{content:'＋';float:right;color:var(--red)}.sync-setup[open]>summary:after{content:'−'}.sync-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.sync-form .wide{grid-column:1/-1}.sync-form textarea{font:600 .72rem/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;min-height:118px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.sync-help{margin:11px 0 0;color:var(--muted);font-size:.7rem;line-height:1.55}.sync-alert{margin-top:11px;border-radius:12px;padding:10px 12px;background:#fff8e5;border:1px solid #ead6a2;color:#655126;font-size:.76rem}.sync-alert.good{background:#eaf3eb;border-color:#bfd5c3;color:#2e6645}.sync-alert.bad{background:#fff0ed;border-color:#e2b9b0;color:#7f2d22}
     .ledger-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:10px}.ledger-stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px}.ledger-stat small{display:block;color:var(--muted);font-size:.73rem}.ledger-stat strong{display:block;font:700 clamp(1.28rem,3vw,1.75rem)/1.25 var(--serif);margin-top:3px}.ledger-stat.over strong{color:var(--red)}
     .budget-meter{height:12px;border-radius:999px;background:#e4dfd3;overflow:hidden}.budget-meter span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#58745f,#c59a4a);transition:width .25s}.budget-meter.over span{background:var(--red)}.budget-caption{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.76rem;margin:6px 2px 18px}
     .ledger-layout{display:grid;grid-template-columns:minmax(290px,.85fr) minmax(0,1.35fr);gap:16px;align-items:start}.ledger-panel h3{margin:0 0 12px;font:700 1.16rem var(--serif)}.ledger-panel hr{border:0;border-top:1px solid var(--line);margin:20px 0}
@@ -116,7 +118,7 @@
     .print-only{display:none}
     @media(max-width:760px){
       .wrap{width:min(100% - 22px,1120px)}.hero{min-height:70vh;padding:60px 0 36px}.hero-meta{grid-template-columns:1fr}.hero-meta div{padding-top:7px}.topbar .brand{display:none}
-      .countdown-card{grid-template-columns:1fr}.countdown-actions{justify-content:flex-start}.boarding-grid{grid-template-columns:1fr}.custom-todo-form{grid-template-columns:1fr 1fr}.custom-todo-form .field:first-child{grid-column:1/-1}.custom-todo-form .btn{height:44px}.todo-dashboard{grid-template-columns:1fr}.assistant-layout{grid-template-columns:1fr}.phrase-list{grid-template-columns:1fr;max-height:none}.phrase-display{position:static}.emergency-links{grid-template-columns:1fr 1fr}
+      .countdown-card{grid-template-columns:1fr}.countdown-actions{justify-content:flex-start}.boarding-grid{grid-template-columns:1fr}.custom-todo-form{grid-template-columns:1fr 1fr}.custom-todo-form .field:first-child{grid-column:1/-1}.custom-todo-form .btn{height:44px}.todo-dashboard,.sync-shell{grid-template-columns:1fr}.todo-filters{grid-template-columns:1fr}.sync-form{grid-template-columns:1fr}.sync-form .wide{grid-column:auto}.assistant-layout{grid-template-columns:1fr}.phrase-list{grid-template-columns:1fr;max-height:none}.phrase-display{position:static}.emergency-links{grid-template-columns:1fr 1fr}
       .grid.two,.grid.three,.checklist,.custom-todos,.shop-grid,.food-grid,.brand-table,.ledger-layout,.wardrobe-grid,.travel-console,.module-shell,.record-grid,.luggage-grid,.filter-results,.backup-panel{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.sketch-map svg{min-width:740px}.map-caption em{width:100%;margin-left:0}.ledger-stats,.wishlist-summary,.vault-summary{grid-template-columns:1fr}.budget-fields,.expense-form,.form-grid{grid-template-columns:1fr}.field.wide,.form-grid .wide{grid-column:auto}.ledger-table-wrap{margin-left:-1px;margin-right:-1px}.module-form{position:static}.today-events{grid-template-columns:1fr 1fr}.filter-toolbar{grid-template-columns:1fr 1fr}.filter-toolbar .field:first-child{grid-column:1/-1}.now-top{display:block}.now-clock{margin-top:7px}.today-controls{align-items:stretch}.today-controls .field{max-width:none;flex:1}.topbar .wrap{gap:7px}.topbar .brand{display:none}.nav-primary{margin:0;overflow:auto;scrollbar-width:none;flex:1}.nav-primary a,.nav-primary button{font-size:.76rem;padding:8px 7px}.nav-menu{position:fixed;left:16px;right:16px;top:68px;width:auto;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto}
       .summary-table{display:block;overflow:auto;white-space:nowrap}.summary-table td:nth-child(3){white-space:normal;min-width:240px}.currency-grid,.taxfree-controls,.taxfree-result{grid-template-columns:1fr}.currency-equals{margin:auto;transform:rotate(90deg)}.currency-live,.taxfree-head{align-items:stretch;flex-direction:column}.currency-live .btn{width:100%}
       details.day>summary{grid-template-columns:62px 1fr auto;padding:16px;gap:11px}.day-date{width:58px;height:58px;border-radius:15px}.day-date strong{font-size:1.24rem}.day-body{padding:0 16px 20px}.metric-row{grid-template-columns:repeat(2,1fr)}
@@ -176,14 +178,14 @@
   <nav class="topbar no-print" aria-label="页面导航">
     <div class="wrap">
       <a class="brand" href="#top">没头脑 × 不高兴</a>
-      <div class="nav-primary" aria-label="高频功能"><a href="#today">今天</a><a href="#days">每日</a><a href="#travel-wallet">票券</a><a href="#luggage">行李</a><button class="nav-tool" type="button" data-open-currency>汇率/免税</button><a href="#ledger">记账</a></div>
+      <div class="nav-primary" aria-label="高频功能"><a href="#today">今天</a><a href="#days">每日</a><a href="#todo">待办</a><a href="#shared-sync">同步</a><button class="nav-tool" type="button" data-open-currency>汇率/免税</button><a href="#ledger">记账</a></div>
       <details class="nav-more" id="navMore">
         <summary>全部工具</summary>
         <div class="nav-menu">
           <div class="nav-menu-group"><strong>现场执行</strong><a href="#flights">航班</a><a href="#hotels">酒店</a><a href="#transport">交通</a><a href="#language">日文助手</a><a href="#food-finder">餐厅筛选</a></div>
           <div class="nav-menu-group"><strong>购物消费</strong><button type="button" data-open-currency>汇率与免税价</button><a href="#wishlist">愿望单与比价</a><a href="#ledger">旅行记账</a><a href="#shopping">品牌索引</a></div>
           <div class="nav-menu-group"><strong>出发前资料</strong><a href="#overview">旅行路线</a><a href="#todo">出发前待办</a><a href="#bookings">预约入口</a><a href="#backup">延误与雨天</a></div>
-          <div class="nav-menu-group"><strong>数据与说明</strong><a href="#data-backup">备份与恢复</a><a href="#sources">信息来源</a><button type="button" onclick="window.print()">打印 / 保存 PDF</button></div>
+          <div class="nav-menu-group"><strong>数据与说明</strong><a href="#shared-sync">多人实时同步</a><a href="#data-backup">备份与恢复</a><a href="#sources">信息来源</a><button type="button" onclick="window.print()">打印 / 保存 PDF</button></div>
         </div>
       </details>
     </div>
@@ -340,15 +342,21 @@
     </section>
 
     <section id="todo">
-      <div class="section-head"><div><span class="kicker">ACTION LIST</span><h2>出发前待办</h2></div><p>勾选状态会保存在当前浏览器。换设备或清除浏览器数据后需要重新勾选。</p></div>
+      <div class="section-head"><div><span class="kicker">ACTION LIST</span><h2>出发前待办</h2></div><p>连接共享房间后，两人可实时看到新增项目以及未完成、已完成状态；断网时仍保存在本机。</p></div>
       <div class="todo-dashboard" aria-live="polite">
         <div><small>PRE-TRIP PROGRESS</small><strong id="todoCount">0 / 0</strong></div>
         <div><div class="todo-meter" role="progressbar" aria-label="出发前待办完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="todoBar"></span></div><p id="todoHint">完成后即可安心出发</p></div>
+      </div>
+      <div class="todo-filters no-print" role="group" aria-label="待办状态筛选">
+        <button class="todo-filter active" type="button" data-todo-filter="pending"><span>未完成</span><strong id="todoPendingCount">0</strong></button>
+        <button class="todo-filter" type="button" data-todo-filter="done"><span>已完成</span><strong id="todoDoneCount">0</strong></button>
+        <button class="todo-filter" type="button" data-todo-filter="all"><span>全部待办</span><strong id="todoAllCount">0</strong></button>
       </div>
       <div class="checklist" data-checklist>
         <div class="check"><input id="c1" type="checkbox"><label for="c1">核对 CA929、CA930 的起降时间、成田 T1 航站楼、托运行李与随身行李额度。</label></div>
         <div class="check"><input id="c2" type="checkbox"><label for="c2">填写 Visit Japan Web，保存入境二维码离线截图。</label></div>
         <div class="check"><input id="c3" type="checkbox"><label for="c3">两人分别准备 Suica / PASMO 和日本 eSIM，避免只依赖一台手机。</label></div>
+        <div class="check"><input id="c4" type="checkbox"><label for="c4">提前购买日本电话卡（SIM / eSIM），确认流量、有效期、热点共享与落地激活方式，并离线保存安装二维码。</label></div>
         <div class="check"><input id="c5" type="checkbox"><label for="c5">向东京喜来登都酒店确认可代收 10/9 抵达的宅急便行李。</label></div>
         <div class="check"><input id="c6" type="checkbox"><label for="c6">预约 10/6 下午 SHIHARA Lab，两人试戴首饰并确认到店时间。</label></div>
         <div class="check"><input id="c7" type="checkbox"><label for="c7">锁定 3—4 个餐位：表参道晚餐、IVY PLACE、箱根晚餐和银座告别餐。</label></div>
@@ -383,6 +391,30 @@
         <p class="small" id="customTodoEmpty">还没有自定义待办。</p>
       </article>
       <div class="actions no-print" style="margin-top:14px"><button class="btn" id="resetChecks">清空勾选</button><button class="btn" id="openAll">展开全部日程</button><button class="btn" id="closeAll">收起全部日程</button><button class="btn primary" onclick="window.print()">打印 / 存为 PDF</button></div>
+    </section>
+
+    <section id="shared-sync">
+      <div class="section-head"><div><span class="kicker">LIVE COLLABORATION</span><h2>多人实时同步</h2></div><p>公开攻略保持可查看；只有持有同一共享房间码的人才能同步和修改核心旅行数据。</p></div>
+      <div class="sync-shell no-print">
+        <article class="sync-overview">
+          <div class="sync-state"><span class="sync-badge" id="cloudSyncBadge"><i></i><span id="cloudSyncState">仅本机</span></span><button class="btn" id="cloudSyncNow" type="button" disabled>立即同步</button></div>
+          <h3 id="cloudRoomLabel">尚未加入共享房间</h3>
+          <p id="cloudSyncSummary">连接后同步待办、记账、购物愿望单、预约和行李文字状态；照片附件继续只保存在各自设备。</p>
+          <div class="sync-members" id="cloudMembers"><span class="sync-member"><i></i>暂无在线成员</span></div>
+          <span class="sync-updated" id="cloudLastUpdated">尚无云端更新时间</span>
+        </article>
+        <details class="sync-setup" id="cloudSetup" open>
+          <summary>首次配置 / 加入共享房间</summary>
+          <div class="sync-form">
+            <div class="field wide"><label for="firebaseConfigInput">Firebase Web 配置</label><textarea id="firebaseConfigInput" spellcheck="false" placeholder='粘贴 Firebase 控制台提供的配置对象，例如 {"apiKey":"…","authDomain":"…","databaseURL":"…","projectId":"…","appId":"…"}'></textarea></div>
+            <div class="field"><label for="cloudRoomCode">共享房间码</label><input id="cloudRoomCode" maxlength="80" autocomplete="off" placeholder="创建新房间或粘贴同行人的房间码"></div>
+            <div class="field"><label for="cloudDisplayName">我的名字</label><input id="cloudDisplayName" maxlength="20" placeholder="没头脑 / 不高兴"></div>
+          </div>
+          <div class="sync-actions"><button class="btn" id="cloudGenerateRoom" type="button">生成安全房间码</button><button class="btn red" id="cloudConnect" type="button">连接并开始同步</button><button class="btn" id="cloudCopyInvite" type="button">复制邀请链接</button><button class="btn" id="cloudDisconnect" type="button">退出共享</button></div>
+          <div class="sync-alert" id="cloudMessage" aria-live="polite">首次使用需创建一个免费的 Firebase 项目、启用匿名登录和 Realtime Database，再粘贴 Web 配置。完整步骤见仓库中的 FIREBASE_SETUP.md。</div>
+          <p class="sync-help">房间码不会出现在网页正文中，只保存在设备和邀请链接的 URL 片段里。请只发给同行人；订单号、消费记录等会同步，护照、银行卡、二维码图片不会上传。</p>
+        </details>
+      </div>
     </section>
 
     <section id="travel-wallet">
@@ -1559,7 +1591,7 @@
   <script>
     (() => {
       const sectionLayout = [
-        {group:'现场执行',ids:['today','days','travel-wallet','luggage','hotels','transport','language','food-finder']},
+        {group:'现场执行',ids:['today','shared-sync','days','travel-wallet','luggage','hotels','transport','language','food-finder']},
         {group:'购物消费',ids:['wishlist','ledger','shopping']},
         {group:'出发前资料',ids:['overview','todo','bookings','backup']},
         {group:'数据管理',ids:['data-backup']}
@@ -1572,8 +1604,10 @@
 
       const storageKey = 'tokyo-2026-final-guide-checks-v1';
       const customTodoKey = 'tokyo-2026-custom-todos-v1';
+      const todoFilterKey = 'tokyo-2026-todo-filter-v1';
       const boxes = [...document.querySelectorAll('[data-checklist] input[type="checkbox"]')];
       let customTodos = [];
+      let todoFilter = ['pending','done','all'].includes(localStorage.getItem(todoFilterKey)) ? localStorage.getItem(todoFilterKey) : 'pending';
       try {
         const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
         boxes.forEach(box => box.checked = saved.includes(box.id));
@@ -1586,6 +1620,13 @@
       const saveStaticChecks = () => { try { localStorage.setItem(storageKey, JSON.stringify(boxes.filter(x => x.checked).map(x => x.id))); document.dispatchEvent(new Event('tokyo-data-changed')); } catch (_) {} };
       const saveCustomTodos = () => { try { localStorage.setItem(customTodoKey, JSON.stringify(customTodos)); document.dispatchEvent(new Event('tokyo-data-changed')); } catch (_) {} };
       const escapeTodo = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+      const todoMatchesFilter = done => todoFilter === 'all' || (todoFilter === 'done' ? done : !done);
+      const applyTodoFilter = () => {
+        boxes.forEach(box => box.closest('.check')?.classList.toggle('todo-hidden',!todoMatchesFilter(box.checked)));
+        document.querySelectorAll('[data-custom-check]').forEach(box => box.closest('.custom-todo')?.classList.toggle('todo-hidden',!todoMatchesFilter(box.checked)));
+        document.querySelectorAll('[data-todo-filter]').forEach(button => button.classList.toggle('active',button.dataset.todoFilter === todoFilter));
+        try { localStorage.setItem(todoFilterKey,todoFilter); } catch (_) {}
+      };
       const updateTodoProgress = () => {
         const total = boxes.length + customTodos.length;
         const done = boxes.filter(x => x.checked).length + customTodos.filter(x => x.done).length;
@@ -1597,6 +1638,9 @@
         if (bar) bar.style.width = percent + '%';
         bar?.parentElement?.setAttribute('aria-valuenow', String(Math.round(percent)));
         if (hint) hint.textContent = total && done === total ? '全部完成，可以安心出发' : `还剩 ${Math.max(total - done, 0)} 项`;
+        if (document.getElementById('todoPendingCount')) document.getElementById('todoPendingCount').textContent = String(total - done);
+        if (document.getElementById('todoDoneCount')) document.getElementById('todoDoneCount').textContent = String(done);
+        if (document.getElementById('todoAllCount')) document.getElementById('todoAllCount').textContent = String(total);
       };
       const renderCustomTodos = () => {
         const list = document.getElementById('customTodoList');
@@ -1605,11 +1649,14 @@
         list.innerHTML = customTodos.map(item => `<article class="custom-todo${item.done ? ' done' : ''}"><input type="checkbox" data-custom-check="${escapeTodo(item.id)}" ${item.done ? 'checked' : ''} aria-label="完成 ${escapeTodo(item.text)}"><div><strong>${escapeTodo(item.text)}</strong><small>${escapeTodo(item.category)}${item.due ? ' · 截止 ' + escapeTodo(item.due.replaceAll('-', '/')) : ''}</small></div><button class="icon-btn" type="button" data-delete-todo="${escapeTodo(item.id)}" aria-label="删除 ${escapeTodo(item.text)}">×</button></article>`).join('');
         if (empty) empty.hidden = customTodos.length > 0;
         updateTodoProgress();
+        applyTodoFilter();
       };
       boxes.forEach(box => box.addEventListener('change', () => {
         saveStaticChecks();
         updateTodoProgress();
+        applyTodoFilter();
       }));
+      document.querySelectorAll('[data-todo-filter]').forEach(button => button.addEventListener('click',() => { todoFilter = button.dataset.todoFilter; applyTodoFilter(); }));
       document.getElementById('customTodoForm')?.addEventListener('submit', event => {
         event.preventDefault();
         const textInput = document.getElementById('customTodoText');
@@ -2404,10 +2451,11 @@
 
       const dataPrefix = 'tokyo-2026-';
       const retiredDataKeys = new Set(['tokyo-2026-film-log-v1']);
+      const privateDataKeys = new Set(['tokyo-2026-cloud-config-v1','tokyo-2026-cloud-client-v1','tokyo-2026-cloud-meta-v1']);
       const lastBackupKey = 'tokyo-2026-last-backup-v1';
       const collectTravelData = () => {
         const values = {};
-        for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix) && !retiredDataKeys.has(key)) values[key] = localStorage.getItem(key); }
+        for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix) && !retiredDataKeys.has(key) && !privateDataKeys.has(key)) values[key] = localStorage.getItem(key); }
         return {schema:'tokyo-2026-guide-backup',version:1,exportedAt:new Date().toISOString(),localStorage:values};
       };
       const renderDataHealth = (message = '') => {
@@ -2424,16 +2472,241 @@
       $('importAllData')?.addEventListener('change', async event => {
         const file = event.target.files[0]; if (!file) return;
         try {
-          const data = JSON.parse(await file.text()); if (data?.schema !== 'tokyo-2026-guide-backup' || !data.localStorage || typeof data.localStorage !== 'object') throw new Error('这不是本攻略导出的有效备份文件。'); const entries = Object.entries(data.localStorage).filter(([key,value]) => key.startsWith(dataPrefix) && !retiredDataKeys.has(key) && typeof value === 'string'); if (!entries.length) throw new Error('备份中没有可恢复的旅行数据。'); if (!confirm(`恢复 ${entries.length} 组旅行数据？当前记录将被覆盖。`)) { event.target.value = ''; return; }
-          const currentKeys = []; for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix)) currentKeys.push(key); } const snapshot = currentKeys.map(key => [key,localStorage.getItem(key)]);
+          const data = JSON.parse(await file.text()); if (data?.schema !== 'tokyo-2026-guide-backup' || !data.localStorage || typeof data.localStorage !== 'object') throw new Error('这不是本攻略导出的有效备份文件。'); const entries = Object.entries(data.localStorage).filter(([key,value]) => key.startsWith(dataPrefix) && !retiredDataKeys.has(key) && !privateDataKeys.has(key) && typeof value === 'string'); if (!entries.length) throw new Error('备份中没有可恢复的旅行数据。'); if (!confirm(`恢复 ${entries.length} 组旅行数据？当前记录将被覆盖。`)) { event.target.value = ''; return; }
+          const currentKeys = []; for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix) && !privateDataKeys.has(key)) currentKeys.push(key); } const snapshot = currentKeys.map(key => [key,localStorage.getItem(key)]);
           try { currentKeys.forEach(key => localStorage.removeItem(key)); entries.forEach(([key,value]) => localStorage.setItem(key,value)); }
-          catch (_) { const partialKeys = []; for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix)) partialKeys.push(key); } partialKeys.forEach(key => localStorage.removeItem(key)); snapshot.forEach(([key,value]) => localStorage.setItem(key,value)); throw new Error('恢复失败，已回滚到导入前的数据；可能是浏览器存储空间不足。'); }
+          catch (_) { const partialKeys = []; for (let i = 0; i < localStorage.length; i += 1) { const key = localStorage.key(i); if (key?.startsWith(dataPrefix) && !privateDataKeys.has(key)) partialKeys.push(key); } partialKeys.forEach(key => localStorage.removeItem(key)); snapshot.forEach(([key,value]) => localStorage.setItem(key,value)); throw new Error('恢复失败，已回滚到导入前的数据；可能是浏览器存储空间不足。'); }
           location.reload();
         } catch (error) { renderDataHealth(error.message || '备份恢复失败'); event.target.value = ''; }
       });
       document.addEventListener('tokyo-data-changed',() => renderDataHealth('数据已更新'));
       window.addEventListener('storage',() => renderDataHealth('另一标签页更新了数据'));
       renderDataHealth();
+
+      const cloudConfigKey = 'tokyo-2026-cloud-config-v1';
+      const cloudClientKey = 'tokyo-2026-cloud-client-v1';
+      const cloudMetaKey = 'tokyo-2026-cloud-meta-v1';
+      const cloudSnapshotKey = 'tokyo-2026-pre-cloud-snapshot-v1';
+      privateDataKeys.add(cloudSnapshotKey);
+      const cloudSyncedKeys = [storageKey,customTodoKey,flightInfoKey,memoKey,ledgerRecordsKey,ledgerSettingsKey,ticketRecordsKey,luggageRecordsKey,wishlistRecordsKey,currencyPrefsKey];
+      const imageRecordKeys = new Set([ticketRecordsKey,luggageRecordsKey]);
+      let cloudApi = null;
+      let cloudActive = false;
+      let cloudApplying = false;
+      let cloudPushTimer = 0;
+      let cloudStateRef = null;
+      let cloudMemberRef = null;
+      let cloudUnsubscribers = [];
+      let cloudPendingRemote = null;
+      let cloudSession = null;
+      let cloudClientId = localStorage.getItem(cloudClientKey) || '';
+      if (!cloudClientId) {
+        cloudClientId = globalThis.crypto?.randomUUID?.() || `client-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        try { localStorage.setItem(cloudClientKey,cloudClientId); } catch (_) {}
+      }
+
+      const readCloudMeta = () => { try { return JSON.parse(localStorage.getItem(cloudMetaKey) || '{}'); } catch (_) { return {}; } };
+      const writeCloudMeta = value => { try { localStorage.setItem(cloudMetaKey,JSON.stringify(value)); } catch (_) {} };
+      const setCloudMessage = (message,type = '') => {
+        const box = $('cloudMessage'); if (!box) return;
+        box.textContent = message; box.className = `sync-alert${type ? ' ' + type : ''}`;
+      };
+      const setCloudStatus = (label,online = false) => {
+        $('cloudSyncState').textContent = label;
+        $('cloudSyncBadge')?.classList.toggle('online',online);
+        if ($('cloudSyncNow')) $('cloudSyncNow').disabled = !online;
+      };
+      const normalizeFirebaseConfig = raw => {
+        let text = String(raw || '').trim();
+        text = text.replace(/^\s*(?:const|let|var)\s+firebaseConfig\s*=\s*/,'').replace(/;\s*$/,'').trim();
+        if (!text) throw new Error('请先粘贴 Firebase Web 配置。');
+        try { return JSON.parse(text); }
+        catch (_) {
+          const jsonLike = text.replace(/([{,]\s*)([A-Za-z_$][\w$]*)(\s*:)/g,'$1"$2"$3').replace(/'/g,'"').replace(/,\s*([}\]])/g,'$1');
+          try { return JSON.parse(jsonLike); } catch (_) { throw new Error('Firebase 配置格式无法识别，请从项目设置中完整复制 firebaseConfig。'); }
+        }
+      };
+      const validateFirebaseConfig = config => {
+        const required = ['apiKey','authDomain','databaseURL','projectId','appId'];
+        const missing = required.filter(key => !config?.[key]);
+        if (missing.length) throw new Error(`Firebase 配置缺少：${missing.join('、')}`);
+        if (!/^https:\/\//.test(config.databaseURL)) throw new Error('databaseURL 必须是 https:// 开头的 Realtime Database 地址。');
+        return config;
+      };
+      const roomHash = async roomCode => {
+        const digest = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(`tokyo-2026:${roomCode}`));
+        return [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2,'0')).join('');
+      };
+      const encodeInvite = value => {
+        const bytes = new TextEncoder().encode(JSON.stringify(value)); let binary = '';
+        for (let i = 0; i < bytes.length; i += 4096) binary += String.fromCharCode(...bytes.subarray(i,i + 4096));
+        return btoa(binary).replaceAll('+','-').replaceAll('/','_').replace(/=+$/,'');
+      };
+      const decodeInvite = value => {
+        const base64 = value.replaceAll('-','+').replaceAll('_','/') + '='.repeat((4 - value.length % 4) % 4);
+        const binary = atob(base64); const bytes = Uint8Array.from(binary,char => char.charCodeAt(0));
+        return JSON.parse(new TextDecoder().decode(bytes));
+      };
+      const sanitizeCloudValue = (key,raw) => {
+        if (!imageRecordKeys.has(key)) return raw;
+        try { return JSON.stringify(JSON.parse(raw).map(item => ({...item,image:''}))); } catch (_) { return raw; }
+      };
+      const mergeLocalImages = (key,raw) => {
+        if (!imageRecordKeys.has(key)) return raw;
+        try {
+          const local = JSON.parse(localStorage.getItem(key) || '[]'); const incoming = JSON.parse(raw || '[]');
+          const images = new Map(local.map(item => [String(item.id),item.image || '']));
+          return JSON.stringify(incoming.map(item => ({...item,image:images.get(String(item.id)) || ''})));
+        } catch (_) { return raw; }
+      };
+      const collectCloudPayload = () => {
+        const data = {__schema:'core-v1'};
+        cloudSyncedKeys.forEach(key => { const raw = localStorage.getItem(key); if (raw !== null) data[key] = sanitizeCloudValue(key,raw); });
+        return data;
+      };
+      const savePreCloudSnapshot = () => {
+        const snapshot = {}; cloudSyncedKeys.forEach(key => { const raw = localStorage.getItem(key); if (raw !== null) snapshot[key] = raw; });
+        try { localStorage.setItem(cloudSnapshotKey,JSON.stringify({savedAt:new Date().toISOString(),data:snapshot})); } catch (_) {}
+      };
+      const formatCloudTime = value => value ? new Date(Number(value)).toLocaleString('zh-CN',{hour12:false,timeZone:'Asia/Tokyo'}) + ' JST' : '尚无云端更新时间';
+      const applyCloudPayload = (state,{reload = true} = {}) => {
+        if (!state?.data || typeof state.data !== 'object') return;
+        savePreCloudSnapshot(); cloudApplying = true;
+        cloudSyncedKeys.forEach(key => {
+          if (Object.hasOwn(state.data,key) && typeof state.data[key] === 'string') localStorage.setItem(key,mergeLocalImages(key,state.data[key]));
+          else localStorage.removeItem(key);
+        });
+        const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:false,lastRemoteAt:Number(state.updatedAt) || Date.now(),lastRemoteBy:state.updatedByName || ''});
+        cloudApplying = false;
+        $('cloudLastUpdated').textContent = `最近同步：${formatCloudTime(state.updatedAt)}${state.updatedByName ? ` · ${state.updatedByName}` : ''}`;
+        if (reload) {
+          setCloudMessage(`已收到 ${state.updatedByName || '同行人'} 的更新，正在刷新页面…`,'good');
+          setTimeout(() => location.reload(),650);
+        }
+      };
+      const pushCloudState = async (manual = false) => {
+        if (!cloudActive || !cloudApi || !cloudStateRef || !cloudSession) return;
+        clearTimeout(cloudPushTimer); setCloudStatus('正在同步',true);
+        try {
+          await cloudApi.set(cloudStateRef,{schema:2,updatedAt:cloudApi.serverTimestamp(),updatedBy:cloudClientId,updatedByName:cloudSession.displayName,data:collectCloudPayload()});
+          const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:false,lastUploadAt:Date.now()});
+          setCloudStatus('实时同步中',true); setCloudMessage(manual ? '本机数据已立即同步到共享房间。' : '更改已同步。','good');
+        } catch (error) {
+          const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:true});
+          setCloudStatus('等待网络',false); setCloudMessage(`同步失败：${error.message || '请检查网络与 Firebase 设置'}`,'bad');
+        }
+      };
+      const queueCloudPush = () => {
+        const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:true,localChangedAt:Date.now()});
+        if (!cloudActive || cloudApplying) return;
+        clearTimeout(cloudPushTimer); cloudPushTimer = setTimeout(() => pushCloudState(false),800);
+      };
+      const renderCloudMembers = value => {
+        const entries = Object.values(value || {}).filter(member => member?.name).sort((a,b) => Number(b.online) - Number(a.online) || String(a.name).localeCompare(String(b.name),'zh-CN'));
+        $('cloudMembers').innerHTML = entries.length ? entries.map(member => `<span class="sync-member${member.online ? ' online' : ''}"><i></i>${escapeHtml(member.name)}${member.online ? ' · 在线' : ''}</span>`).join('') : '<span class="sync-member"><i></i>暂无在线成员</span>';
+      };
+      const stopCloudListeners = () => { cloudUnsubscribers.forEach(unsubscribe => { try { unsubscribe?.(); } catch (_) {} }); cloudUnsubscribers = []; };
+      const loadFirebaseApi = async () => {
+        if (cloudApi) return cloudApi;
+        const version = '12.19.0';
+        const [app,auth,database] = await Promise.all([
+          import(`https://www.gstatic.com/firebasejs/${version}/firebase-app.js`),
+          import(`https://www.gstatic.com/firebasejs/${version}/firebase-auth.js`),
+          import(`https://www.gstatic.com/firebasejs/${version}/firebase-database.js`)
+        ]);
+        cloudApi = {...app,...auth,...database}; return cloudApi;
+      };
+      const connectCloud = async ({silent = false} = {}) => {
+        try {
+          setCloudStatus('正在连接',false); setCloudMessage('正在连接共享房间…');
+          const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value));
+          const roomCode = $('cloudRoomCode').value.trim(); const displayName = $('cloudDisplayName').value.trim();
+          if (roomCode.length < 12) throw new Error('房间码至少需要 12 个字符；建议点击“生成安全房间码”。');
+          if (!displayName) throw new Error('请输入“没头脑”或“不高兴”等显示名称。');
+          stopCloudListeners(); const api = await loadFirebaseApi(); const hash = await roomHash(roomCode);
+          const appName = `tokyo-${firebaseConfig.projectId}-${firebaseConfig.appId.slice(-8)}`.replace(/[^a-zA-Z0-9-_]/g,'-');
+          const firebaseApp = api.getApps().find(item => item.name === appName) || api.initializeApp(firebaseConfig,appName);
+          const auth = api.getAuth(firebaseApp); await api.setPersistence(auth,api.browserLocalPersistence);
+          if (!auth.currentUser) await api.signInAnonymously(auth);
+          const database = api.getDatabase(firebaseApp,firebaseConfig.databaseURL);
+          const tripRoot = `trips/${hash}`; const memberRef = api.ref(database,`${tripRoot}/members/${auth.currentUser.uid}`);
+          const membersRef = api.ref(database,`${tripRoot}/members`); const stateRef = api.ref(database,`${tripRoot}/state`);
+          await api.set(memberRef,{name:displayName,online:true,updatedAt:api.serverTimestamp()});
+          await api.onDisconnect(memberRef).set({name:displayName,online:false,updatedAt:api.serverTimestamp()});
+          cloudMemberRef = memberRef; cloudStateRef = stateRef; cloudSession = {firebaseConfig,roomCode,displayName,hash,auth,database}; cloudActive = true;
+          localStorage.setItem(cloudConfigKey,JSON.stringify({firebaseConfig,roomCode,displayName}));
+          if (new URLSearchParams(location.hash.slice(1)).has('join')) history.replaceState(null,'',location.pathname + location.search);
+          $('cloudRoomLabel').textContent = `共享房间 · ${roomCode.slice(0,4)}••••${roomCode.slice(-4)}`;
+          $('cloudSetup').open = false; setCloudStatus('实时同步中',true);
+          cloudUnsubscribers.push(api.onValue(membersRef,snapshot => renderCloudMembers(snapshot.val()),error => setCloudMessage(`成员状态读取失败：${error.message}`,'bad')));
+          const initial = await api.get(stateRef); const remote = initial.val(); const meta = readCloudMeta();
+          if (!remote?.data) {
+            await pushCloudState(false);
+          } else if (meta.dirty && meta.lastRemoteAt) {
+            if (Number(remote.updatedAt) > Number(meta.lastRemoteAt)) {
+              const useCloud = silent ? true : confirm('本机和云端都有新修改。确定使用云端版本吗？选择“取消”将用本机版本覆盖云端。');
+              if (useCloud) applyCloudPayload(remote); else await pushCloudState(true);
+            } else await pushCloudState(false);
+          } else if (Number(remote.updatedAt) !== Number(meta.lastRemoteAt)) {
+            applyCloudPayload(remote);
+          }
+          cloudUnsubscribers.push(api.onValue(stateRef,snapshot => {
+            const state = snapshot.val(); if (!state?.data || state.updatedBy === cloudClientId) return;
+            const currentMeta = readCloudMeta(); if (Number(state.updatedAt) === Number(currentMeta.lastRemoteAt)) return;
+            const editing = ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
+            if (editing) {
+              cloudPendingRemote = state; setCloudMessage(`${state.updatedByName || '同行人'} 有新更新；完成当前输入后将自动载入。`,'good');
+              document.activeElement.addEventListener('blur',() => { if (cloudPendingRemote) { const pending = cloudPendingRemote; cloudPendingRemote = null; applyCloudPayload(pending); } },{once:true});
+            } else applyCloudPayload(state);
+          },error => { setCloudStatus('同步中断',false); setCloudMessage(`实时监听失败：${error.message}`,'bad'); }));
+          setCloudMessage('已连接。此后核心文字数据会自动同步；图片仍留在本机。','good');
+        } catch (error) {
+          cloudActive = false; setCloudStatus('连接失败',false); $('cloudSetup').open = true;
+          setCloudMessage(error.message || '连接失败，请检查 Firebase 配置。','bad');
+        }
+      };
+      const disconnectCloud = async () => {
+        clearTimeout(cloudPushTimer); stopCloudListeners();
+        try { if (cloudApi && cloudMemberRef && cloudSession) await cloudApi.set(cloudMemberRef,{name:cloudSession.displayName,online:false,updatedAt:cloudApi.serverTimestamp()}); } catch (_) {}
+        cloudActive = false; cloudStateRef = null; cloudMemberRef = null; cloudSession = null;
+        localStorage.removeItem(cloudConfigKey); localStorage.removeItem(cloudMetaKey);
+        setCloudStatus('仅本机',false); $('cloudRoomLabel').textContent = '尚未加入共享房间'; $('cloudMembers').innerHTML = '<span class="sync-member"><i></i>暂无在线成员</span>'; $('cloudSetup').open = true;
+        setCloudMessage('已退出共享房间。本机数据仍保留，不会继续同步。');
+      };
+
+      document.addEventListener('tokyo-data-changed',() => { if (!cloudApplying) queueCloudPush(); });
+      $('cloudSyncNow')?.addEventListener('click',() => pushCloudState(true));
+      $('cloudConnect')?.addEventListener('click',() => connectCloud({silent:false}));
+      $('cloudDisconnect')?.addEventListener('click',disconnectCloud);
+      $('cloudGenerateRoom')?.addEventListener('click',() => {
+        const bytes = new Uint8Array(18); crypto.getRandomValues(bytes);
+        $('cloudRoomCode').value = btoa(String.fromCharCode(...bytes)).replaceAll('+','-').replaceAll('/','_').replace(/=+$/,'');
+        setCloudMessage('已生成高强度房间码。连接成功后再复制邀请链接。','good');
+      });
+      $('cloudCopyInvite')?.addEventListener('click',async () => {
+        try {
+          const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value)); const roomCode = $('cloudRoomCode').value.trim();
+          if (roomCode.length < 12) throw new Error('请先生成或填写有效房间码。');
+          const url = new URL(location.href); url.hash = `join=${encodeInvite({firebaseConfig,roomCode})}`;
+          const copied = await copyPlainText(url.href); if (!copied) throw new Error('复制失败，请手动复制浏览器地址。');
+          setCloudMessage('邀请链接已复制。同行人打开后只需填写自己的名字并连接。','good');
+        } catch (error) { setCloudMessage(error.message || '邀请链接生成失败。','bad'); }
+      });
+
+      try {
+        const inviteValue = new URLSearchParams(location.hash.slice(1)).get('join');
+        if (inviteValue) {
+          const invite = decodeInvite(inviteValue); validateFirebaseConfig(invite.firebaseConfig);
+          $('firebaseConfigInput').value = JSON.stringify(invite.firebaseConfig,null,2); $('cloudRoomCode').value = invite.roomCode || ''; $('cloudSetup').open = true;
+          setCloudMessage('已读取同行人的共享邀请。填写自己的名字后点击“连接并开始同步”。','good');
+        } else {
+          const savedCloud = JSON.parse(localStorage.getItem(cloudConfigKey) || 'null');
+          if (savedCloud?.firebaseConfig && savedCloud?.roomCode && savedCloud?.displayName) {
+            $('firebaseConfigInput').value = JSON.stringify(savedCloud.firebaseConfig,null,2); $('cloudRoomCode').value = savedCloud.roomCode; $('cloudDisplayName').value = savedCloud.displayName;
+            connectCloud({silent:true});
+          }
+        }
+      } catch (error) { setCloudMessage(`共享邀请无法读取：${error.message}`,'bad'); }
     })();
   </script>
 </body>
