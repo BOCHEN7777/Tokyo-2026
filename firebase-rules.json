@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "trips": {
+      "$room": {
+        "members": {
+          ".read": "auth != null && data.child(auth.uid).exists()",
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid",
+            ".validate": "newData.hasChildren(['name', 'online', 'updatedAt']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 20 && newData.child('online').isBoolean()"
+          }
+        },
+        "state": {
+          ".read": "auth != null && root.child('trips').child($room).child('members').child(auth.uid).exists()",
+          ".write": "auth != null && root.child('trips').child($room).child('members').child(auth.uid).exists()",
+          ".validate": "newData.hasChildren(['schema', 'updatedAt', 'updatedBy', 'updatedByName', 'data']) && newData.child('schema').val() === 2 && newData.child('updatedBy').isString() && newData.child('updatedByName').isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "$other": {
+      ".validate": false
+    }
+  }
+}
