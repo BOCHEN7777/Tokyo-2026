@@ -233,11 +233,10 @@
 
     <section class="module-hub no-print" id="module-hub" hidden>
       <div class="module-hub-intro">
-        <div><span class="kicker">TRAVEL TOOLBOX</span><h2>旅行工具与完整攻略</h2></div>
-        <p>首页只保留当下最需要的信息。点击卡片，从底部打开完整内容；关闭后立即回到这里。</p>
+        <div><span class="kicker">TRAVEL TOOLBOX</span><h2>旅行工具箱</h2></div>
+        <p>每日攻略保留在上方直接查看；其他辅助功能点击卡片后从底部打开，关闭即可回到工具箱。</p>
       </div>
       <div class="module-grid" aria-label="旅行功能模块">
-        <button class="module-card" type="button" data-open-module="days" aria-haspopup="dialog"><span class="module-card-icon" aria-hidden="true">日</span><span class="kicker">8 DAYS</span><h3>每日攻略</h3><p>时间线、逐段交通、购物顺序、咖啡与顺路餐厅。</p><span class="module-card-status">10/5—10/12 · 8 天</span></button>
         <button class="module-card" type="button" data-open-module="wallet" aria-haspopup="dialog"><span class="module-card-icon" aria-hidden="true">票</span><span class="kicker">TICKETS</span><h3>票券与预约夹</h3><p>集中保存车票、餐厅、体验预约、确认号与截图。</p><span class="module-card-status" id="moduleSummaryWallet">0 项待处理</span></button>
         <button class="module-card" type="button" data-open-module="luggage" aria-haspopup="dialog"><span class="module-card-icon" aria-hidden="true">箱</span><span class="kicker">TA-Q-BIN</span><h3>三件行李追踪</h3><p>两件大箱与一件小箱的运单、状态和酒店领取确认。</p><span class="module-card-status" id="moduleSummaryLuggage">0 / 3 已送达</span></button>
         <button class="module-card" type="button" data-open-module="stay" aria-haspopup="dialog"><span class="module-card-icon" aria-hidden="true">行</span><span class="kicker">STAY & MOVE</span><h3>酒店与交通</h3><p>三家酒店资料、机场进出、箱根与市内关键路线。</p><span class="module-card-status">地址 · 乘车点 · 订票入口</span></button>
@@ -1854,8 +1853,8 @@
   <script>
     (() => {
       const sectionLayout = [
-        {group:'现场首页',ids:['today','module-hub']},
-        {group:'现场执行',ids:['days','travel-wallet','luggage','hotels','transport','language','food-finder']},
+        {group:'现场首页',ids:['today','days','module-hub']},
+        {group:'现场执行',ids:['travel-wallet','luggage','hotels','transport','language','food-finder']},
         {group:'购物消费',ids:['wishlist','ledger','shopping']},
         {group:'出发前资料',ids:['todo','packing','bookings','backup']},
         {group:'数据管理',ids:['data-backup']},
@@ -3532,7 +3531,6 @@
       }
 
       const moduleDrawerConfig = [
-        {key:'days',kicker:'8 DAYS · ITINERARY',title:'每日攻略',ids:['days']},
         {key:'wallet',kicker:'TICKETS · RESERVATIONS',title:'票券与预约夹',ids:['travel-wallet','bookings']},
         {key:'luggage',kicker:'TA-Q-BIN · TRACKING',title:'三件行李追踪',ids:['luggage']},
         {key:'stay',kicker:'HOTELS · TRANSPORT',title:'酒店与交通',ids:['hotels','transport']},
