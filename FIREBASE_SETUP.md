@@ -62,7 +62,7 @@
 - 云端同步：待办、预算、消费记录、购物愿望单、预约文字、行李文字状态、航班补充信息与旅行备忘。
 - 仅本机：预约二维码、行李照片、汇率缓存、账号密码。
 - 密码由 Firebase Authentication 处理，网页不会把密码写入 `localStorage`。
-- GitHub Pages 上的攻略正文仍是公开静态内容；Firebase 规则保护的是私人互动数据。若需整站仅两人能打开，请继续执行 [`PRIVATE_ACCESS.md`](PRIVATE_ACCESS.md)。
+- Cloudflare Workers 上的攻略正文以及当前 Public GitHub 仓库仍可公开读取；Firebase 规则保护的是私人互动数据。若需整站仅两人能打开，请继续执行 [`PRIVATE_ACCESS.md`](PRIVATE_ACCESS.md)。
 
 ## 常见问题
 
