@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#16231d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="没头脑与不高兴的东京之旅：2026年10月5日至12日，东京、镰仓与箱根情侣潮流、胶片、香氛与温泉旅行攻略。">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
   <title>没头脑与不高兴的东京之旅</title>
   <style>
     :root{
@@ -82,7 +87,7 @@
     .todo-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 13px}.todo-filter{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:13px;background:var(--card);padding:10px 12px;color:var(--ink);font:800 .78rem var(--sans);cursor:pointer}.todo-filter strong{font:700 1.15rem var(--serif);color:var(--red)}.todo-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}.todo-filter.active strong{color:#d9c28f}
     .checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{display:flex;gap:10px;align-items:flex-start;background:#fffdf8;border:1px solid var(--line);padding:12px 13px;border-radius:13px}.check input{margin-top:5px;accent-color:var(--red);transform:scale(1.12)}.check label{font-size:.88rem;cursor:pointer}.check input:checked+label{text-decoration:line-through;color:#8a918d}.check.todo-hidden,.custom-todo.todo-hidden{display:none}
     .custom-todo-box{margin-top:16px}.custom-todo-form{display:grid;grid-template-columns:1.3fr .65fr .7fr auto;gap:9px;align-items:end}.custom-todo-form .field{min-width:0}.custom-todos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}.custom-todo{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:start;background:#fffdf8;border:1px solid var(--line);border-radius:13px;padding:11px 12px}.custom-todo input{margin-top:5px;accent-color:var(--red);transform:scale(1.1)}.custom-todo strong{display:block;font-size:.86rem}.custom-todo small{display:block;color:var(--muted);font-size:.69rem}.custom-todo.done strong{text-decoration:line-through;color:#8a918d}.icon-btn{border:0;background:#f2e8e4;color:var(--red-2);width:29px;height:29px;border-radius:8px;cursor:pointer;font-weight:900}
-    .sync-shell{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:14px}.sync-overview{background:linear-gradient(135deg,#16231d,#315b69);color:#fff;border-radius:22px;padding:19px;box-shadow:var(--shadow)}.sync-overview h3{font:700 1.24rem var(--serif);margin:10px 0 5px}.sync-overview p{color:#c9d8d0;font-size:.8rem;margin:0}.sync-state{display:flex;align-items:center;justify-content:space-between;gap:12px}.sync-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(255,255,255,.12);padding:7px 10px;font-size:.72rem;font-weight:900}.sync-badge i{width:8px;height:8px;border-radius:50%;background:#efbd67;box-shadow:0 0 0 5px rgba(239,189,103,.14)}.sync-badge.online i{background:#75d49a;box-shadow:0 0 0 5px rgba(117,212,154,.14)}.sync-members{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.sync-member{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.1);padding:6px 9px;font-size:.7rem}.sync-member i{width:7px;height:7px;border-radius:50%;background:#81918a}.sync-member.online i{background:#75d49a}.sync-updated{display:block;color:#aebfb6;font-size:.68rem;margin-top:8px}.sync-setup{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:17px}.sync-setup>summary{cursor:pointer;font:800 .9rem var(--sans);list-style:none}.sync-setup>summary::-webkit-details-marker{display:none}.sync-setup>summary:after{content:'＋';float:right;color:var(--red)}.sync-setup[open]>summary:after{content:'−'}.sync-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.sync-form .wide{grid-column:1/-1}.sync-form textarea{font:600 .72rem/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;min-height:118px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.sync-help{margin:11px 0 0;color:var(--muted);font-size:.7rem;line-height:1.55}.sync-alert{margin-top:11px;border-radius:12px;padding:10px 12px;background:#fff8e5;border:1px solid #ead6a2;color:#655126;font-size:.76rem}.sync-alert.good{background:#eaf3eb;border-color:#bfd5c3;color:#2e6645}.sync-alert.bad{background:#fff0ed;border-color:#e2b9b0;color:#7f2d22}
+    .sync-shell{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:14px}.sync-overview{background:linear-gradient(135deg,#16231d,#315b69);color:#fff;border-radius:22px;padding:19px;box-shadow:var(--shadow)}.sync-overview h3{font:700 1.24rem var(--serif);margin:10px 0 5px}.sync-overview p{color:#c9d8d0;font-size:.82rem;margin:0}.sync-state{display:flex;align-items:center;justify-content:space-between;gap:12px}.sync-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(255,255,255,.12);padding:7px 10px;font-size:.74rem;font-weight:900}.sync-badge i{width:8px;height:8px;border-radius:50%;background:#efbd67;box-shadow:0 0 0 5px rgba(239,189,103,.14)}.sync-badge.online i{background:#75d49a;box-shadow:0 0 0 5px rgba(117,212,154,.14)}.sync-members{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.sync-member{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.1);padding:6px 9px;font-size:.72rem}.sync-member i{width:7px;height:7px;border-radius:50%;background:#81918a}.sync-member.online i{background:#75d49a}.sync-updated{display:block;color:#aebfb6;font-size:.72rem;margin-top:8px}.sync-setup{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:17px}.sync-setup>summary{cursor:pointer;font:800 .9rem var(--sans);list-style:none}.sync-setup>summary::-webkit-details-marker{display:none}.sync-setup>summary:after{content:'＋';float:right;color:var(--red)}.sync-setup[open]>summary:after{content:'−'}.sync-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.sync-form .wide{grid-column:1/-1}.sync-form textarea{font:600 .72rem/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;min-height:96px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.sync-help{margin:11px 0 0;color:var(--muted);font-size:.74rem;line-height:1.55}.sync-alert{margin-top:11px;border-radius:12px;padding:10px 12px;background:#fff8e5;border:1px solid #ead6a2;color:#655126;font-size:.78rem}.sync-alert.good{background:#eaf3eb;border-color:#bfd5c3;color:#2e6645}.sync-alert.bad{background:#fff0ed;border-color:#e2b9b0;color:#7f2d22}.auth-card{grid-column:1/-1;border:1px solid #cfd8d0;background:#f2f6f1;border-radius:14px;padding:13px}.auth-card h4{margin:0 0 7px;font:700 1rem var(--serif)}.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.auth-identity{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:9px 10px;border-radius:10px;background:#e6eee7;color:#355144;font-size:.76rem}.auth-identity strong{display:block}.auth-identity code{font-size:.66rem;word-break:break-all}.auth-identity[hidden]{display:none}.advanced-config{grid-column:1/-1;border-top:1px dashed var(--line);padding-top:9px}.advanced-config summary{cursor:pointer;font-size:.75rem;font-weight:900;color:var(--muted)}.privacy-scope{margin-top:12px;padding:11px 12px;border-radius:12px;background:#eef2f4;border:1px solid #cedbe0;color:#314f59;font-size:.74rem}.offline-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;background:#e8eee7;color:#365142;font-size:.7rem;font-weight:900}.offline-chip.offline{background:#fff0d2;color:#6f5116}
     .ledger-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:10px}.ledger-stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px}.ledger-stat small{display:block;color:var(--muted);font-size:.73rem}.ledger-stat strong{display:block;font:700 clamp(1.28rem,3vw,1.75rem)/1.25 var(--serif);margin-top:3px}.ledger-stat.over strong{color:var(--red)}
     .budget-meter{height:12px;border-radius:999px;background:#e4dfd3;overflow:hidden}.budget-meter span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#58745f,#c59a4a);transition:width .25s}.budget-meter.over span{background:var(--red)}.budget-caption{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.76rem;margin:6px 2px 18px}
     .ledger-layout{display:grid;grid-template-columns:minmax(290px,.85fr) minmax(0,1.35fr);gap:16px;align-items:start}.ledger-panel h3{margin:0 0 12px;font:700 1.16rem var(--serif)}.ledger-panel hr{border:0;border-top:1px solid var(--line);margin:20px 0}
@@ -99,18 +104,18 @@
     .route-board{margin:18px 0 22px;border:1px solid #d7d0c2;border-radius:18px;background:linear-gradient(135deg,#f3f6f1,#fffaf0);padding:15px;overflow:hidden}.route-board-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:11px}.route-board-head h4{font:700 1.02rem var(--serif);margin:0}.route-board-head p{margin:0;color:var(--muted);font-size:.72rem;text-align:right}.route-steps{list-style:none;counter-reset:route-step;display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px;padding:0;margin:0}.route-steps li{counter-increment:route-step;position:relative;min-height:104px;border:1px solid #ddd7ca;border-radius:13px;background:rgba(255,253,248,.94);padding:11px 10px 10px 42px}.route-steps li:before{content:counter(route-step);position:absolute;left:10px;top:10px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font:800 .72rem var(--sans)}.route-steps li:after{content:"→";position:absolute;right:-8px;top:42px;z-index:2;color:#9a8f7c;font-weight:900}.route-steps li:last-child:after{display:none}.route-steps strong{display:block;font-size:.79rem;line-height:1.35;margin-top:4px}.route-steps small{display:block;color:var(--muted);font-size:.66rem;line-height:1.45;margin-top:4px}.stop-kind{display:inline-flex;border-radius:999px;padding:2px 6px;font-size:.59rem;font-weight:900;letter-spacing:.05em;background:#e8e3d8;color:#595349}.stop-kind.shop{background:#f1d7d1;color:#782d22}.stop-kind.coffee{background:#f4e4b9;color:#6b4e11}.stop-kind.food{background:#e4dded;color:#553e6d}.stop-kind.view{background:#dce7eb;color:#315b69}.stop-kind.transit{background:#dce6dc;color:#244a36}.route-steps a{display:block}.route-steps a:hover strong{color:var(--red)}.route-board-note{margin:10px 2px 0;color:#645d52;font-size:.7rem}.coupon-callout{border:1px solid #dfb5a9;background:#fff4ef;border-radius:14px;padding:12px 13px;margin:12px 0;color:#6f3329;font-size:.8rem}.coupon-callout strong{color:#8a2f20}
     .subhead{font:700 1.14rem var(--serif);margin:26px 0 12px;display:flex;align-items:center;gap:8px;scroll-margin-top:76px}.subhead:after{content:"";height:1px;flex:1;background:var(--line)}
     .timeline{position:relative;margin-left:8px}.timeline:before{content:"";position:absolute;left:52px;top:10px;bottom:10px;border-left:1px solid #bdc8bd}.slot{display:grid;grid-template-columns:42px 20px 1fr;gap:10px;margin:0 0 13px}.time{font-size:.8rem;font-weight:900;color:var(--red);padding-top:4px;text-align:right}.dot{width:11px;height:11px;border:3px solid var(--card);box-shadow:0 0 0 1px #8c9b8e;background:var(--red);border-radius:50%;margin-top:7px;z-index:1}.slot-content{padding:0 0 9px}.slot-content strong{font-size:.92rem}.slot-content p{margin:2px 0 0;color:#536159;font-size:.84rem}.slot-content .mini{display:inline-block;color:var(--blue);font-size:.75rem;font-weight:800;margin-top:4px}
-    .shop-grid,.food-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.shop,.food{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fbfaf5}.shop h4,.food h4{font-size:.92rem;margin:0 0 4px}.shop p,.food p{font-size:.8rem;color:#5b665f;margin:0}.meta{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 0}.meta span{font-size:.68rem;padding:3px 6px;border-radius:6px;background:#eee9df;color:#5f5a50}.meta .rating{background:#fff0c6;color:#72500f}.meta .food-budget,.record-meta .food-budget{background:#e4eee5;color:#244a36;font-weight:900;font-variant-numeric:tabular-nums}.shop .link,.food .link{display:inline-flex;margin-top:8px;color:var(--red);font-size:.75rem;font-weight:900}.rating-note{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff8e5;border:1px solid #ead6a2;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:.78rem;color:#5d4b23}.rating-note a{font-weight:900;color:var(--red);white-space:nowrap}
+    .shop-grid,.food-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.shop,.food{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fbfaf5}.shop h4,.food h4{font-size:.94rem;margin:0 0 4px}.shop p,.food p{font-size:.86rem;color:#5b665f;margin:0}.meta{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 0}.meta span{font-size:.72rem;padding:3px 6px;border-radius:6px;background:#eee9df;color:#5f5a50}.meta .rating{background:#fff0c6;color:#72500f}.meta .food-budget,.record-meta .food-budget{background:#e4eee5;color:#244a36;font-weight:900;font-variant-numeric:tabular-nums}.shop .link,.food .link{display:inline-flex;margin-top:8px;color:var(--red);font-size:.78rem;font-weight:900}.rating-note{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff8e5;border:1px solid #ead6a2;border-radius:14px;padding:11px 13px;margin-bottom:12px;font-size:.8rem;color:#5d4b23}.rating-note a{font-weight:900;color:var(--red);white-space:nowrap}
     .meal-title{grid-column:1/-1;font-size:.76rem;font-weight:900;letter-spacing:.11em;color:var(--red);margin:8px 0 -1px;text-transform:uppercase}
     .choice{border:1px solid var(--line);border-radius:14px;padding:14px;background:#f8faf7}.choice h4{margin:0 0 5px;font-size:.92rem}.choice p{margin:0;font-size:.8rem;color:#58665e}.choice .actions{margin-top:10px}
     .brand-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.brand{border:1px solid var(--line);border-radius:15px;padding:15px;background:var(--card)}.brand h3{margin:0 0 4px;font-size:1rem}.brand p{font-size:.82rem;margin:0;color:#536159}.brand .where{display:block;color:var(--red);font-weight:900;font-size:.73rem;margin-top:8px}
     .packing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.packing-category{border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}.packing-category h3{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:0;padding:14px 16px;background:#eef1eb;font:700 1rem var(--serif)}.packing-category h3 span{border-radius:999px;background:#fffdf8;color:var(--red);padding:3px 8px;font:900 .66rem var(--sans)}.packing-items{display:grid;padding:5px 15px 11px}.packing-check{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:9px 1px;border-bottom:1px dashed #e3ded3;cursor:pointer}.packing-check:last-child{border-bottom:0}.packing-check input{margin-top:4px;accent-color:var(--red);transform:scale(1.14)}.packing-check strong{display:block;font-size:.8rem;line-height:1.4}.packing-check small{display:block;color:var(--muted);font-size:.67rem;line-height:1.45;margin-top:2px}.packing-check input:checked+span strong{text-decoration:line-through;color:#8a918d}.packing-check input:checked+span small{opacity:.65}.packing-check.packing-hidden{display:none}.packing-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}.packing-filter{border:1px solid #cfc8ba;border-radius:999px;background:#fffdf8;padding:7px 11px;color:var(--ink);font:800 .73rem var(--sans);cursor:pointer}.packing-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}.packing-reset{margin-left:auto}.luggage-allocation{margin-top:16px}.luggage-allocation td:first-child{white-space:nowrap;font-weight:900}
-    .directory-dashboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.directory-stat{border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:var(--card);text-align:left;cursor:pointer;color:var(--ink)}.directory-stat small{display:block;color:var(--muted);font-size:.68rem;font-weight:900}.directory-stat strong{display:block;font:700 1.45rem var(--serif);margin-top:2px}.directory-stat.active{border-color:var(--ink);box-shadow:0 0 0 2px rgba(22,35,29,.12)}.directory-stat[data-directory-filter="planned"] strong{color:#2e6645}.directory-stat[data-directory-filter="possible"] strong{color:#8a6418}.directory-stat[data-directory-filter="off"] strong{color:#667069}.directory-filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:13px}.directory-filter{border:1px solid #cfc8ba;border-radius:999px;background:#fffdf8;padding:7px 11px;color:var(--ink);font:800 .73rem var(--sans);cursor:pointer}.directory-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}.directory-filter-result{margin-left:auto;color:var(--muted);font-size:.72rem;font-weight:800}.directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.directory-card{border:1px solid var(--line);border-radius:17px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}.directory-card>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer;padding:15px 16px;background:#eef1eb;font:800 .92rem var(--sans)}.directory-card>summary::-webkit-details-marker{display:none}.directory-card>summary:after{content:'＋';color:var(--red);font-size:1.1rem}.directory-card[open]>summary:after{content:'−'}.directory-card>summary span{margin-left:auto;margin-right:5px;border-radius:999px;background:#fffdf8;color:var(--red);padding:2px 7px;font-size:.66rem}.directory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;list-style:none;padding:8px 16px 14px;margin:0}.directory-list li{position:relative;padding:7px 4px 8px 14px;border-bottom:1px dashed #e3ded3;font-size:.77rem;line-height:1.4}.directory-list li:before{content:'•';position:absolute;left:2px;color:var(--red);font-weight:900}.directory-list li.directory-hidden{display:none}.directory-list small{display:block;color:var(--muted);font-size:.64rem;margin-top:2px}.directory-plan{display:inline-flex!important;width:max-content;margin:4px 0 1px!important;border-radius:999px;padding:2px 7px;font-size:.61rem!important;font-weight:900}.directory-plan.planned{background:#dce9de;color:#2e6645}.directory-plan.possible{background:#f4e4b9;color:#72500f}.directory-plan.off{background:#e8e9e6;color:#59635d}.directory-route{font-size:.63rem!important;color:#59645e!important}.directory-card[hidden]{display:none}
+    .directory-dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.directory-stat{border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:var(--card);text-align:left;cursor:pointer;color:var(--ink)}.directory-stat small{display:block;color:var(--muted);font-size:.7rem;font-weight:900}.directory-stat strong{display:block;font:700 1.45rem var(--serif);margin-top:2px}.directory-stat.active{border-color:var(--ink);box-shadow:0 0 0 2px rgba(22,35,29,.12)}.directory-stat[data-directory-filter="core"] strong{color:#b74634}.directory-stat[data-directory-filter="conditional"] strong{color:#8a6418}.directory-stat[data-directory-filter="instore"] strong{color:#315b69}.directory-stat[data-directory-filter="off"] strong{color:#667069}.directory-filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:13px}.directory-search{min-width:210px;flex:1;border:1px solid #cfc8ba;border-radius:999px;background:#fffdf8;padding:8px 12px;color:var(--ink);font:inherit;font-size:.78rem}.directory-filter{border:1px solid #cfc8ba;border-radius:999px;background:#fffdf8;padding:7px 11px;color:var(--ink);font:800 .73rem var(--sans);cursor:pointer}.directory-filter.active{background:var(--ink);border-color:var(--ink);color:#fff}.directory-filter-result{margin-left:auto;color:var(--muted);font-size:.74rem;font-weight:800}.directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.directory-card{border:1px solid var(--line);border-radius:17px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}.directory-card>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer;padding:15px 16px;background:#eef1eb;font:800 .92rem var(--sans)}.directory-card>summary::-webkit-details-marker{display:none}.directory-card>summary:after{content:'＋';color:var(--red);font-size:1.1rem}.directory-card[open]>summary:after{content:'−'}.directory-card>summary span{margin-left:auto;margin-right:5px;border-radius:999px;background:#fffdf8;color:var(--red);padding:2px 7px;font-size:.68rem}.directory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;list-style:none;padding:8px 16px 14px;margin:0}.directory-list li{position:relative;padding:7px 4px 8px 14px;border-bottom:1px dashed #e3ded3;font-size:.8rem;line-height:1.45}.directory-list li:before{content:'•';position:absolute;left:2px;color:var(--red);font-weight:900}.directory-list li.directory-hidden{display:none}.directory-list small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.directory-plan{display:inline-flex!important;width:max-content;margin:4px 0 1px!important;border-radius:999px;padding:2px 7px;font-size:.64rem!important;font-weight:900}.directory-plan.core{background:#f1d7d1;color:#782d22}.directory-plan.conditional{background:#f4e4b9;color:#72500f}.directory-plan.instore{background:#dce7eb;color:#315b69}.directory-plan.off{background:#e8e9e6;color:#59635d}.directory-route{font-size:.68rem!important;color:#59645e!important}.directory-card[hidden]{display:none}
     .small{font-size:.82rem;color:var(--muted)}.muted{color:var(--muted)}
     .assistant-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.7fr);gap:16px;align-items:start}.phrase-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.phrase-tools input{flex:1;min-width:220px;border:1px solid #cfc8ba;border-radius:11px;background:#fffdf8;padding:10px 12px;font:inherit}.phrase-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:660px;overflow:auto;padding-right:3px}.phrase-card{border:1px solid var(--line);background:#fbfaf5;border-radius:14px;padding:13px}.phrase-card[hidden]{display:none}.phrase-card small{color:var(--red);font-weight:900;font-size:.65rem;letter-spacing:.08em}.phrase-card h3{font-size:.86rem;margin:3px 0;color:var(--ink-2)}.phrase-card .jp{font:700 1rem/1.45 var(--serif);color:var(--ink);margin:4px 0}.phrase-card .en{font-size:.7rem;color:var(--muted);margin:0}.phrase-card .actions{margin-top:9px}.phrase-card .btn{padding:6px 8px;font-size:.7rem}.phrase-display{position:sticky;top:76px;background:linear-gradient(150deg,#16231d,#315b69);color:#fff;border-radius:20px;padding:20px;box-shadow:var(--shadow);min-height:210px}.phrase-display small{color:#bcd0c8;letter-spacing:.12em}.phrase-display strong{display:block;font:700 clamp(1.55rem,4vw,2.4rem)/1.35 var(--serif);margin:20px 0}.phrase-display p{color:#d8e4dd;font-size:.79rem}.tool-stack{display:grid;gap:12px;margin-top:14px}.travel-tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px}.travel-tool h3{font:700 1rem var(--serif);margin:0 0 7px}.travel-tool textarea{width:100%;min-height:100px;border:1px solid #cfc8ba;background:#fffdf8;border-radius:10px;padding:10px;font:inherit;resize:vertical}.emergency-links{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.emergency-links a{display:grid;place-items:center;background:#edf1eb;border-radius:10px;padding:9px 5px;font-size:.72rem;font-weight:900;text-align:center}.jp-name{font-size:.78em;color:var(--muted);font-weight:700}
-    .quick-actions{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;flex-direction:column;gap:8px}.quick-actions button,.quick-actions a{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--ink);color:#fff;box-shadow:0 10px 25px rgba(0,0,0,.18);cursor:pointer;font-weight:900}
+    .quick-actions{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:40;display:flex;flex-direction:column;gap:8px}.quick-actions button,.quick-actions a{display:grid;place-items:center;width:46px;height:46px;border:0;border-radius:50%;background:var(--ink);color:#fff;box-shadow:0 10px 25px rgba(0,0,0,.18);cursor:pointer;font-weight:900}
     footer{background:var(--ink);color:#d8e1d9;padding:44px 0 88px}footer h2{font:700 1.5rem var(--serif);color:white}.sources{columns:2;column-gap:30px}.sources a{display:block;font-size:.78rem;color:#c1ccc4;margin:0 0 7px;break-inside:avoid}.sources a:hover{color:white}
     .travel-console{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:16px}.now-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#16231d,#315b69);color:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow)}.now-card:after{content:"今日";position:absolute;right:-10px;bottom:-35px;font:700 7rem/1 var(--serif);opacity:.055}.now-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.now-top small,.now-card .muted-light{color:#bfd0c7}.now-clock{font:700 clamp(1.6rem,4vw,2.55rem)/1 var(--serif);white-space:nowrap}.now-card h3{font:700 clamp(1.35rem,3.2vw,2rem)/1.25 var(--serif);margin:18px 0 4px;max-width:680px}.next-countdown{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.12);font-size:.76rem;font-weight:900}.live-dot{width:8px;height:8px;border-radius:50%;background:#efbd67;box-shadow:0 0 0 5px rgba(239,189,103,.15)}.today-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.today-actions .btn{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}.today-actions .btn.primary{background:#fff;color:var(--ink)}
-    .mode-panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:19px;box-shadow:var(--shadow)}.mode-panel h3{font:700 1.12rem var(--serif);margin:0}.mode-panel>p{font-size:.78rem;color:var(--muted);margin:5px 0 12px}.mode-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.mode-button{border:1px solid #d4ccbd;background:#fbfaf5;border-radius:11px;padding:9px 7px;color:var(--ink-2);font:800 .76rem var(--sans);cursor:pointer}.mode-button.active{background:var(--ink);border-color:var(--ink);color:#fff}.mode-advice{margin-top:12px;padding:12px;border-radius:13px;background:#fff8e5;border:1px solid #ead6a2;font-size:.8rem;color:#5d4b23}.today-controls{display:flex;align-items:end;gap:10px;margin:14px 0}.today-controls .field{max-width:250px}.today-events{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.today-event{position:relative;border:1px solid var(--line);background:var(--card);border-radius:15px;padding:14px;min-height:132px}.today-event.past{opacity:.55}.today-event.next{border-color:#c59a4a;box-shadow:0 0 0 2px rgba(197,154,74,.18)}.today-event time{font-weight:900;color:var(--red)}.today-event h4{font-size:.9rem;margin:5px 0}.today-event p{font-size:.75rem;color:var(--muted);margin:0}.today-event .badge{position:absolute;right:10px;top:10px}
+    .mode-panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:19px;box-shadow:var(--shadow)}.mode-panel h3{font:700 1.12rem var(--serif);margin:0}.mode-panel>p{font-size:.78rem;color:var(--muted);margin:5px 0 12px}.mode-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.mode-button{border:1px solid #d4ccbd;background:#fbfaf5;border-radius:11px;padding:9px 7px;color:var(--ink-2);font:800 .76rem var(--sans);cursor:pointer}.mode-button.active{background:var(--ink);border-color:var(--ink);color:#fff}.mode-advice{margin-top:12px;padding:12px;border-radius:13px;background:#fff8e5;border:1px solid #ead6a2;font-size:.8rem;color:#5d4b23}.today-controls{display:flex;align-items:end;gap:10px;margin:14px 0;flex-wrap:wrap}.today-controls .field{max-width:250px}.today-events{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.today-event{position:relative;border:1px solid var(--line);background:var(--card);border-radius:15px;padding:14px;min-height:132px}.today-event.past{opacity:.55}.today-event.next{border-color:#c59a4a;box-shadow:0 0 0 2px rgba(197,154,74,.18)}.today-event time{font-weight:900;color:var(--red)}.today-event time small{font-size:.64rem;color:var(--muted);font-weight:700}.today-event h4{font-size:.92rem;margin:5px 0}.today-event p{font-size:.8rem;color:var(--muted);margin:0}.today-event .badge{position:absolute;right:10px;top:10px}
     .module-shell{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:16px;align-items:start}.module-form{position:sticky;top:76px}.module-form h3{margin:0 0 12px;font:700 1.15rem var(--serif)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.form-grid .wide{grid-column:1/-1}.record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.record-card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:15px;min-width:0}.record-card.done{opacity:.68}.record-card h4{font:700 1rem/1.35 var(--serif);margin:0}.record-card p{font-size:.78rem;color:var(--muted);margin:6px 0}.record-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.record-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}.record-meta span{background:#eee9df;border-radius:7px;padding:3px 6px;font-size:.68rem;color:#5c584f}.record-photo{display:block;width:100%;max-height:180px;object-fit:cover;border-radius:11px;margin-top:10px;border:1px solid var(--line)}.empty-box{grid-column:1/-1;border:1px dashed #cfc8ba;border-radius:16px;padding:24px;text-align:center;color:var(--muted);background:#fbfaf5}.module-status{min-height:22px;margin-top:8px;color:var(--muted);font-size:.75rem}.module-status.good{color:#2e6645}.module-status.bad{color:var(--red)}
     .luggage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.luggage-card{border:1px solid var(--line);border-radius:18px;padding:15px;background:var(--card);box-shadow:var(--shadow)}.luggage-card h3{margin:0;font:700 1.06rem var(--serif)}.luggage-card .form-grid{grid-template-columns:1fr}.luggage-progress{height:10px;border-radius:999px;background:#e5dfd3;overflow:hidden;margin:12px 0}.luggage-progress span{display:block;height:100%;background:linear-gradient(90deg,#58745f,#c59a4a);transition:width .25s}.waybill-thumb{width:100%;height:126px;object-fit:cover;border-radius:11px;border:1px solid var(--line);margin:9px 0}.luggage-summary{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0 0 14px;padding:12px 15px;border-radius:14px;background:#e9eee7}.luggage-summary strong{font:700 1.2rem var(--serif)}
     .filter-toolbar{display:grid;grid-template-columns:1.1fr repeat(4,minmax(120px,.65fr));gap:9px;align-items:end;margin-bottom:13px}.inline-check{display:flex;align-items:center;gap:7px;min-height:44px;border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:var(--card);font-size:.76rem;font-weight:800}.inline-check input{accent-color:var(--red)}.filter-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.food-result{border:1px solid var(--line);border-radius:15px;padding:14px;background:var(--card)}.food-result h4{font-size:.92rem;margin:0 0 4px}.food-result p{font-size:.76rem;color:var(--muted);margin:0}.food-result .link{display:inline-flex;margin-top:9px;color:var(--red);font-size:.73rem;font-weight:900}.filter-count{font-size:.78rem;color:var(--muted);margin:0 0 10px}
@@ -121,7 +126,7 @@
     @media(max-width:760px){
       .wrap{width:min(100% - 22px,1120px)}.hero{min-height:70vh;padding:60px 0 36px}.hero-meta{grid-template-columns:1fr}.hero-meta div{padding-top:7px}.topbar .brand{display:none}
       .countdown-card{grid-template-columns:1fr}.countdown-actions{justify-content:flex-start}.boarding-grid{grid-template-columns:1fr}.custom-todo-form{grid-template-columns:1fr 1fr}.custom-todo-form .field:first-child{grid-column:1/-1}.custom-todo-form .btn{height:44px}.todo-dashboard,.sync-shell{grid-template-columns:1fr}.todo-filters{grid-template-columns:1fr}.sync-form{grid-template-columns:1fr}.sync-form .wide{grid-column:auto}.assistant-layout{grid-template-columns:1fr}.phrase-list{grid-template-columns:1fr;max-height:none}.phrase-display{position:static}.emergency-links{grid-template-columns:1fr 1fr}
-      .grid.two,.grid.three,.checklist,.custom-todos,.shop-grid,.food-grid,.brand-table,.directory-grid,.packing-grid,.ledger-layout,.wardrobe-grid,.travel-console,.module-shell,.record-grid,.luggage-grid,.filter-results,.backup-panel{grid-template-columns:1fr}.directory-list{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.sketch-map svg{min-width:740px}.map-caption em{width:100%;margin-left:0}.ledger-stats,.wishlist-summary,.vault-summary,.directory-dashboard{grid-template-columns:1fr}.budget-fields,.expense-form,.form-grid{grid-template-columns:1fr}.field.wide,.form-grid .wide{grid-column:auto}.ledger-table-wrap{margin-left:-1px;margin-right:-1px}.module-form{position:static}.today-events{grid-template-columns:1fr 1fr}.filter-toolbar{grid-template-columns:1fr 1fr}.filter-toolbar .field:first-child{grid-column:1/-1}.now-top{display:block}.now-clock{margin-top:7px}.today-controls{align-items:stretch}.today-controls .field{max-width:none;flex:1}.topbar .wrap{gap:7px}.topbar .brand{display:none}.nav-primary{margin:0;overflow:auto;scrollbar-width:none;flex:1}.nav-primary a,.nav-primary button{font-size:.76rem;padding:8px 7px}.nav-menu{position:fixed;left:16px;right:16px;top:68px;width:auto;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto}.packing-reset,.directory-filter-result{margin-left:0;width:100%}
+      .grid.two,.grid.three,.checklist,.custom-todos,.shop-grid,.food-grid,.brand-table,.directory-grid,.packing-grid,.ledger-layout,.wardrobe-grid,.travel-console,.module-shell,.record-grid,.luggage-grid,.filter-results,.backup-panel{grid-template-columns:1fr}.directory-list{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.sketch-map svg{min-width:740px}.map-caption em{width:100%;margin-left:0}.ledger-stats,.wishlist-summary,.vault-summary{grid-template-columns:1fr}.directory-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}.budget-fields,.expense-form,.form-grid,.auth-grid{grid-template-columns:1fr}.field.wide,.form-grid .wide{grid-column:auto}.ledger-table-wrap{margin-left:-1px;margin-right:-1px}.module-form{position:static}.today-events{grid-template-columns:1fr 1fr}.filter-toolbar{grid-template-columns:1fr 1fr}.filter-toolbar .field:first-child{grid-column:1/-1}.now-top{display:block}.now-clock{margin-top:7px}.today-controls{align-items:stretch}.today-controls .field{max-width:none;flex:1}.topbar .wrap{gap:7px}.topbar .brand{display:none}.nav-primary{margin:0;overflow:auto;scrollbar-width:none;flex:1}.nav-primary a,.nav-primary button{font-size:.78rem;padding:9px 8px}.nav-menu{position:fixed;left:16px;right:16px;top:68px;width:auto;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto}.packing-reset,.directory-filter-result{margin-left:0;width:100%}.slot-content p{font-size:.88rem}.route-steps strong{font-size:.84rem}.route-steps small{font-size:.72rem}.shop p,.food p{font-size:.9rem}.meta span{font-size:.74rem}.directory-search{width:100%;flex-basis:100%}.quick-actions{right:10px}
       .summary-table{display:block;overflow:auto;white-space:nowrap}.summary-table td:nth-child(3){white-space:normal;min-width:240px}.currency-grid,.taxfree-controls,.taxfree-result{grid-template-columns:1fr}.currency-equals{margin:auto;transform:rotate(90deg)}.currency-live,.taxfree-head{align-items:stretch;flex-direction:column}.currency-live .btn{width:100%}
       details.day>summary{grid-template-columns:62px 1fr auto;padding:16px;gap:11px}.day-date{width:58px;height:58px;border-radius:15px}.day-date strong{font-size:1.24rem}.day-body{padding:0 16px 20px}.metric-row{grid-template-columns:repeat(2,1fr)}
       .route-board{margin-left:-2px;margin-right:-2px;padding:12px}.route-board-head{display:block}.route-board-head p{text-align:left;margin-top:3px}.route-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.route-steps li{min-height:100px;padding-left:39px}.route-steps li:after{display:none}
@@ -208,7 +213,7 @@
           <div class="today-actions no-print"><a class="btn primary" id="todayMapLink" target="_blank" rel="noreferrer" href="https://www.google.com/maps">开始导航</a><a class="btn" id="todayDetailLink" href="#days">查看完整日程</a><button class="btn" type="button" data-open-currency>汇率 / 免税</button><a class="btn" href="#travel-wallet">打开票券</a><a class="btn" href="#language">显示日文</a></div>
         </article>
         <aside class="mode-panel">
-          <h3>临场模式</h3><p>切换后立即显示当天取舍建议，不改动原始攻略。</p>
+          <h3>临场模式</h3><p>切换后推演首页时间并显示取舍建议；航班、预约、酒店车和已购班次等固定节点不会顺延，完整攻略保持不变。</p>
           <div class="mode-switch" id="modeSwitch">
             <button class="mode-button active" type="button" data-trip-mode="normal">正常执行</button>
             <button class="mode-button" type="button" data-trip-mode="delay30">晚 30 分钟</button>
@@ -219,7 +224,7 @@
           <div class="mode-advice" id="modeAdvice">按原计划执行，购物时每 2—2.5 小时安排一次坐下休息。</div>
         </aside>
       </div>
-      <div class="today-controls no-print"><div class="field"><label for="todayDaySelect">预览日期</label><select id="todayDaySelect"><option value="0">10/5 · 抵达与新宿</option><option value="1">10/6 · 原宿表参道南青山</option><option value="2">10/7 · 镰仓</option><option value="3">10/8 · 箱根仙石原</option><option value="4">10/9 · 御殿场与涩谷</option><option value="5">10/10 · 祐天寺中目黑代官山</option><option value="6">10/11 · 银座</option><option value="7">10/12 · 返程</option></select></div><button class="btn" id="jumpToNow" type="button">回到实际日期</button></div>
+      <div class="today-controls no-print"><div class="field"><label for="todayDaySelect">预览日期</label><select id="todayDaySelect"><option value="0">10/5 · 抵达与新宿</option><option value="1">10/6 · 原宿表参道南青山</option><option value="2">10/7 · 镰仓</option><option value="3">10/8 · 箱根仙石原</option><option value="4">10/9 · 御殿场与涩谷</option><option value="5">10/10 · 祐天寺中目黑代官山</option><option value="6">10/11 · 银座</option><option value="7">10/12 · 返程</option></select></div><button class="btn" id="jumpToNow" type="button">回到实际日期</button><span class="offline-chip" id="networkStatus"><span aria-hidden="true">●</span> 正在检测网络</span></div>
       <div class="today-events" id="todayEvents" aria-live="polite"></div>
     </section>
 
@@ -396,25 +401,35 @@
     </section>
 
     <section id="shared-sync">
-      <div class="section-head"><div><span class="kicker">LIVE COLLABORATION</span><h2>多人实时同步</h2></div><p>公开攻略保持可查看；只有持有同一共享房间码的人才能同步和修改核心旅行数据。</p></div>
+      <div class="section-head"><div><span class="kicker">PRIVATE LIVE COLLABORATION</span><h2>两人账号与实时同步</h2></div><p>旅行数据只允许加入 Firebase UID 白名单的两个邮箱账号读取和修改；公开攻略与私人数据严格分开。</p></div>
       <div class="sync-shell no-print">
         <article class="sync-overview">
           <div class="sync-state"><span class="sync-badge" id="cloudSyncBadge"><i></i><span id="cloudSyncState">仅本机</span></span><button class="btn" id="cloudSyncNow" type="button" disabled>立即同步</button></div>
           <h3 id="cloudRoomLabel">尚未加入共享房间</h3>
-          <p id="cloudSyncSummary">连接后同步待办、行李清单、记账、购物愿望单、预约和行李文字状态；照片附件继续只保存在各自设备。</p>
+          <p id="cloudSyncSummary">登录获准账号后，同步待办、行李清单、记账、购物愿望单、预约和行李文字状态；照片附件继续只保存在各自设备。</p>
           <div class="sync-members" id="cloudMembers"><span class="sync-member"><i></i>暂无在线成员</span></div>
           <span class="sync-updated" id="cloudLastUpdated">尚无云端更新时间</span>
         </article>
         <details class="sync-setup" id="cloudSetup" open>
-          <summary>首次配置 / 加入共享房间</summary>
+          <summary>账号登录 / 加入共享旅行</summary>
           <div class="sync-form">
-            <div class="field wide"><label for="firebaseConfigInput">Firebase Web 配置</label><textarea id="firebaseConfigInput" spellcheck="false" placeholder='粘贴 Firebase 控制台提供的配置对象，例如 {"apiKey":"…","authDomain":"…","databaseURL":"…","projectId":"…","appId":"…"}'></textarea></div>
+            <div class="auth-card">
+              <h4>第一步｜登录获准邮箱账号</h4>
+              <div class="auth-grid">
+                <div class="field"><label for="cloudEmail">邮箱</label><input id="cloudEmail" type="email" autocomplete="username" placeholder="你们在 Firebase 创建的邮箱"></div>
+                <div class="field"><label for="cloudPassword">密码</label><input id="cloudPassword" type="password" autocomplete="current-password" placeholder="Firebase Authentication 密码"></div>
+              </div>
+              <div class="sync-actions"><button class="btn red" id="cloudSignIn" type="button">登录账号</button><button class="btn" id="cloudSignOut" type="button" disabled>退出账号</button></div>
+              <div class="auth-identity" id="cloudIdentity" hidden><div><strong id="cloudIdentityEmail">—</strong><code id="cloudIdentityUid">—</code></div><button class="btn" id="cloudCopyUid" type="button">复制 UID</button></div>
+            </div>
             <div class="field"><label for="cloudRoomCode">共享房间码</label><input id="cloudRoomCode" maxlength="80" autocomplete="off" placeholder="创建新房间或粘贴同行人的房间码"></div>
             <div class="field"><label for="cloudDisplayName">我的名字</label><input id="cloudDisplayName" maxlength="20" placeholder="没头脑 / 不高兴"></div>
+            <details class="advanced-config"><summary>高级设置｜Firebase Web 配置</summary><div class="field wide" style="margin-top:9px"><label for="firebaseConfigInput">项目配置</label><textarea id="firebaseConfigInput" spellcheck="false" placeholder='默认已填入 Tokyo-2026 项目配置；只有更换项目时才修改。'></textarea></div></details>
           </div>
-          <div class="sync-actions"><button class="btn" id="cloudGenerateRoom" type="button">生成安全房间码</button><button class="btn red" id="cloudConnect" type="button">连接并开始同步</button><button class="btn" id="cloudCopyInvite" type="button">复制邀请链接</button><button class="btn" id="cloudDisconnect" type="button">退出共享</button></div>
-          <div class="sync-alert" id="cloudMessage" aria-live="polite">首次使用需创建一个免费的 Firebase 项目、启用匿名登录和 Realtime Database，再粘贴 Web 配置。完整步骤见仓库中的 FIREBASE_SETUP.md。</div>
-          <p class="sync-help">房间码不会出现在网页正文中，只保存在设备和邀请链接的 URL 片段里。请只发给同行人；订单号、消费记录等会同步，护照、银行卡、二维码图片不会上传。</p>
+          <div class="sync-actions"><button class="btn" id="cloudGenerateRoom" type="button">生成共享房间码</button><button class="btn red" id="cloudConnect" type="button" disabled>连接并开始同步</button><button class="btn" id="cloudCopyInvite" type="button">复制同行邀请</button><button class="btn" id="cloudDisconnect" type="button">退出共享</button></div>
+          <div class="sync-alert" id="cloudMessage" aria-live="polite">请先使用 Firebase Authentication 中已创建、且 UID 已加入数据库白名单的邮箱账号登录。完整设置见 FIREBASE_SETUP.md。</div>
+          <p class="sync-help">邀请只包含共享房间码，不包含密码。订单号和消费记录会同步；护照、银行卡、二维码和行李照片不会上传。任何设备都必须先登录获准账号。</p>
+          <div class="privacy-scope"><strong>隐私边界：</strong>Firebase 账号和数据库规则保护的是待办、消费、订单号等共享数据。GitHub Pages 上的静态攻略正文仍可公开访问；如需整站仅限两人打开，请按 PRIVATE_ACCESS.md 配置访问网关。</div>
         </details>
       </div>
     </section>
@@ -694,7 +709,7 @@
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>CA929 抵达成田机场 T1</strong><p>当前公开时刻约为浦东 T2 10:00 → 成田 T1 14:00；最终以电子客票为准。完成入境、取行李、海关与网络设置。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>CA929 抵达成田机场 T1</strong><p>当前公开时刻约为浦东 T2 10:00 → 成田 T1 14:00；最终以电子客票为准。完成入境、取行李、海关与网络设置。</p></div></div>
             <div class="slot"><span class="time">15:30</span><span class="dot"></span><div class="slot-content"><strong>搭最顺手的一班 Skyliner 到日暮里</strong><p>Skyliner 为全车指定席，约 36—40 分钟。日暮里换 JR 山手线往池袋方向，到目白约 22 分钟；换乘比新宿站简单。</p><a class="mini" href="#transport">查看购票方法 ↓</a></div></div>
             <div class="slot"><span class="time">17:00</span><span class="dot"></span><div class="slot-content"><strong>目白入住</strong><p>酒店就在 JR 目白站旁。顺便询问 10/8 早上宅急便办理方式，并确认两件大箱和一件小箱均可指定 10/9 送达喜来登。</p></div></div>
             <div class="slot"><span class="time">18:15</span><span class="dot"></span><div class="slot-content"><strong>JR 山手线去新宿 → NEWoMan</strong><p>目白 → 新宿约 6 分钟。按“新南改札 / NEWoMan”进场，先看车站直连店铺；18:40 左右沿新宿通前往伊势丹。</p></div></div>
@@ -741,6 +756,10 @@
             <div class="actions"><a class="btn red" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&origin=Harajuku+Station&destination=HUMAN+MADE+TOKYO&waypoints=Matsumoto+Kiyoshi+Harajuku%7CMY+ONLY+FRAGRANCE+Harajuku%7CPocket+Harajuku%7CInternational+Gallery+BEAMS%7CTABAYA+United+Arrows%7COnitsuka+Tiger+Omotesando&travelmode=walking">A｜原宿—神宫前</a><a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;origin=HUMAN+MADE+TOKYO&amp;destination=Kaneko+Optical+Aoyama&amp;waypoints=HAY+TOKYO%7CRalph+Lauren+Omotesando%7CAMI+Paris+Omotesando%7Ci2+cafe%7CSUPER+A+MARKET+Aoyama%7CH+BEAUTY%26YOUTH+Tokyo%7CURBANIC30+Aoyama&amp;travelmode=walking">B｜表参道—南青山</a></div>
           </div>
           <div class="metric-row"><div class="metric"><small>出门</small><strong>10:10</strong></div><div class="metric"><small>里原宿</small><strong>11:50—13:55</strong></div><div class="metric"><small>预计步行</small><strong>16k—20k 步</strong></div><div class="metric"><small>咖啡正选</small><strong>i2 cafe</strong></div></div>
+          <div class="grid two">
+            <article class="choice"><span class="badge must">核心进店</span><h4>优先保证 8 个目标</h4><p>MY ONLY FRAGRANCE、Pocket、TABAYA、Stüssy / 鬼塚虎至少一店、HUMAN MADE、SUPER A MARKET、H BEAUTY&amp;YOUTH、金子眼镜。发生排队时先保护这些项目。</p></article>
+            <article class="choice"><span class="badge opt">条件候选</span><h4>只能顺路补，不追求全完成</h4><p>International Gallery BEAMS、SHIHARA、HAY、Ralph Lauren、AMI、Supreme、Lacoste、agete / Hirotaka。每进入一间候选店，都要确认不会挤压晚餐和南青山主线。</p></article>
+          </div>
           <div class="route-board">
             <div class="route-board-head"><h4>当日顺逛顺序</h4><p>北 → 南 → 东；红色购物站优先，咖啡只停一次</p></div>
             <ol class="route-steps">
@@ -763,11 +782,11 @@
           <div class="timeline">
             <div class="slot"><span class="time">10:10</span><span class="dot"></span><div class="slot-content"><strong>目白 → 原宿</strong><p>JR 山手线直达，从表参道口出站。目标 10:28 前后抵达，不再绕去代代木公园。</p></div></div>
             <div class="slot"><span class="time">10:30</span><span class="dot"></span><div class="slot-content"><strong>松本清 原宿站表参道口店｜快速药妆</strong><p>就在车站旁，周二 10:00 开门且支持 TAX FREE。按清单购买防晒、面膜、护发、眼药水与常备药，控制在 20 分钟；10:50 结账，步行约 5 分钟到 Laforet。</p></div></div>
-            <div class="slot"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>MY ONLY FRAGRANCE 原宿店｜情侣定制</strong><p>提前通过官方 LINE 预约，两人各预留约 30 分钟。成品是喷在衣物、手帕等布制品上的定制香氛，不直接喷皮肤；分别命名标签，配方与瓶身拍照留档。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>MY ONLY FRAGRANCE 原宿店｜情侣定制</strong><p>提前通过官方 LINE 预约，两人各预留约 30 分钟。成品是喷在衣物、手帕等布制品上的定制香氛，不直接喷皮肤；分别命名标签，配方与瓶身拍照留档。</p></div></div>
             <div class="slot"><span class="time">11:50</span><span class="dot"></span><div class="slot-content"><strong>里原宿三角｜Pocket → International Gallery BEAMS → TABAYA</strong><p>三店都在神宫前 3 丁目并于 12:00 左右开门。Pocket 看原创银饰与 Vintage；International Gallery BEAMS 看设计师与重衣料；TABAYA 看 United Arrows 的和洋生活方式选品。三店各约 20—25 分钟，明确想试的款再延长。</p></div></div>
             <div class="slot"><span class="time">13:10</span><span class="dot"></span><div class="slot-content"><strong>里原宿街头线｜Stüssy / Onitsuka 优先，Supreme / Lacoste 快看</strong><p>按现场位置一路向 Cat Street 与表参道移动。先保证 Stüssy 与鬼塚虎各约 20 分钟；Supreme 仅在无队时进，Lacoste 只看限定 / Vintage。任何队伍超过 15—20 分钟即跳过。</p></div></div>
             <div class="slot"><span class="time">13:55</span><span class="dot"></span><div class="slot-content"><strong>Cat Street 周边午餐</strong><p>THE GREAT BURGER、MENCHIRASHI、AFURI 或原宿餃子樓选当时队伍最短的一家，40 分钟结束；下午不再折返原宿找饭。</p></div></div>
-            <div class="slot"><span class="time">14:45</span><span class="dot"></span><div class="slot-content"><strong>SHIHARA Lab → HUMAN MADE TOKYO</strong><p>先去神宫前 5-15-2 的 SHIHARA Lab 看实验性珠宝与独立设计师，建议预约 14:45、试戴约 25 分钟；再沿神宫前向南到 HUMAN MADE TOKYO，看东京限定、外套与配件，约 30 分钟。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">14:45</span><span class="dot"></span><div class="slot-content"><strong>SHIHARA Lab → HUMAN MADE TOKYO</strong><p>先去神宫前 5-15-2 的 SHIHARA Lab 看实验性珠宝与独立设计师，建议预约 14:45、试戴约 25 分钟；再沿神宫前向南到 HUMAN MADE TOKYO，看东京限定、外套与配件，约 30 分钟。</p></div></div>
             <div class="slot"><span class="time">15:45</span><span class="dot"></span><div class="slot-content"><strong>GYRE / HAY TOKYO → Ralph Lauren → AMI Paris</strong><p>HAY 位于 GYRE B1F，北欧家具、灯具、托盘、收纳与色彩感小物适合 15 分钟快看；随后回到表参道主轴，Ralph Lauren 直奔 Polo / RRL，AMI 直奔针织、帽子和共享款。若需要深度试穿，直接删 HAY。</p></div></div>
             <div class="slot"><span class="time">16:30</span><span class="dot"></span><div class="slot-content"><strong>i2 cafe｜Dutch Baby 松饼</strong><p>从表参道 A4 方向进入南青山 3 丁目，17:00 前完成餐食点单。主点现烤 Dutch Baby，可在甜味、水果或咸味版本中二人分食一份，再配咖啡；控制在约 35 分钟，先看当日 Instagram 与 Google 营业状态。</p></div></div>
             <div class="slot"><span class="time">17:10</span><span class="dot"></span><div class="slot-content"><strong>南青山收尾｜SUPER A MARKET → H BEAUTY&amp;YOUTH → 金子眼镜</strong><p>先看 SUPER A MARKET 的国际设计师与生活物件，再到 H 看 H、LOEFF、Steven Alan、Pheeta、OSOI 与 PREEK；18:35 左右进入金子眼镜。URBANIC30 位于骨董通一带，偏简洁优雅女装，只在其中一店提前结束时替换加入，不额外叠加。</p></div></div>
@@ -910,13 +929,13 @@
             <div class="route"><span>目白</span><i>→ 池袋换乘</i><span>小田原</span><i>→ 箱根登山巴士 T</i><span>仙石原小学校前</span><i>→ 步行</i><span>酒店</span></div>
             <div class="actions"><a class="btn red" href="https://www.google.com/maps/dir/?api=1&origin=JR-East+Hotel+Mets+Mejiro&destination=BLISSTIA+Hakone+Sengokuhara&travelmode=transit">全程地图</a><a class="btn" href="https://www.hakonenavi.jp/hakone-tozanbus/">箱根巴士官网</a></div>
           </div>
-          <div class="metric-row"><div class="metric"><small>寄件 / 退房</small><strong>10:00 / 10:20</strong></div><div class="metric"><small>预计到酒店</small><strong>14:00—14:40</strong></div><div class="metric"><small>入住</small><strong>15:00</strong></div><div class="metric"><small>主景点</small><strong>按天气决定</strong></div></div>
+          <div class="metric-row"><div class="metric"><small>寄件 / 离店</small><strong>09:45 / 10:25</strong></div><div class="metric"><small>预计到酒店</small><strong>14:10—14:50</strong></div><div class="metric"><small>入住</small><strong>15:00</strong></div><div class="metric"><small>主景点</small><strong>按天气决定</strong></div></div>
           <div class="route-board">
             <div class="route-board-head"><h4>当天顺行顺序</h4><p>只背一晚包；景点二选一，不做箱根大环线</p></div>
             <ol class="route-steps">
-              <li><span class="stop-kind transit">行李</span><strong>目白前台宅急便</strong><small>10:00 · 2 大箱 + 1 小箱</small></li>
-              <li><span class="stop-kind transit">JR</span><strong>目白 → 池袋 → 小田原</strong><small>10:20 · 不坐浪漫特快</small></li>
-              <li><span class="stop-kind food">午餐</span><strong>小田原站</strong><small>11:45 · 快速吃完再上山</small></li>
+              <li><span class="stop-kind transit">行李</span><strong>目白前台宅急便</strong><small>09:45 · 2 大箱 + 1 小箱</small></li>
+              <li><span class="stop-kind transit">JR</span><strong>目白 → 池袋 → 小田原</strong><small>10:25 · 不坐浪漫特快</small></li>
+              <li><span class="stop-kind food">午餐</span><strong>小田原站</strong><small>约 12:00 · 快速吃完再上山</small></li>
               <li><span class="stop-kind transit">巴士</span><strong>小田原 → 仙石原</strong><small>T 线 · 仙石原小学校前</small></li>
               <li><a href="https://www.google.com/maps/search/?api=1&amp;query=BLISSTIA+Hakone+Sengokuhara"><span class="stop-kind transit">酒店</span><strong>BLISSTIA 寄存小包</strong><small>14:00 左右 · 15:00 入住</small></a></li>
               <li><span class="stop-kind view">二选一</span><strong>芒草原 / 玻璃之森</strong><small>晴天户外，雨天进馆</small></li>
@@ -927,12 +946,12 @@
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">10:00</span><span class="dot"></span><div class="slot-content"><strong>办理宅急便</strong><p>在目白酒店前台寄出两件大箱和一件小箱，收件酒店写喜来登、到达日 10/9、英文姓名与预订号；三件运单逐一拍照留存。</p></div></div>
-            <div class="slot"><span class="time">10:20</span><span class="dot"></span><div class="slot-content"><strong>目白退房 → 池袋</strong><p>JR 山手线一站。池袋换开往小田原方向的 JR 湘南新宿线 / 特别快速；当天以 Google Maps 或 Yahoo! 乗換案内显示为准。</p></div></div>
-            <div class="slot"><span class="time">11:45</span><span class="dot"></span><div class="slot-content"><strong>小田原站午餐</strong><p>不追热门长队，控制在 45 分钟；想吃仙石原九十九荞麦，也可先上巴士，在“川向”站下车。</p></div></div>
-            <div class="slot"><span class="time">12:40</span><span class="dot"></span><div class="slot-content"><strong>小田原 → 仙石原</strong><p>找开往桃源台、经箱根汤本 / 宫之下 / 仙石原方向的箱根登山巴士 T 线，在“仙石原小学校前”下。若直达车等待过久，先到箱根汤本再换乘。</p></div></div>
-            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>酒店寄存小包</strong><p>正式入住 15:00。酒店没有接驳车；公交站到酒店约 2 分钟。</p></div></div>
-            <div class="slot"><span class="time">14:15</span><span class="dot"></span><div class="slot-content"><strong>晴天 / 阴雨方案</strong><p><b>晴天：</b>仙石原芒草原，10 月初已有秋色；<b>阴雨：</b>箱根玻璃之森美术馆，酒店步行约 10 分钟，17:00 最后入馆、17:30 闭馆。</p></div></div>
+            <div class="slot"><span class="time">09:45</span><span class="dot"></span><div class="slot-content"><strong>办理宅急便</strong><p>在目白酒店前台寄出两件大箱和一件小箱，收件酒店写喜来登、到达日 10/9、英文姓名与预订号；三件运单逐一拍照留存。预留约 40 分钟填写、确认和付款。</p></div></div>
+            <div class="slot"><span class="time">10:25</span><span class="dot"></span><div class="slot-content"><strong>目白退房 → 池袋</strong><p>JR 山手线一站。池袋换开往小田原方向的 JR 湘南新宿线 / 特别快速；当天以 Google Maps 或 Yahoo! 乗換案内显示为准。</p></div></div>
+            <div class="slot"><span class="time">12:00</span><span class="dot"></span><div class="slot-content"><strong>小田原站午餐</strong><p>实际到站时间随直通班次调整，不追热门长队，控制在 35—40 分钟；想吃仙石原九十九荞麦，也可先上巴士，在“川向”站下车。</p></div></div>
+            <div class="slot"><span class="time">12:50</span><span class="dot"></span><div class="slot-content"><strong>小田原 → 仙石原</strong><p>找开往桃源台、经箱根汤本 / 宫之下 / 仙石原方向的箱根登山巴士 T 线，在“仙石原小学校前”下。若直达车等待过久，先到箱根汤本再换乘。</p></div></div>
+            <div class="slot"><span class="time">14:20</span><span class="dot"></span><div class="slot-content"><strong>酒店寄存过夜包</strong><p>正式入住 15:00。酒店没有接驳车；公交站到酒店约 2 分钟。若交通延误，直接办理入住并取消景点，不压缩温泉和晚餐。</p></div></div>
+            <div class="slot"><span class="time">14:40</span><span class="dot"></span><div class="slot-content"><strong>晴天 / 阴雨方案</strong><p><b>晴天：</b>仙石原芒草原，10 月初已有秋色；<b>阴雨：</b>箱根玻璃之森美术馆，酒店步行约 10 分钟，17:00 最后入馆、17:30 闭馆。</p></div></div>
             <div class="slot"><span class="time">16:40</span><span class="dot"></span><div class="slot-content"><strong>入住与 Welcome Drink</strong><p>酒店迎宾饮品时段为 15:00—17:00；若博物馆逛得久，不必为了饮品赶路。</p></div></div>
             <div class="slot"><span class="time">17:10</span><span class="dot"></span><div class="slot-content"><strong>大涌谷温泉</strong><p>先泡一次内汤 / 露天风吕，晚饭后再泡第二次。贵重首饰不要带入浴场。</p></div></div>
             <div class="slot"><span class="time">18:30</span><span class="dot"></span><div class="slot-content"><strong>仙石原晚餐</strong><p>仙石原夜间餐厅少，抵达前确定餐位和返程方式。优先预约“銀の穂”并确认接送；若无位，改箱根九十九或在小田原提前完成正餐。</p></div></div>
@@ -998,11 +1017,12 @@
             <div class="slot"><span class="time">13:00</span><span class="dot"></span><div class="slot-content"><strong>午餐 + 核对购物清单</strong><p>控制在 45 分钟。さわやか等位过长时立即改沼津魚がし鮨、Shake Shack 或 Food Bazaar；在记账页分别记录“没头脑 / 不高兴”的服装鞋履。</p></div></div>
             <div class="slot"><span class="time">13:50</span><span class="dot"></span><div class="slot-content"><strong>第二轮：买手体系与户外</strong><p>看 BEAMS、United Arrows、Maison Kitsuné、and wander、Hoka、Fred Perry 等。付款前逐店确认 TAX FREE、额外折扣和优惠券能否叠加。</p></div></div>
             <div class="slot"><span class="time">16:45</span><span class="dot"></span><div class="slot-content"><strong>收尾、取随身包、前往巴士站</strong><p>17:00 前停止购物，核对免税单据和随身物品；前往奥莱内的高速巴士乘车点。手机乘车券提前调到可显示状态。</p></div></div>
-            <div class="slot"><span class="time">17:30</span><span class="dot"></span><div class="slot-content"><strong>高速巴士直达涩谷</strong><p>御殿场 Premium Outlets → 涩谷 Mark City，官方计划 19:30 到达，成人单程 ¥2,100。周五高速可能延误，车后不安排不可取消项目。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">17:30</span><span class="dot"></span><div class="slot-content"><strong>高速巴士直达涩谷</strong><p>御殿场 Premium Outlets → 涩谷 Mark City，官方计划 19:30 到达，成人单程 ¥2,100。周五高速可能延误，车后不安排不可取消项目。</p></div></div>
             <div class="slot"><span class="time">19:30</span><span class="dot"></span><div class="slot-content"><strong>涩谷 Mark City → 喜来登</strong><p>轻装时从涩谷搭 JR 山手线到目黑，再转酒店免费车或出租车；两人购物袋较多时，直接从 Mark City 排班出租车到白金台更省力。</p></div></div>
             <div class="slot"><span class="time">20:20</span><span class="dot"></span><div class="slot-content"><strong>入住并领取三件行李</strong><p>按英文姓名领取目白寄来的两件大箱和一件小箱，逐件核对运单号与外观；有异常立即请前台协助联系承运方。</p></div></div>
             <div class="slot"><span class="time">21:15</span><span class="dot"></span><div class="slot-content"><strong>六本木夜间机动</strong><p>体力允许时直接打车去 Roppongi Hills，先吃晚餐，再到榉坂拍东京塔。若巴士延误或购物袋多，改到 10/11 银座后乘日比谷线补六本木。</p></div></div>
           </div>
+          <div class="note"><strong>已经在奥莱但错过 / 取消 17:30 巴士：</strong>不要继续等待同一站的不确定补位。立即到 West Zone 巴士区搭免费接驳车前往 JR 御殿场站，再按当时最快路线选择“御殿场线 → 国府津 → 东海道线 → 品川”返回；若仍有前往三岛站的路线上车名额，也可到三岛换东海道新干线。免费接驳通常每 15 分钟一班，但满员及道路延误均可能发生，以现场与官方交通页为准。<a class="link" href="https://www.premiumoutlets.co.jp/gotemba/access/access_bus.html">官方铁路 / 接驳路线 ↗</a></div>
           <div class="subhead">御殿场采购顺序</div>
           <div class="shop-grid">
             <article class="shop"><h4>Onitsuka Tiger <span class="badge must">第一优先</span></h4><p>拿出 10/6 拍下的品番、尺码和颜色直接询问。奥莱以过季色、特殊配色和断码为主；找不到目标款，不买“只是便宜”的替代。</p><div class="meta"><span>鞋履</span><span>折扣随库存</span></div><a class="link" href="https://www.premiumoutlets.co.jp/gotemba/brands/">官方店铺检索 ↗</a></article>
@@ -1067,7 +1087,7 @@
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">10:08</span><span class="dot"></span><div class="slot-content"><strong>酒店免费车 → 目黑 → 恵比寿 / 中目黑 → 祐天寺</strong><p>公共交通方案为目黑搭 JR 到恵比寿，转日比谷线到中目黑，再转东横线一站；换乘多但稳定。两人想省体力可从酒店直接打车到 LARRY SMITH，并以 10:50 抵达为目标。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">10:08</span><span class="dot"></span><div class="slot-content"><strong>酒店免费车 → 目黑 → 恵比寿 / 中目黑 → 祐天寺</strong><p>公共交通方案为目黑搭 JR 到恵比寿，转日比谷线到中目黑，再转东横线一站；换乘多但稳定。两人想省体力可从酒店直接打车到 LARRY SMITH，并以 10:50 抵达为目标。</p></div></div>
             <div class="slot"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>LARRY SMITH Meguro Store｜银饰主站</strong><p>从祐天寺站步行约 10—15 分钟。品牌以日本手工银饰、羽毛、鹰头、珠子与链条组合见长；先问目标吊坠现货，再试链长与叠戴。周六正常 11:00—19:00，热门图案可能缺货，不把明星同款当库存保证。</p></div></div>
             <div class="slot"><span class="time">11:50</span><span class="dot"></span><div class="slot-content"><strong>东横线一站 → 中目黑</strong><p>从祐天寺回站搭一站到中目黑。出站后向目黑川 / 青叶台移动；后续店铺集中在青叶台 1 丁目，不再返回车站。</p></div></div>
             <div class="slot"><span class="time">12:00</span><span class="dot"></span><div class="slot-content"><strong>SIDEWALK STAND → COVERCHORD</strong><p>两店同在青叶台 1-23-14：先用 espresso 或外带饮品快速休息，再进 COVERCHORD。后者以衣、食、住、旅为框架，男装、女装、户外与生活器物并置；AURALEE、nonnative、Maison Margiela 等选品以当季到店为准。</p></div></div>
@@ -1132,7 +1152,11 @@
             <article class="choice"><span class="badge must">A｜主进场路线</span><h4>坐到有乐町，再步行进银座</h4><p>酒店 10:08 免费车 → 目黑 → JR 山手线外回り到有乐町。最适合先逛 Bic Camera、MUJI 与 Ginza Loft；换乘少、识别简单。</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Meguro+Station&destination=Yurakucho+Station&travelmode=transit">地图</a></div></article>
             <article class="choice"><span class="badge opt">B｜东银座路线</span><h4>白金台 → 三田 → 东银座</h4><p>白金台搭都营三田线到三田，站内换浅草线到东银座。最适合直接去歌舞伎座、GINZA SIX 与 DSMG；建议当天作为返程路线。</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Shirokanedai+Station&destination=Higashi-ginza+Station&travelmode=transit">地图</a></div></article>
           </div>
-          <div class="metric-row"><div class="metric"><small>酒店发车</small><strong>10:08</strong></div><div class="metric"><small>999.9</small><strong>11:25 前后</strong></div><div class="metric"><small>步行者天国</small><strong>12:00—17:00</strong></div><div class="metric"><small>DSMG / Loft</small><strong>20:00 前</strong></div></div>
+          <div class="metric-row"><div class="metric"><small>酒店发车</small><strong>10:08</strong></div><div class="metric"><small>999.9</small><strong>11:25 前后</strong></div><div class="metric"><small>步行者天国</small><strong>12:00—17:00</strong></div><div class="metric"><small>晚餐</small><strong>19:30</strong></div></div>
+          <div class="grid two">
+            <article class="choice"><span class="badge must">核心进店</span><h4>当天优先保证</h4><p>999.9、松屋银座 Buly、GINZA SIX、DSMG。若确认购买珍珠，再把 MIKIMOTO 或 TASAKI 中的一家升级为核心。</p></article>
+            <article class="choice"><span class="badge opt">只能二选一</span><h4>按真实购买目标取舍</h4><p>Loft / Lemonsha 只深逛一处；银座茑屋 / 鬼塚虎补购只选一处；MIKIMOTO / TASAKI 若只是初看，也只选一家。19:10 开始向晚餐移动。</p></article>
+          </div>
           <div class="route-board">
             <div class="route-board-head"><h4>当天顺逛顺序</h4><p>有乐町进、东银座出；贵重品先定款，杂货与重物分段拿</p></div>
             <ol class="route-steps">
@@ -1151,7 +1175,7 @@
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">10:08</span><span class="dot"></span><div class="slot-content"><strong>免费车到目黑 → JR 到有乐町</strong><p>从有乐町中央口出站，Bic Camera 就在站旁。返程则从东银座走 B 方案，实现不走回头路。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">10:08</span><span class="dot"></span><div class="slot-content"><strong>免费车到目黑 → JR 到有乐町</strong><p>从有乐町中央口出站，Bic Camera 就在站旁。返程则从东银座走 B 方案，实现不走回头路。</p></div></div>
             <div class="slot"><span class="time">10:45</span><span class="dot"></span><div class="slot-content"><strong>Bic Camera 有乐町快速比价</strong><p>先看胶卷、电池、相机附件与电器，控制在 30 分钟；确定购买的大件申请寄存或晚餐后回来取。</p></div></div>
             <div class="slot"><span class="time">11:25</span><span class="dot"></span><div class="slot-content"><strong>999.9 银座本店</strong><p>先做镜框试戴与佩戴调整，再决定是否验光。次日离境，度数镜片只有在店员明确承诺交付时才下单；否则免税买镜框，回国配片。</p></div></div>
             <div class="slot"><span class="time">12:45</span><span class="dot"></span><div class="slot-content"><strong>午餐</strong><p>Ginza Kagari / Tempura Abe 偏现场排队；銀座かつかみ弐属于体验型套餐，应提前预约。眼镜环节超时时选上餐快的乌冬或天丼。</p></div></div>
@@ -1160,7 +1184,7 @@
             <div class="slot"><span class="time">15:20</span><span class="dot"></span><div class="slot-content"><strong>首饰主线：MIKIMOTO → TASAKI</strong><p>珍珠风格对比：MIKIMOTO 更经典优雅，TASAKI 更现代建筑感。若 Buly 个性化包装等待较久，就只选其中一家首饰店。</p></div></div>
             <div class="slot"><span class="time">16:20</span><span class="dot"></span><div class="slot-content"><strong>GINZA SIX｜时装 + 香氛集中线</strong><p>先按官方楼层表锁定 ALAÏA、Maison Margiela、AMI Paris、Acne Studios 等目标，再到 B1F CHANEL 与 FUEGUIA 1833。2026 年 10 月新增 Maison Margiela Fragrances 与更新后的 AMI 门店，值得优先看；整段控制在约 90 分钟。</p></div></div>
             <div class="slot"><span class="time">17:50</span><span class="dot"></span><div class="slot-content"><strong>银座蔦屋 / Onitsuka Tiger → DSMG</strong><p>摄影书优先时先上 6F 蔦屋；仅在御殿场没买到目标鬼塚虎时进入 Ginza Yellow Concept。18:20 前转 DSMG 看 Comme des Garçons、限定与 noguchi 选品。</p></div></div>
-            <div class="slot"><span class="time">19:30</span><span class="dot"></span><div class="slot-content"><strong>告别晚餐</strong><p>仪式感优先预订銀座かつかみ弐；想保留购物弹性，选 Buvette、しゃぶせん或 BEER HALL LION。Birdland 与久兵卫周日休息。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">19:30</span><span class="dot"></span><div class="slot-content"><strong>告别晚餐</strong><p>仪式感优先预订銀座かつかみ弐；想保留购物弹性，选 Buvette、しゃぶせん或 BEER HALL LION。Birdland 与久兵卫周日休息。</p></div></div>
             <div class="slot"><span class="time">21:10</span><span class="dot"></span><div class="slot-content"><strong>东银座 → 三田 → 白金台</strong><p>都营浅草线到三田，换三田线到白金台，再步行回酒店。若购物袋很多，银座直接打车约 20—30 分钟。</p></div></div>
           </div>
           <div class="subhead">银座购物清单</div>
@@ -1242,15 +1266,15 @@
           <div class="timeline">
             <div class="slot"><span class="time">08:15</span><span class="dot"></span><div class="slot-content"><strong>早餐与最后检查</strong><p>护照、退税商品、胶卷、充电宝随身；托运行李称重。高价免税品与对应凭证放在容易取出的地方。</p></div></div>
             <div class="slot"><span class="time">09:10</span><span class="dot"></span><div class="slot-content"><strong>退房并到车位等候</strong><p>酒店官方退房 12:00，但需提早离开。前一晚再向礼宾确认 09:23 免费车是否正常。</p></div></div>
-            <div class="slot"><span class="time">09:23</span><span class="dot"></span><div class="slot-content"><strong>喜来登 → 目黑站</strong><p>通常约 5 分钟。目黑搭 JR 山手线内回り / 往品川、东京、上野方向到日暮里，约 29—33 分钟。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">09:23</span><span class="dot"></span><div class="slot-content"><strong>喜来登 → 目黑站</strong><p>通常约 5 分钟。目黑搭 JR 山手线内回り / 往品川、东京、上野方向到日暮里，约 29—33 分钟。</p></div></div>
             <div class="slot"><span class="time">10:10</span><span class="dot"></span><div class="slot-content"><strong>日暮里换京成</strong><p>预留约 20—25 分钟走换乘闸机、找指定车厢与上厕所。不要在此临时吃正餐。</p></div></div>
-            <div class="slot"><span class="time">10:40</span><span class="dot"></span><div class="slot-content"><strong>Skyliner 131 号（节假日时刻）</strong><p>日暮里 10:40 → 成田机场 T1 11:24。备选下一班 11:05 → 11:44，但只在错过主班时使用。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">10:40</span><span class="dot"></span><div class="slot-content"><strong>Skyliner 131 号（节假日时刻）</strong><p>日暮里 10:40 → 成田机场 T1 11:24。备选下一班 11:05 → 11:44，但只在错过主班时使用。</p></div></div>
             <div class="slot"><span class="time">11:30</span><span class="dot"></span><div class="slot-content"><strong>成田 T1 南翼 4F｜海关确认后再托运</strong><p>先看航班显示屏。若免税商品放在托运行李，先向海关 / 值机人员说明并按指引完成确认，再交运行李；高价品、收据与护照保持可取。</p></div></div>
             <div class="slot"><span class="time">12:05</span><span class="dot"></span><div class="slot-content"><strong>安检前午餐</strong><p>松戸富田麺旦、永坂更科或茶泡饭控制在 40 分钟内。Lacoste 位于 T1 中央楼 4F 安检前，属于普通机场零售，只作缺货备选。</p></div></div>
             <div class="slot"><span class="time">12:55</span><span class="dot"></span><div class="slot-content"><strong>安检与出境审查</strong><p>完成后先确认登机口所在卫星楼，再决定逛南翼、中央楼或对应候机区；不要为了跨区品牌店耽误登机。</p></div></div>
             <div class="slot"><span class="time">13:20</span><span class="dot"></span><div class="slot-content"><strong>机场免税补购</strong><p>优先美妆、香水、酒类、伴手礼及清单内奢侈品牌。鬼塚虎、Supreme、H BEAUTY&amp;YOUTH、Montbell、Barbour、Gramicci 与 999.9 不留到机场。</p></div></div>
             <div class="slot"><span class="time">14:25</span><span class="dot"></span><div class="slot-content"><strong>到达登机口</strong><p>结束采购，核对护照、登机牌、免税袋和随身胶卷；登机口可能离主免税区较远。</p></div></div>
-            <div class="slot"><span class="time">15:20</span><span class="dot"></span><div class="slot-content"><strong>CA930 起飞</strong><p>当前公开时刻约为成田 15:20 → 浦东 T2 17:50；以国航 App / 电子客票为最终依据。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">15:20</span><span class="dot"></span><div class="slot-content"><strong>CA930 起飞</strong><p>当前公开时刻约为成田 15:20 → 浦东 T2 17:50；以国航 App / 电子客票为最终依据。</p></div></div>
           </div>
           <div class="subhead">早餐与机场选择</div>
           <div class="food-grid">
@@ -1441,10 +1465,10 @@
           <tr><td><span class="badge must">提前</span></td><td class="date">Skyliner 返程</td><td>10/12 10:40</td><td><a class="link" href="https://skyliner.ec.keisei.co.jp/pc/">京成官方 ↗</a>；选“日暮里→成田机场 Terminal 1”，两人相邻座。</td></tr>
           <tr><td><span class="badge must">提前</span></td><td class="date">MY ONLY FRAGRANCE 原宿</td><td>10/6 11:00</td><td><a class="link" href="https://myonlyfragrance.com/shops/">官方门店 / LINE 预约 ↗</a>；选原宿店、两人，体验约 30 分钟。变更或取消需最晚前一天通过 LINE 操作。</td></tr>
           <tr><td><span class="badge book">建议</span></td><td class="date">SHIHARA Lab</td><td>10/6 14:45 前后</td><td><a class="link" href="https://shiharalab.com/">官网预约 ↗</a>；写明 two guests、jewelry fitting、preferred time。</td></tr>
-          <tr><td><span class="badge book">建议</span></td><td class="date">表参道晚餐</td><td>10/6 19:30</td><td>CICADA 走官方 / TableCheck；KINTAN 走官网 / TableCheck。按当天偏好预订其中一家，不要双订。</td></tr>
+          <tr><td><span class="badge book">建议</span></td><td class="date">表参道晚餐</td><td>10/6 19:45</td><td>CICADA 走官方 / TableCheck；KINTAN 走官网 / TableCheck。按当天偏好预订其中一家，不要双订；与每日时间线统一为 19:45。</td></tr>
           <tr><td><span class="badge opt">维持机动</span></td><td class="date">neel / IVY PLACE</td><td>10/10 12:45 / 15:00</td><td>neel 现场等位，超过 20 分钟即换 SIDEWALK；IVY PLACE 只有跳过 neel 时才查当日迟午餐，不提前锁死，以免切断中目黑店群。</td></tr>
           <tr><td><span class="badge opt">无需普通预约</span></td><td class="date">999.9 银座本店</td><td>10/11 11:25</td><td><a class="link" href="https://www.fournines.co.jp/shop/268/">官方门店页 ↗</a>；带现用眼镜和处方。若要预约 Private Salon，再通过官方入口联系。</td></tr>
-          <tr><td><span class="badge book">建议</span></td><td class="date">银座告别晚餐</td><td>10/11 19:00</td><td>銀座かつかみ弐建议提前预约；Buvette 可查当日库存。しゃぶせん目前不接受预约，BEER HALL LION 可作为现场方案。Birdland 与银座久兵卫周日休息。</td></tr>
+          <tr><td><span class="badge book">建议</span></td><td class="date">银座告别晚餐</td><td>10/11 19:30</td><td>銀座かつかみ弐建议提前预约；Buvette 可查当日库存。しゃぶせん目前不接受预约，BEER HALL LION 可作为现场方案。Birdland 与银座久兵卫周日休息。</td></tr>
           <tr><td><span class="badge must">提前</span></td><td class="date">御殿场 → 涩谷高速巴士</td><td>10/9 17:30—19:30</td><td><a class="link" href="https://www.kousokubus.net/BusRsv/ja/vacantseat/entry?LINE_CD=105&amp;routeSelectionFlg=1">高速巴士网预约 ↗</a> · <a class="link" href="https://www.tokyubus.co.jp/highway/omnibus/high-fujistation.html">东急官方时刻 ↗</a>；选择“御殿場プレミアム・アウトレット → 渋谷マークシティ”，两人相邻座。</td></tr>
           <tr><td><span class="badge opt">Plan B</span></td><td class="date">SmartEX 新干线</td><td>10/9 临时取消奥莱时</td><td><a class="link" href="https://smart-ex.jp/en/reservation/reserve_smart/sp/">官方购票说明 ↗</a>；仙石原返回小田原后现场购买小田原→品川。</td></tr>
         </tbody>
@@ -1562,9 +1586,9 @@
         <article class="packing-category">
           <h3>10/8 箱根一晚包 <span>6 项</span></h3>
           <div class="packing-items">
-            <label class="packing-check"><input id="p37" type="checkbox"><span><strong>提前分出一晚小箱 / 背包</strong><small>10/8 早上两件大箱寄往喜来登后，箱根需要的物品不能再放在大箱里。</small></span></label>
+            <label class="packing-check"><input id="p37" type="checkbox"><span><strong>提前分出独立过夜背包 / 轻便包</strong><small>10/8 早上两件大箱和一件小箱全部寄往喜来登；箱根一晚用品必须提前放进另一个随身包。</small></span></label>
             <label class="packing-check"><input id="p38" type="checkbox"><span><strong>护照、钱包、手机与充电宝</strong><small>贴身携带，不交给宅急便。</small></span></label>
-            <label class="packing-check"><input id="p39" type="checkbox"><span><strong>一套换洗内衣、袜子与上装</strong><small>只准备 10/8—10/9 所需，不把两件大箱的衣物重新搬回小箱。</small></span></label>
+            <label class="packing-check"><input id="p39" type="checkbox"><span><strong>一套换洗内衣、袜子与上装</strong><small>只准备 10/8—10/9 所需；三件寄送行李交出后，过夜包应能独立支撑到次日入住喜来登。</small></span></label>
             <label class="packing-check"><input id="p40" type="checkbox"><span><strong>迷你洗护、隐形与常用药</strong><small>按一晚用量分装，次日直接前往御殿场。</small></span></label>
             <label class="packing-check"><input id="p41" type="checkbox"><span><strong>相机、胶卷和防雨保温层</strong><small>仙石原温差和天气变化更明显，薄外套与折叠伞不要随大箱寄走。</small></span></label>
             <label class="packing-check"><input id="p42" type="checkbox"><span><strong>确认温泉备品</strong><small>普通温泉不穿泳衣；浴衣、毛巾与客房备品以 BLISSTIA 当日说明为准。</small></span></label>
@@ -1600,14 +1624,15 @@
       </div>
 
       <table class="summary-table luggage-allocation">
-        <thead><tr><th>三件行李</th><th>10/5—10/8</th><th>10/8—10/9</th><th>返程建议</th></tr></thead>
+        <thead><tr><th>行李 / 随身包</th><th>10/5—10/8</th><th>10/8—10/9</th><th>返程建议</th></tr></thead>
         <tbody>
           <tr><td>大箱 1</td><td>两人常用衣物</td><td>10/8 早由目白寄往喜来登</td><td>服装、软质购物品；预留重量给新增衣物</td></tr>
           <tr><td>大箱 2</td><td>鞋履、洗护与空余收纳</td><td>10/8 早由目白寄往喜来登</td><td>鞋盒、外套和需缓冲商品；液体做好密封</td></tr>
-          <tr><td>小箱 / 背包</td><td>随身与当日用品</td><td>箱根一晚包，跟人前往仙石原</td><td>作为购物溢出空间；护照、锂电池、胶卷和贵重品仍随身</td></tr>
+          <tr><td>小箱 1</td><td>轻便衣物与购物预留空间</td><td>10/8 早由目白寄往喜来登</td><td>作为购物溢出空间；不放护照、锂电池、胶卷和贵重品</td></tr>
+          <tr><td>独立过夜背包</td><td>提前分装箱根一晚用品</td><td>跟人前往仙石原与御殿场</td><td>护照、相机、胶卷、充电宝、药物和一套换洗衣物随身</td></tr>
         </tbody>
       </table>
-      <div class="note"><strong>最后装箱原则：</strong>先按电子客票确认国航行李额度，再决定是否保留鞋盒。10/8 宅急便运单拍照后，把两件大箱的追踪号码填入“行李追踪”；护照、现金、充电宝、胶卷、相机、药物及箱根一晚用品不要寄走。</div>
+      <div class="note"><strong>最后装箱原则：</strong>先按电子客票确认国航行李额度，再决定是否保留鞋盒。10/8 宅急便运单拍照后，把两件大箱和一件小箱共三张追踪号码全部填入“行李追踪”；护照、现金、充电宝、胶卷、相机、药物及箱根一晚用品放入独立过夜背包，不要寄走。</div>
     </section>
 
     <section id="data-backup">
@@ -1626,16 +1651,19 @@
         <div><span class="kicker">FINAL SHOPPING DIRECTORY</span><h2>旅行前购物意向总目录</h2></div>
         <p>汇总本攻略目前涉及的品牌、买手店与综合购物地点，并标明是否已经进入每日路线。</p>
       </div>
-      <div class="note"><strong>状态口径：</strong>“已排入行程”表示已经出现在某天的顺逛顺序中，其中仍可能注明二选一、无排队才进或超时先删；“候选顺路店”表示在同区域、商场或替换支线内，但没有独立时间段；“当前未排入”只保留为意向，不应现场临时追加。</div>
+      <div class="note"><strong>状态口径：</strong>“实际进店”是已经获得独立时间的门店；“顺路候选”只在无排队、有余量或替换主线项目时进入；“店内品牌”是在 GINZA SIX、DSMG、COVERCHORD 等已安排门店中查看，不是额外地址；“当前未排入”只保留为意向。</div>
       <div class="directory-dashboard no-print" aria-label="购物目录状态概览">
-        <button class="directory-stat" type="button" data-directory-filter="planned"><small>已排入行程</small><strong id="directoryPlannedCount">0</strong></button>
-        <button class="directory-stat" type="button" data-directory-filter="possible"><small>候选顺路店</small><strong id="directoryPossibleCount">0</strong></button>
+        <button class="directory-stat" type="button" data-directory-filter="core"><small>实际进店</small><strong id="directoryCoreCount">0</strong></button>
+        <button class="directory-stat" type="button" data-directory-filter="conditional"><small>顺路候选</small><strong id="directoryConditionalCount">0</strong></button>
+        <button class="directory-stat" type="button" data-directory-filter="instore"><small>店内品牌</small><strong id="directoryInstoreCount">0</strong></button>
         <button class="directory-stat" type="button" data-directory-filter="off"><small>当前未排入</small><strong id="directoryOffCount">0</strong></button>
       </div>
       <div class="directory-filter-row no-print">
+        <input class="directory-search" id="directorySearch" type="search" placeholder="搜索品牌、店铺或日期路线" aria-label="搜索购物目录">
         <button class="directory-filter active" type="button" data-directory-filter="all">显示全部</button>
-        <button class="directory-filter" type="button" data-directory-filter="planned">只看已排入</button>
-        <button class="directory-filter" type="button" data-directory-filter="possible">只看候选</button>
+        <button class="directory-filter" type="button" data-directory-filter="core">只看实际进店</button>
+        <button class="directory-filter" type="button" data-directory-filter="conditional">只看顺路候选</button>
+        <button class="directory-filter" type="button" data-directory-filter="instore">只看店内品牌</button>
         <button class="directory-filter" type="button" data-directory-filter="off">只看未排入</button>
         <span class="directory-filter-result" id="directoryFilterResult" aria-live="polite">正在整理路线状态…</span>
       </div>
@@ -1760,7 +1788,7 @@
           </ul>
         </details>
       </div>
-      <div class="note"><strong>当前合计：</strong><span id="directoryTotalCount">112</span> 个候选名称。出发前优先复核“已排入行程”的营业日与库存；想把“候选顺路店”升级为必逛时，应从同区域删除一站，而不是继续叠加。</div>
+      <div class="note"><strong>当前合计：</strong><span id="directoryTotalCount">112</span> 个候选名称。出发前只需要复核“实际进店”；想把“顺路候选”升级为实际进店时，应从同区域删除一站，而不是继续叠加。</div>
     </section>
   </main>
 
@@ -2170,11 +2198,19 @@
       ]);
       const directoryItems = [...document.querySelectorAll('#shop-directory .directory-list li')];
       const directoryName = item => [...item.childNodes].filter(node => node.nodeType === Node.TEXT_NODE).map(node => node.textContent.trim()).filter(Boolean).join(' ');
-      const directoryLabels = {planned:'已排入行程',possible:'候选顺路店',off:'当前未排入'};
+      const directoryLabels = {core:'实际进店',conditional:'顺路候选',instore:'店内品牌',off:'当前未排入'};
+      const refineDirectoryStatus = (status,route) => {
+        if (status === 'off') return 'off';
+        if (/内按|选品内|目标品牌|买手店内|COVERCHORD \/|nanamica \/|DSMG/.test(route) && !/主线|独立/.test(route)) return 'instore';
+        if (status === 'possible' || /有余量|无排队|二选一|快看|超时先删|机动|补购|替换|分支|候选|当天确认营业|与夜拍|选择深逛/.test(route)) return 'conditional';
+        return 'core';
+      };
       directoryItems.forEach(item => {
         const name = directoryName(item);
-        const [status,route] = directoryRoutes.get(name) || ['off','当前没有对应日期或时间段；如有明确购买目标，应替换同区域门店后再加入。'];
+        const [rawStatus,route] = directoryRoutes.get(name) || ['off','当前没有对应日期或时间段；如有明确购买目标，应替换同区域门店后再加入。'];
+        const status = refineDirectoryStatus(rawStatus,route);
         item.dataset.directoryStatus = status;
+        item.dataset.directorySearch = `${name} ${route}`.toLowerCase();
         const badge = document.createElement('small'); badge.className = `directory-plan ${status}`; badge.textContent = directoryLabels[status];
         const note = document.createElement('small'); note.className = 'directory-route'; note.textContent = route;
         item.append(badge,note);
@@ -2182,18 +2218,26 @@
       const directoryFilterButtons = [...document.querySelectorAll('[data-directory-filter]')];
       let directoryFilter = 'all';
       const renderDirectoryFilter = () => {
-        const counts = {planned:0,possible:0,off:0};
-        directoryItems.forEach(item => { counts[item.dataset.directoryStatus] += 1; item.classList.toggle('directory-hidden',directoryFilter !== 'all' && item.dataset.directoryStatus !== directoryFilter); });
-        document.querySelectorAll('#shop-directory .directory-card').forEach(card => { card.hidden = directoryFilter !== 'all' && !card.querySelector(`li[data-directory-status="${directoryFilter}"]`); });
+        const counts = {core:0,conditional:0,instore:0,off:0};
+        const query = String(document.getElementById('directorySearch')?.value || '').trim().toLowerCase();
+        directoryItems.forEach(item => {
+          counts[item.dataset.directoryStatus] += 1;
+          const statusMatch = directoryFilter === 'all' || item.dataset.directoryStatus === directoryFilter;
+          const queryMatch = !query || item.dataset.directorySearch.includes(query);
+          item.classList.toggle('directory-hidden',!(statusMatch && queryMatch));
+        });
+        document.querySelectorAll('#shop-directory .directory-card').forEach(card => { card.hidden = !card.querySelector('li:not(.directory-hidden)'); });
         directoryFilterButtons.forEach(button => button.classList.toggle('active',button.dataset.directoryFilter === directoryFilter));
-        if (document.getElementById('directoryPlannedCount')) document.getElementById('directoryPlannedCount').textContent = counts.planned;
-        if (document.getElementById('directoryPossibleCount')) document.getElementById('directoryPossibleCount').textContent = counts.possible;
+        if (document.getElementById('directoryCoreCount')) document.getElementById('directoryCoreCount').textContent = counts.core;
+        if (document.getElementById('directoryConditionalCount')) document.getElementById('directoryConditionalCount').textContent = counts.conditional;
+        if (document.getElementById('directoryInstoreCount')) document.getElementById('directoryInstoreCount').textContent = counts.instore;
         if (document.getElementById('directoryOffCount')) document.getElementById('directoryOffCount').textContent = counts.off;
         if (document.getElementById('directoryTotalCount')) document.getElementById('directoryTotalCount').textContent = directoryItems.length;
-        const visible = directoryFilter === 'all' ? directoryItems.length : counts[directoryFilter];
+        const visible = directoryItems.filter(item => !item.classList.contains('directory-hidden')).length;
         if (document.getElementById('directoryFilterResult')) document.getElementById('directoryFilterResult').textContent = `当前显示 ${visible} / ${directoryItems.length} 个`;
       };
       directoryFilterButtons.forEach(button => button.addEventListener('click',() => { directoryFilter = button.dataset.directoryFilter; renderDirectoryFilter(); }));
+      document.getElementById('directorySearch')?.addEventListener('input',renderDirectoryFilter);
       renderDirectoryFilter();
 
       document.getElementById('openAll')?.addEventListener('click', () => document.querySelectorAll('details.day').forEach(x => x.open = true));
@@ -2788,7 +2832,7 @@
       ];
       const modeAdviceByDay = {
         normal:[
-          '抵达日按 NEWoMan → 伊势丹女鞋 / ODETTE → ALLU 单向执行；北村 / 回忆横丁只选一项，入境晚则从尾部删。','上午完成预约与里原宿三角，下午沿 Cat Street 到南青山；咖啡只保留 i2 cafe。','寺院与七里滨日落优先，午餐排队超过 30 分钟立即换店。','10:00 先寄三件行李，再前往小田原；景点按天气二选一。','奥莱按品牌清单执行，16:45 收尾，17:30 准时上车。','先完成 LARRY SMITH，再沿中目黑青叶台走到代官山；T-SITE 留在最后，涩谷只有提前离开时才做单店补购。','999.9、松屋银座 Buly、GINZA SIX 与 DSMG 优先；Loft / 相机二选一，晚餐前完成退税和高价品。','10:40 Skyliner 为固定节点，先完成退房与行李检查。'
+          '抵达日按 NEWoMan → 伊势丹女鞋 / ODETTE → ALLU 单向执行；北村 / 回忆横丁只选一项，入境晚则从尾部删。','上午完成预约与里原宿三角，下午沿 Cat Street 到南青山；咖啡只保留 i2 cafe。','寺院与七里滨日落优先，午餐排队超过 30 分钟立即换店。','09:45 先寄三件行李，10:25 离店前往小田原；景点按天气二选一。','奥莱按品牌清单执行，16:45 收尾，17:30 准时上车。','先完成 LARRY SMITH，再沿中目黑青叶台走到代官山；T-SITE 留在最后，涩谷只有提前离开时才做单店补购。','999.9、松屋银座 Buly、GINZA SIX 与 DSMG 优先；Loft / 相机二选一，19:10 前离开 DSMG 去晚餐。','10:40 Skyliner 为固定节点，先完成退房与行李检查。'
         ],
         delay30:[
           'ALLU 控制在 25 分钟；取消北村或回忆横丁其中一项。','松本清压缩到 10 分钟；里原宿三店各限 20 分钟，咖啡只留 i2 cafe。','缩短小町通，直接前往八幡宫与长谷寺。','小田原午餐改站内快速餐，仍保留温泉和一个景点。','午餐控制在 30 分钟，第二轮购物删除低优先品牌。','neel 等位上限 10 分钟；跳过 JieDa 与 1LDK，保留 LARRY SMITH、COVERCHORD、KINTO、nanamica、minä 与 T-SITE。','取消重复杂货店，保留 999.9、DSMG、香氛与相机。','取消酒店周边闲逛，按既定路线直接去日暮里。'
@@ -2806,6 +2850,11 @@
       const validModes = ['normal','delay30','delay60','rain','low'];
       let activeTripMode = validModes.includes(localStorage.getItem(tripModeKey)) ? localStorage.getItem(tripModeKey) : 'normal';
       let previewIndex = idx >= 0 ? idx : Math.min(7,Math.max(0,Number(localStorage.getItem(todayPreviewKey)) || 0));
+      const tripModeOffsets = {normal:0,delay30:30,delay60:60,rain:0,low:0};
+      const shiftedClock = (clock,offset) => {
+        const [hour,minute] = clock.split(':').map(Number); const total = (hour * 60 + minute + offset) % 1440;
+        return `${String(Math.floor(total / 60)).padStart(2,'0')}:${String(total % 60).padStart(2,'0')}`;
+      };
 
       const tokyoTimeParts = date => {
         const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(date);
@@ -2822,9 +2871,15 @@
         const meta = dayMeta[previewIndex];
         const actualDay = tripDates[previewIndex] === isoInZone(now,'Asia/Tokyo');
         const day = $('day' + (previewIndex + 1));
-        const slots = [...(day?.querySelectorAll('.slot') || [])].map((slot,index) => ({
-          index,time:slot.querySelector('.time')?.textContent.trim() || '',title:slot.querySelector('.slot-content strong')?.textContent.trim() || '行程',detail:slot.querySelector('.slot-content p')?.textContent.trim() || ''
-        })).filter(x => /^\d{1,2}:\d{2}$/.test(x.time));
+        const offset = tripModeOffsets[activeTripMode] || 0;
+        const slots = [...(day?.querySelectorAll('.slot') || [])].map((slot,index) => {
+          const originalTime = slot.querySelector('.time')?.textContent.trim() || '';
+          const fixed = slot.dataset.fixed === 'true';
+          return {index,fixed,originalTime,time:/^\d{1,2}:\d{2}$/.test(originalTime) && !fixed ? shiftedClock(originalTime,offset) : originalTime,title:slot.querySelector('.slot-content strong')?.textContent.trim() || '行程',detail:slot.querySelector('.slot-content p')?.textContent.trim() || ''};
+        }).filter(x => /^\d{1,2}:\d{2}$/.test(x.time)).sort((a,b) => {
+          const minutes = value => { const [h,m] = value.split(':').map(Number); return h * 60 + m; };
+          return minutes(a.time) - minutes(b.time) || a.index - b.index;
+        });
         const nowMinutes = Number(time.hour) * 60 + Number(time.minute);
         let nextIndex = actualDay ? slots.findIndex(x => { const [h,m] = x.time.split(':').map(Number); return h * 60 + m >= nowMinutes; }) : 0;
         if (nextIndex < 0) nextIndex = slots.length;
@@ -2844,7 +2899,7 @@
         } else if (actualDay) $('todayNextCountdown').textContent = '今天的计划节点已全部完成';
         else if (isoInZone(now,'Asia/Tokyo') < tripDates[0]) $('todayNextCountdown').textContent = `出发前预览 · 距离行程 ${Math.ceil((new Date(tripDates[0]+'T00:00:00+09:00')-now)/86400000)} 天`;
         else $('todayNextCountdown').textContent = '手动预览模式';
-        $('todayEvents').innerHTML = visible.length ? visible.map((event,i) => `<article class="today-event${actualDay && i === 0 && nextIndex < slots.length ? ' next' : ''}">${actualDay && i === 0 && nextIndex < slots.length ? '<span class="badge book">下一项</span>' : ''}<time>${escapeHtml(event.time)}</time><h4>${escapeHtml(event.title)}</h4><p>${escapeHtml(event.detail)}</p></article>`).join('') : '<div class="empty-box">当天没有可读取的时间节点，请查看完整日程。</div>';
+        $('todayEvents').innerHTML = visible.length ? visible.map((event,i) => `<article class="today-event${actualDay && i === 0 && nextIndex < slots.length ? ' next' : ''}">${actualDay && i === 0 && nextIndex < slots.length ? '<span class="badge book">下一项</span>' : ''}<time>${escapeHtml(event.time)}${event.fixed ? ' <small>固定节点</small>' : offset ? ` <small>原 ${escapeHtml(event.originalTime)}</small>` : ''}</time><h4>${escapeHtml(event.title)}</h4><p>${escapeHtml(event.detail)}</p></article>`).join('') : '<div class="empty-box">当天没有可读取的时间节点，请查看完整日程。</div>';
         renderTripMode();
       };
       $('modeSwitch')?.addEventListener('click', event => {
@@ -2852,7 +2907,7 @@
         if (!button) return;
         activeTripMode = button.dataset.tripMode;
         localStorage.setItem(tripModeKey,activeTripMode);
-        renderTripMode();
+        renderTodayHub();
       });
       $('todayDaySelect')?.addEventListener('change', event => {
         previewIndex = Number(event.target.value);
@@ -2904,7 +2959,7 @@
         {id:'hakone-dinner',title:'仙石原晚餐',dateTime:'2026-10-08T18:30',category:'餐厅',state:'待预订',code:'',holder:'',url:'https://www.hakone-susuki.jp/ginnoho/index.html',note:'优先銀の穂并确认夜间接送。',image:'',createdAt:5},
         {id:'gotemba-bus',title:'御殿场 → 涩谷高速巴士',dateTime:'2026-10-09T17:30',category:'交通',state:'待预订',code:'',holder:'',url:'https://www.kousokubus.net/BusRsv/ja/vacantseat/entry?LINE_CD=105&routeSelectionFlg=1',note:'御殿场 Premium Outlets 17:30 → 涩谷 Mark City 19:30；两人相邻座。',image:'',createdAt:6},
         {id:'hotel-sheraton',title:'东京喜来登都酒店',dateTime:'2026-10-09T15:00',category:'酒店',state:'已确认',code:'',holder:'',url:'https://www.miyakohotels.ne.jp/tokyo/',note:'10/9—10/12｜Premium Superior｜1 King｜不含早餐',image:'',createdAt:7},
-        {id:'ginza-dinner',title:'银座告别晚餐',dateTime:'2026-10-11T19:00',category:'餐厅',state:'待预订',code:'',holder:'',url:'',note:'优先銀座かつかみ弐；也可保留购物弹性。',image:'',createdAt:8},
+        {id:'ginza-dinner',title:'银座告别晚餐',dateTime:'2026-10-11T19:30',category:'餐厅',state:'待预订',code:'',holder:'',url:'',note:'优先銀座かつかみ弐；19:10 从 DSMG 收尾并前往餐厅。',image:'',createdAt:8},
         {id:'skyliner-return',title:'Skyliner 日暮里 → 成田 T1',dateTime:'2026-10-12T10:40',category:'交通',state:'待预订',code:'',holder:'',url:'https://skyliner.ec.keisei.co.jp/pc/',note:'10:40 发车，约 11:24 到成田 T1；两人相邻座。',image:'',createdAt:9}
       ];
       let ticketRecords = localStorage.getItem(ticketRecordsKey) === null ? ticketDefaults : loadArray(ticketRecordsKey,[]);
@@ -3118,6 +3173,15 @@
       const cloudClientKey = 'tokyo-2026-cloud-client-v1';
       const cloudMetaKey = 'tokyo-2026-cloud-meta-v1';
       const cloudSnapshotKey = 'tokyo-2026-pre-cloud-snapshot-v1';
+      const defaultFirebaseConfig = {
+        apiKey:'AIzaSyD8ins9kEnqmD9bsZTa6zkL5vz-dOJuEo0',
+        authDomain:'tokyo-2026-f2e23.firebaseapp.com',
+        databaseURL:'https://tokyo-2026-f2e23-default-rtdb.asia-southeast1.firebasedatabase.app',
+        projectId:'tokyo-2026-f2e23',
+        storageBucket:'tokyo-2026-f2e23.firebasestorage.app',
+        messagingSenderId:'771805286914',
+        appId:'1:771805286914:web:f7ae36ada66d7b38f68d1b'
+      };
       privateDataKeys.add(cloudSnapshotKey);
       const cloudSyncedKeys = [storageKey,customTodoKey,packingKey,flightInfoKey,memoKey,ledgerRecordsKey,ledgerSettingsKey,ticketRecordsKey,luggageRecordsKey,wishlistRecordsKey,currencyPrefsKey];
       const imageRecordKeys = new Set([ticketRecordsKey,luggageRecordsKey]);
@@ -3130,6 +3194,7 @@
       let cloudUnsubscribers = [];
       let cloudPendingRemote = null;
       let cloudSession = null;
+      let firebaseContext = null;
       let cloudClientId = localStorage.getItem(cloudClientKey) || '';
       if (!cloudClientId) {
         cloudClientId = globalThis.crypto?.randomUUID?.() || `client-${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -3219,7 +3284,7 @@
         if (!cloudActive || !cloudApi || !cloudStateRef || !cloudSession) return;
         clearTimeout(cloudPushTimer); setCloudStatus('正在同步',true);
         try {
-          await cloudApi.set(cloudStateRef,{schema:2,updatedAt:cloudApi.serverTimestamp(),updatedBy:cloudClientId,updatedByName:cloudSession.displayName,data:collectCloudPayload()});
+          await cloudApi.set(cloudStateRef,{schema:2,updatedAt:cloudApi.serverTimestamp(),updatedBy:cloudClientId,updatedByUid:cloudSession.auth.currentUser.uid,updatedByName:cloudSession.displayName,data:collectCloudPayload()});
           const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:false,lastUploadAt:Date.now()});
           setCloudStatus('实时同步中',true); setCloudMessage(manual ? '本机数据已立即同步到共享房间。' : '更改已同步。','good');
         } catch (error) {
@@ -3247,24 +3312,75 @@
         ]);
         cloudApi = {...app,...auth,...database}; return cloudApi;
       };
+      const initializeFirebaseContext = async () => {
+        const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value));
+        if (firebaseContext?.firebaseConfig?.projectId === firebaseConfig.projectId) return firebaseContext;
+        const api = await loadFirebaseApi();
+        const appName = `tokyo-${firebaseConfig.projectId}-${firebaseConfig.appId.slice(-8)}`.replace(/[^a-zA-Z0-9-_]/g,'-');
+        const firebaseApp = api.getApps().find(item => item.name === appName) || api.initializeApp(firebaseConfig,appName);
+        const auth = api.getAuth(firebaseApp); await api.setPersistence(auth,api.browserLocalPersistence);
+        if (typeof auth.authStateReady === 'function') await auth.authStateReady();
+        const database = api.getDatabase(firebaseApp,firebaseConfig.databaseURL);
+        firebaseContext = {api,firebaseConfig,firebaseApp,auth,database};
+        return firebaseContext;
+      };
+      const renderCloudIdentity = user => {
+        const validUser = user && !user.isAnonymous;
+        $('cloudIdentity').hidden = !validUser;
+        $('cloudIdentityEmail').textContent = validUser ? (user.email || '邮箱账号') : '—';
+        $('cloudIdentityUid').textContent = validUser ? user.uid : '—';
+        $('cloudSignIn').disabled = Boolean(validUser);
+        $('cloudSignOut').disabled = !validUser;
+        $('cloudConnect').disabled = !validUser;
+        if (validUser) $('cloudEmail').value = user.email || $('cloudEmail').value;
+      };
+      const ensureAllowlisted = async context => {
+        const user = context.auth.currentUser;
+        if (!user || user.isAnonymous) throw new Error('请先使用获准的邮箱账号登录。');
+        const access = await context.api.get(context.api.ref(context.database,`allowedUsers/${user.uid}`));
+        if (access.val() !== true) throw new Error(`账号已登录，但 UID 尚未加入白名单：${user.uid}。请复制 UID，在 Firebase 数据库 allowedUsers 下将该 UID 设为 true。`);
+        return user;
+      };
+      const signInCloudAccount = async () => {
+        let context = null;
+        try {
+          setCloudMessage('正在验证邮箱账号…');
+          context = await initializeFirebaseContext();
+          const email = $('cloudEmail').value.trim(); const password = $('cloudPassword').value;
+          if (!email || !password) throw new Error('请输入邮箱和密码。');
+          const credential = await context.api.signInWithEmailAndPassword(context.auth,email,password);
+          $('cloudPassword').value = ''; renderCloudIdentity(credential.user);
+          try {
+            await ensureAllowlisted(context);
+            setCloudMessage('账号已登录且白名单验证通过。现在可以连接共享旅行。','good');
+          } catch (error) {
+            setCloudMessage(error.message,'bad');
+          }
+        } catch (error) {
+          const generic = /auth\/(invalid-credential|user-not-found|wrong-password)/.test(error.code || '') ? '邮箱或密码不正确。' : (error.message || '登录失败。');
+          renderCloudIdentity(context?.auth?.currentUser && !context.auth.currentUser.isAnonymous ? context.auth.currentUser : null); setCloudMessage(generic,'bad');
+        }
+      };
+      const signOutCloudAccount = async () => {
+        try {
+          await disconnectCloud();
+          const context = await initializeFirebaseContext(); await context.api.signOut(context.auth);
+          renderCloudIdentity(null); setCloudMessage('账号已退出；本机旅行数据仍保留。');
+        } catch (error) { setCloudMessage(error.message || '退出失败。','bad'); }
+      };
       const connectCloud = async ({silent = false} = {}) => {
         try {
           setCloudStatus('正在连接',false); setCloudMessage('正在连接共享房间…');
-          const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value));
           const roomCode = $('cloudRoomCode').value.trim(); const displayName = $('cloudDisplayName').value.trim();
           if (roomCode.length < 12) throw new Error('房间码至少需要 12 个字符；建议点击“生成安全房间码”。');
           if (!displayName) throw new Error('请输入“没头脑”或“不高兴”等显示名称。');
-          stopCloudListeners(); const api = await loadFirebaseApi(); const hash = await roomHash(roomCode);
-          const appName = `tokyo-${firebaseConfig.projectId}-${firebaseConfig.appId.slice(-8)}`.replace(/[^a-zA-Z0-9-_]/g,'-');
-          const firebaseApp = api.getApps().find(item => item.name === appName) || api.initializeApp(firebaseConfig,appName);
-          const auth = api.getAuth(firebaseApp); await api.setPersistence(auth,api.browserLocalPersistence);
-          if (!auth.currentUser) await api.signInAnonymously(auth);
-          const database = api.getDatabase(firebaseApp,firebaseConfig.databaseURL);
+          stopCloudListeners(); const context = await initializeFirebaseContext();
+          const {api,firebaseConfig,auth,database} = context; const user = await ensureAllowlisted(context); const hash = await roomHash(roomCode);
           const tripRoot = `trips/${hash}`; const memberRef = api.ref(database,`${tripRoot}/members/${auth.currentUser.uid}`);
           const membersRef = api.ref(database,`${tripRoot}/members`); const stateRef = api.ref(database,`${tripRoot}/state`);
           await api.set(memberRef,{name:displayName,online:true,updatedAt:api.serverTimestamp()});
           await api.onDisconnect(memberRef).set({name:displayName,online:false,updatedAt:api.serverTimestamp()});
-          cloudMemberRef = memberRef; cloudStateRef = stateRef; cloudSession = {firebaseConfig,roomCode,displayName,hash,auth,database}; cloudActive = true;
+          cloudMemberRef = memberRef; cloudStateRef = stateRef; cloudSession = {firebaseConfig,roomCode,displayName,hash,auth,database,user}; cloudActive = true;
           localStorage.setItem(cloudConfigKey,JSON.stringify({firebaseConfig,roomCode,displayName}));
           if (new URLSearchParams(location.hash.slice(1)).has('join')) history.replaceState(null,'',location.pathname + location.search);
           $('cloudRoomLabel').textContent = `共享房间 · ${roomCode.slice(0,4)}••••${roomCode.slice(-4)}`;
@@ -3306,6 +3422,14 @@
       };
 
       document.addEventListener('tokyo-data-changed',() => { if (!cloudApplying) queueCloudPush(); });
+      $('cloudSignIn')?.addEventListener('click',signInCloudAccount);
+      $('cloudSignOut')?.addEventListener('click',signOutCloudAccount);
+      $('cloudPassword')?.addEventListener('keydown',event => { if (event.key === 'Enter') signInCloudAccount(); });
+      $('cloudCopyUid')?.addEventListener('click',async () => {
+        const uid = firebaseContext?.auth?.currentUser?.uid;
+        if (!uid) return setCloudMessage('请先登录账号。','bad');
+        const copied = await copyPlainText(uid); setCloudMessage(copied ? 'UID 已复制，可粘贴到 Firebase 的 allowedUsers。' : '复制失败，请手动选择 UID。',copied ? 'good' : 'bad');
+      });
       $('cloudSyncNow')?.addEventListener('click',() => pushCloudState(true));
       $('cloudConnect')?.addEventListener('click',() => connectCloud({silent:false}));
       $('cloudDisconnect')?.addEventListener('click',disconnectCloud);
@@ -3316,28 +3440,54 @@
       });
       $('cloudCopyInvite')?.addEventListener('click',async () => {
         try {
-          const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value)); const roomCode = $('cloudRoomCode').value.trim();
+          const roomCode = $('cloudRoomCode').value.trim();
           if (roomCode.length < 12) throw new Error('请先生成或填写有效房间码。');
-          const url = new URL(location.href); url.hash = `join=${encodeInvite({firebaseConfig,roomCode})}`;
+          const url = new URL(location.href); url.hash = `join=${encodeInvite({roomCode})}`;
           const copied = await copyPlainText(url.href); if (!copied) throw new Error('复制失败，请手动复制浏览器地址。');
-          setCloudMessage('邀请链接已复制。同行人打开后只需填写自己的名字并连接。','good');
+          setCloudMessage('邀请链接已复制。同行人打开后仍需使用已加入白名单的账号登录。','good');
         } catch (error) { setCloudMessage(error.message || '邀请链接生成失败。','bad'); }
       });
 
-      try {
-        const inviteValue = new URLSearchParams(location.hash.slice(1)).get('join');
-        if (inviteValue) {
-          const invite = decodeInvite(inviteValue); validateFirebaseConfig(invite.firebaseConfig);
-          $('firebaseConfigInput').value = JSON.stringify(invite.firebaseConfig,null,2); $('cloudRoomCode').value = invite.roomCode || ''; $('cloudSetup').open = true;
-          setCloudMessage('已读取同行人的共享邀请。填写自己的名字后点击“连接并开始同步”。','good');
-        } else {
+      const initializeCloudUi = async () => {
+        try {
           const savedCloud = JSON.parse(localStorage.getItem(cloudConfigKey) || 'null');
-          if (savedCloud?.firebaseConfig && savedCloud?.roomCode && savedCloud?.displayName) {
-            $('firebaseConfigInput').value = JSON.stringify(savedCloud.firebaseConfig,null,2); $('cloudRoomCode').value = savedCloud.roomCode; $('cloudDisplayName').value = savedCloud.displayName;
-            connectCloud({silent:true});
+          $('firebaseConfigInput').value = JSON.stringify(savedCloud?.firebaseConfig || defaultFirebaseConfig,null,2);
+          if (savedCloud?.roomCode) $('cloudRoomCode').value = savedCloud.roomCode;
+          if (savedCloud?.displayName) $('cloudDisplayName').value = savedCloud.displayName;
+          const inviteValue = new URLSearchParams(location.hash.slice(1)).get('join');
+          if (inviteValue) {
+            const invite = decodeInvite(inviteValue);
+            if (!invite?.roomCode) throw new Error('邀请中缺少房间码。');
+            $('cloudRoomCode').value = invite.roomCode; $('cloudSetup').open = true;
+            setCloudMessage('已读取共享邀请。请使用获准邮箱登录，再填写自己的显示名称并连接。','good');
           }
+          const context = await initializeFirebaseContext();
+          if (context.auth.currentUser?.isAnonymous) await context.api.signOut(context.auth);
+          renderCloudIdentity(context.auth.currentUser);
+          context.api.onAuthStateChanged(context.auth,user => renderCloudIdentity(user && !user.isAnonymous ? user : null));
+          if (!inviteValue && context.auth.currentUser && !context.auth.currentUser.isAnonymous && savedCloud?.roomCode && savedCloud?.displayName) connectCloud({silent:true});
+        } catch (error) {
+          renderCloudIdentity(null); setCloudMessage(`账号或共享设置无法读取：${error.message}`,'bad');
         }
-      } catch (error) { setCloudMessage(`共享邀请无法读取：${error.message}`,'bad'); }
+      };
+      initializeCloudUi();
+
+      const updateNetworkStatus = () => {
+        const chip = $('networkStatus'); if (!chip) return;
+        const offlineReady = Boolean(navigator.serviceWorker?.controller);
+        chip.innerHTML = navigator.onLine
+          ? `<span aria-hidden="true">●</span> 在线${offlineReady ? ' · 离线页面已启用' : ''}`
+          : '<span aria-hidden="true">●</span> 离线 · 使用已缓存攻略';
+        chip.classList.toggle('offline',!navigator.onLine);
+      };
+      window.addEventListener('online',updateNetworkStatus); window.addEventListener('offline',updateNetworkStatus);
+      updateNetworkStatus();
+      if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+        navigator.serviceWorker.register('./sw.js').then(() => updateNetworkStatus()).catch(() => {
+          const chip = $('networkStatus'); if (chip && navigator.onLine) chip.innerHTML = '<span aria-hidden="true">●</span> 在线 · 离线缓存待重试';
+        });
+        navigator.serviceWorker.addEventListener('controllerchange',updateNetworkStatus);
+      }
     })();
   </script>
 </body>
