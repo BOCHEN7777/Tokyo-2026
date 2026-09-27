@@ -103,6 +103,7 @@
     .meal-title{grid-column:1/-1;font-size:.76rem;font-weight:900;letter-spacing:.11em;color:var(--red);margin:8px 0 -1px;text-transform:uppercase}
     .choice{border:1px solid var(--line);border-radius:14px;padding:14px;background:#f8faf7}.choice h4{margin:0 0 5px;font-size:.92rem}.choice p{margin:0;font-size:.8rem;color:#58665e}.choice .actions{margin-top:10px}
     .brand-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.brand{border:1px solid var(--line);border-radius:15px;padding:15px;background:var(--card)}.brand h3{margin:0 0 4px;font-size:1rem}.brand p{font-size:.82rem;margin:0;color:#536159}.brand .where{display:block;color:var(--red);font-weight:900;font-size:.73rem;margin-top:8px}
+    .directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.directory-card{border:1px solid var(--line);border-radius:17px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}.directory-card>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer;padding:15px 16px;background:#eef1eb;font:800 .92rem var(--sans)}.directory-card>summary::-webkit-details-marker{display:none}.directory-card>summary:after{content:'＋';color:var(--red);font-size:1.1rem}.directory-card[open]>summary:after{content:'−'}.directory-card>summary span{margin-left:auto;margin-right:5px;border-radius:999px;background:#fffdf8;color:var(--red);padding:2px 7px;font-size:.66rem}.directory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;list-style:none;padding:8px 16px 14px;margin:0}.directory-list li{position:relative;padding:7px 4px 7px 14px;border-bottom:1px dashed #e3ded3;font-size:.77rem;line-height:1.4}.directory-list li:before{content:'•';position:absolute;left:2px;color:var(--red);font-weight:900}.directory-list small{display:block;color:var(--muted);font-size:.64rem;margin-top:2px}
     .small{font-size:.82rem;color:var(--muted)}.muted{color:var(--muted)}
     .assistant-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.7fr);gap:16px;align-items:start}.phrase-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.phrase-tools input{flex:1;min-width:220px;border:1px solid #cfc8ba;border-radius:11px;background:#fffdf8;padding:10px 12px;font:inherit}.phrase-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:660px;overflow:auto;padding-right:3px}.phrase-card{border:1px solid var(--line);background:#fbfaf5;border-radius:14px;padding:13px}.phrase-card[hidden]{display:none}.phrase-card small{color:var(--red);font-weight:900;font-size:.65rem;letter-spacing:.08em}.phrase-card h3{font-size:.86rem;margin:3px 0;color:var(--ink-2)}.phrase-card .jp{font:700 1rem/1.45 var(--serif);color:var(--ink);margin:4px 0}.phrase-card .en{font-size:.7rem;color:var(--muted);margin:0}.phrase-card .actions{margin-top:9px}.phrase-card .btn{padding:6px 8px;font-size:.7rem}.phrase-display{position:sticky;top:76px;background:linear-gradient(150deg,#16231d,#315b69);color:#fff;border-radius:20px;padding:20px;box-shadow:var(--shadow);min-height:210px}.phrase-display small{color:#bcd0c8;letter-spacing:.12em}.phrase-display strong{display:block;font:700 clamp(1.55rem,4vw,2.4rem)/1.35 var(--serif);margin:20px 0}.phrase-display p{color:#d8e4dd;font-size:.79rem}.tool-stack{display:grid;gap:12px;margin-top:14px}.travel-tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px}.travel-tool h3{font:700 1rem var(--serif);margin:0 0 7px}.travel-tool textarea{width:100%;min-height:100px;border:1px solid #cfc8ba;background:#fffdf8;border-radius:10px;padding:10px;font:inherit;resize:vertical}.emergency-links{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.emergency-links a{display:grid;place-items:center;background:#edf1eb;border-radius:10px;padding:9px 5px;font-size:.72rem;font-weight:900;text-align:center}.jp-name{font-size:.78em;color:var(--muted);font-weight:700}
     .quick-actions{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;flex-direction:column;gap:8px}.quick-actions button,.quick-actions a{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--ink);color:#fff;box-shadow:0 10px 25px rgba(0,0,0,.18);cursor:pointer;font-weight:900}
@@ -119,7 +120,7 @@
     @media(max-width:760px){
       .wrap{width:min(100% - 22px,1120px)}.hero{min-height:70vh;padding:60px 0 36px}.hero-meta{grid-template-columns:1fr}.hero-meta div{padding-top:7px}.topbar .brand{display:none}
       .countdown-card{grid-template-columns:1fr}.countdown-actions{justify-content:flex-start}.boarding-grid{grid-template-columns:1fr}.custom-todo-form{grid-template-columns:1fr 1fr}.custom-todo-form .field:first-child{grid-column:1/-1}.custom-todo-form .btn{height:44px}.todo-dashboard,.sync-shell{grid-template-columns:1fr}.todo-filters{grid-template-columns:1fr}.sync-form{grid-template-columns:1fr}.sync-form .wide{grid-column:auto}.assistant-layout{grid-template-columns:1fr}.phrase-list{grid-template-columns:1fr;max-height:none}.phrase-display{position:static}.emergency-links{grid-template-columns:1fr 1fr}
-      .grid.two,.grid.three,.checklist,.custom-todos,.shop-grid,.food-grid,.brand-table,.ledger-layout,.wardrobe-grid,.travel-console,.module-shell,.record-grid,.luggage-grid,.filter-results,.backup-panel{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.sketch-map svg{min-width:740px}.map-caption em{width:100%;margin-left:0}.ledger-stats,.wishlist-summary,.vault-summary{grid-template-columns:1fr}.budget-fields,.expense-form,.form-grid{grid-template-columns:1fr}.field.wide,.form-grid .wide{grid-column:auto}.ledger-table-wrap{margin-left:-1px;margin-right:-1px}.module-form{position:static}.today-events{grid-template-columns:1fr 1fr}.filter-toolbar{grid-template-columns:1fr 1fr}.filter-toolbar .field:first-child{grid-column:1/-1}.now-top{display:block}.now-clock{margin-top:7px}.today-controls{align-items:stretch}.today-controls .field{max-width:none;flex:1}.topbar .wrap{gap:7px}.topbar .brand{display:none}.nav-primary{margin:0;overflow:auto;scrollbar-width:none;flex:1}.nav-primary a,.nav-primary button{font-size:.76rem;padding:8px 7px}.nav-menu{position:fixed;left:16px;right:16px;top:68px;width:auto;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto}
+      .grid.two,.grid.three,.checklist,.custom-todos,.shop-grid,.food-grid,.brand-table,.directory-grid,.ledger-layout,.wardrobe-grid,.travel-console,.module-shell,.record-grid,.luggage-grid,.filter-results,.backup-panel{grid-template-columns:1fr}.directory-list{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.sketch-map svg{min-width:740px}.map-caption em{width:100%;margin-left:0}.ledger-stats,.wishlist-summary,.vault-summary{grid-template-columns:1fr}.budget-fields,.expense-form,.form-grid{grid-template-columns:1fr}.field.wide,.form-grid .wide{grid-column:auto}.ledger-table-wrap{margin-left:-1px;margin-right:-1px}.module-form{position:static}.today-events{grid-template-columns:1fr 1fr}.filter-toolbar{grid-template-columns:1fr 1fr}.filter-toolbar .field:first-child{grid-column:1/-1}.now-top{display:block}.now-clock{margin-top:7px}.today-controls{align-items:stretch}.today-controls .field{max-width:none;flex:1}.topbar .wrap{gap:7px}.topbar .brand{display:none}.nav-primary{margin:0;overflow:auto;scrollbar-width:none;flex:1}.nav-primary a,.nav-primary button{font-size:.76rem;padding:8px 7px}.nav-menu{position:fixed;left:16px;right:16px;top:68px;width:auto;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto}
       .summary-table{display:block;overflow:auto;white-space:nowrap}.summary-table td:nth-child(3){white-space:normal;min-width:240px}.currency-grid,.taxfree-controls,.taxfree-result{grid-template-columns:1fr}.currency-equals{margin:auto;transform:rotate(90deg)}.currency-live,.taxfree-head{align-items:stretch;flex-direction:column}.currency-live .btn{width:100%}
       details.day>summary{grid-template-columns:62px 1fr auto;padding:16px;gap:11px}.day-date{width:58px;height:58px;border-radius:15px}.day-date strong{font-size:1.24rem}.day-body{padding:0 16px 20px}.metric-row{grid-template-columns:repeat(2,1fr)}
       .route-board{margin-left:-2px;margin-right:-2px;padding:12px}.route-board-head{display:block}.route-board-head p{text-align:left;margin-top:3px}.route-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.route-steps li{min-height:100px;padding-left:39px}.route-steps li:after{display:none}
@@ -183,7 +184,7 @@
         <summary>全部工具</summary>
         <div class="nav-menu">
           <div class="nav-menu-group"><strong>现场执行</strong><a href="#flights">航班</a><a href="#hotels">酒店</a><a href="#transport">交通</a><a href="#language">日文助手</a><a href="#food-finder">餐厅筛选</a></div>
-          <div class="nav-menu-group"><strong>购物消费</strong><button type="button" data-open-currency>汇率与免税价</button><a href="#wishlist">愿望单与比价</a><a href="#ledger">旅行记账</a><a href="#shopping">品牌索引</a></div>
+          <div class="nav-menu-group"><strong>购物消费</strong><button type="button" data-open-currency>汇率与免税价</button><a href="#wishlist">愿望单与比价</a><a href="#ledger">旅行记账</a><a href="#shopping">品牌索引</a><a href="#shop-directory">全品牌清单</a></div>
           <div class="nav-menu-group"><strong>出发前资料</strong><a href="#overview">旅行路线</a><a href="#todo">出发前待办</a><a href="#bookings">预约入口</a><a href="#backup">延误与雨天</a></div>
           <div class="nav-menu-group"><strong>数据与说明</strong><a href="#shared-sync">多人实时同步</a><a href="#data-backup">备份与恢复</a><a href="#sources">信息来源</a><button type="button" onclick="window.print()">打印 / 保存 PDF</button></div>
         </div>
@@ -1485,6 +1486,136 @@
       <div class="data-health" id="dataHealth" aria-live="polite">正在统计本地旅行数据…</div>
       <div class="note"><strong>隐私：</strong>备份文件可能包含预约截图、订单号和消费记录。不要保存护照、银行卡照片或安全码；分享前确认接收对象。</div>
     </section>
+
+    <section id="shop-directory">
+      <div class="section-head">
+        <div><span class="kicker">FINAL SHOPPING DIRECTORY</span><h2>旅行前购物意向总目录</h2></div>
+        <p>汇总本攻略目前涉及的品牌、买手店与综合购物地点。这里只是候选池，不代表全部需要到店。</p>
+      </div>
+      <div class="note"><strong>使用方法：</strong>出发前两人分别从每一类圈出真正想逛的店，再把明确商品、尺码与目标价加入“购物愿望单”。建议每个半天最多保留 3—5 家核心店，其余只作附近有余量时的备选。</div>
+      <div class="directory-grid">
+        <details class="directory-card" open>
+          <summary>买手店与高阶选品 <span>14 家</span></summary>
+          <ul class="directory-list">
+            <li>H BEAUTY&amp;YOUTH</li><li>SUPER A MARKET AOYAMA</li>
+            <li>COVERCHORD Nakameguro</li><li>1LDK apartments.</li>
+            <li>Dover Street Market Ginza</li><li>International Gallery BEAMS</li>
+            <li>BEAMS Harajuku / BEAMS T</li><li>TABAYA United Arrows</li>
+            <li>TOMORROWLAND 涩谷本店</li><li>NUBIAN Shibuya PARCO</li>
+            <li>ARTS&amp;SCIENCE Aoyama</li><li>URBANIC30 Aoyama</li>
+            <li>UNITED ARROWS &amp; SONS</li><li>2G Shibuya PARCO</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>日系、街头与户外 <span>17 个</span></summary>
+          <ul class="directory-list">
+            <li>HUMAN MADE TOKYO / SHIBUYA</li><li>Stüssy Harajuku</li>
+            <li>Supreme Harajuku</li><li>AURALEE</li>
+            <li>nanamica Daikanyama</li><li>KAPITAL</li>
+            <li>F.I.L. / visvim</li><li>JieDa</li>
+            <li>Nine Tailor</li><li>KIJIMA TAKAYUKI</li>
+            <li>Gramicci</li><li>mont-bell Shibuya</li>
+            <li>and wander</li><li>HOLLYWOOD RANCH MARKET</li>
+            <li>OKURA</li><li>THE NORTH FACE Purple Label / LAB</li>
+            <li>DENHAM Daikanyama</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>国际设计师与经典品牌 <span>20 个</span></summary>
+          <ul class="directory-list">
+            <li>Ralph Lauren</li><li>AMI Paris</li>
+            <li>Lacoste</li><li>Barbour</li>
+            <li>A.P.C.</li><li>Maison Kitsuné</li>
+            <li>Maison Margiela</li><li>The Row</li>
+            <li>Jil Sander</li><li>Acne Studios</li>
+            <li>Dries Van Noten</li><li>LEMAIRE</li>
+            <li>ALAÏA</li><li>OUR LEGACY</li>
+            <li>STUDIO NICHOLSON</li><li>Stone Island</li>
+            <li>Thom Browne</li><li>Fred Perry</li>
+            <li>TOUT Y EST Tokyo</li><li>CHANEL Fashion</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>鞋履与运动鞋 <span>6 个</span></summary>
+          <ul class="directory-list">
+            <li>ODETTE É ODILE</li><li>Onitsuka Tiger</li>
+            <li>HOKA</li><li>Dr. Martens</li>
+            <li>Red Wing</li><li>MIZUNO</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>银饰、珠宝与配饰 <span>13 个</span></summary>
+          <ul class="directory-list">
+            <li>Pocket Harajuku <small lang="ja">ポケット 原宿</small></li><li>LARRY SMITH</li>
+            <li>SHIHARA Lab</li><li>Hirotaka</li>
+            <li>agete</li><li>noguchi BIJOUX</li>
+            <li>MIKIMOTO</li><li>TASAKI</li>
+            <li>AHKAH</li><li>ete</li>
+            <li>Jouete</li><li>PREEK</li>
+            <li>mimi33</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>眼镜与镜架 <span>3 个</span></summary>
+          <ul class="directory-list">
+            <li>金子眼镜店 青山店 <small lang="ja">カネコガンキョウテン</small></li>
+            <li>999.9 Four Nines <small lang="ja">フォーナインズ</small></li>
+            <li>EYETHINK Shibuya PARCO</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>香氛与美容 <span>12 个</span></summary>
+          <ul class="directory-list">
+            <li>MY ONLY FRAGRANCE</li><li>LE LABO</li>
+            <li>Officine Universelle Buly</li><li>CHANEL Fragrance &amp; Beauty</li>
+            <li>FUEGUIA 1833</li><li>NOSE SHOP</li>
+            <li>SHIRO</li><li>THE FLAVOR DESIGN TOKYO</li>
+            <li>D’ORSAY</li><li>TAMBURINS</li>
+            <li>Santa Maria Novella</li><li>LOEWE Perfumes</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>家居、器物、书店与相机 <span>12 个</span></summary>
+          <ul class="directory-list">
+            <li>HAY TOKYO</li><li>KINTO STORE Tokyo</li>
+            <li>minä perhonen materiaali</li><li>Daikanyama T-SITE / 蔦屋書店</li>
+            <li>GINZA TSUTAYA BOOKS</li><li>Ginza Loft</li>
+            <li>伊東屋 Itoya</li><li>MUJI Ginza</li>
+            <li>PUEBCO</li><li>北村写真機店 新宿</li>
+            <li>東京銀座 Lemonsha</li><li>Bic Camera 有乐町</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>中古、古着与 Vintage <span>3 家</span></summary>
+          <ul class="directory-list">
+            <li>ALLU SHINJUKU</li>
+            <li>KOMEHYO SHIBUYA</li>
+            <li>Eguchi Vintage Clothing, Watch &amp; Watch Repair Shop</li>
+          </ul>
+        </details>
+
+        <details class="directory-card" open>
+          <summary>百货、商场、药妆与免税 <span>12 个</span></summary>
+          <ul class="directory-list">
+            <li>NEWoMan 新宿</li><li>伊势丹新宿店</li>
+            <li>表参道 Hills</li><li>Laforet Harajuku</li>
+            <li>Shibuya PARCO</li><li>MIYASHITA PARK</li>
+            <li>GINZA SIX</li><li>松屋银座</li>
+            <li>御殿场 Premium Outlets</li><li>@cosme TOKYO</li>
+            <li>Matsumoto Kiyoshi</li><li>Fa-So-La TAX FREE</li>
+          </ul>
+        </details>
+      </div>
+      <div class="note"><strong>当前合计：</strong>112 个候选名称。买手店内的具体品牌和门店库存会随季节变化；本清单用于旅行前做兴趣筛选，最终路线仍以已经确认的每日主线为准。</div>
+    </section>
   </main>
 
   <footer id="sources">
@@ -1634,7 +1765,8 @@
         {group:'现场执行',ids:['today','shared-sync','days','travel-wallet','luggage','hotels','transport','language','food-finder']},
         {group:'购物消费',ids:['wishlist','ledger','shopping']},
         {group:'出发前资料',ids:['overview','todo','bookings','backup']},
-        {group:'数据管理',ids:['data-backup']}
+        {group:'数据管理',ids:['data-backup']},
+        {group:'最终确认',ids:['shop-directory']}
       ];
       const mainContent = document.querySelector('main.wrap');
       sectionLayout.forEach(({group,ids}) => ids.forEach(id => { const section = document.getElementById(id); if (section && mainContent) { section.dataset.useGroup = group; mainContent.appendChild(section); } }));
