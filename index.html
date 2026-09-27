@@ -429,7 +429,7 @@
           <div class="sync-actions"><button class="btn" id="cloudGenerateRoom" type="button">生成共享房间码</button><button class="btn red" id="cloudConnect" type="button" disabled>连接并开始同步</button><button class="btn" id="cloudCopyInvite" type="button">复制同行邀请</button><button class="btn" id="cloudDisconnect" type="button">退出共享</button></div>
           <div class="sync-alert" id="cloudMessage" aria-live="polite">请先使用 Firebase Authentication 中已创建、且 UID 已加入数据库白名单的邮箱账号登录。完整设置见 FIREBASE_SETUP.md。</div>
           <p class="sync-help">邀请只包含共享房间码，不包含密码。订单号和消费记录会同步；护照、银行卡、二维码和行李照片不会上传。任何设备都必须先登录获准账号。</p>
-          <div class="privacy-scope"><strong>隐私边界：</strong>Firebase 账号和数据库规则保护的是待办、消费、订单号等共享数据。GitHub Pages 上的静态攻略正文仍可公开访问；如需整站仅限两人打开，请按 PRIVATE_ACCESS.md 配置访问网关。</div>
+          <div class="privacy-scope"><strong>隐私边界：</strong>Firebase 账号和数据库规则只保护待办、消费、订单号等共享数据。当前 Cloudflare Workers 网址及 Public GitHub 仓库中的静态攻略正文仍可公开读取；如需整站仅限两人，请同时把仓库改为 Private，并按 PRIVATE_ACCESS.md 为自定义域名配置 Cloudflare Access。</div>
         </details>
       </div>
     </section>
