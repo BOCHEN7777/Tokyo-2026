@@ -3615,7 +3615,13 @@
       });
       updateModuleCardStatus();
       const initialModuleId = location.hash.startsWith('#') ? location.hash.slice(1) : '';
-      if (sectionToModule.has(initialModuleId)) setTimeout(() => openModuleDrawer(sectionToModule.get(initialModuleId),initialModuleId),0);
+      const isSharedInvite = new URLSearchParams(location.hash.slice(1)).has('join');
+      const isReload = performance.getEntriesByType?.('navigation')?.[0]?.type === 'reload';
+      const hasLegacyModuleHash = sectionToModule.has(initialModuleId);
+      if (hasLegacyModuleHash) history.replaceState(null,'',location.pathname + location.search);
+      if (!isSharedInvite && (hasLegacyModuleHash || isReload)) {
+        window.addEventListener('pageshow',() => setTimeout(() => window.scrollTo({top:0,left:0,behavior:'auto'}),0),{once:true});
+      }
     })();
   </script>
 </body>
