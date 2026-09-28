@@ -163,6 +163,16 @@
     .journal-theme .quick-actions button,.journal-theme .quick-actions a{border:2px solid #f7eedf;box-shadow:3px 4px 0 rgba(84,68,45,.2);font-family:var(--hand)}.journal-theme footer{border-top:7px solid #d7c49c;background:#1d3027}.journal-theme footer:before{content:"";display:block;width:min(1120px,calc(100% - 32px));margin:-25px auto 26px;border-top:1px dashed rgba(255,255,255,.25)}
     @media(max-width:760px){.journal-theme section{margin-bottom:48px}.journal-theme .hero .pill{transform:none!important}.journal-theme .boarding-pass{transform:none!important}.journal-theme .route-board{padding:12px}.journal-theme .route-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.journal-theme .route-steps li{min-height:150px;padding:12px 9px 11px 42px;transform:none!important}.journal-theme .route-steps li:before{left:9px;top:11px}.journal-theme .route-steps .stop-kind{width:58px;min-width:58px;height:40px;min-height:40px}.journal-theme .route-steps strong{font-size:.8rem}.journal-theme .route-steps small{font-size:.68rem}.journal-theme .module-grid{gap:10px}.journal-theme .module-card{min-height:176px}.journal-theme .now-card:before{width:68px}.journal-theme footer:before{width:calc(100% - 22px)}}
     @media(max-width:380px){.journal-theme .route-steps{grid-template-columns:1fr}.journal-theme .route-steps li{min-height:142px}.journal-theme .module-grid{grid-template-columns:1fr}}
+    .ticket-table-scroll{width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:thin;scrollbar-color:#b9aa8f #efe8db;border:1.5px solid #d5c9b6;border-radius:12px 18px 14px 19px;background:var(--card)}
+    .ticket-table-scroll:focus-visible{outline:3px solid rgba(198,164,91,.35);outline-offset:3px}
+    .ticket-table-scroll .summary-table{display:table;width:100%;min-width:900px;table-layout:fixed;overflow:visible;white-space:normal;border:0;border-radius:0;box-shadow:none}
+    .ticket-table-scroll .summary-table th:nth-child(1),.ticket-table-scroll .summary-table td:nth-child(1){width:175px}
+    .ticket-table-scroll .summary-table th:nth-child(2),.ticket-table-scroll .summary-table td:nth-child(2){width:245px}
+    .ticket-table-scroll .summary-table th:nth-child(3),.ticket-table-scroll .summary-table td:nth-child(3){width:170px;min-width:0;white-space:normal}
+    .ticket-table-scroll .summary-table th:nth-child(4),.ticket-table-scroll .summary-table td:nth-child(4){width:310px}
+    .ticket-table-scroll .summary-table th,.ticket-table-scroll .summary-table td{white-space:normal;overflow-wrap:anywhere}
+    .ticket-table-hint{display:none}
+    @media(max-width:760px){.ticket-table-scroll{border-radius:11px 15px 12px 16px;scrollbar-width:thin}.ticket-table-scroll .summary-table{min-width:900px}.ticket-table-hint{display:block;margin:7px 2px 0;text-align:right;color:var(--muted);font-size:.76rem;font-weight:700}}
     @media print{
       body{background:white;font-size:10pt}.hero{min-height:auto;padding:26px 0;background:var(--ink)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.topbar,.quick-actions,.no-print{display:none!important}.module-staging{display:block!important}.wrap{width:100%;max-width:none}.card,details.day,.summary-table,.ledger-table-wrap,.boarding-pass{box-shadow:none;break-inside:avoid}details.day{display:block}details.day>summary{background:#f3f0e8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.day-body{display:block!important}.print-only{display:block}.sources{columns:2}section{margin-bottom:30px}.btn{display:none}.hero:after{display:none}.sketch-map{overflow:visible;box-shadow:none}.sketch-map svg{min-width:0}.map-caption{display:none}.ledger-panel.no-print{display:none!important}.ledger-layout{grid-template-columns:1fr}.ledger-table{min-width:0}.boarding-grid{grid-template-columns:1fr 1fr}.countdown-actions{display:none}.phrase-display{display:none}.assistant-layout{grid-template-columns:1fr}.phrase-list{max-height:none}
     }
@@ -1364,17 +1374,20 @@
         </article>
       </div>
       <div class="subhead">需要单独购买的票</div>
-      <table class="summary-table">
-        <thead><tr><th>项目</th><th>怎么买</th><th>何时买</th><th>本行程建议</th></tr></thead>
-        <tbody>
-          <tr><td class="date">成田 Skyliner</td><td>京成官网、售票机或柜台；全车指定席</td><td>去程落地后买即可；返程提前锁定</td><td>10/5 成田 T1→日暮里；10/12 日暮里 10:40→T1 11:24</td></tr>
-          <tr><td class="date">仙石原→御殿场</td><td>箱根登山巴士当日刷 IC；班次不衔接时由酒店代叫出租车</td><td>10/8 晚复核</td><td>从“仙石原小学校前”查奥莱方向；出租车约 20—30 分钟</td></tr>
-          <tr><td class="date">御殿场→涩谷高速巴士</td><td>高速巴士网预订并选座；从御殿场 Premium Outlets 站上车</td><td>9/9 起开放后尽快购买</td><td>10/9 17:30 发车，19:30 到涩谷 Mark City；成人 ¥2,100</td></tr>
-          <tr><td class="date">小田原→品川新干线</td><td>SmartEX 或 JR 售票机</td><td>仅在取消御殿场时现场买</td><td>雨天、体力不足或高速巴士停运时的 Plan B</td></tr>
-          <tr><td class="date">江之电</td><td>Suica 逐次扣费；一日券可在自动售票机买</td><td>当天决定</td><td>只去镰仓—长谷—七里滨时，Suica 通常更简单</td></tr>
-          <tr><td class="date">箱根登山巴士</td><td>可刷 Suica / PASMO；上车前确认车头方向</td><td>无需预约</td><td>本次只往返仙石原，单次支付比周游券更合适</td></tr>
-        </tbody>
-      </table>
+      <div class="ticket-table-scroll" role="region" aria-label="需要单独购买的票；左右滑动查看完整信息" tabindex="0">
+        <table class="summary-table">
+          <thead><tr><th>项目</th><th>怎么买</th><th>何时买</th><th>本行程建议</th></tr></thead>
+          <tbody>
+            <tr><td class="date">成田 Skyliner</td><td>京成官网、售票机或柜台；全车指定席</td><td>去程落地后买即可；返程提前锁定</td><td>10/5 成田 T1→日暮里；10/12 日暮里 10:40→T1 11:24</td></tr>
+            <tr><td class="date">仙石原→御殿场</td><td>箱根登山巴士当日刷 IC；班次不衔接时由酒店代叫出租车</td><td>10/8 晚复核</td><td>从“仙石原小学校前”查奥莱方向；出租车约 20—30 分钟</td></tr>
+            <tr><td class="date">御殿场→涩谷高速巴士</td><td>高速巴士网预订并选座；从御殿场 Premium Outlets 站上车</td><td>9/9 起开放后尽快购买</td><td>10/9 17:30 发车，19:30 到涩谷 Mark City；成人 ¥2,100</td></tr>
+            <tr><td class="date">小田原→品川新干线</td><td>SmartEX 或 JR 售票机</td><td>仅在取消御殿场时现场买</td><td>雨天、体力不足或高速巴士停运时的 Plan B</td></tr>
+            <tr><td class="date">江之电</td><td>Suica 逐次扣费；一日券可在自动售票机买</td><td>当天决定</td><td>只去镰仓—长谷—七里滨时，Suica 通常更简单</td></tr>
+            <tr><td class="date">箱根登山巴士</td><td>可刷 Suica / PASMO；上车前确认车头方向</td><td>无需预约</td><td>本次只往返仙石原，单次支付比周游券更合适</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ticket-table-hint" aria-hidden="true">← 左右滑动查看完整票务信息 →</p>
       <div class="subhead">关键换乘，不看错方向</div>
       <div class="grid two">
         <article class="choice"><h4>10/5 成田 T1 → 目白</h4><p>机场 B1 京成站搭 Skyliner 到日暮里；出京成闸机后按“JR Line”标识换 JR 山手线外回り / 往池袋、新宿方向，目白下车。全程约 75—95 分钟。</p></article>
