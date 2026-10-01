@@ -1,6 +1,6 @@
 # 将整站限制为两人访问
 
-当前项目通过仓库中的 `wrangler.jsonc` 自动部署到 Cloudflare Workers，Workers 网址和 GitHub 源码仓库目前都是公开的。Firebase 登录只能保护待办、消费、预约等云端数据，不能阻止陌生人读取攻略正文或 Public 仓库中的 `index.html`。
+当前项目通过仓库中的 `wrangler.jsonc` 自动部署到 Cloudflare Workers，Workers 网址和 GitHub 源码仓库目前都是公开的。Firebase 的 Realtime Database 与 Storage 规则可保护两人同步的数据和行程照片，但不能阻止陌生人读取攻略正文或 Public 仓库中的 `index.html`。
 
 若希望“整份攻略也只有你们两个账号能打开”，需要同时完成两层保护：把 GitHub 仓库改为 **Private**，并在 Cloudflare 为网站配置 **Access 邮箱白名单**。只做其中一项都不完整。
 

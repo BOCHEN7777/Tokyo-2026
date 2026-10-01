@@ -204,7 +204,36 @@
     @media(max-width:900px){.weather-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
     @media(max-width:620px){.weather-box{padding:16px}.weather-heading{align-items:flex-start}.weather-actions{gap:6px}.weather-actions span{width:100%;text-align:right}.weather-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.weather-day{padding:10px}.weather-day[aria-pressed="true"]{padding:9px}.weather-note{display:grid;gap:5px}}
     @media(max-width:390px){.weather-heading{display:grid}.weather-actions{justify-content:space-between}.weather-actions span{width:auto;text-align:left}}
-  </style>
+      /* Shared itinerary reference cards: compact on the page, open only when needed. */
+    .day-reference-kit{margin:18px 0 4px}.day-reference{border:1px solid #cfc8b8;border-radius:18px;background:rgba(255,253,248,.74);overflow:hidden;box-shadow:0 8px 20px rgba(22,35,29,.045)}
+    .day-reference>summary{list-style:none;display:flex;align-items:center;gap:10px;min-height:58px;padding:12px 15px;cursor:pointer;background:linear-gradient(100deg,#f2eee3,#faf7ef)}
+    .day-reference>summary::-webkit-details-marker{display:none}.day-reference>summary:after{content:"";margin-left:auto}
+    .reference-stamp{flex:0 0 auto;border:1px dashed #a89b83;border-radius:999px;padding:3px 8px;font-size:.57rem;font-weight:900;letter-spacing:.12em;color:#687365}
+    .day-reference>summary strong{font:700 .92rem var(--serif);white-space:nowrap}.reference-summary{min-width:0;color:var(--muted);font-size:.69rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.reference-toggle{margin-left:auto;color:var(--red);font-weight:900}
+    .day-reference[open] .reference-toggle{transform:rotate(45deg)}.day-reference-body{padding:14px}
+    .reference-banner{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.reference-banner p{margin:0;color:var(--muted);font-size:.72rem;max-width:620px}.reference-banner .btn{white-space:nowrap}
+    .place-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:11px 0 14px}
+    .place-photo-card{min-height:104px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:4px;padding:10px;border:1px solid #d6d0c3;border-radius:14px;background:radial-gradient(circle at 85% 20%,rgba(197,154,74,.2),transparent 36%),linear-gradient(145deg,#e7ede5,#f8f5ec 60%,#efe2d9);position:relative;overflow:hidden}
+    .place-photo-card:before{content:"";position:absolute;width:92px;height:92px;border:1px dashed rgba(50,69,59,.23);border-radius:50%;right:-26px;top:-35px}
+    .place-photo-mark{position:absolute;right:11px;top:8px;color:#6a806f;font:700 1.55rem var(--serif)}.place-photo-card strong{position:relative;font-size:.74rem;line-height:1.3}.place-photo-card small{position:relative;color:var(--muted);font-size:.62rem}
+    .day-resource-form{border:1px dashed #c8c0b2;border-radius:15px;padding:12px;background:#fbf9f2}.day-resource-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .day-resource-fields label{display:grid;gap:4px;color:#536259;font-size:.68rem;font-weight:850}.day-resource-fields input,.day-resource-fields select,.day-resource-fields textarea{width:100%;min-width:0;border:1px solid #d6d0c3;border-radius:9px;background:#fffefa;color:var(--ink);font:inherit;font-size:.73rem;padding:8px 9px}
+    .day-resource-fields textarea{resize:vertical}.resource-note-field{grid-column:1/-1}
+    .day-resource-form>.actions{align-items:center;margin-top:9px}.photo-upload-button{position:relative;overflow:hidden;cursor:pointer}.photo-upload-button input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+    .resource-status{font-size:.67rem;color:var(--muted)}.resource-privacy{font-size:.64rem;color:var(--muted);margin:7px 1px 0}
+    .shared-resource-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:11px}
+    .shared-resource-list>.small{grid-column:1/-1;margin:0;color:var(--muted)}
+    .shared-resource{display:grid;grid-template-columns:112px minmax(0,1fr);gap:10px;padding:9px;border:1px solid var(--line);border-radius:13px;background:var(--card);min-width:0}
+    .shared-resource-photo{width:112px;aspect-ratio:1.22;display:grid;place-items:center;border-radius:10px;background:linear-gradient(145deg,#e8eee7,#f6efe2);overflow:hidden;color:#64776b;font-size:.72rem;text-align:center}
+    .shared-resource-photo img{width:100%;height:100%;object-fit:cover}.shared-resource-copy{min-width:0}.shared-resource-copy small{font-size:.61rem;color:var(--red);font-weight:900}.shared-resource-copy h5{font-size:.78rem;margin:2px 0;overflow-wrap:anywhere}.shared-resource-copy p{font-size:.68rem;color:var(--muted);margin:2px 0;overflow-wrap:anywhere}
+    .shared-resource-copy .actions{gap:6px;margin-top:6px}.shared-resource-copy .btn{font-size:.65rem;padding:5px 7px}
+    .phrase-high-frequency{font-weight:900}.high-frequency-card{background:linear-gradient(135deg,#fffdf8,#f4f0e5)}
+    @media(max-width:760px){.day-reference>summary{gap:7px;padding:11px}.day-reference>summary strong{font-size:.78rem}.reference-summary{display:none}.reference-stamp{font-size:.5rem}.day-reference-body{padding:10px}.reference-banner{align-items:flex-start;flex-direction:column}.place-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.place-photo-card{min-height:88px}.day-resource-fields{grid-template-columns:1fr}.resource-note-field{grid-column:auto}.shared-resource-list{grid-template-columns:1fr}.shared-resource{grid-template-columns:92px minmax(0,1fr)}.shared-resource-photo{width:92px}.resource-status{width:100%}.phrase-tools #phraseHighFrequency{font-size:.68rem;padding:8px}}
+    @media(prefers-reduced-motion:reduce){.day-reference[open] .reference-toggle{transform:none}}
+.phrase-card .jp[role="button"]{cursor:pointer;border-radius:6px}.phrase-card .jp[role="button"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .open-license-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}.open-license-photo{margin:0;min-width:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}.open-license-photo>a{display:block;position:relative;aspect-ratio:1.75;background:linear-gradient(135deg,#e1e9e1,#f4ece0)}.open-license-photo img{display:block;width:100%;height:100%;object-fit:cover}.photo-open-hint{position:absolute;right:8px;bottom:7px;padding:3px 7px;border-radius:999px;background:rgba(22,35,29,.76);color:#fff;font-size:.62rem}.open-license-photo figcaption{padding:8px 10px}.open-license-photo figcaption strong{display:block;font-size:.72rem}.open-license-photo figcaption small{display:block;margin-top:3px;color:var(--muted);font-size:.59rem;line-height:1.45}.open-license-photo figcaption a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+    @media(max-width:760px){.open-license-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.open-license-photo>a{aspect-ratio:1.35}}
+</style>
 </head>
 <body class="journal-theme">
   <header class="hero" id="top">
@@ -385,7 +414,7 @@
         <article class="sync-overview">
           <div class="sync-state"><span class="sync-badge" id="cloudSyncBadge"><i></i><span id="cloudSyncState">仅本机</span></span><button class="btn" id="cloudSyncNow" type="button" disabled>立即同步</button></div>
           <h3 id="cloudRoomLabel">尚未加入共享房间</h3>
-          <p id="cloudSyncSummary">登录获准账号后，同步待办、行李清单、记账、购物愿望单、预约和行李文字状态；照片附件继续只保存在各自设备。</p>
+          <p id="cloudSyncSummary">获准账号可实时共享待办、记账、购物愿望单、预约、行程参考链接与地点照片；票券二维码和行李照片仅保存在本机。</p>
           <div class="sync-members" id="cloudMembers"><span class="sync-member"><i></i>暂无在线成员</span></div>
           <span class="sync-updated" id="cloudLastUpdated">尚无云端更新时间</span>
         </article>
@@ -406,9 +435,9 @@
             <details class="advanced-config"><summary>高级设置｜Firebase Web 配置</summary><div class="field wide" style="margin-top:9px"><label for="firebaseConfigInput">项目配置</label><textarea id="firebaseConfigInput" spellcheck="false" placeholder='默认已填入 Tokyo-2026 项目配置；只有更换项目时才修改。'></textarea></div></details>
           </div>
           <div class="sync-actions"><button class="btn" id="cloudGenerateRoom" type="button">生成共享房间码</button><button class="btn red" id="cloudConnect" type="button" disabled>连接并开始同步</button><button class="btn" id="cloudCopyInvite" type="button">复制同行邀请</button><button class="btn" id="cloudDisconnect" type="button">退出共享</button></div>
-          <div class="sync-alert" id="cloudMessage" aria-live="polite">请先使用 Firebase Authentication 中已创建、且 UID 已加入数据库白名单的邮箱账号登录。完整设置见 FIREBASE_SETUP.md。</div>
-          <p class="sync-help">邀请只包含共享房间码，不包含密码。订单号和消费记录会同步；护照、银行卡、二维码和行李照片不会上传。任何设备都必须先登录获准账号。</p>
-          <div class="privacy-scope"><strong>隐私边界：</strong>Firebase 账号和数据库规则只保护待办、消费、订单号等共享数据。当前 Cloudflare Workers 网址及 Public GitHub 仓库中的静态攻略正文仍可公开读取；如需整站仅限两人，请同时把仓库改为 Private，并按 PRIVATE_ACCESS.md 为自定义域名配置 Cloudflare Access。</div>
+          <div class="sync-alert" id="cloudMessage" aria-live="polite">请先使用 Firebase Authentication 中已创建、且 UID 已加入数据库白名单的邮箱账号登录。地点照片共享还需发布 Storage 规则；完整设置见 FIREBASE_SETUP.md。</div>
+          <p class="sync-help">邀请只包含共享房间码，不包含密码。行程参考链接与地点照片同步；护照、银行卡、票券二维码和行李照片不会上传。任何设备都必须先登录获准账号。</p>
+          <div class="privacy-scope"><strong>隐私边界：</strong>Firebase Realtime Database 与 Storage 规则保护白名单内账号的同步数据和共享照片；当前 Cloudflare Workers 网址及 Public GitHub 仓库中的静态攻略正文仍可公开读取。如需整站仅限两人，请同时把仓库改为 Private，并按 PRIVATE_ACCESS.md 为自定义域名配置 Cloudflare Access。</div>
         </details>
       </div>
     </section>
@@ -457,14 +486,14 @@
 
     <section id="language">
       <div class="section-head">
-        <div><span class="kicker">JAPANESE SEARCH & SHOW</span><h2>日文检索与出示助手</h2></div>
-        <p>输入中文、英文或日文筛选；点击“复制日文”用于地图检索，点击“大字展示”可直接给店员看。</p>
+        <div><span class="kicker">JAPANESE SEARCH & SHOW</span><h2>日语常用词 · 朗读与分享</h2></div>
+        <p>点击日文可朗读，也可复制、分享给同行人或大字展示给店员；支持中文、英文与日文搜索。</p>
       </div>
       <div class="assistant-layout">
         <div>
           <div class="phrase-tools no-print">
             <input id="phraseSearch" type="search" placeholder="搜索：酒店、车站、试衣、免税、胶卷……" aria-label="搜索日文词汇">
-            <select id="phraseCategory" class="btn" aria-label="筛选日文词汇分类"><option value="all">全部分类</option><option value="住宿">住宿</option><option value="交通">交通</option><option value="地点">地点</option><option value="购物">购物</option><option value="餐饮">餐饮</option><option value="摄影">摄影</option><option value="求助">求助</option></select>
+            <select id="phraseCategory" class="btn" aria-label="筛选日文词汇分类"><option value="all">全部分类</option><option value="住宿">住宿</option><option value="交通">交通</option><option value="地点">地点</option><option value="购物">购物</option><option value="餐饮">餐饮</option><option value="摄影">摄影</option><option value="求助">求助</option></select><button class="btn" type="button" id="phraseHighFrequency" aria-pressed="false">⚡ 高频句</button>
           </div>
           <div class="phrase-list" id="phraseList">
             <article class="phrase-card" data-category="住宿" data-search="目白酒店 JR East Hotel Mets Mejiro"><small>住宿 · HOTEL</small><h3>JR-EAST HOTEL METS 目白</h3><p class="jp" lang="ja">JR東日本ホテルメッツ 目白</p><p class="en">JR-East Hotel Mets Mejiro</p><div class="actions no-print"><button class="btn" data-copy="JR東日本ホテルメッツ 目白">复制日文</button><button class="btn" data-show="JR東日本ホテルメッツ 目白">大字展示</button></div></article>
@@ -498,6 +527,7 @@
             <article class="phrase-card" data-category="交通" data-search="宅急便 行李寄送 luggage forwarding hotel"><small>交通 · LUGGAGE</small><h3>把行李寄到下一家酒店</h3><p class="jp" lang="ja">次のホテルへ荷物を送りたいです。</p><p class="en">We would like to send our luggage to the next hotel.</p><div class="actions no-print"><button class="btn" data-copy="次のホテルへ荷物を送りたいです。">复制日文</button><button class="btn" data-show="次のホテルへ荷物を送りたいです。">大字展示</button></div></article>
             <article class="phrase-card" data-category="求助" data-search="出租车 taxi call"><small>求助 · TAXI</small><h3>请帮忙叫出租车</h3><p class="jp" lang="ja">タクシーを呼んでください。</p><p class="en">Please call a taxi.</p><div class="actions no-print"><button class="btn" data-copy="タクシーを呼んでください。">复制日文</button><button class="btn" data-show="タクシーを呼んでください。">大字展示</button></div></article>
             <article class="phrase-card" data-category="求助" data-search="医院 身体不舒服 hospital sick"><small>求助 · MEDICAL</small><h3>身体不舒服，需要帮助</h3><p class="jp" lang="ja">具合が悪いです。助けてください。</p><p class="en">I feel unwell. Please help.</p><div class="actions no-print"><button class="btn" data-copy="具合が悪いです。助けてください。">复制日文</button><button class="btn" data-show="具合が悪いです。助けてください。">大字展示</button></div></article>
+            <article class="phrase-card high-frequency-card" data-category="求助" data-high-frequency="true" data-search="求助 すみません。 不好意思 / 请问一下 sumimasen"><small>高频句 · QUICK PHRASE</small><h3>不好意思 / 请问一下</h3><p class="jp" lang="ja">すみません。</p><p class="en">sumimasen</p><div class="actions no-print"><button class="btn" type="button" data-copy="すみません。">复制日文</button><button class="btn" type="button" data-show="すみません。">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="购物" data-high-frequency="true" data-search="购物 これはいくらですか？ 这个多少钱？ kore wa ikura desu ka"><small>高频句 · QUICK PHRASE</small><h3>这个多少钱？</h3><p class="jp" lang="ja">これはいくらですか？</p><p class="en">kore wa ikura desu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="これはいくらですか？">复制日文</button><button class="btn" type="button" data-show="これはいくらですか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="购物" data-high-frequency="true" data-search="购物 免税できますか？ 可以办理免税吗？ menzei dekimasu ka"><small>高频句 · QUICK PHRASE</small><h3>可以办理免税吗？</h3><p class="jp" lang="ja">免税できますか？</p><p class="en">menzei dekimasu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="免税できますか？">复制日文</button><button class="btn" type="button" data-show="免税できますか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="购物" data-high-frequency="true" data-search="购物 試着してもいいですか？ 可以试穿吗？ shichaku shite mo ii desu ka"><small>高频句 · QUICK PHRASE</small><h3>可以试穿吗？</h3><p class="jp" lang="ja">試着してもいいですか？</p><p class="en">shichaku shite mo ii desu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="試着してもいいですか？">复制日文</button><button class="btn" type="button" data-show="試着してもいいですか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="购物" data-high-frequency="true" data-search="购物 これをください。 请给我这个。 kore o kudasai"><small>高频句 · QUICK PHRASE</small><h3>请给我这个。</h3><p class="jp" lang="ja">これをください。</p><p class="en">kore o kudasai</p><div class="actions no-print"><button class="btn" type="button" data-copy="これをください。">复制日文</button><button class="btn" type="button" data-show="これをください。">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="餐饮" data-high-frequency="true" data-search="餐饮 おすすめはどれですか？ 请问推荐哪一个？ osusume wa dore desu ka"><small>高频句 · QUICK PHRASE</small><h3>请问推荐哪一个？</h3><p class="jp" lang="ja">おすすめはどれですか？</p><p class="en">osusume wa dore desu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="おすすめはどれですか？">复制日文</button><button class="btn" type="button" data-show="おすすめはどれですか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="住宿" data-high-frequency="true" data-search="住宿 予約しています。 我有预约。 yoyaku shite imasu"><small>高频句 · QUICK PHRASE</small><h3>我有预约。</h3><p class="jp" lang="ja">予約しています。</p><p class="en">yoyaku shite imasu</p><div class="actions no-print"><button class="btn" type="button" data-copy="予約しています。">复制日文</button><button class="btn" type="button" data-show="予約しています。">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="摄影" data-high-frequency="true" data-search="摄影 写真を撮ってもいいですか？ 可以拍照吗？ shashin o totte mo ii desu ka"><small>高频句 · QUICK PHRASE</small><h3>可以拍照吗？</h3><p class="jp" lang="ja">写真を撮ってもいいですか？</p><p class="en">shashin o totte mo ii desu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="写真を撮ってもいいですか？">复制日文</button><button class="btn" type="button" data-show="写真を撮ってもいいですか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="交通" data-high-frequency="true" data-search="交通 駅はどこですか？ 车站在哪里？ eki wa doko desu ka"><small>高频句 · QUICK PHRASE</small><h3>车站在哪里？</h3><p class="jp" lang="ja">駅はどこですか？</p><p class="en">eki wa doko desu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="駅はどこですか？">复制日文</button><button class="btn" type="button" data-show="駅はどこですか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="住宿" data-high-frequency="true" data-search="住宿 荷物をホテルへ送れますか？ 可以把行李寄到酒店吗？ nimotsu o hoteru e okuremasu ka"><small>高频句 · QUICK PHRASE</small><h3>可以把行李寄到酒店吗？</h3><p class="jp" lang="ja">荷物をホテルへ送れますか？</p><p class="en">nimotsu o hoteru e okuremasu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="荷物をホテルへ送れますか？">复制日文</button><button class="btn" type="button" data-show="荷物をホテルへ送れますか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="购物" data-high-frequency="true" data-search="购物 クレジットカードは使えますか？ 可以刷信用卡吗？ kurejitto kaado wa tsukaemasu ka"><small>高频句 · QUICK PHRASE</small><h3>可以刷信用卡吗？</h3><p class="jp" lang="ja">クレジットカードは使えますか？</p><p class="en">kurejitto kaado wa tsukaemasu ka</p><div class="actions no-print"><button class="btn" type="button" data-copy="クレジットカードは使えますか？">复制日文</button><button class="btn" type="button" data-show="クレジットカードは使えますか？">大字展示</button></div></article><article class="phrase-card high-frequency-card" data-category="求助" data-high-frequency="true" data-search="求助 ゆっくり話してください。 请说慢一点。 yukkuri hanashite kudasai"><small>高频句 · QUICK PHRASE</small><h3>请说慢一点。</h3><p class="jp" lang="ja">ゆっくり話してください。</p><p class="en">yukkuri hanashite kudasai</p><div class="actions no-print"><button class="btn" type="button" data-copy="ゆっくり話してください。">复制日文</button><button class="btn" type="button" data-show="ゆっくり話してください。">大字展示</button></div></article>
           </div>
         </div>
         <aside>
@@ -720,6 +750,28 @@
             <article class="food"><h4>Mr. Waffle</h4><p>车站内现烤华夫饼，适合当作回酒店路上的小份甜点。</p></article>
             <article class="food"><h4>NEWoMan Food Hall</h4><p>若入境太晚，直接在此吃简餐与甜点，是最不容易失误的兜底。</p></article>
           </div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day1" data-xhs-query="新宿 NEWoMan 伊势丹 ODETTE ALLU 新宿 购物">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">新宿到店购物、NEWoMan、伊势丹女鞋、ALLU 新宿</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E6%96%B0%E5%AE%BF%20NEWoMan%20%E4%BC%8A%E5%8A%BF%E4%B8%B9%20ODETTE%20ALLU%20%E6%96%B0%E5%AE%BF%20%E8%B4%AD%E7%89%A9">小红书搜当天路线 ↗</a></div>
+            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=NEWoMan%20%E6%96%B0%E5%AE%BF"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>NEWoMan 新宿</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BC%8A%E5%8A%BF%E4%B8%B9%E6%96%B0%E5%AE%BF%E6%9C%AC%E5%BA%97"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>伊势丹新宿本店</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ALLU%20%E6%96%B0%E5%AE%BF"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>ALLU 新宿</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%9B%9E%E5%BF%86%E6%A8%AA%E4%B8%81"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>回忆横丁</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="NEWoMan 新宿">NEWoMan 新宿</option><option value="伊势丹新宿本店">伊势丹新宿本店</option><option value="ALLU 新宿">ALLU 新宿</option><option value="回忆横丁">回忆横丁</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -828,6 +880,28 @@
             <article class="food"><h4>Bépocah</h4><p><b>类别：</b>秘鲁料理｜<b>代表：</b>ceviche、烤肉与 pisco。小众、时髦，适合想跳出日餐的一晚。</p><div class="meta"><span>建议预约</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Bepocah+Tokyo">地图 ↗</a></article>
             <article class="food"><h4>表参道 Hills 餐厅层</h4><p><b>类别：</b>机动方案｜购物拖延时就近选寿司、和食或洋食，不再跨区。</p><div class="meta"><span>无需折返</span><span>雨天友好</span></div></article>
           </div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day2" data-xhs-query="原宿 表参道 南青山 Human Made Stussy H BEAUTY&amp;YOUTH 金子眼镜">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">原宿表参道南青山潮流店、银饰、香氛与眼镜</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%8E%9F%E5%AE%BF%20%E8%A1%A8%E5%8F%82%E9%81%93%20%E5%8D%97%E9%9D%92%E5%B1%B1%20Human%20Made%20Stussy%20H%20BEAUTY%26YOUTH%20%E9%87%91%E5%AD%90%E7%9C%BC%E9%95%9C">小红书搜当天路线 ↗</a></div>
+            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyu%20Plaza%20Omotesando%20Harajuku%20(53331041961).jpg?width=1000" loading="lazy" alt="东急广场表参道原宿建筑外观" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>表参道 · 东急广场原宿</strong><small>图片：Dick Thomas Johnson · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer">Wikimedia Commons 来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=MY%20ONLY%20FRAGRANCE%20%E5%8E%9F%E5%AE%BF"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>MY ONLY FRAGRANCE 原宿</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=HUMAN%20MADE%20TOKYO"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>HUMAN MADE TOKYO</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=H%20BEAUTY%26YOUTH%20%E9%9D%92%E5%B1%B1"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>H BEAUTY&amp;YOUTH 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E5%AD%90%E7%9C%BC%E9%95%9C%20%E9%9D%92%E5%B1%B1"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>金子眼镜 青山</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="MY ONLY FRAGRANCE 原宿">MY ONLY FRAGRANCE 原宿</option><option value="HUMAN MADE TOKYO">HUMAN MADE TOKYO</option><option value="H BEAUTY&amp;YOUTH 青山">H BEAUTY&amp;YOUTH 青山</option><option value="金子眼镜 青山">金子眼镜 青山</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -894,6 +968,28 @@
             <article class="food"><h4>便利店轻食 + 酒店咖啡</h4><p><b>类别：</b>低体力兜底｜第二天转箱根，完全可以提早休息。</p></article>
           </div>
           <div class="note"><strong>雨天交换策略：</strong>若 10/7 出现持续大雨，可把“镰仓”与 10/10 的“代官山—涩谷”互换；代价是周六镰仓更拥挤。10/11 银座不建议换，因为周日 12:00—17:00 有步行者天国。</div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day3" data-xhs-query="镰仓 长谷寺 江之电 七里滨 海边 咖啡">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">镰仓长谷寺、江之电、七里滨海岸与咖啡</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E9%95%B0%E4%BB%93%20%E9%95%BF%E8%B0%B7%E5%AF%BA%20%E6%B1%9F%E4%B9%8B%E7%94%B5%20%E4%B8%83%E9%87%8C%E6%BB%A8%20%E6%B5%B7%E8%BE%B9%20%E5%92%96%E5%95%A1">小红书搜当天路线 ↗</a></div>
+            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:Enoden_on-street_running_in_Kamakura.jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Enoden%20on-street%20running%20in%20Kamakura.jpg?width=1000" loading="lazy" alt="江之电列车在镰仓街道区间行驶" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>镰仓 · 江之电街道运行</strong><small>图片：Kirin7739 · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Enoden_on-street_running_in_Kamakura.jpg" target="_blank" rel="noreferrer">来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%B9%A4%E5%86%88%E5%85%AB%E5%B9%A1%E5%AE%AB"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>鹤冈八幡宫</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%95%BF%E8%B0%B7%E5%AF%BA%20%E9%95%B0%E4%BB%93"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>长谷寺 镰仓</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B1%9F%E4%B9%8B%E7%94%B5%20%E4%B8%83%E9%87%8C%E6%BB%A8"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>江之电 七里滨</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Pacific%20Drive-In%20%E4%B8%83%E9%87%8C%E6%BB%A8"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Pacific Drive-In 七里滨</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="鹤冈八幡宫">鹤冈八幡宫</option><option value="长谷寺 镰仓">长谷寺 镰仓</option><option value="江之电 七里滨">江之电 七里滨</option><option value="Pacific Drive-In 七里滨">Pacific Drive-In 七里滨</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -958,6 +1054,28 @@
             <article class="food"><h4>便利店补给</h4><p>仙石原夜间选择有限。下午先买水、饭团和甜点作为极端天气 / 满座兜底，但不建议把它当计划内正餐。</p><div class="meta"><span>最后保障</span></div></article>
           </div>
           <div class="note"><strong>班次提醒：</strong>箱根登山巴士已公告 2026 年 10 月 1 日改点。网站中的路线可保留，但不要在现在写死某一班；10 月 7 日晚按官方时刻表重新截屏。</div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day4" data-xhs-query="箱根 仙石原 BLISSTIA 箱根 芒草">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">箱根仙石原秋景与 BLISSTIA 温泉酒店</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E7%AE%B1%E6%A0%B9%20%E4%BB%99%E7%9F%B3%E5%8E%9F%20BLISSTIA%20%E7%AE%B1%E6%A0%B9%20%E8%8A%92%E8%8D%89">小红书搜当天路线 ↗</a></div>
+            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=BLISSTIA%20%E7%AE%B1%E6%A0%B9%E4%BB%99%E7%9F%B3%E5%8E%9F"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>BLISSTIA 箱根仙石原</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AE%B1%E6%A0%B9%E7%8E%BB%E7%92%83%E4%B9%8B%E6%A3%AE%E7%BE%8E%E6%9C%AF%E9%A6%86"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>箱根玻璃之森美术馆</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BB%99%E7%9F%B3%E5%8E%9F%E3%81%99%E3%81%99%E3%81%8D%E8%8D%89%E5%8E%9F"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>仙石原すすき草原</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AE%B1%E6%A0%B9%E7%99%BB%E5%B1%B1%E5%B7%B4%E5%A3%AB"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>箱根登山巴士</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="BLISSTIA 箱根仙石原">BLISSTIA 箱根仙石原</option><option value="箱根玻璃之森美术馆">箱根玻璃之森美术馆</option><option value="仙石原すすき草原">仙石原すすき草原</option><option value="箱根登山巴士">箱根登山巴士</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -1027,6 +1145,28 @@
             <article class="food"><h4>豚組食堂 BUTAGUMI DINING</h4><p><b>类别：</b>精品炸猪排｜<b>代表：</b>按产地选择铭柄豚、里脊或菲力。位于 Roppongi Hills，夜拍后不必跨区。</p><div class="meta"><span>同楼最省路</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Butagumi+Dining+Roppongi">地图 / 实时评分 ↗</a></article>
           </div>
           <div class="note"><strong>当天优惠：</strong>官方公布 2026/10/1—11/1 为 SPECIAL MONTH，但不是全场统一折扣。奥莱价、店内活动、App 优惠券和免税能否叠加，均以各店结账前确认为准。</div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day5" data-xhs-query="御殿场 Premium Outlets 涩谷 六本木 榉坂">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">御殿场奥莱购物与涩谷、六本木夜间</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets%20%E6%B6%A9%E8%B0%B7%20%E5%85%AD%E6%9C%AC%E6%9C%A8%20%E6%A6%89%E5%9D%82">小红书搜当天路线 ↗</a></div>
+            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>御殿场 Premium Outlets</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Gotemba%20Outlet%20%E5%BA%97%E9%93%BA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Gotemba Outlet 店铺</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B6%A9%E8%B0%B7%20Mark%20City"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>涩谷 Mark City</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%85%AD%E6%9C%AC%E6%9C%A8%E6%A6%89%E5%9D%82"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>六本木榉坂</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="御殿场 Premium Outlets">御殿场 Premium Outlets</option><option value="Gotemba Outlet 店铺">Gotemba Outlet 店铺</option><option value="涩谷 Mark City">涩谷 Mark City</option><option value="六本木榉坂">六本木榉坂</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -1114,6 +1254,28 @@
             <article class="food"><h4>Kaikaya by the Sea</h4><p><b>类别：</b>创意海鲜居酒屋｜<b>代表：</b>金枪鱼肋排、刺身与烤鱼。只有选择涩谷补购线时安排。</p><div class="meta"><span>建议预约</span><span>涩谷</span></div></article>
             <article class="food"><h4>魚べい 涩谷道玄坂</h4><p><b>类别：</b>快速回转寿司｜晚间补购拖延后的实用兜底，现点现送、预算友好。</p><div class="meta"><span>可 App 取号</span><span>¥</span></div></article>
           </div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day6" data-xhs-query="祐天寺 Larry Smith 中目黑 代官山 Coverchord T-SITE">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">祐天寺 LARRY SMITH、中目黑与代官山买手店</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E7%A5%90%E5%A4%A9%E5%AF%BA%20Larry%20Smith%20%E4%B8%AD%E7%9B%AE%E9%BB%91%20%E4%BB%A3%E5%AE%98%E5%B1%B1%20Coverchord%20T-SITE">小红书搜当天路线 ↗</a></div>
+            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:Daikanyama_T-Site_(52501800649).jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Daikanyama%20T-Site%20(52501800649).jpg?width=1000" loading="lazy" alt="代官山 T-SITE 建筑外观" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>代官山 · T-SITE</strong><small>图片：Dick Thomas Johnson · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Daikanyama_T-Site_(52501800649).jpg" target="_blank" rel="noreferrer">来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=LARRY%20SMITH%20%E7%A5%90%E5%A4%A9%E5%AF%BA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>LARRY SMITH 祐天寺</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=COVERCHORD%20%E4%B8%AD%E7%9B%AE%E9%BB%91"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>COVERCHORD 中目黑</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%AD%E7%9B%AE%E9%BB%91%20KINTO%20STORE"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>中目黑 KINTO STORE</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BB%A3%E5%AE%98%E5%B1%B1%20T-SITE"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>代官山 T-SITE</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="LARRY SMITH 祐天寺">LARRY SMITH 祐天寺</option><option value="COVERCHORD 中目黑">COVERCHORD 中目黑</option><option value="中目黑 KINTO STORE">中目黑 KINTO STORE</option><option value="代官山 T-SITE">代官山 T-SITE</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -1214,6 +1376,28 @@
             <article class="food"><h4>しゃぶせん 银座 <span class="jp-name" lang="ja">しゃぶせん 銀座店</span></h4><p><b>类别：</b>个人锅涮涮锅｜<b>代表：</b>黑毛和牛 / 猪肉套餐。节奏可控，购物后很实用；目前不接受预约，现场排队。</p><div class="meta"><span>现场入店</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Shabusen+Ginza">地图 / 实时评分 ↗</a></article>
           </div>
           <div class="note"><strong>免税规则：</strong>2026 年 10 月仍是购买时直接免税 / 商场当天办理；新离境退款制从 2026/11/1 才开始。一般商品需同一人、同店、同日税前满 ¥5,000，付款前出示护照原件。完整操作见本页“折扣、免税与机场免税”。</div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day7" data-xhs-query="银座 Himie 松屋银座 Buly GINZA SIX Dover Street Market Ginza">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">银座 Himie、Buly、GINZA SIX 与 DSMG 购物</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E9%93%B6%E5%BA%A7%20Himie%20%E6%9D%BE%E5%B1%8B%E9%93%B6%E5%BA%A7%20Buly%20GINZA%20SIX%20Dover%20Street%20Market%20Ginza">小红书搜当天路线 ↗</a></div>
+            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:GINZA_SIX_Atrium_View_201912.jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/GINZA%20SIX%20Atrium%20View%20201912.jpg?width=1000" loading="lazy" alt="GINZA SIX 中庭的空间与室内装置" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>银座 · GINZA SIX 中庭</strong><small>图片：Wpcpey · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:GINZA_SIX_Atrium_View_201912.jpg" target="_blank" rel="noreferrer">来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%BE%E5%B1%8B%E9%93%B6%E5%BA%A7%20Himie"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>松屋银座 Himie</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%BE%E5%B1%8B%E9%93%B6%E5%BA%A7%20Buly"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>松屋银座 Buly</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=GINZA%20SIX"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>GINZA SIX</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Dover%20Street%20Market%20Ginza"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Dover Street Market Ginza</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="松屋银座 Himie">松屋银座 Himie</option><option value="松屋银座 Buly">松屋银座 Buly</option><option value="GINZA SIX">GINZA SIX</option><option value="Dover Street Market Ginza">Dover Street Market Ginza</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
 
@@ -1278,6 +1462,28 @@
             <article class="shop"><h4>Lacoste T1 Central 4F</h4><p>位于安检前、约 08:00—20:00，是普通零售门店，不默认等于保税免税店。市区和御殿场都没买到时再现场询问是否可办免税。</p><div class="meta"><span>安检前</span><span>仅作备选</span></div><a class="link" href="https://www.narita-airport.jp/en/shop/shop-search/t1c4f_lacoste/">机场官方 ↗</a></article>
           </div>
           <div class="note"><strong>不推荐：</strong>酒店直达成田的机场巴士若约 11:35 出发、13:35 才到，对 15:20 国际航班只剩不足两小时，遇三连休堵车风险更高。本行程以铁路为主案。</div>
+        
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day8" data-xhs-query="东京 喜来登都酒店 目黑 Skyliner 日暮里 成田机场">
+        <details class="day-reference">
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">返程目黑、日暮里与成田机场</span><span class="reference-toggle">＋</span></summary>
+          <div class="day-reference-body">
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%20%E5%96%9C%E6%9D%A5%E7%99%BB%E9%83%BD%E9%85%92%E5%BA%97%20%E7%9B%AE%E9%BB%91%20Skyliner%20%E6%97%A5%E6%9A%AE%E9%87%8C%20%E6%88%90%E7%94%B0%E6%9C%BA%E5%9C%BA">小红书搜当天路线 ↗</a></div>
+            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%96%9C%E6%9D%A5%E7%99%BB%E9%83%BD%E9%85%92%E5%BA%97"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>喜来登都酒店</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9B%AE%E9%BB%91%E7%AB%99"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>目黑站</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%97%A5%E6%9A%AE%E9%87%8C%E7%AB%99%20Skyliner"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>日暮里站 Skyliner</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%90%E7%94%B0%E6%9C%BA%E5%9C%BA%20T1"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>成田机场 T1</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="day-resource-form no-print">
+              <div class="day-resource-fields">
+                <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="喜来登都酒店">喜来登都酒店</option><option value="目黑站">目黑站</option><option value="日暮里站 Skyliner">日暮里站 Skyliner</option><option value="成田机场 T1">成田机场 T1</option></select></label>
+                <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
+                <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
+                <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
+              </div>
+              <div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><label class="btn photo-upload-button">上传地点照片<input type="file" data-resource-photo accept="image/jpeg,image/png,image/webp" multiple></label><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div>
+              <p class="resource-privacy">照片支持 JPG / PNG / WebP；上传前会缩小并移除 EXIF。请勿上传护照、票券二维码或含个人信息的照片。</p>
+            </div>
+            <div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div>
+          </div>
+        </details>
+      </div>
         </div>
       </details>
     </section>
@@ -2271,15 +2477,21 @@
       const returnAt = new Date('2026-10-12T15:20:00+09:00');
       const updateCountdown = () => {
         const now = new Date();
-        let target = outboundAt;
+        let seconds = 0;
         let title = '距离 CA929 起飞';
         let statusText = '2026.10.05 10:00 · 上海时间';
-        if (now >= outboundAt && now < returnAt) {
-          target = returnAt; title = '旅程进行中 · 距离 CA930'; statusText = '2026.10.12 15:20 · 东京时间';
-        } else if (now >= returnAt) {
-          target = now; title = '旅程已完成'; statusText = '东京 8 天 7 晚 · また東京で会いましょう';
+        if (now < outboundAt) {
+          seconds = Math.floor((outboundAt - now) / 1000);
+        } else if (now < returnAt) {
+          seconds = Math.floor((now - outboundAt) / 1000);
+          title = '东京旅行已开始';
+          statusText = '已从 CA929 起飞 · 计时至 CA930 返程';
+        } else {
+          seconds = Math.floor((returnAt - outboundAt) / 1000);
+          title = '旅程已完成';
+          statusText = '东京 8 天 7 晚 · また東京で会いましょう';
         }
-        let seconds = Math.max(0, Math.floor((target - now) / 1000));
+        seconds = Math.max(0,seconds);
         const days = Math.floor(seconds / 86400); seconds %= 86400;
         const hours = Math.floor(seconds / 3600); seconds %= 3600;
         const minutes = Math.floor(seconds / 60); seconds %= 60;
@@ -2319,17 +2531,63 @@
       const phraseCards = [...document.querySelectorAll('.phrase-card')];
       const phraseSearch = document.getElementById('phraseSearch');
       const phraseCategory = document.getElementById('phraseCategory');
+      const phraseHighFrequency = document.getElementById('phraseHighFrequency');
+      let highFrequencyOnly = false;
       const filterPhrases = () => {
         const query = (phraseSearch?.value || '').trim().toLocaleLowerCase();
         const category = phraseCategory?.value || 'all';
         phraseCards.forEach(card => {
           const haystack = `${card.dataset.search || ''} ${card.textContent}`.toLocaleLowerCase();
-          card.hidden = (category !== 'all' && card.dataset.category !== category) || (query && !haystack.includes(query));
+          card.hidden = (category !== 'all' && card.dataset.category !== category) || (query && !haystack.includes(query)) || (highFrequencyOnly && card.dataset.highFrequency !== 'true');
         });
       };
       phraseSearch?.addEventListener('input', filterPhrases);
       phraseCategory?.addEventListener('change', filterPhrases);
+      phraseHighFrequency?.addEventListener('click',() => {
+        highFrequencyOnly = !highFrequencyOnly;
+        phraseHighFrequency.setAttribute('aria-pressed',String(highFrequencyOnly));
+        phraseHighFrequency.classList.toggle('red',highFrequencyOnly);
+        phraseHighFrequency.textContent = highFrequencyOnly ? '显示全部词句' : '⚡ 高频句';
+        filterPhrases();
+      });
+      const speakJapanese = text => {
+        if (!('speechSynthesis' in window) || !text) {
+          const hint = document.getElementById('phraseDisplayHint');
+          if (hint) hint.textContent = '此浏览器暂不支持日语朗读；可使用复制日文。';
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ja-JP'; utterance.rate = 0.88; utterance.pitch = 1;
+        const voice = window.speechSynthesis.getVoices().find(item => item.lang?.toLowerCase().startsWith('ja'));
+        if (voice) utterance.voice = voice;
+        window.speechSynthesis.speak(utterance);
+      };
+      phraseCards.forEach(card => {
+        const actions = card.querySelector('.actions');
+        const japaneseNode = card.querySelector('.jp');
+        const japanese = japaneseNode?.textContent.trim();
+        if (japaneseNode) { japaneseNode.tabIndex = 0; japaneseNode.setAttribute('role','button'); japaneseNode.title = '点击朗读日语'; }
+        if (!actions || !japanese || actions.querySelector('[data-speak]')) return;
+        const speak = document.createElement('button'); speak.type = 'button'; speak.className = 'btn'; speak.dataset.speak = japanese; speak.textContent = '🔊 朗读';
+        const share = document.createElement('button'); share.type = 'button'; share.className = 'btn'; share.dataset.sharePhrase = japanese; share.textContent = '分享';
+        actions.append(speak,share);
+      });
       document.getElementById('phraseList')?.addEventListener('click', async event => {
+        const speakButton = event.target.closest('[data-speak]');
+        const shareButton = event.target.closest('[data-share-phrase]');
+        const japaneseText = event.target.closest('.phrase-card .jp[lang="ja"]');
+        if (speakButton) speakJapanese(speakButton.dataset.speak);
+        else if (japaneseText) speakJapanese(japaneseText.textContent.trim());
+        if (shareButton) {
+          const card = shareButton.closest('.phrase-card');
+          const japanese = shareButton.dataset.sharePhrase;
+          const chinese = card?.querySelector('h3')?.textContent.trim() || '';
+          try {
+            if (navigator.share) await navigator.share({title:'旅行日语',text:`${japanese}\n${chinese}`});
+            else { await copyPlainText(`${japanese} — ${chinese}`); shareButton.textContent = '已复制'; setTimeout(() => shareButton.textContent = '分享',1200); }
+          } catch (_) {}
+        }
         const copyButton = event.target.closest('[data-copy]');
         const showButton = event.target.closest('[data-show]');
         if (copyButton) {
@@ -2344,6 +2602,10 @@
           if (hint) hint.textContent = '点击本卡可复制这句日文。';
           document.getElementById('phraseDisplay')?.scrollIntoView({behavior:'smooth',block:'center'});
         }
+      });
+      document.getElementById('phraseList')?.addEventListener('keydown',event => {
+        const japaneseText = event.target.closest('.phrase-card .jp[lang="ja"]');
+        if (japaneseText && ['Enter',' '].includes(event.key)) { event.preventDefault(); speakJapanese(japaneseText.textContent.trim()); }
       });
       document.getElementById('phraseDisplay')?.addEventListener('click', async () => {
         const text = document.getElementById('phraseDisplayText')?.textContent || '';
@@ -3294,6 +3556,7 @@
       const cloudClientKey = 'tokyo-2026-cloud-client-v1';
       const cloudMetaKey = 'tokyo-2026-cloud-meta-v1';
       const cloudSnapshotKey = 'tokyo-2026-pre-cloud-snapshot-v1';
+      const dayResourcesKey = 'tokyo-2026-day-resources-v1';
       const defaultFirebaseConfig = {
         apiKey:'AIzaSyD8ins9kEnqmD9bsZTa6zkL5vz-dOJuEo0',
         authDomain:'tokyo-2026-f2e23.firebaseapp.com',
@@ -3304,9 +3567,10 @@
         appId:'1:771805286914:web:f7ae36ada66d7b38f68d1b'
       };
       privateDataKeys.add(cloudSnapshotKey);
-      const cloudSyncedKeys = [storageKey,customTodoKey,packingKey,flightInfoKey,memoKey,ledgerRecordsKey,ledgerSettingsKey,ticketRecordsKey,luggageRecordsKey,wishlistRecordsKey,currencyPrefsKey];
+      const cloudSyncedKeys = [storageKey,customTodoKey,packingKey,flightInfoKey,memoKey,ledgerRecordsKey,ledgerSettingsKey,ticketRecordsKey,luggageRecordsKey,wishlistRecordsKey,currencyPrefsKey,dayResourcesKey];
       const imageRecordKeys = new Set([ticketRecordsKey,luggageRecordsKey]);
       let cloudApi = null;
+      let firebaseStorageApi = null;
       let cloudActive = false;
       let cloudApplying = false;
       let cloudPushTimer = 0;
@@ -3433,6 +3697,12 @@
         ]);
         cloudApi = {...app,...auth,...database}; return cloudApi;
       };
+      const loadFirebaseStorageApi = async () => {
+        if (firebaseStorageApi) return firebaseStorageApi;
+        const version = '12.19.0';
+        firebaseStorageApi = await import(`https://www.gstatic.com/firebasejs/${version}/firebase-storage.js`);
+        return firebaseStorageApi;
+      };
       const initializeFirebaseContext = async () => {
         const firebaseConfig = validateFirebaseConfig(normalizeFirebaseConfig($('firebaseConfigInput').value));
         if (firebaseContext?.firebaseConfig?.projectId === firebaseConfig.projectId) return firebaseContext;
@@ -3527,7 +3797,8 @@
               document.activeElement.addEventListener('blur',() => { if (cloudPendingRemote) { const pending = cloudPendingRemote; cloudPendingRemote = null; applyCloudPayload(pending); } },{once:true});
             } else applyCloudPayload(state);
           },error => { setCloudStatus('同步中断',false); setCloudMessage(`实时监听失败：${error.message}`,'bad'); }));
-          setCloudMessage('已连接。此后核心文字数据会自动同步；图片仍留在本机。','good');
+          document.dispatchEvent(new Event('tokyo-cloud-ready'));
+          setCloudMessage('已连接。行程链接与参考照片会共享；票券二维码、行李照片仍留在本机。','good');
         } catch (error) {
           cloudActive = false; setCloudStatus('连接失败',false); $('cloudSetup').open = true;
           setCloudMessage(error.message || '连接失败，请检查 Firebase 配置。','bad');
@@ -3592,6 +3863,142 @@
         }
       };
       initializeCloudUi();
+
+
+      const safeResourceUrl = value => {
+        try { const url = new URL(String(value || '').trim()); return ['https:','http:'].includes(url.protocol) ? url.href : ''; } catch (_) { return ''; }
+      };
+      const escapeResourceHtml = value => String(value ?? '').replace(/[&<>"']/g,char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+      const readDayResources = () => {
+        try { const value = JSON.parse(localStorage.getItem(dayResourcesKey) || '[]'); return Array.isArray(value) ? value.filter(item => item && item.id && item.dayId) : []; }
+        catch (_) { return []; }
+      };
+      const writeDayResources = value => {
+        localStorage.setItem(dayResourcesKey,JSON.stringify(value));
+        document.dispatchEvent(new Event('tokyo-data-changed'));
+      };
+      const sharedPhotoUrls = new Map();
+      const renderDayResources = () => {
+        document.querySelectorAll('[data-day-resource-kit]').forEach(kit => {
+          const dayId = kit.dataset.dayId;
+          const list = kit.querySelector('[data-resource-list]');
+          if (!list) return;
+          const items = readDayResources().filter(item => item.dayId === dayId).sort((a,b) => Number(a.createdAt || 0) - Number(b.createdAt || 0));
+          if (!items.length) { list.innerHTML = '<p class="small">暂未收藏链接或地点照片。</p>'; return; }
+          list.innerHTML = items.map(item => {
+            const url = safeResourceUrl(item.url);
+            const photo = item.storagePath ? `<div class="shared-resource-photo"><span data-photo-placeholder>连接获准账号后加载照片</span><img data-storage-path="${escapeResourceHtml(item.storagePath)}" alt="${escapeResourceHtml(item.title || item.place || '东京行程照片')}" loading="lazy" hidden></div>` : '<div class="shared-resource-photo">🔖<br>参考链接</div>';
+            const openLink = url ? `<a class="btn" href="${escapeResourceHtml(url)}" target="_blank" rel="noopener noreferrer">打开参考 ↗</a>` : '';
+            return `<article class="shared-resource" data-resource-id="${escapeResourceHtml(item.id)}">${photo}<div class="shared-resource-copy"><small>${escapeResourceHtml(item.type || (item.storagePath ? '地点照片' : '行程收藏'))} · ${escapeResourceHtml(item.place || dayId.toUpperCase())}</small><h5>${escapeResourceHtml(item.title || item.place || '旅行参考')}</h5>${item.note ? `<p>${escapeResourceHtml(item.note)}</p>` : ''}<div class="actions no-print">${openLink}<button class="btn" type="button" data-remove-resource="${escapeResourceHtml(item.id)}">移除</button></div></div></article>`;
+          }).join('');
+          list.querySelectorAll('img[data-storage-path]').forEach(img => loadSharedPhoto(img,dayId));
+        });
+      };
+      const loadSharedPhoto = async (img,dayId) => {
+        const path = img.dataset.storagePath;
+        if (!path || !cloudActive || !cloudSession || !path.startsWith(`trips/${cloudSession.hash}/itinerary/${dayId}/`)) return;
+        const cachedUrl = sharedPhotoUrls.get(path);
+        if (cachedUrl) { img.src = cachedUrl; img.hidden = false; const holder = img.parentElement?.querySelector('[data-photo-placeholder]'); if (holder) holder.hidden = true; return; }
+        try {
+          const context = await initializeFirebaseContext();
+          await ensureAllowlisted(context);
+          const storageApi = await loadFirebaseStorageApi();
+          const storage = storageApi.getStorage(context.firebaseApp);
+          const bytes = await storageApi.getBytes(storageApi.ref(storage,path),5 * 1024 * 1024);
+          const objectUrl = URL.createObjectURL(new Blob([bytes],{type:'image/jpeg'}));
+          sharedPhotoUrls.set(path,objectUrl); img.src = objectUrl; img.hidden = false;
+          const holder = img.parentElement?.querySelector('[data-photo-placeholder]'); if (holder) holder.hidden = true;
+        } catch (error) {
+          const holder = img.parentElement?.querySelector('[data-photo-placeholder]');
+          if (holder) holder.textContent = cloudActive ? '照片未能加载；检查 Storage 规则' : '连接共享旅行后查看照片';
+          console.warn('Shared itinerary photo could not be loaded:',error);
+        }
+      };
+      const compressTripPhoto = file => new Promise((resolve,reject) => {
+        if (Number(file?.size) > 20 * 1024 * 1024) return reject(new Error('原图超过 20 MB，请先选择较小的照片。'));
+        if (!file?.type || !/^image\/(jpeg|png|webp)$/.test(file.type)) return reject(new Error('请选择 JPG、PNG 或 WebP 图片。'));
+        const sourceUrl = URL.createObjectURL(file);
+        const image = new Image();
+        image.onload = () => {
+          const maxSide = 1800, scale = Math.min(1,maxSide / Math.max(image.naturalWidth,image.naturalHeight));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.max(1,Math.round(image.naturalWidth * scale)); canvas.height = Math.max(1,Math.round(image.naturalHeight * scale));
+          const context = canvas.getContext('2d');
+          if (!context) { URL.revokeObjectURL(sourceUrl); return reject(new Error('图片处理失败，请换一张 JPG / PNG 图片。')); }
+          context.drawImage(image,0,0,canvas.width,canvas.height);
+          canvas.toBlob(blob => {
+            URL.revokeObjectURL(sourceUrl);
+            if (!blob) return reject(new Error('图片压缩失败，请换一张 JPG / PNG 图片。'));
+            resolve(new File([blob],`tokyo-${Date.now()}.jpg`,{type:'image/jpeg'}));
+          },'image/jpeg',0.84);
+        };
+        image.onerror = () => { URL.revokeObjectURL(sourceUrl); reject(new Error('浏览器无法读取此图片；请先转为 JPG / PNG / WebP。')); };
+        image.src = sourceUrl;
+      });
+      const setResourceStatus = (kit,message,bad = false) => {
+        const status = kit.querySelector('[data-resource-status]');
+        if (status) { status.textContent = message; status.classList.toggle('bad',bad); }
+      };
+      const uploadDayPhoto = async (kit,file) => {
+        if (!cloudActive || !cloudSession) throw new Error('请先登录获准账号并连接共享旅行，再上传共享照片。');
+        const context = await initializeFirebaseContext();
+        await ensureAllowlisted(context);
+        const storageApi = await loadFirebaseStorageApi();
+        const storage = storageApi.getStorage(context.firebaseApp);
+        const compressed = await compressTripPhoto(file);
+        if (compressed.size > 5 * 1024 * 1024) throw new Error('压缩后仍超过 5 MB，请换小一些的图片。');
+        const id = globalThis.crypto?.randomUUID?.() || `photo-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        const dayId = kit.dataset.dayId;
+        const path = `trips/${cloudSession.hash}/itinerary/${dayId}/${id}/${Date.now()}.jpg`;
+        await storageApi.uploadBytes(storageApi.ref(storage,path),compressed,{contentType:'image/jpeg',cacheControl:'private, max-age=0'});
+        const place = kit.querySelector('[data-resource-place]')?.value || '行程照片';
+        const title = kit.querySelector('[data-resource-title]')?.value.trim() || place;
+        const note = kit.querySelector('[data-resource-note]')?.value.trim() || '';
+        const items = readDayResources();
+        items.push({id,dayId,type:'地点照片',place,title,note,storagePath:path,createdAt:Date.now(),createdBy:cloudSession.displayName || ''});
+        writeDayResources(items); renderDayResources();
+      };
+      document.querySelectorAll('[data-day-resource-kit]').forEach(kit => {
+        kit.addEventListener('click',async event => {
+          const save = event.target.closest('[data-save-reference]');
+          const remove = event.target.closest('[data-remove-resource]');
+          if (save) {
+            const title = kit.querySelector('[data-resource-title]')?.value.trim() || '';
+            const url = safeResourceUrl(kit.querySelector('[data-resource-url]')?.value);
+            if (!title || !url) { setResourceStatus(kit,'请填写标题和有效的 http / https 链接。',true); return; }
+            const items = readDayResources();
+            items.push({id:globalThis.crypto?.randomUUID?.() || `ref-${Date.now()}-${Math.random().toString(36).slice(2)}`,dayId:kit.dataset.dayId,type:kit.querySelector('[data-resource-type]')?.value || '其他',place:kit.querySelector('[data-resource-place]')?.value || '',title,url,note:kit.querySelector('[data-resource-note]')?.value.trim() || '',createdAt:Date.now(),createdBy:cloudSession?.displayName || ''});
+            writeDayResources(items); renderDayResources();
+            kit.querySelector('[data-resource-title]').value = ''; kit.querySelector('[data-resource-url]').value = ''; kit.querySelector('[data-resource-note]').value = '';
+            setResourceStatus(kit,cloudActive ? '已保存并排队同步给同行人。' : '已保存在本机；连接共享旅行后会一并同步。');
+          }
+          if (remove) {
+            const id = remove.dataset.removeResource;
+            const items = readDayResources(); const item = items.find(entry => String(entry.id) === id);
+            if (item?.storagePath && cloudActive && cloudSession) {
+              try { const context = await initializeFirebaseContext(); await ensureAllowlisted(context); const storageApi = await loadFirebaseStorageApi(); await storageApi.deleteObject(storageApi.ref(storageApi.getStorage(context.firebaseApp),item.storagePath)); }
+              catch (error) { setResourceStatus(kit,'云端文件未删除，检查 Storage 规则后再试。',true); console.warn('Could not delete trip photo:',error); }
+            }
+            writeDayResources(items.filter(entry => String(entry.id) !== id));
+            if (item?.storagePath && sharedPhotoUrls.has(item.storagePath)) { URL.revokeObjectURL(sharedPhotoUrls.get(item.storagePath)); sharedPhotoUrls.delete(item.storagePath); }
+            renderDayResources();
+          }
+        });
+        kit.querySelector('[data-resource-photo]')?.addEventListener('change',async event => {
+          const input = event.currentTarget, files = [...(input.files || [])];
+          if (!files.length) return;
+          input.disabled = true; setResourceStatus(kit,`正在压缩并上传 ${files.length} 张照片…`);
+          for (const file of files) {
+            try { await uploadDayPhoto(kit,file); setResourceStatus(kit,'地点照片已加入共享相册。'); }
+            catch (error) { setResourceStatus(kit,error.message || '照片上传失败。',true); }
+          }
+          input.disabled = false; input.value = '';
+        });
+      });
+      document.addEventListener('tokyo-data-changed',renderDayResources);
+      window.addEventListener('storage',event => { if (event.key === dayResourcesKey) renderDayResources(); });
+      document.addEventListener('tokyo-cloud-ready',renderDayResources);
+      renderDayResources();
 
       const updateNetworkStatus = () => {
         const chip = $('networkStatus'); if (!chip) return;

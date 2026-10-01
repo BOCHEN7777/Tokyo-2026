@@ -1,0 +1,39 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Fill in the two Firebase Authentication UIDs before publishing.
+    // Empty UID placeholders fail closed.
+    function isTripAccount() {
+      return request.auth != null
+        && request.auth.uid in ['', ''];
+    }
+
+    function isTripImagePath(roomHash, dayId, resourceId, fileName) {
+      return roomHash.matches('^[0-9a-f]{64}$')
+        && dayId.matches('^day[1-8]$')
+        && resourceId.matches('^[A-Za-z0-9_-]{8,80}$')
+        && fileName.matches('^[0-9]+\\.jpg$');
+    }
+
+    match /trips/{roomHash}/itinerary/{dayId}/{resourceId}/{fileName} {
+      allow read: if isTripAccount()
+        && isTripImagePath(roomHash, dayId, resourceId, fileName)
+        && resource != null
+        && resource.size <= 5 * 1024 * 1024
+        && resource.contentType == 'image/jpeg';
+
+      allow create, update: if isTripAccount()
+        && isTripImagePath(roomHash, dayId, resourceId, fileName)
+        && request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType == 'image/jpeg';
+
+      allow delete: if isTripAccount()
+        && isTripImagePath(roomHash, dayId, resourceId, fileName);
+    }
+
+    // Default deny for every other bucket path.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
