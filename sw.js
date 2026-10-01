@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v11-20260929';
+const CACHE_NAME = 'tokyo-2026-guide-v12-20261001-weather';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
