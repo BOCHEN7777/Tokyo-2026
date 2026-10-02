@@ -4101,6 +4101,20 @@
       };
       const pointRender = () => {
         if (!pointCatalogNode) return;
+        const pointViewport = pointCatalogNode.closest('.module-drawer-body');
+        const previousScrollTop = pointViewport ? pointViewport.scrollTop : window.scrollY;
+        const previouslyOpenDays = new Set([...pointCatalogNode.querySelectorAll('.point-day-group[open]')].map(group => group.dataset.pointDay).filter(Boolean));
+        const activeChoice = pointCatalogNode.contains(document.activeElement) && document.activeElement.matches('[data-point-choice]')
+          ? {id:document.activeElement.dataset.pointId,choice:document.activeElement.dataset.pointChoice}
+          : null;
+        const restorePointView = () => {
+          if (pointViewport) pointViewport.scrollTop = previousScrollTop;
+          else window.scrollTo(0,previousScrollTop);
+          if (activeChoice) {
+            const target = [...pointCatalogNode.querySelectorAll('[data-point-choice]')].find(button => button.dataset.pointId === activeChoice.id && button.dataset.pointChoice === activeChoice.choice);
+            target?.focus({preventScroll:true});
+          }
+        };
         const categorySelect = pointFilters.category;
         if (categorySelect) {
           const knownCategories = new Set([...categorySelect.options].map(option => option.value));
@@ -4140,6 +4154,7 @@
         document.getElementById('pointResultCount').textContent = '显示 ' + visible.length + ' / ' + allItems.length + ' 个行程点 · 按日期、参考时段与类别排列 · ' + (counts.must + counts.maybe + counts.skip ? '已选择 ' + (counts.must + counts.maybe + counts.skip) : '尚未选择优先级');
         if (!visible.length) {
           pointCatalogNode.innerHTML = '<div class="empty-box">没有符合条件的行程点。可以调整筛选条件，或在下方添加临时地点。</div>';
+          restorePointView();
           return;
         }
         const groupedDays = new Map();
@@ -4148,7 +4163,12 @@
           groupedDays.get(item.day).push(item);
         });
         const firstDay = groupedDays.keys().next().value;
-        const openDay = day !== 'all' ? day : firstDay;
+        const openDays = new Set([...previouslyOpenDays].filter(dayValue => groupedDays.has(dayValue)));
+        if (day !== 'all' && groupedDays.has(day)) {
+          openDays.clear();
+          openDays.add(day);
+        }
+        if (!openDays.size) openDays.add(firstDay);
         pointCatalogNode.innerHTML = [...groupedDays.entries()].map(([dayValue,dayItems]) => {
           const info = tripPointDayInfo[dayValue] || tripPointDayInfo['待安排'];
           const dayCounts = {must:0,maybe:0,skip:0};
@@ -4171,9 +4191,10 @@
             }).map(([categoryName,items]) => '<section class="point-category-group"><div class="point-category-head"><h4>' + pointEsc(categoryName) + '</h4><span class="small">' + items.length + ' 项</span></div><div class="point-grid">' + items.map(tripPointCardHtml).join('') + '</div></section>').join('');
             return '<section class="point-time-group"><div class="point-time-head"><h3>' + pointEsc(group.schedule.label) + '</h3><span>' + group.items.length + ' 个候选</span></div>' + categories + '</section>';
           }).join('');
-          const isOpen = dayValue === openDay;
-          return '<details class="point-day-group" ' + (isOpen ? 'open' : '') + '><summary><span class="point-day-date">' + pointEsc(dayValue === '待安排' ? '备选' : dayValue) + '</span><strong>' + pointEsc(info.weekday) + '</strong><span class="point-day-summary">' + pointEsc(info.title) + '</span><span class="point-day-counts"><span>必去 ' + dayCounts.must + '</span><span>可能 ' + dayCounts.maybe + '</span><span>不去 ' + dayCounts.skip + '</span></span></summary><div class="point-day-body">' + body + '</div></details>';
+          const isOpen = openDays.has(dayValue);
+          return '<details class="point-day-group" data-point-day="' + pointEsc(dayValue) + '" ' + (isOpen ? 'open' : '') + '><summary><span class="point-day-date">' + pointEsc(dayValue === '待安排' ? '备选' : dayValue) + '</span><strong>' + pointEsc(info.weekday) + '</strong><span class="point-day-summary">' + pointEsc(info.title) + '</span><span class="point-day-counts"><span>必去 ' + dayCounts.must + '</span><span>可能 ' + dayCounts.maybe + '</span><span>不去 ' + dayCounts.skip + '</span></span></summary><div class="point-day-body">' + body + '</div></details>';
         }).join('');
+        restorePointView();
       };      pointCatalogNode?.addEventListener('click',event => {
         const choiceButton = event.target.closest('[data-point-choice]');
         if (choiceButton) {
