@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v16-20261002-point-picker-state';
+const CACHE_NAME = 'tokyo-2026-guide-v17-20261002-oct7-options';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
