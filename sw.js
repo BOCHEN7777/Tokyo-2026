@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v23-20261003-lunch-tabelog';
+const CACHE_NAME = 'tokyo-2026-guide-v24-20261003-flight-sync';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
