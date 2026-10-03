@@ -52,6 +52,12 @@
     .pass-main{padding:16px 18px 13px}.pass-route{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.airport-code{font:700 clamp(2rem,5vw,3rem)/1 var(--serif);letter-spacing:-.04em}.airport-code:last-child{text-align:right}.pass-plane{display:grid;place-items:center;color:var(--red);font-size:1.35rem}.pass-city{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;font-weight:800;margin-top:4px}
     .pass-times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}.pass-times small{display:block;color:var(--muted);font-size:.63rem;letter-spacing:.08em}.pass-times strong{font-size:.84rem}.pass-times div:nth-child(2){text-align:center}.pass-times div:last-child{text-align:right}
     .pass-footer{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:11px 18px 15px;background:#faf7ef}.ticket-field{display:grid;gap:3px;color:var(--muted);font-size:.62rem;font-weight:900;letter-spacing:.05em}.ticket-field input{min-width:0;border:0;border-bottom:1px solid #b9b1a3;background:transparent;padding:3px 0;color:var(--ink);font:700 .78rem var(--sans);border-radius:0}.ticket-field input:focus{outline:0;border-color:var(--red)}
+.flight-editor{margin:12px 18px 14px;padding-top:8px;border-top:1px dashed var(--line)}
+.flight-editor summary{cursor:pointer;padding:3px 0;color:var(--red);font:800 .72rem var(--sans)}
+.flight-editor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;padding:10px 0 2px}
+.flight-editor-grid input{max-width:100%;font-size:.75rem}
+.flight-sync-note{margin:9px 2px 0;color:#bfcac2;font-size:.7rem;line-height:1.55}
+@media(max-width:390px){.flight-editor-grid{gap:8px}.flight-editor-grid .ticket-field{font-size:.58rem}}
     .topbar{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
     .topbar .wrap{display:flex;align-items:center;gap:12px;min-height:58px;overflow:visible}
     .topbar .brand{font:700 1rem var(--serif);white-space:nowrap}.topbar a,.topbar button,.nav-more summary{font-size:.82rem;font-weight:800;white-space:nowrap;padding:8px 9px;border-radius:9px}.topbar a:hover,.topbar button:hover,.nav-more summary:hover{background:#ebe6db}.nav-primary{display:flex;align-items:center;gap:3px;min-width:0;margin-left:auto}.nav-tool{border:0;background:transparent;color:var(--ink);cursor:pointer}.nav-more{position:relative}.nav-more summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px}.nav-more summary::-webkit-details-marker{display:none}.nav-more summary:after{content:"＋";color:var(--red);font-weight:900}.nav-more[open] summary:after{content:"−"}.nav-menu{position:absolute;right:0;top:calc(100% + 10px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:12px;background:rgba(255,253,248,.98);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 55px rgba(22,35,29,.18)}.nav-menu-group{display:grid;align-content:start;gap:2px;padding:8px;border-radius:12px}.nav-menu-group strong{font-size:.67rem;letter-spacing:.12em;color:var(--red);padding:2px 8px 5px}.nav-menu-group a,.nav-menu-group button{text-align:left;width:100%;font-size:.77rem;padding:7px 8px}.nav-menu-group button{border:0;background:transparent;cursor:pointer;color:var(--ink)}
@@ -243,7 +249,7 @@
       <span class="eyebrow">Tokyo · Hakone</span>
       <h1>没头脑与不高兴的<br>东京之旅</h1>
       <div class="pill-row">
-        <span class="pill">📅 2026.10.05—10.12</span><span class="pill">✈️ CA929 / CA930</span>
+        <span class="pill">📅 2026.10.05—10.12</span><span class="pill">✈️ <span data-flight-display="outboundNo">CA929</span> / <span data-flight-display="returnNo">CA930</span></span>
         <span class="pill">🛍️ 购物优先</span><span class="pill">🧴 香氛路线</span><span class="pill">📷 胶片摄影</span><span class="pill">♨️ 箱根一晚</span>
       </div>
       <div class="flight-deck" id="flights">
@@ -258,21 +264,35 @@
             <div class="pass-main">
               <div class="pass-route"><div class="airport-code">PVG</div><div class="pass-plane">✈</div><div class="airport-code">NRT</div></div>
               <div class="pass-city"><span>上海浦东 · T2</span><span>东京成田 · T1</span></div>
-              <div class="pass-times"><div><small>FLIGHT</small><strong>CA929</strong></div><div><small>DATE / DURATION</small><strong>10/05 · 3h</strong></div><div><small>LOCAL TIME</small><strong>10:00 → 14:00</strong></div></div>
+              <div class="pass-times"><div><small>FLIGHT</small><strong data-flight-display="outboundNo">CA929</strong></div><div><small>DATE / DURATION</small><strong><span data-flight-display="outboundDate">10/05</span> · <span data-flight-display="outboundDuration">3h</span></strong></div><div><small>LOCAL TIME</small><strong><span data-flight-display="outboundDeparture">10:00</span> → <span data-flight-display="outboundArrival">14:00</span></strong></div></div>
             </div>
             <div class="pass-footer"><label class="ticket-field">BOOKING REF · 订位编号<input data-flight-field="outboundBooking" maxlength="12" placeholder="点击填写"></label><label class="ticket-field">SEAT · 座位<input data-flight-field="outboundSeat" maxlength="12" placeholder="待值机"></label></div>
+            <details class="flight-editor no-print"><summary>编辑去程计划并同步</summary><div class="flight-editor-grid">
+              <label class="ticket-field">FLIGHT · 航班号<input data-flight-field="outboundNo" maxlength="8" autocomplete="off"></label>
+              <label class="ticket-field">DATE · 起飞日期<input type="date" data-flight-field="outboundDate"></label>
+              <label class="ticket-field">DEPARTURE · 浦东当地时间<input type="time" data-flight-field="outboundDeparture"></label>
+              <label class="ticket-field">ARRIVAL DATE · 抵达日期<input type="date" data-flight-field="outboundArrivalDate"></label>
+              <label class="ticket-field">ARRIVAL · 成田当地时间<input type="time" data-flight-field="outboundArrival"></label>
+            </div></details>
           </article>
           <article class="boarding-pass">
             <div class="pass-top"><strong>AIR CHINA · 中国国际航空</strong><span>BOARDING PASS · 回程</span></div>
             <div class="pass-main">
               <div class="pass-route"><div class="airport-code">NRT</div><div class="pass-plane">✈</div><div class="airport-code">PVG</div></div>
               <div class="pass-city"><span>东京成田 · T1</span><span>上海浦东 · T2</span></div>
-              <div class="pass-times"><div><small>FLIGHT</small><strong>CA930</strong></div><div><small>DATE / DURATION</small><strong>10/12 · 3h30</strong></div><div><small>LOCAL TIME</small><strong>15:20 → 17:50</strong></div></div>
+              <div class="pass-times"><div><small>FLIGHT</small><strong data-flight-display="returnNo">CA930</strong></div><div><small>DATE / DURATION</small><strong><span data-flight-display="returnDate">10/12</span> · <span data-flight-display="returnDuration">3h30</span></strong></div><div><small>LOCAL TIME</small><strong><span data-flight-display="returnDeparture">15:20</span> → <span data-flight-display="returnArrival">17:50</span></strong></div></div>
             </div>
             <div class="pass-footer"><label class="ticket-field">BOOKING REF · 订位编号<input data-flight-field="returnBooking" maxlength="12" placeholder="点击填写"></label><label class="ticket-field">SEAT · 座位<input data-flight-field="returnSeat" maxlength="12" placeholder="待值机"></label></div>
+            <details class="flight-editor no-print"><summary>编辑回程计划并同步</summary><div class="flight-editor-grid">
+              <label class="ticket-field">FLIGHT · 航班号<input data-flight-field="returnNo" maxlength="8" autocomplete="off"></label>
+              <label class="ticket-field">DATE · 起飞日期<input type="date" data-flight-field="returnDate"></label>
+              <label class="ticket-field">DEPARTURE · 成田当地时间<input type="time" data-flight-field="returnDeparture"></label>
+              <label class="ticket-field">ARRIVAL DATE · 抵达日期<input type="date" data-flight-field="returnArrivalDate"></label>
+              <label class="ticket-field">ARRIVAL · 浦东当地时间<input type="time" data-flight-field="returnArrival"></label>
+            </div></details>
           </article>
         </div>
-        <p style="margin:8px 2px 0;color:#bfcac2;font-size:.7rem">航班计划核对于 2026-09-23；航站楼、时刻、座位与行李额度以国航电子客票和出发当日值机信息为准。上方填写内容仅保存在当前浏览器。</p>
+        <p class="flight-sync-note" id="flightSyncHint">计划航班信息、订位编号与座位共用本行程数据：连接共享旅行后会同步到同行人的设备；未连接时保存在本机。航班实际延误与取消请查 <a href="https://www.airchina.com.cn/zh-CN/flight/query-services/flight-dynamics" target="_blank" rel="noreferrer">国航航班动态 ↗</a>。航站楼与行李额度以电子客票、值机信息为准；修改计划后请重新核对当日交通节点。</p>
       </div>
       <div class="hero-meta">
         <div><small>前段住宿</small><strong>JR-EAST HOTEL METS 目白｜3 晚</strong></div>
@@ -332,7 +352,7 @@
         <div class="weather-grid" id="weatherGrid" aria-live="polite"></div>
         <div class="weather-note"><span id="weatherStatus" role="status">正在读取东京、仙石原与御殿场预报…</span><span>远期预报会变化，出发当天请再确认。数据：<a href="https://open-meteo.com/en/docs" target="_blank" rel="noreferrer">Open-Meteo</a></span></div>
       </section>
-      <div class="today-controls no-print"><div class="field"><label for="todayDaySelect">预览日期</label><select id="todayDaySelect"><option value="0">10/5 · 抵达与新宿</option><option value="1">10/6 · 原宿表参道南青山</option><option value="2">10/7 · 南青山补购</option><option value="3">10/8 · 箱根仙石原</option><option value="4">10/9 · 御殿场与涩谷</option><option value="5">10/10 · 祐天寺中目黑代官山</option><option value="6">10/11 · 银座</option><option value="7">10/12 · 返程</option></select></div><button class="btn" id="jumpToNow" type="button">回到实际日期</button><span class="offline-chip" id="networkStatus"><span aria-hidden="true">●</span> 正在检测网络</span></div>
+      <div class="today-controls no-print"><div class="field"><label for="todayDaySelect">预览日期</label><select id="todayDaySelect"><option value="0">10/5 · 抵达与新宿</option><option value="1">10/6 · 原宿与六本木</option><option value="2">10/7 · 南青山补购</option><option value="3">10/8 · 箱根仙石原</option><option value="4">10/9 · 御殿场与涩谷</option><option value="5">10/10 · 祐天寺中目黑代官山</option><option value="6">10/11 · 银座</option><option value="7">10/12 · 返程</option></select></div><button class="btn" id="jumpToNow" type="button">回到实际日期</button><span class="offline-chip" id="networkStatus"><span aria-hidden="true">●</span> 正在检测网络</span></div>
       <div class="today-events" id="todayEvents" aria-live="polite"></div>
     </section>
 
@@ -381,7 +401,7 @@
         <label>选择状态<select id="pointStatusFilter"><option value="all">全部状态</option><option value="pending">还没选择</option><option value="must">一定要去</option><option value="maybe">可能会去</option><option value="skip">不打算去</option></select></label>
         <button class="btn" type="button" id="pointClearChoices">清空选择</button>
       </div>
-      <div class="point-note"><strong>整理方式：</strong>地点卡片点“Google Maps · 保存地点”后，打开Google Maps地点页并点“保存”，选入“住宿／景点街区／购物／餐饮咖啡”等列表。确认具体分店；交通路线仅供导航，不需要保存为地点。按日期、参考时段和类别分组；候选店按路线段归类，便于两人逐项选择。时段用于规划顺序，不代表预约时间或营业保证。10/7 为南青山补购与休息缓冲，代官山／中目黑为 10/10，银座为 10/11；Himie 与 Buly 使用松屋银座店。金子眼镜是主选，999.9、EYETHINK 和其他眼镜店仅在金子眼镜未买到合适款式时考虑。10/9 保留六本木夜景短停。</div>
+      <div class="point-note"><strong>整理方式：</strong>地点卡片点“Google Maps · 保存地点”后，打开Google Maps地点页并点“保存”，选入“住宿／景点街区／购物／餐饮咖啡”等列表。确认具体分店；交通路线仅供导航，不需要保存为地点。按日期、参考时段和类别分组；候选店按路线段归类，便于两人逐项选择。时段用于规划顺序，不代表预约时间或营业保证。10/6 原宿购物后去六本木 Tokyo City View，再赴 Nigirite；10/7 为南青山补购与休息缓冲，代官山／中目黑为 10/10，银座为 10/11；Himie 与 Buly 使用松屋银座店。金子眼镜是主选，999.9、EYETHINK 和其他眼镜店仅在金子眼镜未买到合适款式时考虑。10/9 御殿场返程后入住休息。</div>
       <p class="point-results" id="pointResultCount" aria-live="polite">正在读取行程点…</p>
       <div class="point-grid" id="pointCatalog" aria-live="polite"></div>
       <div class="point-add no-print">
@@ -415,7 +435,7 @@
         <div class="check"><input id="c4" type="checkbox"><label for="c4">提前购买日本电话卡（SIM / eSIM），确认流量、有效期、热点共享与落地激活方式，并离线保存安装二维码。</label></div>
         <div class="check"><input id="c5" type="checkbox"><label for="c5">向东京喜来登都酒店确认可代收 10/9 抵达的宅急便行李。</label></div>
         <div class="check"><input id="c6" type="checkbox"><label for="c6">预约 10/6 下午 SHIHARA Lab，两人试戴首饰并确认到店时间。</label></div>
-        <div class="check"><input id="c7" type="checkbox"><label for="c7">锁定 3 个关键餐位：表参道晚餐、箱根晚餐和银座告别餐；10/10 neel / 代官山用餐维持机动。</label></div>
+        <div class="check"><input id="c7" type="checkbox"><label for="c7">对照订位信息复核：10/6 Nigirite 晚餐、10/7 Bon’s 晚餐、10/10 道玄坂マンモス午餐、10/11 すき焼き 十二天午餐；另确认箱根晚餐的预约与接送。</label></div>
         <div class="check"><input id="c8" type="checkbox"><label for="c8">预订 10/12 日暮里 10:40 → 成田 T1 11:24 的 Skyliner。</label></div>
         <div class="check"><input id="c9" type="checkbox"><label for="c9">10/7 晚再次检查箱根登山巴士 10/1 改点后的班次。</label></div>
         <div class="check"><input id="c10" type="checkbox"><label for="c10">胶卷放透明袋随身携带；高感胶卷过安检时主动请求人工检查。</label></div>
@@ -511,7 +531,7 @@
             <div class="module-status" id="ticketStatusMessage" aria-live="polite"></div>
           </form>
         </article>
-        <div><div class="wishlist-filters no-print"><select id="ticketFilter"><option value="all">全部状态</option><option>待预订</option><option>待确认</option><option>已确认</option><option>已付款</option><option>已使用</option></select></div><div class="record-grid" id="ticketList"></div></div>
+        <div><div class="wishlist-filters no-print"><select id="ticketFilter" aria-label="车票状态筛选"><option value="all">全部状态</option><option>待预订</option><option>待确认</option><option>已确认</option><option>已付款</option><option>已使用</option></select></div><div class="record-grid" id="ticketList"></div></div>
       </div>
     </section>
 
@@ -575,7 +595,7 @@
         <aside>
           <div class="phrase-display" id="phraseDisplay" aria-live="polite"><small>SHOW TO STAFF · 给工作人员看</small><strong id="phraseDisplayText" lang="ja">この画面を見せてください。</strong><p id="phraseDisplayHint">点击左侧任意“大字展示”。再次点击本卡可复制当前日文。</p></div>
           <div class="tool-stack">
-            <article class="travel-tool no-print"><h3>旅行速记</h3><textarea id="travelMemo" maxlength="1200" placeholder="记录集合时间、临时更改、想回购的尺码或餐厅排号……"></textarea><p class="small" id="memoStatus">输入后自动保存在当前浏览器。</p></article>
+            <article class="travel-tool no-print"><h3>旅行速记</h3><textarea id="travelMemo" aria-label="行程备忘录" maxlength="1200" placeholder="记录集合时间、临时更改、想回购的尺码或餐厅排号……"></textarea><p class="small" id="memoStatus">输入后自动保存在当前浏览器。</p></article>
             <article class="travel-tool"><h3>紧急与咨询</h3><div class="emergency-links"><a href="tel:110">警察<br>110</a><a href="tel:119">救护 / 消防<br>119</a><a href="tel:+815038162787">JNTO 中文热线<br>050-3816-2787</a></div><p class="small" style="margin-bottom:0">JNTO 访日热线 24 小时提供中文、英语、韩语协助。</p></article>
             <article class="travel-tool no-print"><h3>实时工具</h3><div class="actions"><button class="btn red" type="button" data-open-currency>汇率 / 免税价</button><a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps">Google Maps</a><a class="btn" target="_blank" rel="noreferrer" href="https://transit.yahoo.co.jp/">乗換案内</a><a class="btn" target="_blank" rel="noreferrer" href="https://www.jma.go.jp/bosai/forecast/">日本气象厅</a></div></article>
           </div>
@@ -685,7 +705,7 @@
             <div class="field wide"><label for="wishNote">备注</label><textarea id="wishNote" maxlength="240"></textarea></div>
           </div><div class="ledger-actions"><button class="btn red" type="submit">保存愿望</button><button class="btn" type="button" id="wishCancelEdit" hidden>取消修改</button></div><div class="module-status" id="wishStatusMessage" aria-live="polite"></div></form>
         </article>
-        <div><div class="wishlist-filters no-print"><select id="wishOwnerFilter"><option value="all">两人全部</option><option>没头脑</option><option>不高兴</option><option>共同</option></select><select id="wishStateFilter"><option value="active">未完成</option><option value="all">全部状态</option><option>已购买</option><option>缺货</option><option>放弃</option></select><input id="wishSearch" placeholder="搜索品牌 / 商品 / 品番"></div><div class="record-grid" id="wishList"></div></div>
+        <div><div class="wishlist-filters no-print"><select id="wishOwnerFilter" aria-label="按同行人筛选愿望清单"><option value="all">两人全部</option><option>没头脑</option><option>不高兴</option><option>共同</option></select><select id="wishStateFilter" aria-label="按购买状态筛选愿望清单"><option value="active">未完成</option><option value="all">全部状态</option><option>已购买</option><option>缺货</option><option>放弃</option></select><input id="wishSearch" aria-label="搜索品牌、商品或品番" placeholder="搜索品牌 / 商品 / 品番"></div><div class="record-grid" id="wishList"></div></div>
       </div>
     </section>
 
@@ -719,7 +739,7 @@
       <div class="rating-note"><span><strong>餐费口径：</strong>正餐为一位成人常规点单的人均预算；咖啡、甜点及小吃为单次消费。餐饮卡片显示截至 2026-10-03 核实的 Tabelog 评分快照；尚未核实具体分店分数的候选提供 Tabelog 店铺页或检索入口，实时分数以店铺页为准。</span><button class="btn" type="button" data-open-currency>调整换算汇率</button></div>
       <div class="filter-toolbar no-print">
         <div class="field"><label for="foodQuery">餐厅 / 料理 / 代表菜</label><input id="foodQuery" placeholder="例如：寿司、烧肉、咖啡"></div>
-        <div class="field"><label for="foodDayFilter">区域日期</label><select id="foodDayFilter"><option value="all">全部区域</option><option value="day1">10/5 新宿</option><option value="day2">10/6 原宿・表参道</option><option value="day3">10/7 南青山 / 表参道</option><option value="day4">10/8 小田原・仙石原</option><option value="day5">10/9 御殿场・六本木</option><option value="day6">10/10 代官山・涩谷</option><option value="day7">10/11 银座</option><option value="day8">10/12 成田</option></select></div>
+        <div class="field"><label for="foodDayFilter">区域日期</label><select id="foodDayFilter"><option value="all">全部区域</option><option value="day1">10/5 新宿</option><option value="day2">10/6 原宿・六本木</option><option value="day3">10/7 南青山 / 表参道</option><option value="day4">10/8 小田原・仙石原</option><option value="day5">10/9 御殿场返程</option><option value="day6">10/10 代官山・涩谷</option><option value="day7">10/11 银座</option><option value="day8">10/12 成田</option></select></div>
         <div class="field"><label for="foodMealFilter">餐段</label><select id="foodMealFilter"><option value="all">全部餐段</option><option value="lunch">午餐</option><option value="dinner">晚餐</option><option value="coffee">咖啡 / 小吃</option><option value="breakfast">早餐</option></select></div>
         <div class="field"><label for="foodSort">排序</label><select id="foodSort"><option value="route">行程顺序</option><option value="rating">评分优先</option></select></div>
         <label class="inline-check"><input id="foodRatedOnly" type="checkbox">只看有 Google 评分</label>
@@ -760,7 +780,7 @@
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot" data-fixed="true"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>CA929 抵达成田机场 T1</strong><p>当前公开时刻约为浦东 T2 10:00 → 成田 T1 14:00；最终以电子客票为准。完成入境、取行李、海关与网络设置。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time" data-flight-display="outboundArrival">14:00</span><span class="dot"></span><div class="slot-content"><strong><span data-flight-display="outboundNo">CA929</span> 抵达成田机场 T1</strong><p>计划日期 <span data-flight-display="outboundDate">10/05</span>；浦东 T2 <span data-flight-display="outboundDeparture">10:00</span> → 成田 T1 <span data-flight-display="outboundArrival">14:00</span>，最终以电子客票为准。完成入境、取行李、海关与网络设置。</p></div></div>
             <div class="slot"><span class="time">15:30</span><span class="dot"></span><div class="slot-content"><strong>搭最顺手的一班 Skyliner 到日暮里</strong><p>Skyliner 为全车指定席，约 36—40 分钟。日暮里换 JR 山手线往池袋方向，到目白约 22 分钟；换乘比新宿站简单。</p><a class="mini" href="#transport">查看购票方法 ↓</a></div></div>
             <div class="slot"><span class="time">17:00</span><span class="dot"></span><div class="slot-content"><strong>目白入住</strong><p>酒店就在 JR 目白站旁。顺便询问 10/8 早上宅急便办理方式，并确认两件大箱和一件小箱均可指定 10/9 送达喜来登。</p></div></div>
             <div class="slot"><span class="time">18:15</span><span class="dot"></span><div class="slot-content"><strong>JR 山手线去新宿 → NEWoMan</strong><p>目白 → 新宿约 6 分钟。按“新南改札 / NEWoMan”进场，先看车站直连店铺；18:40 左右沿新宿通前往伊势丹。</p></div></div>
@@ -818,61 +838,56 @@
         </div>
       </details>
 
-      <details class="day" id="day2">
+      <details class="day" id="day2" open>
         <summary>
           <div class="day-date"><small>TUE</small><strong>10/6</strong></div>
-          <div class="day-title"><h3>潮流、银饰与买手店主战日｜原宿、表参道与南青山</h3><p>里原宿银饰 / 买手店 → Cat Street → 表参道旗舰 → 南青山咖啡 / 眼镜 → 新宿晚餐</p></div><span class="chev">＋</span>
+          <div class="day-title"><h3>原宿购物与六本木夜景｜新宿寿司晚餐</h3><p>香氛预约 → 里原宿 / Cat Street → Tokyo City View → Shinjyuku Sushi Bar Nigirite</p></div><span class="chev">＋</span>
         </summary>
         <div class="day-body">
           <div class="day-intro">
-            <p><span class="badge must">最高优先级</span> 上午先完成预约与里原宿三角区，午后沿 Cat Street 向南，再横穿表参道进入南青山；不在同一条街反复往返。鬼塚虎先试穿并记录品番，普通款留到 10/9 御殿场比价。</p>
-            <div class="route"><span>目白</span><i>→ JR</i><span>原宿站前</span><i>→ 步行</i><span>里原宿</span><i>→ Cat Street</i><span>神宫前</span><i>→</i><span>表参道</span><i>→</i><span>南青山</span></div>
-            <div class="actions"><a class="btn red" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&origin=Harajuku+Station&destination=HUMAN+MADE+TOKYO&waypoints=MY+ONLY+FRAGRANCE+Harajuku%7CPocket+Harajuku%7CInternational+Gallery+BEAMS%7CTABAYA+United+Arrows%7COnitsuka+Tiger+Omotesando&travelmode=walking">A｜原宿—神宫前</a><a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;origin=HUMAN+MADE+TOKYO&amp;destination=Kaneko+Optical+Aoyama&amp;waypoints=HAY+TOKYO%7CRalph+Lauren+Omotesando%7CAMI+Paris+Omotesando%7Ci2+cafe%7CSUPER+A+MARKET+Aoyama%7CH+BEAUTY%26YOUTH+Tokyo%7CURBANIC30+Aoyama&amp;travelmode=walking">B｜表参道—南青山</a></div>
+            <p><span class="badge must">购物＋景点主线</span> 10/6 聚焦原宿、Cat Street 与预约店；南青山的 A&amp;S、H BEAUTY&amp;YOUTH、SUPER A MARKET 等移到 10/7，避免把下午店铺挤在一起。傍晚去六本木看展望台后前往新宿，20:15 Nigirite 已确认。</p>
+            <div class="route"><span>目白</span><i>→ JR</i><span>原宿</span><i>→ 步行</i><span>里原宿 / Cat Street</span><i>→ 地铁</i><span>六本木 Hills</span><i>→ 大江户线</i><span>新宿</span></div>
+            <div class="actions"><a class="btn red" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&origin=Harajuku+Station&destination=HUMAN+MADE+TOKYO&waypoints=MY+ONLY+FRAGRANCE+Harajuku%7CPocket+Harajuku%7CInternational+Gallery+BEAMS%7CTABAYA+United+Arrows%7COnitsuka+Tiger+Omotesando&travelmode=walking">A｜原宿—神宫前</a><a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;origin=HUMAN+MADE+TOKYO&amp;destination=Tokyo+City+View+Roppongi+Hills&amp;travelmode=transit">B｜原宿 → 六本木展望台</a><a class="btn" target="_blank" rel="noreferrer" href="https://tcv.roppongihills.com/en/">Tokyo City View 官方营业信息</a></div>
           </div>
-          <div class="metric-row"><div class="metric"><small>出门</small><strong>10:10</strong></div><div class="metric"><small>里原宿</small><strong>11:50—13:55</strong></div><div class="metric"><small>预计步行</small><strong>16k—20k 步</strong></div><div class="metric"><small>咖啡正选</small><strong>i2 cafe</strong></div></div>
+          <div class="metric-row"><div class="metric"><small>出门</small><strong>10:10</strong></div><div class="metric"><small>原宿购物</small><strong>11:00—15:55</strong></div><div class="metric"><small>东京 City View</small><strong>16:45—18:00</strong></div><div class="metric"><small>固定晚餐</small><strong>20:15</strong></div></div>
           <div class="grid two">
-            <article class="choice"><span class="badge must">核心进店</span><h4>优先保证 8 个目标</h4><p>MY ONLY FRAGRANCE、Pocket、TABAYA、Stüssy / 鬼塚虎至少一店、HUMAN MADE、SUPER A MARKET、H BEAUTY&amp;YOUTH、金子眼镜。发生排队时先保护这些项目。</p></article>
-            <article class="choice"><span class="badge opt">条件候选</span><h4>只能顺路补，不追求全完成</h4><p>International Gallery BEAMS、SHIHARA、HAY、Ralph Lauren、AMI、Supreme、Lacoste、Hirotaka（15:45 表参道 Hills）与 agete（余量时）。每进入一间候选店，都要确认不会挤压晚餐和南青山主线。</p></article>
+            <article class="choice"><span class="badge must">核心进店</span><h4>先保住原宿主线与固定节点</h4><p>MY ONLY FRAGRANCE、Pocket、TABAYA / International Gallery BEAMS、Stüssy / Onitsuka Tiger 至少一店、SHIHARA / HUMAN MADE 至少一店、Tokyo City View 与 20:15 Nigirite。遇到排队就删候选店，准时赴晚餐。</p></article>
+            <article class="choice"><span class="badge opt">机动候选</span><h4>每个购物段只选一项</h4><p>AMAM DACOTAN、Supreme / Lacoste、BEAMS、SHIHARA 与 HUMAN MADE 可依队伍取舍。H BEAUTY&amp;YOUTH、SUPER A MARKET、Hirotaka、金子眼镜、HAY 等青山店铺统一留到 10/7，不再排进 10/6。</p></article>
           </div>
           <div class="route-board">
-            <div class="route-board-head"><h4>当日顺逛顺序</h4><p>北 → 南 → 东；红色购物站优先，咖啡只停一次</p></div>
+            <div class="route-board-head"><h4>当日顺逛顺序</h4><p>原宿 / Cat Street → 六本木展望台 → 新宿晚餐；青山购物转到 10/7</p></div>
             <ol class="route-steps">
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=MY+ONLY+FRAGRANCE+Harajuku"><span class="stop-kind shop">预约</span><strong>MY ONLY FRAGRANCE</strong><small>11:00 · 两人定制</small></a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=AMAM+DACOTAN+Omotesando"><span class="stop-kind food">小吃</span><strong>AMAM DACOTAN 表参道店</strong><small>11:35—11:50 · 快速外带，排队即跳过</small></a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pocket+Harajuku"><span class="stop-kind shop">银饰</span><strong>Pocket</strong><small>12:00 开门 · 原创 / Vintage</small></a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=International+Gallery+BEAMS"><span class="stop-kind shop">买手店</span><strong>International Gallery BEAMS</strong><small>12:00 · 设计师 / 重衣料</small></a></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=TABAYA+United+Arrows"><span class="stop-kind shop">买手店</span><strong>TABAYA United Arrows</strong><small>12:00 · 和洋审美 / 高阶选品</small></a></li>
-              <li><span class="stop-kind shop">街头</span><strong>Stüssy → 鬼塚虎</strong><small>Supreme / Lacoste 仅在无队时快看</small></li>
-              <li><span class="stop-kind food">午餐</span><strong>Cat Street 周边</strong><small>13:55 · 40 分钟上限</small></li>
-              <li><span class="stop-kind shop">首饰 / 潮流</span><strong>SHIHARA Lab → HUMAN MADE</strong><small>14:45 · 沿神宫前向南</small></li>
-              <li><span class="stop-kind shop">设计 / 首饰 / 旗舰</span><strong>HAY → Hirotaka 青山本店 → Ralph Lauren → AMI</strong><small>15:45 · Hirotaka 在表参道 Hills B1F；试戴时删 HAY</small></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=i2+cafe+Minami+Aoyama"><span class="stop-kind coffee">咖啡</span><strong>i2 cafe</strong><small>16:30 · 17:00 前点 Dutch Baby</small></a></li>
-              <li><span class="stop-kind shop">南青山</span><strong>SUPER A MARKET → H → 金子眼镜</strong><small>17:10 · URBANIC30 仅作替换</small></li>
-              <li><span class="stop-kind food">晚餐</span><strong>南青山 / 表参道</strong><small>19:45 · 不再跨区</small></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Matsumoto+Kiyoshi+Harajuku+Station+Omotesando+Exit"><span class="stop-kind shop">药妆</span><strong>松本清 → 原宿站</strong><small>21:10—21:50 · 免税结账留缓冲</small></a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=MY+ONLY+FRAGRANCE+Harajuku"><span class="stop-kind shop">预约</span><strong>MY ONLY FRAGRANCE 原宿店</strong><small>11:00—11:45 · 两人定制，固定预约</small></a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=AMAM+DACOTAN+Omotesando"><span class="stop-kind food">小吃</span><strong>AMAM DACOTAN 表参道店</strong><small>11:45—12:00 · 快速外带；排队即跳过</small></a></li>
+              <li><span class="stop-kind shop">银饰 / 买手店</span><strong>Pocket → International Gallery BEAMS → TABAYA</strong><small>12:00—13:00 · 每家约 20 分钟，队长就删一站</small></li>
+              <li><span class="stop-kind shop">街头品牌</span><strong>Stüssy → Onitsuka Tiger</strong><small>13:00—13:45 · Supreme / Lacoste 仅无队快看，记录鬼塚虎品番</small></li>
+              <li><span class="stop-kind food">午餐</span><strong>Cat Street 周边</strong><small>13:45—14:35 · 按队伍选近店，最多 50 分钟</small></li>
+              <li><span class="stop-kind shop">首饰 / 潮流</span><strong>SHIHARA Lab → HUMAN MADE TOKYO</strong><small>14:40—15:55 · 只保留两站，试戴或试穿超时即删第二站</small></li>
+              <li><span class="stop-kind transit">换区</span><strong>原宿 → 六本木 Hills</strong><small>16:00—16:40 · 以当天导航选择地铁路线</small></li>
+              <li><a target="_blank" rel="noreferrer" href="https://tcv.roppongihills.com/en/"><span class="stop-kind view">观景</span><strong>Tokyo City View｜Roppongi Hills Mori Tower 52F</strong><small>16:45—18:00 · 看日落前后东京景色；10/6 使用展望台，不去闭馆中的 Mori Art Museum</small></a></li>
+              <li><span class="stop-kind transit">换区</span><strong>六本木 → 新宿</strong><small>18:00—19:00 · 预留换乘与步行缓冲</small></li>
+              <li><span class="stop-kind food">晚餐</span><strong>Shinjyuku Sushi Bar Nigirite</strong><small>20:15 已确认；提前抵达新宿时先休息，不再塞购物点</small></li>
+              <li><span class="stop-kind transit">返回</span><strong>新宿 → 目白</strong><small>约 21:45 · JR 山手线直达</small></li>
             </ol>
-            <p class="route-board-note">若购物超时：先删 HAY、URBANIC30、Ralph's Coffee、BEAMS T 与第二间首饰店；保留 Pocket、TABAYA、HUMAN MADE、SUPER A MARKET、H BEAUTY&amp;YOUTH 和金子眼镜。晚餐结束晚于 21:30 时，不赶原宿药妆，改用 10/11 银座备用。A&amp;S Aoyama 与 &amp;SHOP Aoyama 每周二休息，10/6 不列入执行路线。</p>
+            <p class="route-board-note">10/6 超时取舍：先删 AMAM、Supreme / Lacoste 等队伍长的站；不晚到 20:15 的 Nigirite。若原宿购物拖延，跳过六本木展望台而不是压缩固定晚餐。Mori Art Museum 处于换展闭馆期，10/6 只安排 Tokyo City View 展望台。</p>
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">10:10</span><span class="dot"></span><div class="slot-content"><strong>目白 → 原宿</strong><p>JR 山手线直达，从表参道口出站。目标 10:28 前后抵达，不再绕去代代木公园。</p></div></div>
-            <div class="slot" data-fixed="true"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>MY ONLY FRAGRANCE 原宿店｜情侣定制</strong><p>提前通过官方 LINE 预约，两人各预留约 30 分钟。成品是喷在衣物、手帕等布制品上的定制香氛，不直接喷皮肤；分别命名标签，配方与瓶身拍照留档。</p></div></div>
-            <div class="slot"><span class="time">11:50</span><span class="dot"></span><div class="slot-content"><strong>AMAM DACOTAN 快速外带 → 里原宿三角｜Pocket → International Gallery BEAMS → TABAYA</strong><p>MY ONLY FRAGRANCE 结束后可在 11:35—11:50 快速外带面包，再步行进入里原宿三角。若排队超过 10 分钟或热门款售罄，直接跳过，12:00 按时开始三店购物；三店各约 20—25 分钟。</p></div></div>
-            <div class="slot"><span class="time">13:10</span><span class="dot"></span><div class="slot-content"><strong>里原宿街头线｜Stüssy / Onitsuka 优先，Supreme / Lacoste 快看</strong><p>按现场位置一路向 Cat Street 与表参道移动。先保证 Stüssy 与鬼塚虎各约 20 分钟；Supreme 仅在无队时进，Lacoste 只看限定 / Vintage。任何队伍超过 15—20 分钟即跳过。</p></div></div>
-            <div class="slot"><span class="time">13:55</span><span class="dot"></span><div class="slot-content"><strong>Cat Street 周边午餐</strong><p>THE GREAT BURGER、MENCHIRASHI、AFURI 或原宿餃子樓选当时队伍最短的一家，40 分钟结束；下午不再折返原宿找饭。</p></div></div>
-            <div class="slot" data-fixed="true"><span class="time">14:45</span><span class="dot"></span><div class="slot-content"><strong>SHIHARA Lab → HUMAN MADE TOKYO</strong><p>先去神宫前 5-15-2 的 SHIHARA Lab 看实验性珠宝与独立设计师，建议预约 14:45、试戴约 25 分钟；再沿神宫前向南到 HUMAN MADE TOKYO，看东京限定、外套与配件，约 30 分钟。</p></div></div>
-            <div class="slot"><span class="time">15:45</span><span class="dot"></span><div class="slot-content"><strong>GYRE / HAY TOKYO → Hirotaka 表参道旗舰店 → Ralph Lauren → AMI Paris</strong><p>HAY 位于 GYRE B1F；Hirotaka 表参道旗舰店在表参道 Hills B1F，适合看建筑感耳饰、耳骨夹与珍珠设计。随后沿主街逛 Ralph Lauren 的 Polo / RRL 与 AMI 针织、帽子。若需要试戴或深度试穿，先删 HAY；<a href="https://hiro-taka.com/pages/omotesando-flagship-store" target="_blank" rel="noreferrer">Hirotaka 官方门店页 ↗</a></p></div></div>
-            <div class="slot"><span class="time">16:30</span><span class="dot"></span><div class="slot-content"><strong>i2 cafe｜Dutch Baby 松饼</strong><p>从表参道 A4 方向进入南青山 3 丁目，17:00 前完成餐食点单。主点现烤 Dutch Baby，可在甜味、水果或咸味版本中二人分食一份，再配咖啡；控制在约 35 分钟，先看当日 Instagram 与 Google 营业状态。</p></div></div>
-            <div class="slot"><span class="time">17:10</span><span class="dot"></span><div class="slot-content"><strong>南青山收尾｜SUPER A MARKET → H BEAUTY&amp;YOUTH → 金子眼镜</strong><p>先看 SUPER A MARKET 的国际设计师与生活物件，再到 H 看 H、LOEFF、Steven Alan、Pheeta、OSOI 与 PREEK；18:35 左右进入金子眼镜。URBANIC30 位于骨董通一带，偏简洁优雅女装，只在其中一店提前结束时替换加入，不额外叠加。</p></div></div>
-            <div class="slot"><span class="time">19:15</span><span class="dot"></span><div class="slot-content"><strong>agete｜有余量才补看</strong><p>Hirotaka 已安排在 15:45 的表参道 Hills 段；agete 仅在 SUPER A MARKET、H 或金子眼镜提前结束时顺路加入，不把晚餐继续往后推。</p></div></div>
-            <div class="slot"><span class="time">19:45</span><span class="dot"></span><div class="slot-content"><strong>南青山 → 西新宿</strong><p>晚餐改到新宿；从南青山收尾后直接前往 Nigirite，不再折返原宿。预留地铁换乘时间。</p></div></div>
+            <div class="slot"><span class="time">10:10</span><span class="dot"></span><div class="slot-content"><strong>目白 → 原宿</strong><p>JR 山手线直达；到站后先去预约店，沿途不额外安排远端景点。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>MY ONLY FRAGRANCE 原宿店｜情侣定制</strong><p>已预约的两人体验；各预留约 30 分钟，配方与瓶身拍照留档。</p></div></div>
+            <div class="slot"><span class="time">11:45</span><span class="dot"></span><div class="slot-content"><strong>AMAM DACOTAN 快速外带 → 里原宿购物</strong><p>面包最多停 15 分钟；排队超过 10 分钟或售罄就直接去 Pocket。Pocket、International Gallery BEAMS、TABAYA 每店约 20 分钟，队伍长就减少一站。</p></div></div>
+            <div class="slot"><span class="time">13:00</span><span class="dot"></span><div class="slot-content"><strong>Stüssy / Onitsuka Tiger → Cat Street 午餐</strong><p>13:00—13:35 最多进一店，优先试穿 Onitsuka Tiger 并记下品番供 10/9 御殿场比价；Stüssy 若排队就跳过。Supreme / Lacoste 只在无队时快看；13:45 就近午餐，控制在 50 分钟。</p></div></div>
+            <div class="slot"><span class="time">14:40</span><span class="dot"></span><div class="slot-content"><strong>SHIHARA Lab → HUMAN MADE TOKYO</strong><p>只保留两家主选店，约 75 分钟；需要预约的 SHIHARA 以门店确认时间为准，超时就删第二家。</p></div></div>
+            <div class="slot"><span class="time">16:00</span><span class="dot"></span><div class="slot-content"><strong>原宿 → 六本木 Hills</strong><p>留出约 40 分钟搭车与步行；出发前用地图核对实时路线。</p></div></div>
+            <div class="slot"><span class="time">16:45</span><span class="dot"></span><div class="slot-content"><strong>Tokyo City View｜日落前后观景</strong><p>计划停留约 75 分钟。展望台官网当前时段为 10:00—22:00、最晚入馆 21:30；Mori Art Museum 处于换展闭馆期，不要把美术馆写入 10/6 行程。</p></div></div>
+            <div class="slot"><span class="time">18:00</span><span class="dot"></span><div class="slot-content"><strong>六本木 → 新宿</strong><p>预留约 60 分钟覆盖换乘与步行，预计 19:00 左右抵达；余下时间作为 Nigirite 前缓冲，不安排新的购物任务。</p></div></div>
             <div class="slot"><span class="time">20:15</span><span class="dot"></span><div class="slot-content"><strong>Shinjyuku Sushi Bar Nigirite｜晚餐</strong><p>已确认安排在 10/6 晚，20:15 用餐；周二营业 17:00—23:00，建议提前预约。</p></div></div>
-            <div class="slot"><span class="time">21:45</span><span class="dot"></span><div class="slot-content"><strong>返回目白</strong><p>晚餐后从新宿直接回酒店。药妆若未完成，可在新宿站附近补购，或留到 10/11 银座日处理，不专程折返原宿。</p></div></div>
+            <div class="slot"><span class="time">21:45</span><span class="dot"></span><div class="slot-content"><strong>返回目白</strong><p>晚餐后从新宿直接回酒店，结束后不再折返原宿补药妆。</p></div></div>
           </div>
 
           <div class="subhead">品牌与店铺｜按优先级</div>
           <div class="shop-grid">
-            <article class="shop"><h4>松本清 原宿站表参道口店 <span class="jp-name" lang="ja">薬 マツモトキヨシ 原宿駅表参道口店</span> <span class="badge must">晚间主选</span></h4><p>真正的连锁药妆店，可集中购买医药品、日系开架美妆、护肤、护发与日用品。门店位于原宿站旁，周二营业至 22:30、全年无休并支持免税；放到晚餐后购买，避免全天携带液体和大袋商品。</p><div class="meta"><span>21:10—21:50 计划时段</span><span>营业至 22:30</span><span>Tax Free</span><span>原宿站旁</span></div><a class="link" href="https://www.matsukiyococokara-online.com/map/?kid=10001728">官方门店页 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Matsumoto+Kiyoshi+Harajuku+Station+Omotesando+Exit">地图 ↗</a></article>
+            <article class="shop"><h4>松本清 原宿站表参道口店 <span class="jp-name" lang="ja">薬 マツモトキヨシ 原宿駅表参道口店</span> <span class="badge opt">备选</span></h4><p>药妆不再塞进 10/6 主线。若抵达新宿后仍有时间，只在顺路且店铺营业时补买；未买齐时优先留到 10/11 银座日处理。</p><div class="meta"><span>不纳入 10/6 固定路线</span><span>10/11 可补购</span><span>原宿站旁</span></div><a class="link" href="https://www.matsukiyococokara-online.com/map/?kid=10001728">官方门店页 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Matsumoto+Kiyoshi+Harajuku+Station+Omotesando+Exit">地图 ↗</a></article>
             <article class="shop"><h4>@cosme TOKYO <span class="jp-name" lang="ja">アットコスメトーキョー</span> <span class="badge opt">白天机动</span></h4><p>原宿站旁的热门美妆旗舰，适合看排行榜、专柜与开架新品，但不是以 OTC 药品为主的传统药妆店。21:00 闭店，无法替代晚间松本清；只有当天主动减少一间低优先潮牌并且仍在原宿时，才作为白天美妆补充。</p><div class="meta"><span>11:00—21:00</span><span>美妆旗舰</span><span>不作为晚间药妆替代</span></div><a class="link" href="https://www.cosme.net/store/flagship/tokyo/">官方门店 / 活动 ↗</a></article>
             <article class="shop"><h4>MY ONLY FRAGRANCE 原宿店 <span class="badge book">预约主选</span></h4><p>从数十种香味中挑选、试闻、调配并命名，适合情侣各做一瓶。官方参考价 50ml ¥6,500 起、100ml ¥8,000 起，体验约 30 分钟；成品用于衣物与布制品，不是直接喷皮肤的香水。</p><div class="meta"><span>11:00—20:00</span><span>Laforet B0.5</span><span>LINE 预约</span></div><a class="link" href="https://myonlyfragrance.com/shops/">官方门店 / 预约 ↗</a></article>
             <article class="shop"><h4>Pocket Harajuku <span class="jp-name" lang="ja">ポケット 原宿</span> <span class="badge must">银饰重点</span></h4><p>独立原创银饰、戒指、手链与从海外收集的 Vintage / 北欧杂货并置，带一点寻宝感。原创款可免费咨询尺寸订制；适合挑情侣不完全同款的戒指或钥匙扣。</p><div class="meta"><span>12:00—19:00</span><span>神宫前 3-27-14</span><span>Silver / Vintage</span></div><a class="link" href="https://pocket-official.com/">官网 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Pocket+Harajuku+3-27-14">地图 ↗</a></article>
@@ -901,43 +916,43 @@
 
           <div class="subhead">吃什么</div>
           <div class="food-grid">
-            <div class="meal-title">Lunch｜午餐选择</div>
-            <article class="food"><h4>とんかつ まい泉 青山本店</h4><p><b>类别：</b>炸猪排｜<b>代表：</b>黑豚里脊、炸猪排三明治。昭和浴场改造建筑也值得看。</p><div class="meta"><span class="rating">★ 4.4 Google</span><span>可线上预约</span><span>正餐</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Tonkatsu+Maisen+Aoyama">地图 / 实时评分 ↗</a></article>
+            <div class="meal-title">Lunch｜Cat Street / 原宿沿线午餐</div>
             <article class="food"><h4>原宿餃子樓</h4><p><b>类别：</b>平价饺子｜<b>代表：</b>煎饺、水饺、豆芽。上菜快、烟火气足，适合压缩午餐时间。</p><div class="meta"><span>现场排队</span><span>快速</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Harajuku+Gyozaro">地图 ↗</a></article>
             <article class="food"><h4>THE GREAT BURGER <span class="jp-name" lang="ja">ザ グレートバーガー</span></h4><p><b>类别：</b>美式汉堡｜<b>代表：</b>培根芝士汉堡、奶昔。与当天美式街头主题最搭。</p><div class="meta"><span class="rating">★ 4.2 Google</span><span>现场排队</span><span>份量大</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=The+Great+Burger+Harajuku">地图 / 实时评分 ↗</a></article>
             <article class="food"><h4>AFURI 原宿 <span class="jp-name" lang="ja">AFURI 原宿</span></h4><p><b>类别：</b>拉面｜<b>代表：</b>柚子盐拉面、柚子辣汤面。清爽，吃完继续逛不会太负担。</p><div class="meta"><span class="rating">★ 4.5 Google</span><span>不预约</span><span>快速</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=AFURI+Harajuku">地图 / 实时评分 ↗</a></article>
             <article class="food"><h4>麺散 MENCHIRASHI</h4><p><b>类别：</b>现打乌冬｜<b>代表：</b>釜玉、明太奶油与招牌カルボナーラ。街头感强，适合 Cat Street 途中快速吃。</p><div class="meta"><span>现场排队</span><span>¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Menchirashi+Harajuku">地图 / 实时评分 ↗</a></article>
-            <div class="meal-title">Coffee｜咖啡选择</div>
-            <article class="food"><h4>i2 cafe <span class="jp-name" lang="ja">アイツー カフェ</span> <span class="badge must">路线正选</span></h4><p>南青山巷内的绿植咖啡馆；<b>代表：</b>铁锅现烤 Dutch Baby 德式松饼，可选水果甜味或生火腿、布拉塔等咸味版本。11:00 后供应最稳，制作需要时间，两人分食一份更适合继续购物。</p><div class="meta"><span>表参道 A4 步行约 4—5 分钟</span><span>现行 08:00—18:00 · 餐食 L.O.17:00</span><span>先查当日营业</span></div><a class="link" href="https://www.instagram.com/i2.cafe/">官方 Instagram ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=i2+cafe+Minami+Aoyama">地图 / 实时评分 ↗</a></article>
-            <article class="food"><h4>KOFFEE MAMEYA <span class="jp-name" lang="ja">コーヒー マメヤ</span></h4><p>一对一按口味推荐豆子与冲法；体验完整但可能排队，预留 30—45 分钟。</p><div class="meta"><span class="rating">★ 4.6 Google</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Koffee+Mameya+Omotesando">地图 / 实时评分 ↗</a></article>
-            <article class="food"><h4>Ralph's Coffee</h4><p>墨绿学院风空间；拿铁、滴滤与胡萝卜蛋糕适合品牌路线中场休息。</p></article>
-            <article class="food"><h4>Le Café Ami</h4><p>小川珈琲监修；重点看肉桂卡布奇诺、热巧与当季 Ami de Cœur 甜点。</p></article>
-            <article class="food"><h4>Café Kitsuné Aoyama</h4><p>法日混合的简洁风格；espresso、抹茶拿铁与狐狸饼干适合拍照。</p></article>
+            <div class="meal-title">Coffee｜新宿缓冲休息</div>
+            <article class="food"><h4>新宿站 / 西新宿临时咖啡休息</h4><p>City View 后约 19:00 到新宿，若离 20:15 的 Nigirite 还有时间，在车站或餐厅附近就近找座位；不再回表参道或南青山。</p><div class="meta"><span>机动休息</span><span>以当日营业为准</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=cafe+Nishi-Shinjuku">附近咖啡地图 ↗</a></article>
+            
+            
+            
+            
             <article class="food"><h4>青山フラワーマーケット TEA HOUSE</h4><p>花店温室感空间；花草茶、法式吐司与季节甜点适合情侣休息，排队长时直接跳过。</p><a class="link" href="https://www.google.com/maps/search/?api=1&query=Aoyama+Flower+Market+Tea+House">地图 / 实时评分 ↗</a></article>
-            <article class="food"><h4>Fuglen Tokyo</h4><p>挪威浅焙、复古家具，白天咖啡、夜间鸡尾酒；会多走路，咖啡优先时再选。</p></article>
+            
             <div class="meal-title">Snack｜小吃</div>
             <article class="food"><h4>NUMBER SUGAR</h4><p>编号手工焦糖；便于携带与送礼，先少量试口味再买盒装。</p></article>
             <article class="food"><h4>GARIGUETTE</h4><p>现烤焦糖千层酥夹水果或奶油；排队长时果断跳过。</p></article>
             <article class="food"><h4>HIGUMA Doughnuts × Coffee Wrights</h4><p>北海道风格现炸甜甜圈；适合两人分食，避免影响晚餐。</p></article>
             <article class="food"><h4>AMAM DACOTAN 表参道店 <span class="jp-name" lang="ja">アマムダコタン 表参道店</span></h4><p><b>类别：</b>面包 / 外带小吃｜<b>代表：</b>惣菜面包、创意夹馅与时令甜面包。安排在 MY ONLY FRAGRANCE 结束后、Pocket 开门前；最多停 15 分钟，排队或售罄就跳过。可先看官网表参道店外带预约。</p><div class="meta"><span>北青山 3-7-6</span><span>11:00 后候选</span><span>预算 ¥500—1,500 / 次</span></div><a class="link" href="https://amamdacotan.com/pages/shop/">官方门店 ↗</a><a class="link" style="margin-left:12px" href="https://amamdacotan.com/collections/all-omotesando/">表参道外带预订 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=AMAM+DACOTAN+Omotesando">地图 / 实时评分 ↗</a></article>
             <div class="meal-title">Dinner｜已确认：Nigirite（10/6 20:15）</div>
-            <article class="food"><h4>Shinjyuku Sushi Bar Nigirite <span class="jp-name" lang="ja">寿司Bar にぎりて</span> <span class="badge must">已确认 · 10/6 晚餐</span></h4><p><b>类别：</b>寿司 Bar｜<b>位置：</b>西新宿。晚间从表参道、南青山转至新宿用餐。</p><div class="meta"><span>周二 17:00—23:00</span><span>建议预约</span><span>西新宿</span></div><a class="link" href="https://sushi-bar-nigirite.com/contact/">官网 / 预约 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Sushi+Bar+Nigirite+Shinjuku">Google 地图 ↗</a></article>
+            <article class="food"><h4>Shinjyuku Sushi Bar Nigirite <span class="jp-name" lang="ja">寿司Bar にぎりて</span> <span class="badge must">已确认 · 10/6 晚餐</span></h4><p><b>类别：</b>寿司 Bar｜<b>位置：</b>西新宿。晚间从六本木转至新宿用餐。</p><div class="meta"><span>周二 17:00—23:00</span><span>建议预约</span><span>西新宿</span></div><a class="link" href="https://sushi-bar-nigirite.com/contact/">官网 / 预约 ↗</a><a class="link" style="margin-left:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Sushi+Bar+Nigirite+Shinjuku">Google 地图 ↗</a></article>
+            <div class="meal-title">其他收藏候选｜Nigirite 已确认，本次不排</div>
             <article class="food"><h4>CICADA</h4><p><b>类别：</b>地中海｜<b>代表：</b>鹰嘴豆泥、烤章鱼、羊排。空间与约会氛围最好。</p><div class="meta"><span>TableCheck 预约</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=CICADA+Omotesando">地图 ↗</a></article>
             <article class="food"><h4>表参道 KINTAN</h4><p><b>类别：</b>烧肉｜<b>代表：</b>牛舌、熟成牛与和牛套餐。购物日结束后的满足感最高。</p><div class="meta"><span>建议预约</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Omotesando+KINTAN">地图 ↗</a></article>
             <article class="food"><h4>Bépocah</h4><p><b>类别：</b>秘鲁料理｜<b>代表：</b>ceviche、烤肉与 pisco。小众、时髦，适合想跳出日餐的一晚。</p><div class="meta"><span>建议预约</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Bepocah+Tokyo">地图 ↗</a></article>
             <article class="food"><h4>表参道 Hills 餐厅层</h4><p><b>类别：</b>机动方案｜购物拖延时就近选寿司、和食或洋食，不再跨区。</p><div class="meta"><span>无需折返</span><span>雨天友好</span></div></article>
           </div>
         
-          <div class="day-reference-kit" data-day-resource-kit data-day-id="day2" data-xhs-query="原宿 表参道 南青山 Human Made Stussy Hirotaka AMAM DACOTAN H BEAUTY&amp;YOUTH 金子眼镜">
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day2" data-xhs-query="原宿 里原宿 Cat Street MY ONLY FRAGRANCE Pocket TABAYA HUMAN MADE Tokyo City View 六本木">
         <details class="day-reference">
-          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">原宿表参道南青山潮流店、银饰、香氛与眼镜</span><span class="reference-toggle">＋</span></summary>
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">原宿香氛、银饰、街头品牌与六本木展望台</span><span class="reference-toggle">＋</span></summary>
           <div class="day-reference-body">
-            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%8E%9F%E5%AE%BF%20%E8%A1%A8%E5%8F%82%E9%81%93%20%E5%8D%97%E9%9D%92%E5%B1%B1%20Human%20Made%20Stussy%20Hirotaka%20AMAM%20DACOTAN%20H%20BEAUTY%26YOUTH%20%E9%87%91%E5%AD%90%E7%9C%BC%E9%95%9C">小红书搜当天路线 ↗</a></div>
-            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyu%20Plaza%20Omotesando%20Harajuku%20(53331041961).jpg?width=1000" loading="lazy" alt="东急广场表参道原宿建筑外观" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>表参道 · 东急广场原宿</strong><small>图片：Dick Thomas Johnson · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer">Wikimedia Commons 来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=MY%20ONLY%20FRAGRANCE%20%E5%8E%9F%E5%AE%BF"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>MY ONLY FRAGRANCE 原宿</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=HUMAN%20MADE%20TOKYO"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>HUMAN MADE TOKYO</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=H%20BEAUTY%26YOUTH%20%E9%9D%92%E5%B1%B1"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>H BEAUTY&amp;YOUTH 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E5%AD%90%E7%9C%BC%E9%95%9C%20%E9%9D%92%E5%B1%B1"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>金子眼镜 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Hirotaka+Omotesando+Flagship"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Hirotaka 表参道旗舰店</strong><small>表参道 Hills B1F · 地图实拍 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=AMAM+DACOTAN+Omotesando"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>AMAM DACOTAN 表参道店</strong><small>北青山 · 面包店实拍 ↗</small></a></div>
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%8E%9F%E5%AE%BF%20%E9%87%8C%E5%8E%9F%E5%AE%BF%20Cat%20Street%20MY%20ONLY%20FRAGRANCE%20Pocket%20TABAYA%20Human%20Made%20Tokyo%20City%20View">小红书搜当天路线 ↗</a></div>
+            <div class="open-license-gallery"><figure class="open-license-photo"><a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyu%20Plaza%20Omotesando%20Harajuku%20(53331041961).jpg?width=1000" loading="lazy" alt="东急广场表参道原宿建筑外观" referrerpolicy="no-referrer"><span class="photo-open-hint">打开原图 ↗</span></a><figcaption><strong>表参道 · 东急广场原宿</strong><small>图片：Dick Thomas Johnson · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Tokyu_Plaza_Omotesando_Harajuku_(53331041961).jpg" target="_blank" rel="noreferrer">Wikimedia Commons 来源</a></small></figcaption></figure></div><div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=MY%20ONLY%20FRAGRANCE%20%E5%8E%9F%E5%AE%BF"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>MY ONLY FRAGRANCE 原宿</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=HUMAN%20MADE%20TOKYO"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>HUMAN MADE TOKYO</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Pocket+Harajuku"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Pocket Harajuku</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=TABAYA+United+Arrows+Harajuku"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>TABAYA United Arrows</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Tokyo+City+View+Roppongi+Hills"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Tokyo City View</strong><small>六本木 Hills 52F · 地图实拍 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=AMAM+DACOTAN+Omotesando"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>AMAM DACOTAN 表参道店</strong><small>北青山 · 面包店实拍 ↗</small></a></div>
             <div class="day-resource-form no-print">
               <div class="day-resource-fields">
                 <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
-                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="MY ONLY FRAGRANCE 原宿">MY ONLY FRAGRANCE 原宿</option><option value="HUMAN MADE TOKYO">HUMAN MADE TOKYO</option><option value="H BEAUTY&amp;YOUTH 青山">H BEAUTY&amp;YOUTH 青山</option><option value="金子眼镜 青山">金子眼镜 青山</option><option value="Hirotaka 表参道 Hills">Hirotaka 表参道 Hills</option><option value="AMAM DACOTAN 表参道">AMAM DACOTAN 表参道</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="MY ONLY FRAGRANCE 原宿">MY ONLY FRAGRANCE 原宿</option><option value="HUMAN MADE TOKYO">HUMAN MADE TOKYO</option><option value="Pocket Harajuku">Pocket Harajuku</option><option value="TABAYA United Arrows">TABAYA United Arrows</option><option value="Tokyo City View">Tokyo City View</option><option value="AMAM DACOTAN 表参道">AMAM DACOTAN 表参道</option></select></label>
                 <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
                 <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
                 <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
@@ -952,47 +967,47 @@
         </div>
       </details>
 
-      <details class="day" id="day3">
+      <details class="day" id="day3" open>
         <summary>
           <div class="day-date"><small>WED</small><strong>10/7</strong></div>
-          <div class="day-title"><h3>南青山补购与休息缓冲</h3><p>目白 → 表参道 / 南青山 → 目白</p></div><span class="chev">＋</span>
+          <div class="day-title"><h3>南青山购物与箱根前休息日</h3><p>目白 → 青山 / 表参道午餐与补购 → 目白整理行李</p></div><span class="chev">＋</span>
         </summary>
         <div class="day-body">
           <div class="day-intro">
-            <p><span class="badge must">10/6 原路线保留</span> 10/7 改为东京市内购物缓冲日。上午优先去周二休息、周三开放的 ARTS&amp;SCIENCE Aoyama；其余只补 10/6 没逛完的店，不重复走整条路线。下午早点回目白休息并整理 10/8 箱根过夜包。</p>
-            <div class="route"><span>目白</span><i>→ JR / 地铁</i><span>表参道</span><i>→ 步行</i><span>南青山</span><i>→ 原路返回</i><span>目白</span></div>
+            <p><span class="badge must">青山购物主线</span> 10/6 已调整为原宿购物、六本木展望台与新宿晚餐；10/7 集中完成 ARTS&amp;SCIENCE、H BEAUTY&amp;YOUTH、SUPER A MARKET、青山午餐与少量补购。16:30 前回目白，留出休息和整理 10/8 箱根过夜包的时间。</p>
+            <div class="route"><span>目白</span><i>→ JR / 地铁</i><span>青山 / 表参道</span><i>→ 步行</i><span>南青山购物与午餐</span><i>→ 原路返回</i><span>目白</span></div>
             <div class="actions"><a class="btn red" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ARTS%26SCIENCE+Aoyama+Women">ARTS&amp;SCIENCE 地图</a><a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;origin=Mejiro+Station&amp;destination=Minami-Aoyama+Tokyo&amp;travelmode=transit">目白 → 南青山</a><a class="btn" target="_blank" rel="noreferrer" href="https://arts-science.com/en/stores/aoyama/">门店官网</a></div>
           </div>
           <div class="metric-row"><div class="metric"><small>目白出发</small><strong>10:15—10:30</strong></div><div class="metric"><small>青山首站</small><strong>11:00</strong></div><div class="metric"><small>午餐 / 咖啡</small><strong>12:45 / 15:40</strong></div><div class="metric"><small>回酒店 / 晚餐</small><strong>16:30 / 18:45</strong></div></div>
           <div class="grid two">
             <article class="choice"><span class="badge must">上午主线</span><h4>ARTS&amp;SCIENCE Aoyama Women</h4><p>11:00 开门后先逛，预留 45 分钟。再从 10/6 未完成的愿望单中挑店，不重复逛已经完成的店。</p></article>
-            <article class="choice"><span class="badge opt">下午补购</span><h4>H BEAUTY&amp;YOUTH、SUPER A MARKET 与首饰 / 眼镜店</h4><p>建议顺序：H BEAUTY&amp;YOUTH → SUPER A MARKET；时间够再选 Hirotaka、金子眼镜或 HAY TOKYO 中的 1—2 家。全部都逛会压缩休息。</p></article>
+            <article class="choice"><span class="badge opt">下午补购</span><h4>H BEAUTY&amp;YOUTH、SUPER A MARKET 与首饰 / 眼镜店</h4><p>建议顺序：H BEAUTY&amp;YOUTH → SUPER A MARKET；下午从 Hirotaka、金子眼镜、HAY TOKYO、Ralph Lauren、AMI Paris、agete 中最多挑两家。若在 H 里找到 PREEK，可顺路试戴；全部都逛会压缩休息。</p></article>
           </div>
           <div class="route-board">
-            <div class="route-board-head"><h4>10/7 顺逛路线</h4><p>目白 → 南青山 / 表参道购物与用餐 → 目白；晚餐转新宿</p></div>
+            <div class="route-board-head"><h4>10/7 南青山补购路线</h4><p>只走一个青山商圈；购物、午餐与咖啡后回目白，18:45 去新宿吃饭</p></div>
             <ol class="route-steps">
-              <li><span class="stop-kind transit">出发</span><strong>目白 → 表参道 / 青山</strong><small>10:15—10:30 · 按首店位置选 JR 或地铁</small></li>
-              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ARTS%26SCIENCE+Aoyama+Women"><span class="stop-kind shop">购物</span><strong>ARTS&amp;SCIENCE Aoyama Women</strong><small>11:00—11:45 · 青山主店</small></a></li>
-              <li><span class="stop-kind shop">购物</span><strong>H BEAUTY&amp;YOUTH / SUPER A MARKET</strong><small>12:00—12:40、14:00—14:45 · 按愿望单取舍</small></li>
-              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Tonkatsu+Maisen+Aoyama"><span class="stop-kind food">午餐</span><strong>とんかつ まい泉 青山本店</strong><small>12:45—13:45 · 排队时预留机动</small></a></li>
-              <li><span class="stop-kind shop">补购</span><strong>Hirotaka / 金子眼镜 / HAY TOKYO</strong><small>14:45—15:30 · 仅选 1—2 家</small></li>
-              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Aoyama+Flower+Market+GREEN+HOUSE+Omotesando"><span class="stop-kind coffee">咖啡</span><strong>青山フラワーマーケット GREEN HOUSE</strong><small>15:40—16:20 · 花店温室风空间，排队久就改 i2 cafe</small></a></li>
+              <li><span class="stop-kind transit">出发</span><strong>目白 → 青山 / 表参道</strong><small>10:15—10:30 · 按 ARTS&amp;SCIENCE 门店位置选 JR 或地铁</small></li>
+              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ARTS%26SCIENCE+Aoyama+Women"><span class="stop-kind shop">购物</span><strong>ARTS&amp;SCIENCE Aoyama Women</strong><small>11:00—11:45 · 青山主店，先确认当日营业</small></a></li>
+              <li><span class="stop-kind shop">购物</span><strong>H BEAUTY&amp;YOUTH</strong><small>12:00—12:40 · 午餐前优先逛</small></li>
+              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Tonkatsu+Maisen+Aoyama"><span class="stop-kind food">午餐</span><strong>とんかつ まい泉 青山本店</strong><small>12:45—13:45 · 排队时压缩下午补购，不挪动晚餐</small></a></li>
+              <li><span class="stop-kind shop">补购</span><strong>SUPER A MARKET → 选两家补购</strong><small>14:00—15:30 · Hirotaka、金子眼镜、HAY、Ralph Lauren、AMI、agete 中最多选两家</small></li>
+              <li><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Aoyama+Flower+Market+GREEN+HOUSE+Omotesando"><span class="stop-kind coffee">咖啡</span><strong>青山フラワーマーケット GREEN HOUSE</strong><small>15:40—16:20 · 排队久就改 i2 cafe 或直接回酒店</small></a></li>
               <li><span class="stop-kind transit">返回</span><strong>回目白休息并整理箱根过夜包</strong><small>约 16:30 到酒店 · 10/8 早上办理行李宅急便</small></li>
-              <li><span class="stop-kind food">晚餐</span><strong>焼肉ホルモンぼんず～絆～ 新宿本館</strong><small>18:45—20:15 · 从目白前往新宿；周三 16:00 起营业，建议预约</small></li>
+              <li><span class="stop-kind food">晚餐</span><strong>焼肉ホルモンぼんず～絆～ 新宿本館</strong><small>18:45—20:15 · 从目白前往新宿；建议预约，饭后直接回酒店</small></li>
             </ol>
           </div>
           <div class="subhead">时间线</div>
           <div class="timeline">
-            <div class="slot"><span class="time">10:15</span><span class="dot"></span><div class="slot-content"><strong>目白出发</strong><p>按首家店位置搭 JR 到原宿或地铁到表参道；步行以青山、南青山为主。</p></div></div>
-            <div class="slot"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>ARTS&amp;SCIENCE Aoyama Women</strong><p>周三开门后先看天然面料、工艺与日常衣物；出发前再确认门店营业。</p></div></div>
-            <div class="slot"><span class="time">12:00</span><span class="dot"></span><div class="slot-content"><strong>H BEAUTY&amp;YOUTH</strong><p>门店中午开门；先看高阶买手选品，再步行前往午餐。</p></div></div>
-            <div class="slot"><span class="time">12:45</span><span class="dot"></span><div class="slot-content"><strong>午餐｜とんかつ まい泉 青山本店</strong><p>选择炸猪排主餐或外带猪排三明治；热门时段按现场等位调整，午餐后沿南青山 / 表参道补购。</p></div></div>
-            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>SUPER A MARKET 与补购店</strong><p>先逛 SUPER A MARKET，再从 Hirotaka、金子眼镜、HAY TOKYO 里挑 1—2 家；若 10/6 已完成就少走一站。</p></div></div>
-            <div class="slot"><span class="time">15:40</span><span class="dot"></span><div class="slot-content"><strong>咖啡｜青山フラワーマーケット GREEN HOUSE</strong><p>在表参道坐下休息约 30—40 分钟。候位长时改去 i2 cafe，或直接回酒店。</p></div></div>
+            <div class="slot"><span class="time">10:15</span><span class="dot"></span><div class="slot-content"><strong>目白出发</strong><p>按 ARTS&amp;SCIENCE 门店位置搭 JR 或地铁；目标是 11:00 开门后到店，不先绕行其他街区。</p></div></div>
+            <div class="slot"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>ARTS&amp;SCIENCE Aoyama Women</strong><p>周三开门后先看天然面料、工艺与日常衣物，控制在 45 分钟。</p></div></div>
+            <div class="slot"><span class="time">12:00</span><span class="dot"></span><div class="slot-content"><strong>H BEAUTY&amp;YOUTH</strong><p>高阶买手选品与首饰；先列出想找的单品，40 分钟后步行去午餐。</p></div></div>
+            <div class="slot"><span class="time">12:45</span><span class="dot"></span><div class="slot-content"><strong>午餐｜とんかつ まい泉 青山本店</strong><p>预留 60 分钟；若排队明显，改外带猪排三明治或附近简餐，给下午购物保留机动。</p></div></div>
+            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>SUPER A MARKET → 选 1—2 家补购店</strong><p>先逛 SUPER A MARKET，再从 Hirotaka、金子眼镜、HAY TOKYO、Ralph Lauren、AMI、agete 中选最多两家；单店停留过长就删第二家。</p></div></div>
+            <div class="slot"><span class="time">15:40</span><span class="dot"></span><div class="slot-content"><strong>咖啡｜青山フラワーマーケット GREEN HOUSE</strong><p>坐下休息约 30—40 分钟。候位长时改 i2 cafe，或直接回酒店。</p></div></div>
             <div class="slot"><span class="time">16:30</span><span class="dot"></span><div class="slot-content"><strong>回目白休息、准备箱根行李</strong><p>把 10/8—10/9 换洗物品装入随身包，确认两件大箱和一件小箱的宅急便办理方式。</p></div></div>
             <div class="slot"><span class="time">18:45</span><span class="dot"></span><div class="slot-content"><strong>新宿晚餐｜焼肉ホルモンぼんず～絆～ 新宿本館</strong><p>照片对应新宿本馆；该店平日 16:00 起营业，建议提前订位。用餐后直接回目白休息。</p></div></div>
           </div>
-          <div class="note"><strong>当天取舍：</strong>10/7 是完整的市内购物、用餐和休息日。优先 ARTS&amp;SCIENCE、H BEAUTY&amp;YOUTH、SUPER A MARKET；首饰 / 眼镜最多再选两家。若 10/6 已经买齐，保留午餐、咖啡和回酒店整理行李即可。</div>
+          <div class="note"><strong>当天取舍：</strong>10/7 优先 ARTS&amp;SCIENCE、H BEAUTY&amp;YOUTH、SUPER A MARKET 与 Maisen；下午表参道 / 青山补购最多选两家。16:30 回目白的整理行李与休息时间不要挪走，确保 10/8 早上的宅急便安排从容。</div>
           <div class="subhead">10/7 餐饮安排｜午餐、咖啡、晚餐</div>
           <div class="food-grid">
             <div class="meal-title">Lunch｜午餐主选</div>
@@ -1000,24 +1015,30 @@
             <div class="meal-title">Coffee｜咖啡主选</div>
             <article class="food"><h4>青山フラワーマーケット GREEN HOUSE <span class="jp-name" lang="ja">青山フラワーマーケット グリーンハウス</span></h4><p>花店温室感空间，适合购物中途坐下来喝花草茶、咖啡或吃季节甜点。它是原 TEA HOUSE 的现行店铺名，出发前查看当日营业与排队情况。</p><div class="meta"><span>表参道</span><span>建议停留 30—40 分钟</span></div><a class="link" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Aoyama+Flower+Market+GREEN+HOUSE+Omotesando">Google 地图 ↗</a></article>
             <article class="food"><h4>i2 cafe <span class="jp-name" lang="ja">アイツー カフェ</span></h4><p>咖啡备选：绿植空间与 Dutch Baby 松饼；若 Flower Market 等位过长，改来这里短歇。</p><div class="meta"><span>南青山</span><span>先查当日营业</span></div><a class="link" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=i2+cafe+Minami+Aoyama">Google 地图 ↗</a></article>
+            <div class="meal-title">Coffee｜其他备选（按营业与步行决定）</div>
+            <article class="food"><h4>KOFFEE MAMEYA <span class="jp-name" lang="ja">コーヒー マメヤ</span></h4><p>一对一按口味推荐豆子与冲法；体验完整但可能排队，预留 30—45 分钟。</p><div class="meta"><span class="rating">★ 4.6 Google</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Koffee+Mameya+Omotesando">地图 / 实时评分 ↗</a></article>
+            <article class="food"><h4>Ralph's Coffee</h4><p>墨绿学院风空间；拿铁、滴滤与胡萝卜蛋糕适合品牌路线中场休息。</p></article>
+            <article class="food"><h4>Le Café Ami</h4><p>小川珈琲监修；重点看肉桂卡布奇诺、热巧与当季 Ami de Cœur 甜点。</p></article>
+            <article class="food"><h4>Café Kitsuné Aoyama</h4><p>法日混合的简洁风格；espresso、抹茶拿铁与狐狸饼干适合拍照。</p></article>
+            <article class="food"><h4>Fuglen Tokyo</h4><p>挪威浅焙、复古家具，白天咖啡、夜间鸡尾酒；会多走路，咖啡优先时再选。</p></article>
             <div class="meal-title">Dinner｜晚餐已安排</div>
             <article class="food"><h4>焼肉ホルモンぼんず～絆～ 新宿本館 <span class="jp-name" lang="ja">焼肉ホルモンぼんず～絆～ 新宿本館</span> <span class="badge must">10/7 晚餐已安排</span></h4><p><b>类别：</b>烧肉 / 内脏烧｜烧肉ホルモンぼんず新宿本馆；照片确认的分店。Tabelog 店名为「焼肉ホルモンぼんず～絆～ 新宿本館」，地址新宿三丁目；建议预约。</p><div class="meta"><span>新宿三丁目</span><span>周三 16:00—24:00</span><span>建议预约</span></div><a class="link" target="_blank" rel="noreferrer" href="https://akr7965515027.owst.jp/">店铺 / 预约 ↗</a><a class="link" style="margin-left:10px" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=焼肉ホルモンぼんず絆新宿本館">Google 地图 ↗</a></article>
           </div>
           <div class="note"><strong>评分：</strong>Tabelog 评分为 2026-10-03 核对快照；评分可能变化，出发前以店铺页为准；营业时间亦请临行前复核。</div>
-          <div class="day-reference-kit" data-day-resource-kit data-day-id="day3" data-xhs-query="南青山 ARTS%26SCIENCE 表参道 购物">
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day3" data-xhs-query="南青山 ARTS%26SCIENCE H BEAUTY YOUTH SUPER A MARKET Hirotaka 金子眼镜 HAY 表参道购物">
             <details class="day-reference">
-              <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 门店照片</strong><span class="reference-summary">ARTS&amp;SCIENCE 与南青山补购路线</span><span class="reference-toggle">＋</span></summary>
+              <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 门店照片</strong><span class="reference-summary">ARTS&amp;SCIENCE、买手店、首饰与南青山补购路线</span><span class="reference-toggle">＋</span></summary>
               <div class="day-reference-body">
                 <div class="reference-banner"><p>只收藏当天真正准备补逛的门店；已完成的 10/6 店铺无需重复添加。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%97%E9%9D%92%E5%B1%B1%20ARTS%26SCIENCE%20%E8%A1%A8%E5%8F%82%E9%81%93">搜索南青山路线 ↗</a></div>
-                <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ARTS%26SCIENCE+Aoyama+Women"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>ARTS&amp;SCIENCE Aoyama Women</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=SUPER+A+MARKET+AOYAMA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>SUPER A MARKET AOYAMA</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=H+BEAUTY%26YOUTH+Aoyama"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>H BEAUTY&amp;YOUTH 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Kaneko+Optical+Aoyama"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>金子眼镜 青山</strong><small>地图实拍与营业信息 ↗</small></a></div>
-                <div class="day-resource-form no-print"><div class="day-resource-fields"><label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label><label>地点<select data-resource-place><option value="">选择当天地点</option><option value="ARTS&amp;SCIENCE Aoyama Women">ARTS&amp;SCIENCE Aoyama Women</option><option value="SUPER A MARKET AOYAMA">SUPER A MARKET AOYAMA</option><option value="H BEAUTY&amp;YOUTH 青山">H BEAUTY&amp;YOUTH 青山</option><option value="金子眼镜 青山">金子眼镜 青山</option></select></label><label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label><label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label><label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、营业时间或同行人分享的重点"></textarea></label></div><div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div><div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div></div>
+                <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=ARTS%26SCIENCE+Aoyama+Women"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>ARTS&amp;SCIENCE Aoyama Women</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=SUPER+A+MARKET+AOYAMA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>SUPER A MARKET AOYAMA</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=H+BEAUTY%26YOUTH+Aoyama"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>H BEAUTY&amp;YOUTH 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Kaneko+Optical+Aoyama"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>金子眼镜 青山</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Hirotaka+Omotesando+Flagship"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Hirotaka 表参道旗舰店</strong><small>表参道 Hills B1F · 地图实拍 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=HAY+TOKYO+GYRE"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>HAY TOKYO</strong><small>青山补购备选 · 地图实拍 ↗</small></a></div>
+                <div class="day-resource-form no-print"><div class="day-resource-fields"><label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label><label>地点<select data-resource-place><option value="">选择当天地点</option><option value="ARTS&amp;SCIENCE Aoyama Women">ARTS&amp;SCIENCE Aoyama Women</option><option value="SUPER A MARKET AOYAMA">SUPER A MARKET AOYAMA</option><option value="H BEAUTY&amp;YOUTH 青山">H BEAUTY&amp;YOUTH 青山</option><option value="金子眼镜 青山">金子眼镜 青山</option><option value="Hirotaka 表参道旗舰店">Hirotaka 表参道旗舰店</option><option value="HAY TOKYO">HAY TOKYO</option></select></label><label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label><label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label><label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、营业时间或同行人分享的重点"></textarea></label></div><div class="actions"><button class="btn" type="button" data-save-reference>保存参考链接</button><span class="resource-status" data-resource-status aria-live="polite">链接会跟随双人云同步；照片需登录并连接共享旅行后上传。</span></div><div class="shared-resource-list" data-resource-list><p class="small">暂未收藏链接或地点照片。</p></div></div>
               </div>
             </details>
           </div>
         </div>
       </details>
 
-<details class="day" id="day4">
+<details class="day" id="day4" open>
         <summary>
           <div class="day-date"><small>THU</small><strong>10/8</strong></div>
           <div class="day-title"><h3>前往箱根｜仙石原秋景与温泉</h3><p>目白 → 池袋 → 小田原 → 仙石原 → BLISSTIA</p></div><span class="chev">＋</span>
@@ -1105,18 +1126,18 @@
         </div>
       </details>
 
-      <details class="day" id="day5">
+      <details class="day" id="day5" open>
         <summary>
           <div class="day-date"><small>FRI</small><strong>10/9</strong></div>
-          <div class="day-title"><h3>箱根到御殿场｜奥莱集中采购、涩谷返程与六本木夜间</h3><p>仙石原 → 御殿场 Premium Outlets → 涩谷 Mark City → 白金台 → 六本木机动</p></div><span class="chev">＋</span>
+          <div class="day-title"><h3>箱根到御殿场｜奥莱采购、涩谷返程与酒店休整</h3><p>仙石原 → 御殿场 Premium Outlets → 涩谷 Mark City → 白金台入住</p></div><span class="chev">＋</span>
         </summary>
         <div class="day-body">
           <div class="day-intro">
-            <p><span class="badge must">购物优先主案</span> 仙石原本就在御殿场一侧，三件行李已先寄往东京；奥莱闭店前集中采购，固定搭 17:30 直达涩谷。六本木保留为当晚固定短停：晚餐后到榉坂看夜景，不安排观景台。</p>
-            <div class="route"><span>BLISSTIA</span><i>→ 巴士 / 出租车</i><span>御殿场奥莱</span><i>→ 17:30 高速巴士</i><span>涩谷 Mark City</span><i>→ JR / 出租车</i><span>喜来登</span><i>→ 夜景短停</i><span>六本木</span></div>
+            <p><span class="badge must">购物优先主案</span> 仙石原本就在御殿场一侧，三件行李已先寄往东京；奥莱集中采购后固定搭 17:30 直达涩谷。抵达喜来登并领取行李后，就近简餐并休息，不再安排六本木或其他跨区夜间活动。</p>
+            <div class="route"><span>BLISSTIA</span><i>→ 巴士 / 出租车</i><span>御殿场奥莱</span><i>→ 17:30 高速巴士</i><span>涩谷 Mark City</span><i>→ JR / 出租车</i><span>喜来登入住休息</span></div>
             <div class="actions"><a class="btn red" href="https://www.premiumoutlets.co.jp/gotemba/">奥莱官网</a><a class="btn" href="https://www.premiumoutlets.co.jp/mobile/appli/">官方 App</a><a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;origin=BLISSTIA+Hakone+Sengokuhara&amp;destination=Gotemba+Premium+Outlets&amp;travelmode=transit">酒店→奥莱地图</a><a class="btn" href="https://www.premiumoutlets.co.jp/gotemba/access/access_bus.html">箱根 / 巴士交通</a><a class="btn" href="https://www.tokyubus.co.jp/highway/omnibus/high-fujistation.html">东急官方时刻</a><a class="btn" href="https://www.kousokubus.net/BusRsv/ja/vacantseat/entry?LINE_CD=105&amp;routeSelectionFlg=1">高速巴士预约</a></div>
           </div>
-          <div class="metric-row"><div class="metric"><small>退房</small><strong>10:00</strong></div><div class="metric"><small>奥莱</small><strong>约 10:45—17:00</strong></div><div class="metric"><small>直达涩谷</small><strong>17:30—19:30</strong></div><div class="metric"><small>六本木</small><strong>21:15 固定短停</strong></div></div>
+          <div class="metric-row"><div class="metric"><small>退房</small><strong>10:00</strong></div><div class="metric"><small>奥莱</small><strong>约 10:45—17:00</strong></div><div class="metric"><small>直达涩谷</small><strong>17:30—19:30</strong></div><div class="metric"><small>晚间</small><strong>入住后就近用餐休息</strong></div></div>
           <div class="route-board">
             <div class="route-board-head"><h4>当天采购顺序</h4><p>先鞋与重点外套，再法式基础款，最后买手店；16:45 无条件收尾</p></div>
             <ol class="route-steps">
@@ -1129,7 +1150,7 @@
               <li><span class="stop-kind shop">买手 / 户外</span><strong>BEAMS → UA → Hoka</strong><small>13:50 · 第二轮机动</small></li>
               <li><span class="stop-kind transit">巴士</span><strong>17:30 → 涩谷 Mark City</strong><small>16:45 取包、查票、去站台</small></li>
               <li><span class="stop-kind transit">酒店</span><strong>喜来登入住 / 领三件行李</strong><small>20:20 左右 · 逐件核对</small></li>
-              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Keyakizaka+Roppongi"><span class="stop-kind view">夜景</span><strong>六本木晚餐 → 榉坂</strong><small>10/9 保留短停，不加观景台</small></a></li>
+              <li><span class="stop-kind food">晚间</span><strong>喜来登附近简餐 / 客房休息</strong><small>入住与领取三件行李后就近处理，不再跨区外出</small></li>
             </ol>
           </div>
           <div class="subhead">时间线</div>
@@ -1143,7 +1164,7 @@
             <div class="slot" data-fixed="true"><span class="time">17:30</span><span class="dot"></span><div class="slot-content"><strong>高速巴士直达涩谷</strong><p>御殿场 Premium Outlets → 涩谷 Mark City，官方计划 19:30 到达，成人单程 ¥2,100。周五高速可能延误，车后不安排不可取消项目。</p></div></div>
             <div class="slot"><span class="time">19:30</span><span class="dot"></span><div class="slot-content"><strong>涩谷 Mark City → 喜来登</strong><p>轻装时从涩谷搭 JR 山手线到目黑，再转酒店免费车或出租车；两人购物袋较多时，直接从 Mark City 排班出租车到白金台更省力。</p></div></div>
             <div class="slot"><span class="time">20:20</span><span class="dot"></span><div class="slot-content"><strong>入住并领取三件行李</strong><p>按英文姓名领取目白寄来的两件大箱和一件小箱，逐件核对运单号与外观；有异常立即请前台协助联系承运方。</p></div></div>
-            <div class="slot"><span class="time">21:15</span><span class="dot"></span><div class="slot-content"><strong>六本木夜景短停｜当晚保留</strong><p>入住并放下购物袋后去 Roppongi Hills / 榉坂，晚餐与夜景安排为轻量短停，不加观景台。若巴士有延误，优先压缩奥莱末段与晚餐时间，仍保留六本木。</p></div></div>
+            <div class="slot"><span class="time">21:15</span><span class="dot"></span><div class="slot-content"><strong>喜来登附近简餐 / 休息</strong><p>20:20 左右入住并核对三件行李后，不再跨区外出。若返程巴士晚点，便利店简餐或直接休息。</p></div></div>
           </div>
           <div class="note"><strong>已经在奥莱但错过 / 取消 17:30 巴士：</strong>不要继续等待同一站的不确定补位。立即到 West Zone 巴士区搭免费接驳车前往 JR 御殿场站，再按当时最快路线选择“御殿场线 → 国府津 → 东海道线 → 品川”返回；若仍有前往三岛站的路线上车名额，也可到三岛换东海道新干线。免费接驳通常每 15 分钟一班，但满员及道路延误均可能发生，以现场与官方交通页为准。<a class="link" href="https://www.premiumoutlets.co.jp/gotemba/access/access_bus.html">官方铁路 / 接驳路线 ↗</a></div>
           <div class="subhead">御殿场采购顺序</div>
@@ -1164,24 +1185,21 @@
             <article class="food"><h4>沼津魚がし鮨</h4><p><b>类别：</b>寿司 / 海鲜｜<b>代表：</b>骏河湾鲜鱼握寿司、海鲜丼。比网红汉堡排更符合静冈海鲜体验。</p><div class="meta"><span>日式</span><span>正餐</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Numazu+Uogashizushi+Gotemba+Premium+Outlets">地图 / 实时评分 ↗</a></article>
             <article class="food"><h4>Shake Shack</h4><p><b>类别：</b>汉堡｜<b>代表：</b>ShackBurger、薯条、奶昔。节奏最容易控制，适合快速吃完继续采购。</p><div class="meta"><span>快速</span><span>西式</span></div></article>
             <article class="food"><h4>ITADAKI TERRACE / Food Bazaar</h4><p><b>类别：</b>美食广场｜拉面、丼饭、咖喱和甜点集中，两人可以点不同类别；下雨和选择困难时最稳。</p><div class="meta"><span>选择最多</span><span>不预约</span></div></article>
-            <div class="meal-title">Dinner｜六本木或酒店附近</div>
-            <article class="food"><h4>イマカツ Imakatsu</h4><p><b>类别：</b>炸鸡排 / 炸猪排｜<b>代表：</b>名物鸡排与卷心菜。口味直观，价格较友好。</p><div class="meta"><span>可排队</span><span>¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Imakatsu+Roppongi">地图 ↗</a></article>
-            <article class="food"><h4>つるとんたん UDON NOODLE Brasserie 六本木</h4><p><b>类别：</b>创意乌冬｜<b>代表：</b>明太奶油、咖喱或大碗冷乌冬。现址在 AXALL 六本木 7F，周五营业至次日 08:00。</p><div class="meta"><span class="rating">★ 4.1 Google</span><span>可 TableCheck</span><span>¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Roppongi">地图 / 实时评分 ↗</a><a class="link" style="margin-left:12px" href="https://www.tsurutontan.co.jp/shop/roppongi/">官方 / 预约 ↗</a></article>
-            <article class="food"><h4>RIGOLETTO BAR AND GRILL</h4><p><b>类别：</b>西班牙 / 意式 / 烧烤｜<b>代表：</b>汉堡、披萨、炭火肉。空间热闹，情侣夜晚氛围好。</p><div class="meta"><span>建议预约</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Rigoletto+Bar+and+Grill+Roppongi">地图 ↗</a></article>
-            <article class="food"><h4>豚組食堂 BUTAGUMI DINING</h4><p><b>类别：</b>精品炸猪排｜<b>代表：</b>按产地选择铭柄豚、里脊或菲力。位于 Roppongi Hills，夜拍后不必跨区。</p><div class="meta"><span>同楼最省路</span><span>¥¥¥</span></div><a class="link" href="https://www.google.com/maps/search/?api=1&query=Butagumi+Dining+Roppongi">地图 / 实时评分 ↗</a></article>
+            <div class="meal-title">Dinner｜到酒店后就近简餐</div>
+            <article class="food"><h4>酒店周边临时选择</h4><p>高速巴士预计 19:30 抵达涩谷，行李领取与入住后已接近 21:00；当晚在喜来登附近、酒店内或便利店简餐，按实际到达时间选择，不预订需要准时到场的餐厅。</p><div class="meta"><span>不跨区</span><span>按抵达情况决定</span></div></article>
           </div>
           <div class="note"><strong>当天优惠：</strong>官方公布 2026/10/1—11/1 为 SPECIAL MONTH，但不是全场统一折扣。奥莱价、店内活动、App 优惠券和免税能否叠加，均以各店结账前确认为准。</div>
         
-          <div class="day-reference-kit" data-day-resource-kit data-day-id="day5" data-xhs-query="御殿场 Premium Outlets 涩谷 六本木 榉坂">
+          <div class="day-reference-kit" data-day-resource-kit data-day-id="day5" data-xhs-query="御殿场 Premium Outlets 涩谷 高速巴士">
         <details class="day-reference">
-          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">御殿场奥莱购物与涩谷、六本木夜间</span><span class="reference-toggle">＋</span></summary>
+          <summary><span class="reference-stamp">REFERENCE</span><strong>小红书灵感 · 景点 / 门店照片</strong><span class="reference-summary">御殿场奥莱购物与涩谷返程</span><span class="reference-toggle">＋</span></summary>
           <div class="day-reference-body">
-            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets%20%E6%B6%A9%E8%B0%B7%20%E5%85%AD%E6%9C%AC%E6%9C%A8%20%E6%A6%89%E5%9D%82">小红书搜当天路线 ↗</a></div>
-            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>御殿场 Premium Outlets</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Gotemba%20Outlet%20%E5%BA%97%E9%93%BA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Gotemba Outlet 店铺</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B6%A9%E8%B0%B7%20Mark%20City"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>涩谷 Mark City</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%85%AD%E6%9C%AC%E6%9C%A8%E6%A6%89%E5%9D%82"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>六本木榉坂</strong><small>地图实拍与营业信息 ↗</small></a></div>
+            <div class="reference-banner"><p>按当天路线查看笔记与地点实拍。把找到的小红书笔记链接、门店照片存进共享资料夹；这里不抓取笔记正文。</p><a class="btn red" target="_blank" rel="noreferrer" href="https://www.xiaohongshu.com/search_result?keyword=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets%20%E6%B6%A9%E8%B0%B7">小红书搜当天路线 ↗</a></div>
+            <div class="place-photo-grid"><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%BE%A1%E6%AE%BF%E5%9C%BA%20Premium%20Outlets"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>御殿场 Premium Outlets</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Gotemba%20Outlet%20%E5%BA%97%E9%93%BA"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>Gotemba Outlet 店铺</strong><small>地图实拍与营业信息 ↗</small></a><a class="place-photo-card" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B6%A9%E8%B0%B7%20Mark%20City"><span class="place-photo-mark" aria-hidden="true">⌁</span><strong>涩谷 Mark City</strong><small>地图实拍与营业信息 ↗</small></a></div>
             <div class="day-resource-form no-print">
               <div class="day-resource-fields">
                 <label>收藏类型<select data-resource-type><option value="小红书">小红书笔记</option><option value="店铺官网">店铺官网</option><option value="餐厅">餐厅</option><option value="地图">地图 / 地点</option><option value="其他">其他参考</option></select></label>
-                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="御殿场 Premium Outlets">御殿场 Premium Outlets</option><option value="Gotemba Outlet 店铺">Gotemba Outlet 店铺</option><option value="涩谷 Mark City">涩谷 Mark City</option><option value="六本木榉坂">六本木榉坂</option></select></label>
+                <label>地点<select data-resource-place><option value="">选择当天地点</option><option value="御殿场 Premium Outlets">御殿场 Premium Outlets</option><option value="Gotemba Outlet 店铺">Gotemba Outlet 店铺</option><option value="涩谷 Mark City">涩谷 Mark City</option><option value="东京喜来登都酒店">东京喜来登都酒店</option></select></label>
                 <label>标题<input type="text" maxlength="60" data-resource-title placeholder="例如：这家店的排队与试穿记录"></label>
                 <label>链接<input type="url" maxlength="600" data-resource-url placeholder="粘贴小红书 / 官网 / 地图链接"></label>
                 <label class="resource-note-field">备注<textarea maxlength="240" data-resource-note rows="2" placeholder="可写想看的款式、排队提醒或朋友分享的重点"></textarea></label>
@@ -1196,7 +1214,7 @@
         </div>
       </details>
 
-      <details class="day" id="day6">
+      <details class="day" id="day6" open>
         <summary>
           <div class="day-date"><small>SAT</small><strong>10/10</strong></div>
           <div class="day-title"><h3>银饰与小众买手店｜祐天寺、涩谷午餐、中目黑与代官山</h3><p>LARRY SMITH → 道玄坂マンモス午餐 → SIDEWALK / COVERCHORD → Nine Tailor / JieDa / KINTO → nanamica / minä → T-SITE → 涩谷晚间机动</p></div><span class="chev">＋</span>
@@ -1236,8 +1254,8 @@
             <div class="slot"><span class="time">11:00</span><span class="dot"></span><div class="slot-content"><strong>LARRY SMITH Meguro Store｜银饰主站</strong><p>从祐天寺站步行约 10—15 分钟。品牌以日本手工银饰、羽毛、鹰头、珠子与链条组合见长；先问目标吊坠现货，再试链长与叠戴。周六正常 11:00—19:00，热门图案可能缺货，不把明星同款当库存保证。</p></div></div>
             <div class="slot"><span class="time">11:50</span><span class="dot"></span><div class="slot-content"><strong>祐天寺 → 涩谷道玄坂</strong><p>从祐天寺搭东横线到涩谷，步行前往 Mammoth；预留站内步行与排队时间。</p></div></div><div class="slot"><span class="time">12:15</span><span class="dot"></span><div class="slot-content"><strong>道玄坂マンモス｜午餐</strong><p>建议开门后尽早到店；排队购票、不接受预约。若队伍过长，改在涩谷快速吃饭，别让午餐挤掉中目黑和代官山。</p></div></div><div class="slot"><span class="time">13:00</span><span class="dot"></span><div class="slot-content"><strong>涩谷 → 中目黑</strong><p>午餐后搭东急东横线一站到中目黑，开始青叶台店群。</p></div></div>
             <div class="slot"><span class="time">13:20</span><span class="dot"></span><div class="slot-content"><strong>SIDEWALK STAND → COVERCHORD</strong><p>两店同在青叶台 1-23-14：午餐后先用 espresso 或外带饮品短歇，再进 COVERCHORD；男装、女装、户外与生活器物选品以当季到店为准。</p></div></div>
-            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>NEEL / ONIBUS COFFEE｜咖啡或甜点备选</strong><p>午餐已经在涩谷完成；如果需要坐下休息，可在 NEEL 与 ONIBUS COFFEE 中选一处，控制在 30 分钟。</p></div></div>
-            <div class="slot"><span class="time">14:20</span><span class="dot"></span><div class="slot-content"><strong>Nine Tailor → JieDa → KINTO</strong><p>Nine Tailor 看日本制帽型、面料与头围；JieDa 看 90 年代街头、剪裁与牛仔，但实体店状态需当天确认；KINTO 看杯具、咖啡器具、花器和植物，周六 12:00—18:00，必须在代官山之前完成。</p></div></div>
+            <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>NEEL / ONIBUS COFFEE｜咖啡或甜点备选</strong><p>午餐已在涩谷完成；NEEL 与 ONIBUS COFFEE 二选一，外带或短休 15—20 分钟，14:20 继续购物。若想坐下满 30 分钟，Nine Tailor / JieDa 只进一店。</p></div></div>
+            <div class="slot"><span class="time">14:20</span><span class="dot"></span><div class="slot-content"><strong>Nine Tailor / JieDa 二选一 → KINTO</strong><p>先选 Nine Tailor 或 JieDa 一家，再进 KINTO；两站控制在 50 分钟，KINTO 周六 12:00—18:00，必须在代官山之前完成。</p></div></div>
             <div class="slot"><span class="time">15:10</span><span class="dot"></span><div class="slot-content"><strong>1LDK apartments.｜有余量再进</strong><p>低调日常、干净轮廓与生活方式选品值得看，但与 COVERCHORD 的买手属性有重叠。若前面试戴或休息超时，直接跳过，15:40 开始走向代官山。</p></div></div>
             <div class="slot"><span class="time">15:50</span><span class="dot"></span><div class="slot-content"><strong>代官山早关门线｜nanamica → minä perhonen materiaali</strong><p>nanamica 看技术面料、城市机能与 THE NORTH FACE Purple Label 相关风格；materiaali 看原创布料、靠垫、器皿、瓷砖和家居，两店均约 19:00 结束，先于书店完成。</p></div></div>
             <div class="slot"><span class="time">17:00</span><span class="dot"></span><div class="slot-content"><strong>LE LABO → DENHAM / Barbour / Buly 机动</strong><p>LE LABO 优先试 GAIAC 10；DENHAM 看剪裁牛仔，Barbour 只补御殿场缺码，Buly 代官山只试身体油、香氛石与水性香水。不要四店全做，每多进一店预留 25—30 分钟。</p></div></div>
@@ -1307,7 +1325,7 @@
         </div>
       </details>
 
-      <details class="day" id="day7">
+      <details class="day" id="day7" open>
         <summary>
           <div class="day-date"><small>SUN</small><strong>10/11</strong></div>
           <div class="day-title"><h3>银座终局｜Himie、Buly、GINZA SIX、DSMG 与首饰</h3><p>有乐町进 → Bic Camera / 条件眼镜备选 → 丸之内十二天午餐 → 银座核心购物 → 东银座出</p></div><span class="chev">＋</span>
@@ -1347,7 +1365,7 @@
           <div class="timeline">
             <div class="slot" data-fixed="true"><span class="time">10:08</span><span class="dot"></span><div class="slot-content"><strong>免费车到目黑 → JR 到有乐町</strong><p>从有乐町中央口出站，Bic Camera 就在站旁。返程则从东银座走 B 方案，实现不走回头路。</p></div></div>
             <div class="slot"><span class="time">10:45</span><span class="dot"></span><div class="slot-content"><strong>Bic Camera 有乐町快速比价</strong><p>先看胶卷、电池、相机附件与电器，控制在 30 分钟；确定购买的大件申请寄存或晚餐后回来取。</p></div></div>
-            <div class="slot"><span class="time">11:25 机动</span><span class="dot"></span><div class="slot-content"><strong>眼镜备选｜999.9 银座本店</strong><p>仅当 10/6 金子眼镜没有买到合适镜架时前往；如金子眼镜已购入，直接跳过并把时间留给银座路线。需要验光时先确认镜片交期；不赶工即可只买镜框回国配片。</p></div></div>
+            <div class="slot"><span class="time">11:25 机动</span><span class="dot"></span><div class="slot-content"><strong>眼镜备选｜999.9 银座本店</strong><p>仅当 10/7 金子眼镜没有买到合适镜架时前往；如金子眼镜已购入，直接跳过并把时间留给银座路线。需要验光时先确认镜片交期；不赶工即可只买镜框回国配片。</p></div></div>
             <div class="slot"><span class="time">12:30</span><span class="dot"></span><div class="slot-content"><strong>午餐已确认｜すき焼き 十二天</strong><p>丸之内 Brick Square 3F；周日午市 11:00—15:00（L.O.14:00）。行程安排 12:30 用餐，建议提前预约；午餐后步行前往银座购物。</p></div></div>
             <div class="slot"><span class="time">14:00</span><span class="dot"></span><div class="slot-content"><strong>Ginza Loft 或 Lemonsha｜只做一项深逛</strong><p>想买文具、旅行用品与日本设计杂货就选 Loft；想看胶片机、镜头与钢笔就选 Lemonsha。另一处只在 30 分钟内完成目标购买，不再叠加 MUJI 与 Itoya 全部楼层。</p></div></div>
             <div class="slot"><span class="time">14:40</span><span class="dot"></span><div class="slot-content"><strong>松屋银座 1F｜Himie + Officine Universelle Buly</strong><p>先看 Himie 的首饰作品并试戴，再逛同层 Buly；Himie 官方营业时间为 11:00—20:00。Buly 重点比较身体油、香氛石与水性香水，先问当日 TAX FREE 和可用优惠。两店合计控制在 50 分钟；如需个性化包装，缩短试香时间并优先保留 Himie。</p></div></div>
@@ -1432,7 +1450,7 @@
         </div>
       </details>
 
-      <details class="day" id="day8">
+      <details class="day" id="day8" open>
         <summary>
           <div class="day-date"><small>MON</small><strong>10/12</strong></div>
           <div class="day-title"><h3>返程｜目黑、日暮里与成田 T1</h3><p>喜来登 09:23 发车 → 日暮里 10:40 Skyliner → CA930</p></div><span class="chev">＋</span>
@@ -1470,7 +1488,7 @@
             <div class="slot"><span class="time">12:55</span><span class="dot"></span><div class="slot-content"><strong>安检与出境审查</strong><p>完成后先确认登机口所在卫星楼，再决定逛南翼、中央楼或对应候机区；不要为了跨区品牌店耽误登机。</p></div></div>
             <div class="slot"><span class="time">13:20</span><span class="dot"></span><div class="slot-content"><strong>机场免税补购</strong><p>优先美妆、香水、酒类、伴手礼及清单内奢侈品牌。计划购买眼镜时先在市区金子眼镜选购；仅未购入时再考虑 999.9 / EYETHINK，不把眼镜采购留给机场。</p></div></div>
             <div class="slot"><span class="time">14:25</span><span class="dot"></span><div class="slot-content"><strong>到达登机口</strong><p>结束采购，核对护照、登机牌、免税袋和随身胶卷；登机口可能离主免税区较远。</p></div></div>
-            <div class="slot" data-fixed="true"><span class="time">15:20</span><span class="dot"></span><div class="slot-content"><strong>CA930 起飞</strong><p>当前公开时刻约为成田 15:20 → 浦东 T2 17:50；以国航 App / 电子客票为最终依据。</p></div></div>
+            <div class="slot" data-fixed="true"><span class="time" data-flight-display="returnDeparture">15:20</span><span class="dot"></span><div class="slot-content"><strong><span data-flight-display="returnNo">CA930</span> 起飞</strong><p>计划日期 <span data-flight-display="returnDate">10/12</span>；成田 <span data-flight-display="returnDeparture">15:20</span> → 浦东 T2 <span data-flight-display="returnArrival">17:50</span>，以国航 App / 电子客票为最终依据。</p></div></div>
           </div>
           <div class="subhead">早餐与机场选择</div>
           <div class="food-grid">
@@ -1527,7 +1545,7 @@
       <div class="brand-table">
         <article class="brand"><h3>ALLU SHINJUKU <span class="jp-name" lang="ja">ALLU 新宿店</span></h3><p>高端中古奢侈品与设计师成衣，适合看 CHANEL、Hermès、珠宝与腕表。先筛新宿店库存和 Coupon Selection；折扣按指定单品而非全店统一，付款前确认 coupon、免税与商品状态。</p><span class="where">10/5 · 新宿三丁目｜11:00—21:00</span></article>
         <article class="brand"><h3>ODETTE É ODILE <span class="jp-name" lang="ja">オデット エ オディール</span></h3><p>United Arrows 旗下女鞋，风格是摩登、女性化与舒适日常之间的平衡；重点试平底鞋、Mary Jane、乐福鞋与短靴。新宿伊势丹店能顺便比较整个 2F 女鞋区，晚到则去 LUMINE 1 3F。</p><span class="where">10/5 · 伊势丹新宿本馆 2F｜10:00—20:00</span></article>
-        <article class="brand"><h3>Matsumoto Kiyoshi <span class="jp-name" lang="ja">薬 マツモトキヨシ 原宿駅表参道口店</span></h3><p>经典连锁药妆，覆盖 OTC 医药品、开架美妆、护肤、护发和日用品。原宿站店营业至 22:30并支持免税，放到晚餐后集中购买，可以避免全天携带液体和大袋商品；10/11 银座店只作为补购备用。</p><span class="where">10/6 · 原宿｜21:10—21:50</span></article>
+        <article class="brand"><h3>Matsumoto Kiyoshi <span class="jp-name" lang="ja">薬 マツモトキヨシ 原宿駅表参道口店</span></h3><p>经典连锁药妆，覆盖 OTC 医药品、开架美妆、护肤、护发和日用品。原宿站店营业至 22:30并支持免税，放到晚餐后集中购买，可以避免全天携带液体和大袋商品；10/11 银座店只作为补购备用。</p><span class="where">10/11 · 银座｜晚餐后按需补购</span></article>
         <article class="brand"><h3>HUMAN MADE TOKYO <span class="jp-name" lang="ja">ヒューマンメイド トウキョウ</span></h3><p>美式工装、学院与复古图案，由 NIGO 主导；图形卫衣、棒球夹克、配件辨识度最高。2026 年 9 月新开的品牌首家大型旗舰店，重点看东京限定 Lion 图案、MA-1、Coach Jacket、钥匙扣与 Heart Ring。</p><span class="where">10/6 · 原宿｜工作日 11:00—19:00</span></article>
         <article class="brand"><h3>Stüssy Harajuku <span class="jp-name" lang="ja">ステューシー原宿</span></h3><p>加州滑板、冲浪与 90 年代街头，是最值得先买基础 Logo Tee、帽子与季节外套的一站。热门尺码售罄快，看到合适配色不要留到最后。</p><span class="where">10/6 · 原宿｜11:00—19:00</span></article>
         <article class="brand"><h3>Onitsuka Tiger <span class="jp-name" lang="ja">オニツカタイガー</span></h3><p>日本复古跑鞋与时装运动风，MEXICO 66 是经典，Yellow Collection 更重皮革与廓形。普通 MEXICO 66 当前示例为含税 ¥16,500、免税约 ¥15,000；10/6 试穿记品番，10/9 奥莱比价，10/11 银座补购。</p><span class="where">10/6 表参道 → 10/9 御殿场 → 10/11 银座</span></article>
@@ -1539,13 +1557,13 @@
         <article class="brand"><h3>Pocket Harajuku <span class="jp-name" lang="ja">ポケット 原宿</span></h3><p>原创银饰、戒指与手链混合 Vintage 和北欧杂货，风格有旧物感与手作温度；原创设计可咨询免费尺寸订制，很适合挑不完全同款的情侣纪念首饰。</p><span class="where">10/6 · 里原宿｜12:00—19:00</span></article>
         <article class="brand"><h3>Ralph Lauren Omotesando <span class="jp-name" lang="ja">ラルフ ローレン 表参道</span></h3><p>经典美式常春藤、马球与复古运动。主看针织、Oxford 衬衫、帽子、Polo Bear 和门店陈列；Ralph’s Coffee 可作为同站休息点。</p><span class="where">10/6 · 表参道｜11:00—20:00</span></article>
         <article class="brand"><h3>AMI Paris Omotesando <span class="jp-name" lang="ja">アミ パリス 表参道</span></h3><p>法式宽松剪裁、轻松通勤与 Ami de Cœur 心形标识。2026 年 10 月仍在表参道期间限定店档期内；重点看针织、衬衫、帽子与男女可共享单品。</p><span class="where">10/6 · 表参道｜11:00—20:00</span></article>
-        <article class="brand"><h3>HAY TOKYO <span class="jp-name" lang="ja">ヘイ トーキョー</span></h3><p>丹麦现代设计与强色彩小物，适合快速看托盘、杯具、收纳、灯具配件和文具；位于 GYRE B1F，顺路但不是服装主任务。</p><span class="where">10/6 · 表参道 GYRE B1F｜11:00—20:00</span></article>
-        <article class="brand"><h3>H BEAUTY&amp;YOUTH</h3><p>比普通 BEAUTY&amp;YOUTH 更成熟，偏高质感极简、廓形基础款与国际设计师品牌。适合情侣一起试穿外套、针织与低调鞋履。</p><span class="where">10/6 · 南青山｜周二 12:00—20:00 · 可免税</span></article>
-        <article class="brand"><h3>SUPER A MARKET AOYAMA <span class="jp-name" lang="ja">スーパー エー マーケット 青山</span></h3><p>Tomorrowland 旗下高端概念买手店，国际时装、珠宝、美妆与生活物件像“精品超市”般混合陈列。更适合发现 Dries Van Noten、LEMAIRE 等风格鲜明的设计师单品。</p><span class="where">10/6 · 南青山｜约 11:00—20:00</span></article>
-        <article class="brand"><h3>URBANIC30 Aoyama <span class="jp-name" lang="ja">アーバニック30 青山店</span></h3><p>简洁、优雅、低饱和的高质感女装，强调长期穿着而不是强趋势；只在 H / SUPER A MARKET 提前结束时替换加入。</p><span class="where">10/6 · 南青山｜11:00—20:00 · 机动</span></article>
-        <article class="brand"><h3>ARTS&amp;SCIENCE Aoyama <span class="jp-name" lang="ja">アーツ＆サイエンス 青山</span></h3><p>天然面料、工艺、低饱和色与长久穿着逻辑，女性旗舰审美很契合本次偏好；但 10/6 周二固定休息，收藏到地图即可，不安排当天到店。</p><span class="where">周二休息｜本次不硬塞路线</span></article>
-        <article class="brand"><h3>金子眼镜 青山店</h3><p>日本鯖江手工镜架，擅长板材、钛金属和复古轮廓。先说明脸宽、度数与取镜时间；近视镜片可能无法当天完成，镜架可先买回国配镜。</p><span class="where">10/6 · 南青山｜11:00—20:00 · 可免税</span></article>
-        <article class="brand"><h3>999.9 <span class="jp-name" lang="ja">フォーナインズ 銀座本店</span> <span class="badge opt">条件备选</span></h3><p>强调人体工学、镜腿受力、鼻托稳定与长时间舒适。只有 10/6 未在金子眼镜买到合适镜架时，才安排 10/11 银座店；金子眼镜已购入则跳过。镜片下单前确认交付时间。</p><span class="where">10/11 · 银座｜仅未在金子眼镜购入时前往 · 可免税</span></article>
+        <article class="brand"><h3>HAY TOKYO <span class="jp-name" lang="ja">ヘイ トーキョー</span></h3><p>丹麦现代设计与强色彩小物，适合快速看托盘、杯具、收纳、灯具配件和文具；位于 GYRE B1F，顺路但不是服装主任务。</p><span class="where">10/7 · 表参道 GYRE B1F｜11:00—20:00</span></article>
+        <article class="brand"><h3>H BEAUTY&amp;YOUTH</h3><p>比普通 BEAUTY&amp;YOUTH 更成熟，偏高质感极简、廓形基础款与国际设计师品牌。适合情侣一起试穿外套、针织与低调鞋履。</p><span class="where">10/7 · 南青山｜周三 12:00—20:00 · 可免税</span></article>
+        <article class="brand"><h3>SUPER A MARKET AOYAMA <span class="jp-name" lang="ja">スーパー エー マーケット 青山</span></h3><p>Tomorrowland 旗下高端概念买手店，国际时装、珠宝、美妆与生活物件像“精品超市”般混合陈列。更适合发现 Dries Van Noten、LEMAIRE 等风格鲜明的设计师单品。</p><span class="where">10/7 · 南青山｜工作日 12:00—20:00</span></article>
+        <article class="brand"><h3>URBANIC30 Aoyama <span class="jp-name" lang="ja">アーバニック30 青山店</span></h3><p>简洁、优雅、低饱和的高质感女装，强调长期穿着而不是强趋势；只在 H / SUPER A MARKET 提前结束时替换加入。</p><span class="where">10/7 · 南青山｜11:00—20:00 · 机动</span></article>
+        <article class="brand"><h3>ARTS&amp;SCIENCE Aoyama <span class="jp-name" lang="ja">アーツ＆サイエンス 青山</span></h3><p>天然面料、工艺、低饱和色与长久穿着逻辑，女性旗舰审美很契合本次偏好；安排在 10/7 周三 11:00 到店；若计划有变，出发前核对官方公告。</p><span class="where">10/7 · 青山首站｜11:00—11:45</span></article>
+        <article class="brand"><h3>金子眼镜 青山店</h3><p>日本鯖江手工镜架，擅长板材、钛金属和复古轮廓。先说明脸宽、度数与取镜时间；近视镜片可能无法当天完成，镜架可先买回国配镜。</p><span class="where">10/7 · 南青山｜11:00—20:00 · 可免税</span></article>
+        <article class="brand"><h3>999.9 <span class="jp-name" lang="ja">フォーナインズ 銀座本店</span> <span class="badge opt">条件备选</span></h3><p>强调人体工学、镜腿受力、鼻托稳定与长时间舒适。只有 10/7 未在金子眼镜买到合适镜架时，才安排 10/11 银座店；金子眼镜已购入则跳过。镜片下单前确认交付时间。</p><span class="where">10/11 · 银座｜仅未在金子眼镜购入时前往 · 可免税</span></article>
         <article class="brand"><h3>LARRY SMITH <span class="jp-name" lang="ja">ラリースミス メグロストア</span></h3><p>日本手工银饰，核心是羽毛、鹰头、珠子、链条与可自由组合的层次。热门吊坠可能缺货，先问现货，再确定链长和叠戴比例。</p><span class="where">10/10 · 祐天寺｜11:00—19:00 · 周一休</span></article>
         <article class="brand"><h3>COVERCHORD Nakameguro <span class="jp-name" lang="ja">カバーコード 中目黒</span></h3><p>以衣、食、住、旅组织男装、女装、户外与家居，选品和空间都有自然感；适合找 AURALEE、nonnative、Margiela 类审美与器物。</p><span class="where">10/10 · 中目黑｜11:00—19:00</span></article>
         <article class="brand"><h3>Nine Tailor <span class="jp-name" lang="ja">ナインテイラー</span></h3><p>日本帽饰品牌，重视帽型、头围、帽深、面料和细节；比只看照片更需要现场试戴。</p><span class="where">10/10 · 中目黑｜12:00—19:00</span></article>
@@ -1562,7 +1580,7 @@
         <article class="brand"><h3>1LDK apartments.</h3><p>低调、生活化的日系买手店，主打干净剪裁、天然面料、鞋包和家居小物。适合不追大 Logo、想穿得“像东京本地人”的选择。</p><span class="where">10/10 · 中目黑｜小众选品</span></article>
         <article class="brand"><h3>TOMORROWLAND 涩谷本店 <span class="jp-name" lang="ja">トゥモローランド 渋谷本店</span></h3><p>自有男女装、MAISON et VOYAGE、BACCA 与进口设计师并置，风格是优质面料、克制剪裁与都市日常。与 SUPER A MARKET 的先锋选品形成互补。</p><span class="where">10/10 · 18:10 前离开代官山才执行</span></article>
         <article class="brand"><h3>NUBIAN / Shibuya PARCO</h3><p>NUBIAN 偏高端街头、先锋球鞋与国际潮牌；同楼可看 HUMAN MADE、UNDERCOVER、CONZ。适合为前几天缺货的款式做第二轮补齐。</p><span class="where">10/10 · 涩谷晚间分支｜与 Montbell 二选一</span></article>
-        <article class="brand"><h3>KAPITAL</h3><p>日本牛仔、boro、民族工艺、拼接与幽默图像，单店主题和库存差异大。SOHO Roppongi 在六本木 Hills，但 10/9 到达太晚；如真正刚需，应以 10/10 恵比寿店群替换部分中目黑 / 代官山机动店，而不是追加。</p><span class="where">本次仅愿望单｜不要在六本木深夜扑空</span></article>
+        <article class="brand"><h3>KAPITAL</h3><p>日本牛仔、boro、民族工艺、拼接与幽默图像，单店主题和库存差异大。SOHO Roppongi 在六本木 Hills；本次 10/6 以 City View 为主，不把这家店列作必逛。若确为刚需，可替换 10/6 的机动购物站，或以 10/10 恵比寿店群替换部分中目黑 / 代官山候选店。</p><span class="where">本次仅愿望单｜不要在六本木深夜扑空</span></article>
         <article class="brand"><h3>TOUT Y EST Tokyo <span class="jp-name" lang="ja">トゥティエ 東京</span></h3><p>韩系低调皮具与极简日常，包袋轮廓克制、颜色耐用；旗舰在恵比寿，与 10/10 主线方向接近但不完全顺路，只在主动删除两家中目黑店时替换。</p><span class="where">恵比寿｜机动替换，不追加</span></article>
         <article class="brand"><h3>GINZA SIX <span class="jp-name" lang="ja">ギンザ シックス</span></h3><p>ALAÏA、Maison Margiela、AMI Paris、Acne Studios 等时装与 CHANEL、FUEGUIA、2026 新增香氛门店集中，适合按楼层表精准逛，不适合逐层扫货。</p><span class="where">10/11 · 银座｜16:20—17:50</span></article>
         <article class="brand"><h3>Dover Street Market Ginza <span class="jp-name" lang="ja">ドーバー ストリート マーケット ギンザ</span></h3><p>Comme des Garçons 系主导的实验型百货，横跨先锋设计师、街头、珠宝和独家联名。不要逐层盲逛：先看楼层指南，再锁定品牌与限定陈列。</p><span class="where">10/11 · 银座｜11:00—20:00</span></article>
@@ -1623,8 +1641,8 @@
       <div class="subhead">首饰路线：从日常到纪念款</div>
       <div class="brand-table">
         <article class="brand"><h3>SHIHARA Lab</h3><p>极简几何、隐藏结构与“首饰如何和身体连接”的实验感，适合喜欢安静设计的人。门店体验偏咨询式，建议提前预约；周三、周四休。</p><span class="where">10/6 · 神宫前｜12:00—18:00 · 建议预约</span></article>
-        <article class="brand"><h3>Hirotaka Omotesando</h3><p>线条感、耳骨夹、钻石与珍珠的不对称组合，视觉利落又适合日常叠戴。重点试 Ear Cuff、Bar 系列，并确认单只或成对销售。</p><span class="where">10/6 · 表参道｜现代轻奢</span></article>
-        <article class="brand"><h3>agete Aoyama</h3><p>复古金色、彩色宝石和纤细叠戴，价格层次比高级珠宝亲和。青山本店适合找限定、刻字或情侣可共享的小吊坠。</p><span class="where">10/6 · 南青山｜11:00—20:00</span></article>
+        <article class="brand"><h3>Hirotaka Omotesando</h3><p>线条感、耳骨夹、钻石与珍珠的不对称组合，视觉利落又适合日常叠戴。重点试 Ear Cuff、Bar 系列，并确认单只或成对销售。</p><span class="where">10/7 · 表参道｜现代轻奢补购候选</span></article>
+        <article class="brand"><h3>agete Aoyama</h3><p>复古金色、彩色宝石和纤细叠戴，价格层次比高级珠宝亲和。青山本店适合找限定、刻字或情侣可共享的小吊坠。</p><span class="where">10/7 · 南青山｜11:00—20:00</span></article>
         <article class="brand"><h3>noguchi BIJOUX</h3><p>手工敲击纹理、低调 K14/K18 金色与细小钻石，有“旧物般的温度”。中目黑没有现行门店；本次可在 DSMG 看选品，想看完整系列需去青山或丸之内。</p><span class="where">10/11 · DSMG 选品｜不要去旧中目黑地址</span></article>
         <article class="brand"><h3>MIKIMOTO</h3><p>日本经典珍珠，气质端正、售后体系成熟。适合购买能长期佩戴的单颗珍珠耳钉、吊坠或纪念款。</p><span class="where">10/11 · 银座本店｜经典珍珠</span></article>
         <article class="brand"><h3>TASAKI</h3><p>Balance、Danger 等系列用几何和锋利线条重构珍珠，比传统珍珠更时装化。先试戴再比较日本含税价、退税方式与国内售后。</p><span class="where">10/11 · 银座本店｜现代珍珠</span></article>
@@ -1689,7 +1707,7 @@
           <tr><td><span class="badge book">建议</span></td><td class="date">SHIHARA Lab</td><td>10/6 14:45 前后</td><td><a class="link" href="https://shiharalab.com/">官网预约 ↗</a>；写明 two guests、jewelry fitting、preferred time。</td></tr>
           <tr><td><span class="badge book">建议</span></td><td class="date">表参道晚餐</td><td>10/6 19:45</td><td>CICADA 走官方 / TableCheck；KINTAN 走官网 / TableCheck。按当天偏好预订其中一家，不要双订；与每日时间线统一为 19:45。</td></tr>
           <tr><td><span class="badge opt">维持机动</span></td><td class="date">neel / IVY PLACE</td><td>10/10 12:45 / 15:00</td><td>neel 现场等位，超过 20 分钟即换 SIDEWALK；IVY PLACE 只有跳过 neel 时才查当日迟午餐，不提前锁死，以免切断中目黑店群。</td></tr>
-          <tr><td><span class="badge opt">条件备选</span></td><td class="date">999.9 银座本店</td><td>10/11 11:25 机动</td><td>仅当 10/6 未在金子眼镜购入合适镜架时启用；否则取消此站。<a class="link" href="https://www.fournines.co.jp/shop/268/">官方门店页 ↗</a>；带现用眼镜和处方。若要预约 Private Salon，再通过官方入口联系。</td></tr>
+          <tr><td><span class="badge opt">条件备选</span></td><td class="date">999.9 银座本店</td><td>10/11 11:25 机动</td><td>仅当 10/7 未在金子眼镜购入合适镜架时启用；否则取消此站。<a class="link" href="https://www.fournines.co.jp/shop/268/">官方门店页 ↗</a>；带现用眼镜和处方。若要预约 Private Salon，再通过官方入口联系。</td></tr>
           <tr><td><span class="badge book">建议</span></td><td class="date">银座告别晚餐</td><td>10/11 19:30</td><td>銀座かつかみ弐建议提前预约；Buvette 可查当日库存。しゃぶせん目前不接受预约，BEER HALL LION 可作为现场方案。Birdland 与银座久兵卫周日休息。</td></tr>
           <tr><td><span class="badge must">提前</span></td><td class="date">御殿场 → 涩谷高速巴士</td><td>10/9 17:30—19:30</td><td><a class="link" href="https://www.kousokubus.net/BusRsv/ja/vacantseat/entry?LINE_CD=105&amp;routeSelectionFlg=1">高速巴士网预约 ↗</a> · <a class="link" href="https://www.tokyubus.co.jp/highway/omnibus/high-fujistation.html">东急官方时刻 ↗</a>；选择“御殿場プレミアム・アウトレット → 渋谷マークシティ”，两人相邻座。</td></tr>
           <tr><td><span class="badge opt">Plan B</span></td><td class="date">SmartEX 新干线</td><td>10/9 临时取消奥莱时</td><td><a class="link" href="https://smart-ex.jp/en/reservation/reserve_smart/sp/">官方购票说明 ↗</a>；仙石原返回小田原后现场购买小田原→品川。</td></tr>
@@ -1711,8 +1729,8 @@
         <tbody>
           <tr><td class="date">10/7 持续大雨</td><td>ARTS&amp;SCIENCE 与南青山室内门店</td><td>户外步行与低优先补购</td><td>以已确认营业的室内门店为主；若 10/6 已完成目标店，就回目白休息并整理箱根行李。</td></tr>
           <tr><td class="date">10/8 箱根下雨</td><td>BLISSTIA 温泉</td><td>芒草原</td><td>改步行约 10 分钟的玻璃之森；不再跨区去雕刻之森。</td></tr>
-          <tr><td class="date">10/9 普通降雨</td><td>御殿场重点品牌、高速巴士、六本木短停</td><td>榉坂户外拍照时长</td><td>奥莱带轻便雨具；六本木仍保留，可改室内用餐并缩短户外停留。</td></tr>
-          <tr><td class="date">10/9 暴雨 / 巴士停运</td><td>酒店入住、六本木室内段</td><td>御殿场奥莱</td><td>从仙石原返回小田原，现场买新干线到品川；不要为了奥莱在山路和高速交通异常时硬走。</td></tr>
+          <tr><td class="date">10/9 普通降雨</td><td>御殿场重点品牌、高速巴士、入住休息</td><td>奥莱户外步行与购物收尾</td><td>带轻便雨具并按时赶巴士；抵达喜来登、领取行李后就近简餐休息。</td></tr>
+          <tr><td class="date">10/9 暴雨 / 巴士停运</td><td>酒店入住与安全返程</td><td>御殿场奥莱</td><td>从仙石原返回小田原，现场买新干线到品川；不要为了奥莱在山路和高速交通异常时硬走。</td></tr>
           <tr><td class="date">购物疲劳</td><td>表参道、代官山、银座</td><td>原宿支线、惠比寿夜逛</td><td>每 2—2.5 小时坐下喝一次咖啡；晚餐选可现场入座的店，不硬赶预约。</td></tr>
         </tbody>
       </table>
@@ -1785,7 +1803,7 @@
           <div class="packing-items">
             <label class="packing-check"><input id="p24" type="checkbox"><span><strong>旅行装洗护与护肤</strong><small>只带个人不可替代用品；牙刷、洗发等先查看三家酒店备品，减少重复。</small></span></label>
             <label class="packing-check"><input id="p25" type="checkbox"><span><strong>防晒、彩妆与卸妆</strong><small>液体按航空规定分装；计划在松本清购买的品类不要重复带大瓶。</small></span></label>
-            <label class="packing-check"><input id="p26" type="checkbox"><span><strong>眼镜、隐形与护理液</strong><small>先在 10/6 金子眼镜试戴；仅未购入合适镜架时，再带现用眼镜去 999.9 / EYETHINK 备选。隐形按天数多备 1—2 副。</small></span></label>
+            <label class="packing-check"><input id="p26" type="checkbox"><span><strong>眼镜、隐形与护理液</strong><small>先在 10/7 金子眼镜试戴；仅未购入合适镜架时，再带现用眼镜去 999.9 / EYETHINK 备选。隐形按天数多备 1—2 副。</small></span></label>
             <label class="packing-check"><input id="p27" type="checkbox"><span><strong>处方药与用药说明</strong><small>保留原包装；特殊药物出发前核对日本入境限制与是否需要证明。</small></span></label>
             <label class="packing-check"><input id="p28" type="checkbox"><span><strong>常用药</strong><small>肠胃、感冒、止痛、过敏、晕车等按两人既往需要少量携带，不临时尝试陌生药。</small></span></label>
             <label class="packing-check"><input id="p29" type="checkbox"><span><strong>创可贴与防磨脚用品</strong><small>带水泡贴、酒精棉片和少量绷带，主购物日前放进随身包。</small></span></label>
@@ -2216,8 +2234,8 @@
       renderPacking();
 
       const directoryRoutes = new Map([
-        ['H BEAUTY&YOUTH',['planned','10/6 · 南青山收尾主线']],
-        ['SUPER A MARKET AOYAMA',['planned','10/6 · 南青山收尾主线']],
+        ['H BEAUTY&YOUTH',['planned','10/7 · 南青山主线']],
+        ['SUPER A MARKET AOYAMA',['planned','10/7 · 南青山主线']],
         ['COVERCHORD Nakameguro',['planned','10/10 · 中目黑主线']],
         ['1LDK apartments.',['planned','10/10 · 中目黑；有余量再进']],
         ['Dover Street Market Ginza',['planned','10/11 · 银座 18:20 主线']],
@@ -2226,7 +2244,7 @@
         ['TABAYA United Arrows',['planned','10/6 · 里原宿主线']],
         ['TOMORROWLAND 涩谷本店',['possible','10/10 · 18:10 前离开代官山才可加入']],
         ['NUBIAN Shibuya PARCO',['possible','10/10 · 涩谷晚间分支']],
-        ['URBANIC30 Aoyama',['possible','10/6 · H / SUPER A MARKET 提前时替换']],
+        ['URBANIC30 Aoyama',['possible','10/7 · H / SUPER A MARKET 提前时替换']],
         ['2G Shibuya PARCO',['possible','10/10 · 仅在选择 PARCO 分支时']],
         ['HUMAN MADE TOKYO / SHIBUYA',['planned','10/6 · HUMAN MADE TOKYO 主线']],
         ['Stüssy Harajuku',['planned','10/6 · 原宿主线']],
@@ -2243,8 +2261,8 @@
         ['OKURA',['possible','10/10 · 代官山同区；需替换机动店']],
         ['THE NORTH FACE Purple Label / LAB',['possible','10/10 · nanamica / 同区按库存查看']],
         ['DENHAM Daikanyama',['planned','10/10 · 代官山机动段']],
-        ['Ralph Lauren',['planned','10/6 表参道看款 → 10/9 御殿场比价']],
-        ['AMI Paris',['planned','10/6 表参道 → 10/9 御殿场 → 10/11 银座']],
+        ['Ralph Lauren',['possible','10/7 表参道 / 青山候选；与 AMI、Hirotaka、金子、HAY 最多选两家']],
+        ['AMI Paris',['possible','10/7 表参道 / 青山候选；可与 10/9 御殿场库存比价']],
         ['Lacoste',['planned','10/6 原宿快看 → 10/9 御殿场比价']],
         ['Barbour',['planned','10/9 御殿场 → 10/10 代官山补款']],
         ['A.P.C.',['possible','10/9 / 10/11 · 同区候选，先查门店与库存']],
@@ -2253,8 +2271,8 @@
         ['The Row',['possible','10/11 · 银座候选；先看当日楼层表']],
         ['Jil Sander',['possible','10/11 · 银座同区候选']],
         ['Acne Studios',['planned','10/11 · GINZA SIX 目标品牌']],
-        ['Dries Van Noten',['possible','10/6 · SUPER A MARKET 内按库存查看']],
-        ['LEMAIRE',['possible','10/6 · SUPER A MARKET 内按库存查看']],
+        ['Dries Van Noten',['possible','10/7 · SUPER A MARKET 内按库存查看']],
+        ['LEMAIRE',['possible','10/7 · SUPER A MARKET 内按库存查看']],
         ['ALAÏA',['planned','10/11 · GINZA SIX 目标品牌']],
         ['OUR LEGACY',['possible','10/6 / 10/11 · 买手店内按库存查看']],
         ['STUDIO NICHOLSON',['possible','10/10 · COVERCHORD / 1LDK 内按库存查看']],
@@ -2266,15 +2284,15 @@
         ['Pocket Harajuku',['planned','10/6 · 里原宿银饰主线']],
         ['LARRY SMITH',['planned','10/10 · 祐天寺第一站']],
         ['SHIHARA Lab',['planned','10/6 · 神宫前；建议预约']],
-        ['Hirotaka',['planned','10/6 · 15:45 表参道 Hills B1F 青山旗舰店；试戴时跳过 HAY']],
-        ['agete',['planned','10/6 · 有余量时与 Hirotaka 二选一']],
+        ['Hirotaka',['planned','10/7 · 表参道 Hills B1F；青山补购最多选两家']],
+        ['agete',['possible','10/7 · 表参道 / 青山有余量时；不单独折返']],
         ['noguchi BIJOUX',['planned','10/11 · DSMG 选品内查看']],
         ['MIKIMOTO',['planned','10/11 · 银座首饰主线']],
         ['TASAKI',['planned','10/11 · 银座首饰主线']],
         ['Himie',['planned','10/11 · 松屋银座 1F，与 Buly 同站']],
         ['AHKAH',['possible','10/11 · 银座同区首饰候选']],
-        ['PREEK',['possible','10/6 · H BEAUTY&YOUTH 内按库存查看']],
-        ['金子眼镜店 青山店',['planned','10/6 · 南青山收尾主线']],
+        ['PREEK',['possible','10/7 · H BEAUTY&YOUTH 内按库存查看']],
+        ['金子眼镜店 青山店',['planned','10/7 · 南青山补购；14:00—15:30 与其他选项取舍']],
         ['999.9 Four Nines',['possible','10/11 · 仅金子眼镜未购入时作为银座备选']],
         ['EYETHINK Shibuya PARCO',['possible','仅金子眼镜未购入且选择涩谷 PARCO 分支时']],
         ['MY ONLY FRAGRANCE',['planned','10/6 · 原宿 11:00 预约']],
@@ -2285,7 +2303,7 @@
         ['NOSE SHOP',['possible','10/10 · 涩谷分支才可加入']],
         ['SHIRO',['possible','10/6 · 表参道短时机动']],
         ['THE FLAVOR DESIGN TOKYO',['possible','10/10 · MY ONLY FRAGRANCE 未成行时替换']],
-        ['HAY TOKYO',['planned','10/6 · 表参道；超时先删']],
+        ['HAY TOKYO',['planned','10/7 · 表参道补购候选']],
         ['KINTO STORE Tokyo',['planned','10/10 · 中目黑 18:00 前']],
         ['minä perhonen materiaali',['planned','10/10 · 代官山主线']],
         ['Daikanyama T-SITE / 蔦屋書店',['planned','10/10 · 代官山收尾']],
@@ -2307,9 +2325,9 @@
         ['松屋银座',['planned','10/11 · Buly 正式购买点']],
         ['御殿场 Premium Outlets',['planned','10/9 · 集中采购主线']],
         ['@cosme TOKYO',['possible','10/6 · 香氛预约变动时替换']],
-        ['Matsumoto Kiyoshi',['planned','10/6 · 晚餐后原宿站前；10/11 银座备用']],
+        ['Matsumoto Kiyoshi',['possible','10/6 Nigirite 后不折返原宿；10/11 改用 GINZA FLAG 备选']],
         ['Fa-So-La TAX FREE',['planned','10/12 · 成田 T1 安检后按清单补购']],
-        ['ARTS&SCIENCE Aoyama',['off','10/6 为周二休息，其他日期未预留青山返场时间。']],
+        ['ARTS&SCIENCE Aoyama',['planned','10/7 · 青山 11:00 首站']],
         ['UNITED ARROWS & SONS',['off','当前每日路线没有独立到店时段。']],
         ['KAPITAL',['off','当前只保留愿望；如确定必去，需替换 10/10 两家机动店。']],
         ['KIJIMA TAKAYUKI',['off','当前没有分配门店与时间段。']],
@@ -2403,19 +2421,56 @@
         }
       };
 
-      const outboundAt = new Date('2026-10-05T10:00:00+08:00');
-      const returnAt = new Date('2026-10-12T15:20:00+09:00');
+      const flightInfoKey = 'tokyo-2026-flight-fields-v1';
+      const flightDefaults = {
+        outboundNo:'CA929',outboundDate:'2026-10-05',outboundDeparture:'10:00',outboundArrivalDate:'2026-10-05',outboundArrival:'14:00',
+        returnNo:'CA930',returnDate:'2026-10-12',returnDeparture:'15:20',returnArrivalDate:'2026-10-12',returnArrival:'17:50',
+        outboundBooking:'',outboundSeat:'',returnBooking:'',returnSeat:''
+      };
+      let flightFields = {...flightDefaults};
+      try {
+        const savedFlightFields = JSON.parse(localStorage.getItem(flightInfoKey) || '{}');
+        if (savedFlightFields && typeof savedFlightFields === 'object' && !Array.isArray(savedFlightFields)) flightFields = {...flightFields,...savedFlightFields};
+      } catch (_) {}
+      const flightDateKeys = new Set(['outboundDate','outboundArrivalDate','returnDate','returnArrivalDate']);
+      const flightTimeKeys = new Set(['outboundDeparture','outboundArrival','returnDeparture','returnArrival']);
+      const validFlightDate = value => {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+        const date = new Date(value + 'T00:00:00Z');
+        return !Number.isNaN(date.getTime()) && date.toISOString().slice(0,10) === value;
+      };
+      const validFlightTime = value => /^\d{2}:\d{2}$/.test(value) && Number(value.slice(0,2)) < 24 && Number(value.slice(3,5)) < 60;
+      const flightValue = key => {
+        const value = String(flightFields[key] ?? '').trim();
+        if (flightDateKeys.has(key)) return validFlightDate(value) ? value : flightDefaults[key];
+        if (flightTimeKeys.has(key)) return validFlightTime(value) ? value : flightDefaults[key];
+        return value || flightDefaults[key] || '';
+      };
+      const flightMonthDay = value => value ? value.slice(5).replace('-', '/') : '—';
+      const flightDuration = (dateKey,timeKey,arrivalDateKey,arrivalTimeKey,originOffset,destinationOffset) => {
+        const startTime = new Date(flightValue(dateKey) + 'T' + flightValue(timeKey) + ':00' + originOffset);
+        const endTime = new Date(flightValue(arrivalDateKey) + 'T' + flightValue(arrivalTimeKey) + ':00' + destinationOffset);
+        const totalMinutes = Math.max(0,Math.round((endTime - startTime) / 60000));
+        const hours = Math.floor(totalMinutes / 60), minutes = totalMinutes % 60;
+        return minutes ? hours + 'h' + String(minutes).padStart(2,'0') : hours + 'h';
+      };
+      let outboundAt = new Date(flightDefaults.outboundDate + 'T' + flightDefaults.outboundDeparture + ':00+08:00');
+      let returnAt = new Date(flightDefaults.returnDate + 'T' + flightDefaults.returnDeparture + ':00+09:00');
       const updateCountdown = () => {
         const now = new Date();
+        const outboundArrivalAt = new Date(flightValue('outboundArrivalDate') + 'T' + flightValue('outboundArrival') + ':00+09:00');
+        const returnArrivalAt = new Date(flightValue('returnArrivalDate') + 'T' + flightValue('returnArrival') + ':00+08:00');
         let seconds = 0;
-        let title = '距离 CA929 起飞';
-        let statusText = '2026.10.05 10:00 · 上海时间';
-        if (now < outboundAt) {
-          seconds = Math.floor((outboundAt - now) / 1000);
-        } else if (now < returnAt) {
+        let title = '距离 ' + flightValue('outboundNo') + ' 起飞';
+        let statusText = flightMonthDay(flightValue('outboundDate')) + ' ' + flightValue('outboundDeparture') + ' · 上海时间';
+        if (outboundArrivalAt <= outboundAt || returnAt <= outboundAt || returnArrivalAt <= returnAt) {
+          title = '请核对航班计划';
+          statusText = '请检查去程和返程的起降日期与时间顺序';
+        } else if (now < outboundAt) seconds = Math.floor((outboundAt - now) / 1000);
+        else if (now < returnAt) {
           seconds = Math.floor((now - outboundAt) / 1000);
           title = '东京旅行已开始';
-          statusText = '已从 CA929 起飞 · 计时至 CA930 返程';
+          statusText = '已从 ' + flightValue('outboundNo') + ' 起飞 · 计时至 ' + flightValue('returnNo') + ' 返程';
         } else {
           seconds = Math.floor((returnAt - outboundAt) / 1000);
           title = '旅程已完成';
@@ -2432,31 +2487,62 @@
         if (titleEl) titleEl.textContent = title;
         if (statusEl) statusEl.textContent = statusText;
       };
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      document.getElementById('todayPlan')?.addEventListener('click', event => {
-        event.preventDefault();
-        document.getElementById('today')?.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-      document.getElementById('shareGuide')?.addEventListener('click', async event => {
-        const data = {title:'没头脑与不高兴的东京之旅',text:'东京与箱根 8 天 7 晚攻略',url:location.href};
-        try {
-          if (navigator.share) await navigator.share(data);
-          else { await copyPlainText(location.href); event.currentTarget.textContent = '链接已复制'; setTimeout(() => event.currentTarget.textContent = '分享攻略', 1500); }
-        } catch (_) {}
-      });
-
-      const flightInfoKey = 'tokyo-2026-flight-fields-v1';
-      let flightFields = {};
-      try { flightFields = JSON.parse(localStorage.getItem(flightInfoKey) || '{}'); } catch (_) {}
+      const updateFlightSchedule = () => {
+        const displayValues = {
+          outboundNo:flightValue('outboundNo'),outboundDate:flightMonthDay(flightValue('outboundDate')),
+          outboundDeparture:flightValue('outboundDeparture'),outboundArrival:flightValue('outboundArrival'),
+          outboundDuration:flightDuration('outboundDate','outboundDeparture','outboundArrivalDate','outboundArrival','+08:00','+09:00'),
+          returnNo:flightValue('returnNo'),returnDate:flightMonthDay(flightValue('returnDate')),
+          returnDeparture:flightValue('returnDeparture'),returnArrival:flightValue('returnArrival'),
+          returnDuration:flightDuration('returnDate','returnDeparture','returnArrivalDate','returnArrival','+09:00','+08:00')
+        };
+        document.querySelectorAll('[data-flight-display]').forEach(node => {
+          const value = displayValues[node.dataset.flightDisplay];
+          if (value !== undefined) node.textContent = value;
+        });
+        outboundAt = new Date(flightValue('outboundDate') + 'T' + flightValue('outboundDeparture') + ':00+08:00');
+        returnAt = new Date(flightValue('returnDate') + 'T' + flightValue('returnDeparture') + ':00+09:00');
+        updateCountdown();
+      };
       document.querySelectorAll('[data-flight-field]').forEach(input => {
-        input.value = String(flightFields[input.dataset.flightField] || '');
+        const key = input.dataset.flightField;
+        input.value = flightValue(key);
         input.addEventListener('input', () => {
-          flightFields[input.dataset.flightField] = input.value;
-          try { localStorage.setItem(flightInfoKey, JSON.stringify(flightFields)); document.dispatchEvent(new Event('tokyo-data-changed')); } catch (_) {}
+          const previousValue = flightValue(key);
+          flightFields[key] = input.value;
+          const linkedArrival = key === 'outboundDate' ? 'outboundArrivalDate' : key === 'returnDate' ? 'returnArrivalDate' : '';
+          if (linkedArrival && flightValue(linkedArrival) === previousValue) {
+            flightFields[linkedArrival] = input.value;
+            const arrivalInput = document.querySelector('[data-flight-field="' + linkedArrival + '"]');
+            if (arrivalInput) arrivalInput.value = input.value;
+          }
+          try {
+            localStorage.setItem(flightInfoKey,JSON.stringify(flightFields));
+            document.dispatchEvent(new Event('tokyo-data-changed'));
+            const status = document.getElementById('cloudSyncState')?.textContent || '';
+            const hint = document.getElementById('flightSyncHint');
+            if (hint) hint.textContent = status.includes('实时同步中')
+              ? '已连接共享旅行：航班计划更改会自动同步给同行人。实际延误与取消请查国航官方航班动态；计划变化后请核对当日交通节点。'
+              : '航班计划已保存在本机；连接共享旅行后会同步给同行人。实际延误与取消请查国航官方航班动态；计划变化后请核对当日交通节点。';
+          } catch (_) {
+            const hint = document.getElementById('flightSyncHint');
+            if (hint) hint.textContent = '本机保存失败，请先释放浏览器存储空间；实时航班状态请查国航官方航班动态。';
+          }
+          updateFlightSchedule();
         });
       });
+      const syncFlightFieldsFromStorage = event => {
+        if (event.key !== flightInfoKey || !event.newValue) return;
+        try {
+          const remoteFlightFields = JSON.parse(event.newValue);
+          if (remoteFlightFields && typeof remoteFlightFields === 'object') flightFields = {...flightDefaults,...remoteFlightFields};
+          document.querySelectorAll('[data-flight-field]').forEach(input => { input.value = flightValue(input.dataset.flightField); });
+          updateFlightSchedule();
+        } catch (_) {}
+      };
+      window.addEventListener('storage',syncFlightFieldsFromStorage);
+      updateFlightSchedule();
+      setInterval(updateCountdown,1000);
 
       const phraseCards = [...document.querySelectorAll('.phrase-card')];
       const phraseSearch = document.getElementById('phraseSearch');
@@ -2569,9 +2655,9 @@
       const foodRouteDefaults = {
         day1:routeProfile('新宿站周边','NEWoMan／伊势丹购物段','步行约 5—15 分钟','小幅绕行',1),
         day2:routeProfile('原宿—南青山沿线','当天购物主轴','步行约 5—12 分钟','顺路',0),
-        day3:routeProfile('表参道／南青山','10/6 未完成门店与 A&S 青山','步行约 3—10 分钟','只补漏',0),
+        day3:routeProfile('表参道／南青山','10/7 青山已安排主线','步行约 3—10 分钟','只补漏',0),
         day4:routeProfile('小田原／仙石原','当天换乘或酒店段','步行约 5—15 分钟','顺路',0),
-        day5:routeProfile('御殿场／六本木','当天购物或夜景段','步行约 5—10 分钟','顺路',0),
+        day5:routeProfile('御殿场','当天奥莱购物段','步行约 5—10 分钟','顺路',0),
         day6:routeProfile('中目黑—代官山沿线','当天买手店主轴','步行约 5—10 分钟','顺路',0),
         day7:routeProfile('银座中央通周边','银座购物主轴','步行约 5—10 分钟','顺路',0),
         day8:routeProfile('成田 T1／酒店','退房或机场手续段','馆内或步行约 1—5 分钟','零折返',0)
@@ -2605,8 +2691,8 @@
           [/Bépocah/,routeProfile('神宫前二丁目','里原宿前半段','从南青山约 20 分钟','明显折返',2)]
         ],
         day3:[
-          [/ARTS&SCIENCE|ARTS&SCIENCE Aoyama Women/,routeProfile('南青山／表参道','A&S 青山与 10/6 未完成门店','步行约 3—10 分钟','只补漏',0)],
-          [/H BEAUTY|SUPER A MARKET|Kaneko Optical|Hirotaka/,routeProfile('南青山／表参道','10/6 未完成门店','步行约 3—10 分钟','只补漏',0)]
+          [/ARTS&SCIENCE|ARTS&SCIENCE Aoyama Women/,routeProfile('南青山／表参道','A&S 青山与 10/7 南青山主线','步行约 3—10 分钟','只补漏',0)],
+          [/H BEAUTY|SUPER A MARKET|Kaneko Optical|Hirotaka/,routeProfile('南青山／表参道','10/7 青山补购主线','步行约 3—10 分钟','只补漏',0)]
         ],
         day4:[
           [/小田原站 \/ Minaka|鳥ぎん 本店/,routeProfile('小田原站东口','JR 到站与箱根巴士换乘','站内至步行 6 分钟','零折返',0)],
@@ -3122,8 +3208,8 @@
       const todayPreviewKey = 'tokyo-2026-today-preview-v1';
       const dayMeta = [
         {title:'抵达东京｜目白入住与新宿轻逛',route:'成田 T1 → 日暮里 → 目白 → NEWoMan → 伊势丹女鞋 / ODETTE → ALLU',hotel:'目白 METS',map:'https://www.google.com/maps/dir/?api=1&origin=Narita+Airport+Terminal+1&destination=JR-East+Hotel+Mets+Mejiro&travelmode=transit'},
-        {title:'原宿・表参道・南青山银饰与买手店主战日',route:'目白 → 原宿站前 → 里原宿 → Cat Street → 表参道 → 南青山',hotel:'目白 METS',map:'https://www.google.com/maps/search/?api=1&query=Pocket+Harajuku'},
-        {title:'南青山补购与休息缓冲',route:'目白 → 表参道 / 南青山 → 目白',hotel:'目白 METS',map:'https://www.google.com/maps/dir/?api=1&origin=Mejiro+Station&destination=Minami-Aoyama+Tokyo&travelmode=transit'},
+        {title:'原宿购物与六本木夜景｜新宿寿司晚餐',route:'目白 → 原宿 → 里原宿 / Cat Street → 六本木 Hills → 新宿',hotel:'目白 METS',map:'https://www.google.com/maps/dir/?api=1&origin=Harajuku+Station&destination=Tokyo+City+View+Roppongi+Hills&travelmode=transit'},
+        {title:'南青山购物与箱根前休息日',route:'目白 → 青山 / 表参道午餐与补购 → 目白',hotel:'目白 METS',map:'https://www.google.com/maps/dir/?api=1&origin=Mejiro+Station&destination=Minami-Aoyama+Tokyo&travelmode=transit'},
         {title:'前往箱根｜仙石原秋景与温泉',route:'目白 → 池袋 → 小田原 → 仙石原',hotel:'BLISSTIA 箱根仙石原',map:'https://www.google.com/maps/dir/?api=1&origin=JR-East+Hotel+Mets+Mejiro&destination=BLISSTIA+Hakone+Sengokuhara&travelmode=transit'},
         {title:'御殿场奥莱集中采购与涩谷返程',route:'仙石原 → 御殿场 → 涩谷 → 白金台',hotel:'东京喜来登都酒店',map:'https://www.google.com/maps/dir/?api=1&origin=BLISSTIA+Hakone+Sengokuhara&destination=Gotemba+Premium+Outlets&travelmode=transit'},
         {title:'祐天寺・中目黑・代官山银饰与买手店路线',route:'白金台 → 祐天寺 → 中目黑青叶台 → 代官山 → 涩谷可选',hotel:'东京喜来登都酒店',map:'https://www.google.com/maps/search/?api=1&query=LARRY+SMITH+Meguro+Store'},
@@ -3132,19 +3218,19 @@
       ];
       const modeAdviceByDay = {
         normal:[
-          '抵达日按 NEWoMan → 伊势丹女鞋 / ODETTE → ALLU 单向执行；北村 / 回忆横丁只选一项，入境晚则从尾部删。','上午完成预约与里原宿三角，下午沿 Cat Street 到南青山；咖啡只保留 i2 cafe，晚餐后再去原宿站前松本清。','优先补 ARTS&SCIENCE 和 10/6 未完成的 1—3 家店；已买齐就早点回目白休息。','09:45 先寄三件行李，10:25 离店前往小田原；景点按天气二选一。','奥莱按品牌清单执行，16:45 收尾，17:30 准时上车。','先完成 LARRY SMITH，再沿中目黑青叶台走到代官山；T-SITE 留在最后，涩谷只有提前离开时才做单店补购。','松屋银座 Buly、GINZA SIX 与 DSMG 优先；999.9 仅在金子眼镜未购入时考虑；Loft / 相机二选一，19:10 前离开 DSMG 去晚餐，药妆仅在 10/6 未完成时补购。','10:40 Skyliner 为固定节点，先完成退房与行李检查。'
+          '抵达日按 NEWoMan → 伊势丹女鞋 / ODETTE → ALLU 单向执行；北村 / 回忆横丁只选一项，入境晚则从尾部删。','上午完成预约与里原宿购物，下午去六本木 Tokyo City View，再赴新宿 20:15 晚餐；青山店铺移到 10/7。','优先 ARTS&SCIENCE、H BEAUTY&YOUTH、SUPER A MARKET 与 Maisen；下午最多补两家，16:30 回目白整理箱根行李。','09:45 先寄三件行李，10:25 离店前往小田原；景点按天气二选一。','奥莱按品牌清单执行，16:45 收尾，17:30 准时上车。','先完成 LARRY SMITH，再沿中目黑青叶台走到代官山；T-SITE 留在最后，涩谷只有提前离开时才做单店补购。','松屋银座 Buly、GINZA SIX 与 DSMG 优先；999.9 仅在金子眼镜未购入时考虑；Loft / 相机二选一，19:10 前离开 DSMG 去晚餐，药妆仅在 10/6 未完成时补购。','10:40 Skyliner 为固定节点，先完成退房与行李检查。'
         ],
         delay30:[
-          'ALLU 控制在 25 分钟；取消北村或回忆横丁其中一项。','里原宿三店各限 20 分钟，咖啡只留 i2 cafe；晚餐后松本清控制在 30 分钟内。','只逛 ARTS&SCIENCE 与最想补的一家店，午餐就近解决，下午回目白。','小田原午餐改站内快速餐，仍保留温泉和一个景点。','午餐控制在 30 分钟，第二轮购物删除低优先品牌。','neel 等位上限 10 分钟；跳过 JieDa 与 1LDK，保留 LARRY SMITH、COVERCHORD、KINTO、nanamica、minä 与 T-SITE。','取消重复杂货店，保留 DSMG、香氛与相机；仅在金子眼镜未购入时考虑 999.9。','取消酒店周边闲逛，按既定路线直接去日暮里。'
+          'ALLU 控制在 25 分钟；取消北村或回忆横丁其中一项。','Pocket、BEAMS、TABAYA 各限 20 分钟；需要赶时间时删队长的店，保留六本木与 20:15 固定晚餐。','保留 ARTS&SCIENCE、H BEAUTY&YOUTH、午餐和一间最想补的店；下午回目白整理行李。','小田原午餐改站内快速餐，仍保留温泉和一个景点。','午餐控制在 30 分钟，第二轮购物删除低优先品牌。','neel 等位上限 10 分钟；跳过 JieDa 与 1LDK，保留 LARRY SMITH、COVERCHORD、KINTO、nanamica、minä 与 T-SITE。','取消重复杂货店，保留 DSMG、香氛与相机；仅在金子眼镜未购入时考虑 999.9。','取消酒店周边闲逛，按既定路线直接去日暮里。'
         ],
         delay60:[
-          'NEWoMan 后只保留 ALLU 或晚餐其中一项，取消北村与回忆横丁。','准时到 MY ONLY FRAGRANCE，里原宿只留 Pocket / TABAYA，下午保留 HUMAN MADE、SUPER A MARKET、H 与金子眼镜；若晚餐后超过 21:30，药妆改到 10/11 银座。','只留 ARTS&SCIENCE 与 1 家优先店；其余时间休息并整理箱根过夜包。','小田原仅转车和买便当；抵达仙石原后只执行温泉加一个近距离景点。','第一轮只看鬼塚虎、Barbour、Lacoste、Ralph Lauren、AMI；其余全部机动。','祐天寺后直接做 COVERCHORD、KINTO；跳过 neel、JieDa、1LDK 与涩谷，代官山只留 nanamica、LE LABO、T-SITE。','仅金子眼镜未购入时按 999.9 备选 → 香氛 → 相机 → DSMG；否则直接去香氛、相机与 DSMG。','立即前往日暮里；必要时从酒店打车到日暮里或上野。'
+          'NEWoMan 后只保留 ALLU 或晚餐其中一项，取消北村与回忆横丁。','准时到 MY ONLY FRAGRANCE，里原宿只留 Pocket / TABAYA；午餐后 SHIHARA / HUMAN MADE 二选一，去六本木展望台，再准时赴 Nigirite。','只留 ARTS&SCIENCE 与 1 家优先店；其余时间休息并整理箱根过夜包。','小田原仅转车和买便当；抵达仙石原后只执行温泉加一个近距离景点。','第一轮只看鬼塚虎、Barbour、Lacoste、Ralph Lauren、AMI；其余全部机动。','祐天寺后直接做 COVERCHORD、KINTO；跳过 neel、JieDa、1LDK 与涩谷，代官山只留 nanamica、LE LABO、T-SITE。','仅金子眼镜未购入时按 999.9 备选 → 香氛 → 相机 → DSMG；否则直接去香氛、相机与 DSMG。','立即前往日暮里；必要时从酒店打车到日暮里或上野。'
         ],
         rain:[
-          '使用车站直连 NEWoMan、LUMINE 与站内餐厅，不安排回忆横丁街拍。','以表参道 Hills、H BEAUTY&YOUTH 和室内旗舰店为主，取消代代木公园。','雨天集中逛已确认营业的室内店；若 10/6 已完成目标，就回目白休息。','删除芒草原，改箱根玻璃之森；抵达后尽量减少夜间步行。','保留奥莱重点品牌与高速巴士，取消六本木夜拍。','保留 LARRY SMITH、COVERCHORD、KINTO、nanamica、LE LABO 与 T-SITE；咖啡在同栋解决，取消目黑川散步和涩谷。','银座百货、DSMG、Loft 与相机店均可执行，减少街区往返。','提前出发并优先使用有顶棚换乘；机场到达时间不压缩。'
+          '使用车站直连 NEWoMan、LUMINE 与站内餐厅，不安排回忆横丁街拍。','原宿预约与室内店优先；六本木展望台为室内项目，大雨时可跳过，直接留足前往 Nigirite 的缓冲。','雨天集中逛 ARTS&SCIENCE、H BEAUTY&YOUTH 等室内店；咖啡排队久就提早回目白。','删除芒草原，改箱根玻璃之森；抵达后尽量减少夜间步行。','保留奥莱重点品牌与高速巴士；入住并领到行李后就近简餐、休息。','保留 LARRY SMITH、COVERCHORD、KINTO、nanamica、LE LABO 与 T-SITE；咖啡在同栋解决，取消目黑川散步和涩谷。','银座百货、DSMG、Loft 与相机店均可执行，减少街区往返。','提前出发并优先使用有顶棚换乘；机场到达时间不压缩。'
         ],
         low:[
-          '目白入住后只选 NEWoMan 或酒店周边晚餐，不再加夜拍。','使用原宿到表参道单向路线，每 2 小时固定坐下休息，删除南青山末端支线。','只去 ARTS&SCIENCE 和 1 家最想补的店，中午后回酒店休息。','寄件后直接前往酒店，景点只选步行最近的玻璃之森或直接泡汤。','奥莱只逛高优先品牌，购物袋使用储物柜；到涩谷后直接去酒店。','酒店直接打车到 LARRY SMITH；中目黑只做 COVERCHORD / KINTO，之后打车到代官山，取消涩谷。','搭酒店车到目黑、山手线到有乐町；购物集中在银座主轴，减少东银座折返。','从酒店搭车到目黑，行李多时考虑出租车接驳，不安排机场前额外购物。'
+          '目白入住后只选 NEWoMan 或酒店周边晚餐，不再加夜拍。','原宿只保留预约店、两家主力购物与午餐；体力不足时跳过六本木，保护晚餐和返程体力。','只去 ARTS&SCIENCE、午餐和一间最想补的店，咖啡后回酒店休息。','寄件后直接前往酒店，景点只选步行最近的玻璃之森或直接泡汤。','奥莱只逛高优先品牌，购物袋使用储物柜；到涩谷后直接去酒店。','酒店直接打车到 LARRY SMITH；中目黑只做 COVERCHORD / KINTO，之后打车到代官山，取消涩谷。','搭酒店车到目黑、山手线到有乐町；购物集中在银座主轴，减少东银座折返。','从酒店搭车到目黑，行李多时考虑出租车接驳，不安排机场前额外购物。'
         ]
       };
       const validModes = ['normal','delay30','delay60','rain','low'];
@@ -3491,7 +3577,7 @@
         });
       });
       let lastFoodResults = [];
-      const dayFoodLabels = {day1:'10/5 新宿',day2:'10/6 原宿・表参道',day3:'10/7 南青山 / 表参道',day4:'10/8 小田原・仙石原',day5:'10/9 御殿场・六本木',day6:'10/10 代官山・涩谷',day7:'10/11 银座',day8:'10/12 成田'};
+      const dayFoodLabels = {day1:'10/5 新宿',day2:'10/6 原宿・六本木',day3:'10/7 南青山 / 表参道',day4:'10/8 小田原・仙石原',day5:'10/9 御殿场返程与酒店入住',day6:'10/10 代官山・涩谷',day7:'10/11 银座',day8:'10/12 成田'};
       const renderFoodResults = () => {
         const query = ($('foodQuery')?.value || '').trim().toLocaleLowerCase(); const dayFilter = $('foodDayFilter')?.value || 'all'; const mealFilter = $('foodMealFilter')?.value || 'all'; const ratedOnly = $('foodRatedOnly')?.checked; const sort = $('foodSort')?.value || 'route';
         lastFoodResults = foodItems.filter(item => (!query || item.searchText.includes(query)) && (dayFilter === 'all' || item.dayId === dayFilter) && (mealFilter === 'all' || item.meal === mealFilter) && (!ratedOnly || item.rating > 0));
@@ -3990,7 +4076,7 @@
       document.addEventListener('tokyo-cloud-ready',renderDayResources);
       renderDayResources();
 
-      const tripPointCatalogText = "PT001|10/5|街区与景点|新宿|新宿|到店入住后的购物主线\nPT003|10/5|街区与景点|新宿三丁目与东口|新宿|ALLU、晚餐与回忆横丁一带\nPT004|10/6|街区与景点|原宿|原宿|表参道购物日北段\nPT005|10/6|街区与景点|里原宿|原宿|Pocket、TABAYA、BEAMS 一带\nPT006|10/6|街区与景点|Cat Street|原宿—涩谷|由北向南连接原宿与表参道\nPT007|10/6|街区与景点|表参道|表参道|表参道旗舰店与咖啡\nPT008|10/6|街区与景点|南青山|南青山|H BEAUTY&YOUTH、SUPER A MARKET、金子眼镜一带\nPT009|10/6|街区与景点|代代木公园|原宿|目前为轻景点备选，行程超时可跳过\nPT010|待安排|街区与景点|镰仓一日游|镰仓|未来行程候选；已移至“待安排”\nPT011|待安排|街区与景点|小町通|镰仓|街区散步与小吃；未来行程候选；已移至“待安排”\nPT012|待安排|街区与景点|鹤冈八幡宫|镰仓|镰仓市区景点；未来行程候选；已移至“待安排”\nPT013|待安排|街区与景点|长谷寺|镰仓长谷|庭园与海景；未来行程候选；已移至“待安排”\nPT014|待安排|街区与景点|镰仓大佛／高德院|镰仓长谷|长谷寺附近候选；未来行程候选；已移至“待安排”\nPT015|待安排|街区与景点|江之电沿线|镰仓|镰仓当天交通与沿线体验；未来行程候选；已移至“待安排”\nPT016|待安排|街区与景点|七里滨|镰仓湘南|海岸拍照与日落；未来行程候选；已移至“待安排”\nPT017|待安排|街区与景点|镰仓高校前|镰仓湘南|热门拍照点，可能拥挤；未来行程候选；已移至“待安排”\nPT018|10/8|街区与景点|箱根仙石原|箱根|温泉住宿所在区域\nPT019|10/8|街区与景点|箱根雕刻之森美术馆|箱根|轻度风景与户外雕塑\nPT020|10/9|街区与景点|御殿场 Premium Outlets|御殿场|箱根退房后购物，之后返回东京\nPT021|10/9|街区与景点|涩谷|涩谷|御殿场返程交通衔接区\nPT022|10/10|街区与景点|祐天寺|目黑区|Larry Smith 银饰路线起点\nPT023|10/10|街区与景点|中目黑|目黑区|咖啡、选物与目黑川周边\nPT024|10/10|街区与景点|目黑川沿线|中目黑|散步与胶片拍照点\nPT025|10/10|街区与景点|代官山|涩谷区|买手店与设计生活方式路线\nPT026|10/10|街区与景点|惠比寿|涩谷区|附近街区备选\nPT027|10/11|街区与景点|银座|银座|当天购物主线\nPT028|10/9|街区与景点|六本木|港区|银座后延伸候选，需看体力\nPT029|10/9|街区与景点|东京塔周边拍照点|港区|仅户外周边拍照，不含 City View\nPT030|待安排|街区与景点|浅草寺|浅草|目前尚未安排日期\nPT031|待安排|街区与景点|有明花园 Ariake Garden|有明|目前尚未安排日期\nPT032|10/9|街区与景点|六本木 Hills|六本木|购物与街区散步\nPT033|待安排|街区与景点|涩谷 PARCO|涩谷|潮流品牌与买手店集中\nPT034|待安排|街区与景点|宫下公园|涩谷|街区散步与休息点\nPT035|待安排|街区与景点|下北泽|世田谷区|古着街区，目前不在每日主线\nPT036|10/9|街区与景点|东京 Midtown|六本木|建筑、商场与餐饮候选\nPT037|10/5|购物与买手店|NEWoMan 新宿|新宿|车站直连，第一晚短逛\nPT038|10/5|购物与买手店|伊势丹新宿本店|新宿|百货与女鞋区域\nPT039|10/5|购物与买手店|ODETTE É ODILE 新宿伊势丹店|新宿伊势丹 2F|女鞋；可横向试穿比较\nPT040|10/5|购物与买手店|Vintage ALLU 新宿|新宿三丁目|先查并使用指定商品 coupon\nPT041|10/5|购物与买手店|北村写真机店 新宿|新宿|胶片机、镜头、胶卷与器材\nPT042|10/6|购物与买手店|HUMAN MADE TOKYO|原宿|复古美式、工装与东京限定\nPT043|10/6|购物与买手店|Stüssy Harajuku|原宿|加州冲浪、滑板与街头风格\nPT044|10/6|购物与买手店|BEAMS Harajuku|原宿|日系多品牌选品\nPT045|10/6|购物与买手店|International Gallery BEAMS|神宫前|设计师与高阶男装选品\nPT046|10/6|购物与买手店|TABAYA United Arrows|原宿|男女装、生活方式与高阶选品\nPT047|10/6|购物与买手店|H BEAUTY&YOUTH|南青山|高阶买手店、服饰与首饰选品\nPT048|10/6|购物与买手店|SUPER A MARKET AOYAMA|南青山|国际设计师品牌与生活选品\nPT049|10/6|购物与买手店|AMI Paris|表参道／青山|针织、帽子与情侣共穿候选\nPT050|10/6|购物与买手店|Ralph Lauren|表参道／青山|Polo 与 RRL 等系列\nPT051|10/6|购物与买手店|Onitsuka Tiger 表参道店|表参道|记录品番尺码，之后与御殿场比价\nPT052|10/6|购物与买手店|Supreme 原宿|原宿|排队或抽签时间长时可跳过\nPT053|10/6|购物与买手店|Lacoste 原宿|原宿|市区限定与定制款；基础款可与奥莱比较\nPT054|10/6|购物与买手店|Montbell|东京市区／奥莱|户外用品候选，门店按路线确认\nPT055|10/6|购物与买手店|Barbour|东京市区／御殿场|试版型后比较市区与奥莱价格\nPT056|10/6|购物与买手店|Gramicci|东京市区／御殿场|户外休闲服饰候选\nPT057|10/10|购物与买手店|Coverchord Nakameguro|中目黑|男女装、户外、家居与生活选品；用户特别推荐\nPT058|10/7|购物与买手店|ARTS&SCIENCE Aoyama Women|青山|南青山补购主店；10/6 周二休息，安排在 10/7 周三\nPT059|10/6|购物与买手店|URBANIC30 Aoyama|青山|简洁优雅女装；只在顺路时\nPT060|待安排|购物与买手店|Tout Y Est Tokyo|东京门店待确认|小众皮具与设计品牌候选\nPT061|待安排|购物与买手店|KAPITAL Soho|东京门店待确认|工装、拼布与复古风格候选\nPT062|10/6|购物与买手店|HAY 表参道|表参道|北欧家居与设计小物\nPT063|10/6|购物与买手店|表参道 Hills|表参道|室内商场与设计品牌\nPT064|10/6|购物与买手店|Pocket Harajuku|神宫前|原创银饰与 Vintage 小物\nPT065|10/6|购物与买手店|MY ONLY FRAGRANCE 原宿店|原宿|情侣定制香氛体验，预约点\nPT066|10/6|购物与买手店|SHIHARA Lab|神宫前／青山一带|实验性珠宝与几何设计\nPT067|10/6|购物与买手店|松本清 原宿站表参道口店|原宿|晚间药妆主选，顺路购买\nPT068|10/6|购物与买手店|@cosme TOKYO|原宿|热门美妆旗舰；白天机动候选\nPT069|10/6|购物与买手店|SHIRO 表参道本店|表参道|日系洁净调性香氛与个人护理\nPT070|待安排|购物与买手店|ADV|东京门店待确认|小红书提及；先核对具体店名与地址\nPT071|10/9|购物与买手店|御殿场奥莱品牌比价|御殿场|目标含 Onitsuka Tiger、Barbour、Lacoste、Ralph Lauren、AMI\nPT072|10/10|购物与买手店|Larry Smith Meguro Store|祐天寺|日本手工银饰；本次银饰重点店\nPT073|10/10|购物与买手店|Nine Tailor|中目黑|日本帽饰品牌\nPT074|10/10|购物与买手店|JieDa|中目黑|日系街头与宽松剪裁\nPT075|10/10|购物与买手店|KINTO STORE Tokyo|中目黑|咖啡器具、杯具与生活用品\nPT076|10/10|购物与买手店|1LDK apartments.|中目黑|低调日系买手店；与 Coverchord 有部分重叠\nPT077|10/10|购物与买手店|nanamica Daikanyama|代官山|技术极简与城市户外\nPT078|10/10|购物与买手店|THE NORTH FACE Purple Label|代官山|日系户外与城市机能风\nPT079|10/10|购物与买手店|DENHAM Daikanyama|代官山|牛仔裤剪裁与洗水\nPT080|10/10|购物与买手店|minä perhonen materiaali|代官山|纺织、器皿与家居设计\nPT081|10/10|购物与买手店|代官山 T-SITE 茑屋书店|代官山|摄影、设计与建筑书\nPT082|10/10|购物与买手店|Stüssy Daikanyama|代官山|街头服饰候选\nPT083|10/10|购物与买手店|SUPER MARKET|东京门店待确认|按用户提及保留，具体门店位置出发前核对\nPT084|10/10|购物与买手店|TOMORROWLAND 涩谷本店|涩谷|需提前离开代官山才适合加入\nPT085|10/10|购物与买手店|LE LABO Daikanyama|代官山|优先试东京限定 GAIAC 10；银座店仅作补位\nPT086|10/11|购物与买手店|Himie 银座松屋店|松屋银座 1F|按最新调整安排于银座日；不重复安排青山店\nPT087|10/11|购物与买手店|Officine Universelle Buly 松屋银座店|松屋银座 1F|本次购买安排在银座；查看当日免税与商场优惠\nPT088|10/11|购物与买手店|Dover Street Market Ginza|银座|先锋设计师品牌与实验性陈列\nPT089|10/11|购物与买手店|GINZA SIX|银座|时装、香氛、书店与多品牌集中\nPT090|10/11|购物与买手店|Ginza Loft|银座|文具、设计杂货与旅行用品\nPT091|10/11|购物与买手店|Bic Camera 有乐町|有乐町／银座|相机、胶卷、电器与旅行用品\nPT092|10/11|购物与买手店|银座茑屋书店|银座|摄影、艺术与设计书\nPT093|10/11|购物与买手店|Onitsuka Tiger Ginza Yellow Concept|银座|仅在御殿场未买到目标款时补购\nPT094|10/11|购物与买手店|MIKIMOTO|银座|珍珠首饰候选\nPT095|10/11|购物与买手店|TASAKI|银座|现代珍珠设计候选；与 MIKIMOTO 二选一\nPT096|10/11|购物与买手店|CHANEL Fragrance & Beauty GINZA SIX|银座六 B1F|香水与美容，不是成衣店\nPT097|10/11|购物与买手店|FUEGUIA 1833 GINZA SIX|银座|小众高阶香氛候选\nPT098|10/11|购物与买手店|LE LABO GINZA SIX|银座六|仅在代官山未完成时补闻，不重复完整试香\nPT099|10/11|购物与买手店|松本清 GINZA FLAG|银座|仅作为10/6药妆未买齐时的备用\nPT100|10/11|购物与买手店|Lemonsha 银座|银座|胶片相机、镜头与钢笔候选\nPT101|10/11|购物与买手店|999.9 银座本店|银座|眼镜备选；仅金子眼镜未买到合适款时前往\nPT102|10/11|购物与买手店|EYETHINK|银座／东京门店待确认|眼镜备选；仅金子眼镜未买到合适款时考虑\nPT103|10/11|购物与买手店|其他眼镜店备选|东京|仅金子眼镜未买到合适款时启用\nPT104|待安排|购物与买手店|AHKAH|东京门店待确认|纤细钻饰与日常首饰候选\nPT105|10/6|购物与买手店|Hirotaka 表参道旗舰店|表参道 Hills B1F／青山|建筑感耳饰、耳骨夹与珍珠；15:45 表参道段\nPT106|10/9|餐厅咖啡小吃|箱根／御殿场当天简餐|御殿场|优先选择不影响返程车次的用餐点\nPT107|10/5|餐厅咖啡小吃|Sushi Tokyo Ten|新宿 NEWoMan|板前寿司与 omakase\nPT108|10/5|餐厅咖啡小吃|うどん 慎 Udon Shin|新宿|手打乌冬与天妇罗\nPT109|10/5|餐厅咖啡小吃|風雲児 Fūunji|新宿|浓厚鸡鱼介沾面\nPT110|10/5|餐厅咖啡小吃|新宿つな八 总本店|新宿|传统天妇罗\nPT111|10/5|餐厅咖啡小吃|回忆横丁烧鸟|新宿|烧鸟与居酒屋氛围\nPT112|10/5|餐厅咖啡小吃|Blue Bottle NEWoMan|新宿|咖啡与第一晚简餐\nPT113|10/5|餐厅咖啡小吃|TSUBASA COFFEE|新宿御苑前|水果甜点与创意布丁；需专程安排\nPT114|10/5|餐厅咖啡小吃|Mr. Waffle|新宿站|华夫饼小吃\nPT115|10/5|餐厅咖啡小吃|NEWoMan Food Hall|新宿|抵达延误时的简餐备选\nPT116|10/6|餐厅咖啡小吃|THE GREAT BURGER|原宿|美式汉堡\nPT117|10/6|餐厅咖啡小吃|MENCHIRASHI|原宿|乌冬面\nPT118|10/6|餐厅咖啡小吃|AFURI 原宿店|原宿|柚子盐拉面\nPT119|10/6|餐厅咖啡小吃|原宿饺子楼|原宿|煎饺\nPT120|10/6|餐厅咖啡小吃|Maisen 青山本店|表参道／青山|炸猪排\nPT121|10/6|餐厅咖啡小吃|i2 cafe|南青山|Dutch Baby 松饼与咖啡\nPT122|10/6|餐厅咖啡小吃|KINTAN 表参道|表参道|烧肉\nPT123|10/6|餐厅咖啡小吃|权八 西麻布|西麻布|日式料理与居酒屋氛围\nPT124|10/6|餐厅咖啡小吃|YOSHIMI|东京门店待确认|日式洋食\nPT125|10/6|餐厅咖啡小吃|Buvette|东京门店待确认|法式餐酒馆\nPT126|10/6|餐厅咖啡小吃|Fuglen Tokyo|原宿周边|咖啡\nPT127|10/6|餐厅咖啡小吃|Ralph's Coffee|表参道／青山|咖啡与甜点\nPT128|10/6|餐厅咖啡小吃|Koffee Mameya|表参道|手冲咖啡体验\nPT129|10/6|餐厅咖啡小吃|GARIGUETTE|表参道|千层酥甜点\nPT130|待安排|餐厅咖啡小吃|GARDEN HOUSE Kamakura|镰仓站西口|披萨、沙拉与松饼；未来行程候选；已移至“待安排”\nPT131|待安排|餐厅咖啡小吃|秋本 Akimoto|镰仓|吻仔鱼与天妇罗；未来行程候选；已移至“待安排”\nPT132|待安排|餐厅咖啡小吃|Caraway|镰仓|老派咖喱；未来行程候选；已移至“待安排”\nPT133|待安排|餐厅咖啡小吃|松原庵 Matsubara-an|镰仓由比滨|古民家荞麦面；较适合预约；未来行程候选；已移至“待安排”\nPT134|待安排|餐厅咖啡小吃|Yoridocoro|稻村崎|烤鱼定食；排队可能影响长谷寺；未来行程候选；已移至“待安排”\nPT135|待安排|餐厅咖啡小吃|OXYMORON Komachi|镰仓小町通|香料咖喱与甜点；未来行程候选；已移至“待安排”\nPT136|待安排|餐厅咖啡小吃|VERVE Coffee Kamakura|镰仓|浅焙咖啡；未来行程候选；已移至“待安排”\nPT137|待安排|餐厅咖啡小吃|KANNON COFFEE Kamakura|镰仓长谷|咖啡与甜点；未来行程候选；已移至“待安排”\nPT138|待安排|餐厅咖啡小吃|Pacific Drive-In|七里滨|海边餐厅与蒜香虾；未来行程候选；已移至“待安排”\nPT139|待安排|餐厅咖啡小吃|镰仓吻仔鱼盖饭|镰仓|当地料理候选；未来行程候选；已移至“待安排”\nPT140|待安排|餐厅咖啡小吃|镰仓釜饭|镰仓|当地料理候选；未来行程候选；已移至“待安排”\nPT141|待安排|餐厅咖啡小吃|小町通街头小吃|镰仓|边逛边吃；未来行程候选；已移至“待安排”\nPT142|10/8|餐厅咖啡小吃|初花 Hatsuhana|箱根汤本|山药泥荞麦面；以当日交通时间为准\nPT143|10/10|餐厅咖啡小吃|Sidewalk Coffee|中目黑|咖啡；路线起点候选\nPT144|10/10|餐厅咖啡小吃|Neel|中目黑|Brunch；炸猪排三明治\nPT145|10/10|餐厅咖啡小吃|Onibus Coffee|中目黑|浅焙咖啡与电车景观\nPT146|10/10|餐厅咖啡小吃|I’m Donut?|中目黑|甜甜圈\nPT147|10/10|餐厅咖啡小吃|BIG BABY ICE CREAM|中目黑|冰淇淋\nPT148|10/10|餐厅咖啡小吃|IVY PLACE|代官山|Brunch 与松饼\nPT149|10/10|餐厅咖啡小吃|一芯 Gohan-ya Ichie|代官山|日式定食与土锅饭\nPT150|10/10|餐厅咖啡小吃|Hacienda del cielo|代官山|墨西哥料理与露台\nPT151|10/10|餐厅咖啡小吃|Pizza Slice|代官山／涩谷一带|披萨\nPT152|10/10|餐厅咖啡小吃|Kaikaya by the Sea|涩谷周边|海鲜居酒屋\nPT153|10/10|餐厅咖啡小吃|活美登利 涩谷店|涩谷|回转寿司\nPT154|10/10|餐厅咖啡小吃|Moheji|涩谷宫下公园|铁板文字烧\nPT155|10/11|餐厅咖啡小吃|银座篝 Kagari|银座|鸡白汤拉面\nPT156|10/11|餐厅咖啡小吃|鸟繁 银座店|银座|炭火烧鸟\nPT157|10/11|餐厅咖啡小吃|梅丘寿司美登利|银座|寿司\nPT158|10/11|餐厅咖啡小吃|銀座かつかみ弐|银座|体验型炸猪排；预约候选\nPT159|10/11|餐厅咖啡小吃|Tempura Abe|银座|天妇罗\nPT160|10/11|餐厅咖啡小吃|しゃぶせん|银座|涮涮锅\nPT161|10/11|餐厅咖啡小吃|BEER HALL LION|银座|洋食与啤酒\nPT162|待安排|餐厅咖啡小吃|浅草今半|浅草|寿喜烧\nPT163|待安排|餐厅咖啡小吃|驹形泥鳅锅|浅草|江户料理\nPT164|待安排|餐厅咖啡小吃|金子半之助 日本桥总店|日本桥|江户前天妇罗盖饭\nPT165|10/12|餐厅咖啡小吃|松戸富田麺旦|成田 T1|安检前拉面／沾面\nPT166|10/12|餐厅咖啡小吃|永坂更科 布屋太兵衛|成田 T1|安检前荞麦面\nPT167|10/12|餐厅咖啡小吃|築地寿司岩|成田 T1|安检前寿司\nPT168|10/12|餐厅咖啡小吃|だし茶漬け えん|成田 T1|安检前茶泡饭\nPT169|待安排|餐厅咖啡小吃|Truffle Bakery|东京门店待确认|白松露盐面包与伴手礼候选\nPT170|待安排|餐厅咖啡小吃|Bear Pond Espresso|下北泽|深焙意式咖啡，目前不在主路线\nPT171|待安排|餐厅咖啡小吃|Rojiura Curry Samurai|下北泽|汤咖喱，目前不在主路线\nPT172|10/5|交通路线|成田机场 → 目白：Skyliner 方案|成田—日暮里—目白|目前主方案\nPT173|10/5|交通路线|成田机场 → 东京：N'EX 备选|成田—新宿／东京|作为 Skyliner 以外的备选方案\nPT174|10/8|交通路线|目白 → 箱根：经小田原转乘|东京—小田原—箱根|不搭浪漫特快\nPT175|10/8|交通路线|箱根当地登山巴士／区域交通|箱根|按景点与酒店位置选择\nPT176|10/9|交通路线|箱根 → 御殿场|箱根—御殿场|先确认当天巴士班次\nPT177|10/9|交通路线|御殿场 → 涩谷高速巴士|御殿场—涩谷|需提前确认班次与车票\nPT178|待安排|交通路线|目白 → 镰仓：JR 湘南新宿线|目白—池袋—镰仓|确认停靠镰仓的班次；未来行程候选；已移至“待安排”\nPT179|待安排|交通路线|镰仓当地江之电|镰仓|Suica 逐次刷卡或按需要买一日券；未来行程候选；已移至“待安排”\nPT180|10/11|交通路线|喜来登 → 银座：酒店车＋JR 山手线|白金台—目黑—有乐町|银座日主线进场路线\nPT181|10/12|交通路线|喜来登 → 成田：目黑＋日暮里＋Skyliner|白金台—目黑—日暮里—成田|返程铁路主方案\nPT182|10/6|餐厅咖啡小吃|AMAM DACOTAN 表参道店|北青山／表参道|MY ONLY FRAGRANCE 后的 15 分钟外带；排队或售罄即跳过\nPT183|10/8|街区与景点|成川美术馆|元箱根／芦之湖|芦之湖替代线；不叠加仙石原芒草或玻璃之森\nPT184|10/8|餐厅咖啡小吃|ティーラウンジ「季節風」|成川美术馆内|湖景咖啡、蛋糕套餐与热三明治；与美术馆同一替代线\nPT185|10/11|餐厅咖啡小吃|Comme’N TOKYO 麻布台 Hills店|麻布台 Hills Garden Plaza C|银座前面包与咖啡；可选支线，会推迟购物起步\nPT186|10/11|餐厅咖啡小吃|すき焼き 十二天|丸之内 Brick Square 3F|A5 和牛寿喜烧 / 涮涮锅；10/11 午餐已确认，建议预约 12:30\nPT187|10/10|餐厅咖啡小吃|道玄坂マンモス|涩谷道玄坂|10/10 午餐已安排；11:30 开门后前往，排队购票、不接受预约\nPT188|10/5—10/8|住宿|JR-East Hotel Mets Mejiro|目白 东京|酒店住宿\nPT189|10/8—10/9|住宿|BLISSTIA Hakone Sengokuhara|仙石原 箱根|酒店住宿\nPT191|10/6|餐厅咖啡小吃|Shinjyuku Sushi Bar Nigirite|西新宿|已确认 10/6 晚餐 20:15；周二 17:00—23:00；建议预约\nPT190|10/9—10/12|住宿|Sheraton Miyako Hotel Tokyo|白金台 东京|酒店住宿\nPT192|10/7|街区与景点|南青山购物补漏与休息|南青山／表参道|10/6 原路线后只补尚未完成的店；ARTS&SCIENCE 周三营业；下午回目白整理箱根行李\nPT193|10/7|餐厅咖啡小吃|焼肉ホルモンぼんず～絆～ 新宿本館|新宿三丁目|照片确认分店；10/7 南青山购物后安排新宿晚餐\nPT194|10/5|餐厅咖啡小吃|Phở Thìn Tokyo 新宿店|西新宿|牛肉河粉；10/5 新宿购物后晚餐候选；官网门店信息列 11:00—21:00，以当日公告为准";
+      const tripPointCatalogText = "PT001|10/5|街区与景点|新宿|新宿|到店入住后的购物主线\nPT003|10/5|街区与景点|新宿三丁目与东口|新宿|ALLU、晚餐与回忆横丁一带\nPT004|10/6|街区与景点|原宿|原宿|10/6 原宿购物路线北段\nPT005|10/6|街区与景点|里原宿|原宿|Pocket、TABAYA、BEAMS 一带\nPT006|10/6|街区与景点|Cat Street|原宿—涩谷|由北向南连接原宿与表参道\nPT007|10/6|街区与景点|表参道|表参道|表参道旗舰店与咖啡\nPT008|10/7|街区与景点|南青山|南青山|南青山｜10/7 青山购物主线\nPT009|10/6|街区与景点|代代木公园|原宿|目前为轻景点备选，行程超时可跳过\nPT010|待安排|街区与景点|镰仓一日游|镰仓|未来行程候选；已移至“待安排”\nPT011|待安排|街区与景点|小町通|镰仓|街区散步与小吃；未来行程候选；已移至“待安排”\nPT012|待安排|街区与景点|鹤冈八幡宫|镰仓|镰仓市区景点；未来行程候选；已移至“待安排”\nPT013|待安排|街区与景点|长谷寺|镰仓长谷|庭园与海景；未来行程候选；已移至“待安排”\nPT014|待安排|街区与景点|镰仓大佛／高德院|镰仓长谷|长谷寺附近候选；未来行程候选；已移至“待安排”\nPT015|待安排|街区与景点|江之电沿线|镰仓|镰仓当天交通与沿线体验；未来行程候选；已移至“待安排”\nPT016|待安排|街区与景点|七里滨|镰仓湘南|海岸拍照与日落；未来行程候选；已移至“待安排”\nPT017|待安排|街区与景点|镰仓高校前|镰仓湘南|热门拍照点，可能拥挤；未来行程候选；已移至“待安排”\nPT018|10/8|街区与景点|箱根仙石原|箱根|温泉住宿所在区域\nPT019|10/8|街区与景点|箱根雕刻之森美术馆|箱根|轻度风景与户外雕塑\nPT020|10/9|街区与景点|御殿场 Premium Outlets|御殿场|箱根退房后购物，之后返回东京\nPT021|10/9|街区与景点|涩谷|涩谷|御殿场返程交通衔接区\nPT022|10/10|街区与景点|祐天寺|目黑区|Larry Smith 银饰路线起点\nPT023|10/10|街区与景点|中目黑|目黑区|咖啡、选物与目黑川周边\nPT024|10/10|街区与景点|目黑川沿线|中目黑|散步与胶片拍照点\nPT025|10/10|街区与景点|代官山|涩谷区|买手店与设计生活方式路线\nPT026|10/10|街区与景点|惠比寿|涩谷区|附近街区备选\nPT027|10/11|街区与景点|银座|银座|当天购物主线\nPT028|10/6|街区与景点|六本木|港区|10/6 傍晚安排六本木展望台；10/9 不再去六本木\nPT029|待安排|街区与景点|东京塔周边拍照点|港区|户外拍照候选；未纳入当前行程\nPT195|10/6|街区与景点|Tokyo City View|六本木 Hills 森大厦 52F|10/6 傍晚观景；以当日官方营业和门票信息为准\nPT030|待安排|街区与景点|浅草寺|浅草|目前尚未安排日期\nPT031|待安排|街区与景点|有明花园 Ariake Garden|有明|目前尚未安排日期\nPT032|10/6|街区与景点|六本木 Hills|六本木|10/6 傍晚到六本木 Hills，主看 Tokyo City View\nPT033|待安排|街区与景点|涩谷 PARCO|涩谷|潮流品牌与买手店集中\nPT034|待安排|街区与景点|宫下公园|涩谷|街区散步与休息点\nPT035|待安排|街区与景点|下北泽|世田谷区|古着街区，目前不在每日主线\nPT036|10/6|街区与景点|东京 Midtown|六本木|10/6 六本木备选街区；有余量时再逛 Midtown\nPT037|10/5|购物与买手店|NEWoMan 新宿|新宿|车站直连，第一晚短逛\nPT038|10/5|购物与买手店|伊势丹新宿本店|新宿|百货与女鞋区域\nPT039|10/5|购物与买手店|ODETTE É ODILE 新宿伊势丹店|新宿伊势丹 2F|女鞋；可横向试穿比较\nPT040|10/5|购物与买手店|Vintage ALLU 新宿|新宿三丁目|先查并使用指定商品 coupon\nPT041|10/5|购物与买手店|北村写真机店 新宿|新宿|胶片机、镜头、胶卷与器材\nPT042|10/6|购物与买手店|HUMAN MADE TOKYO|原宿|复古美式、工装与东京限定\nPT043|10/6|购物与买手店|Stüssy Harajuku|原宿|加州冲浪、滑板与街头风格\nPT044|10/6|购物与买手店|BEAMS Harajuku|原宿|日系多品牌选品\nPT045|10/6|购物与买手店|International Gallery BEAMS|神宫前|设计师与高阶男装选品\nPT046|10/6|购物与买手店|TABAYA United Arrows|原宿|男女装、生活方式与高阶选品\nPT047|10/7|购物与买手店|H BEAUTY&YOUTH|南青山|H BEAUTY&YOUTH｜10/7 青山主线\nPT048|10/7|购物与买手店|SUPER A MARKET AOYAMA|南青山|SUPER A MARKET｜10/7 青山主线\nPT049|10/7|购物与买手店|AMI Paris|表参道／青山|AMI Paris｜改为机动候选，不作为 10/6 时间线固定站\nPT050|10/7|购物与买手店|Ralph Lauren|表参道／青山|Ralph Lauren｜改为机动候选，不作为 10/6 时间线固定站\nPT051|10/6|购物与买手店|Onitsuka Tiger 表参道店|表参道|记录品番尺码，之后与御殿场比价\nPT052|10/6|购物与买手店|Supreme 原宿|原宿|排队或抽签时间长时可跳过\nPT053|10/6|购物与买手店|Lacoste 原宿|原宿|市区限定与定制款；基础款可与奥莱比较\nPT054|10/6|购物与买手店|Montbell|东京市区／奥莱|户外用品候选，门店按路线确认\nPT055|10/6|购物与买手店|Barbour|东京市区／御殿场|试版型后比较市区与奥莱价格\nPT056|10/6|购物与买手店|Gramicci|东京市区／御殿场|户外休闲服饰候选\nPT057|10/10|购物与买手店|Coverchord Nakameguro|中目黑|男女装、户外、家居与生活选品；用户特别推荐\nPT058|10/7|购物与买手店|ARTS&SCIENCE Aoyama Women|青山|南青山补购主店；10/6 周二休息，安排在 10/7 周三\nPT059|10/7|购物与买手店|URBANIC30 Aoyama|青山|青山支线备选；有时间再去\nPT060|待安排|购物与买手店|Tout Y Est Tokyo|东京门店待确认|小众皮具与设计品牌候选\nPT061|待安排|购物与买手店|KAPITAL Soho|东京门店待确认|工装、拼布与复古风格候选\nPT062|10/7|购物与买手店|HAY 表参道|表参道|HAY TOKYO｜10/7 补购候选\nPT063|10/7|购物与买手店|表参道 Hills|表参道|表参道 Hills｜10/7 补购候选；不与原宿主线重复安排\nPT064|10/6|购物与买手店|Pocket Harajuku|神宫前|原创银饰与 Vintage 小物\nPT065|10/6|购物与买手店|MY ONLY FRAGRANCE 原宿店|原宿|情侣定制香氛体验，预约点\nPT066|10/6|购物与买手店|SHIHARA Lab|神宫前／青山一带|实验性珠宝与几何设计\nPT067|10/6|购物与买手店|松本清 原宿站表参道口店|原宿|晚间药妆主选，顺路购买\nPT068|10/6|购物与买手店|@cosme TOKYO|原宿|热门美妆旗舰；白天机动候选\nPT069|10/6|购物与买手店|SHIRO 表参道本店|表参道|日系洁净调性香氛与个人护理\nPT070|待安排|购物与买手店|ADV|东京门店待确认|小红书提及；先核对具体店名与地址\nPT071|10/9|购物与买手店|御殿场奥莱品牌比价|御殿场|目标含 Onitsuka Tiger、Barbour、Lacoste、Ralph Lauren、AMI\nPT072|10/10|购物与买手店|Larry Smith Meguro Store|祐天寺|日本手工银饰；本次银饰重点店\nPT073|10/10|购物与买手店|Nine Tailor|中目黑|日本帽饰品牌\nPT074|10/10|购物与买手店|JieDa|中目黑|日系街头与宽松剪裁\nPT075|10/10|购物与买手店|KINTO STORE Tokyo|中目黑|咖啡器具、杯具与生活用品\nPT076|10/10|购物与买手店|1LDK apartments.|中目黑|低调日系买手店；与 Coverchord 有部分重叠\nPT077|10/10|购物与买手店|nanamica Daikanyama|代官山|技术极简与城市户外\nPT078|10/10|购物与买手店|THE NORTH FACE Purple Label|代官山|日系户外与城市机能风\nPT079|10/10|购物与买手店|DENHAM Daikanyama|代官山|牛仔裤剪裁与洗水\nPT080|10/10|购物与买手店|minä perhonen materiaali|代官山|纺织、器皿与家居设计\nPT081|10/10|购物与买手店|代官山 T-SITE 茑屋书店|代官山|摄影、设计与建筑书\nPT082|10/10|购物与买手店|Stüssy Daikanyama|代官山|街头服饰候选\nPT083|10/10|购物与买手店|SUPER MARKET|东京门店待确认|按用户提及保留，具体门店位置出发前核对\nPT084|10/10|购物与买手店|TOMORROWLAND 涩谷本店|涩谷|需提前离开代官山才适合加入\nPT085|10/10|购物与买手店|LE LABO Daikanyama|代官山|优先试东京限定 GAIAC 10；银座店仅作补位\nPT086|10/11|购物与买手店|Himie 银座松屋店|松屋银座 1F|按最新调整安排于银座日；不重复安排青山店\nPT087|10/11|购物与买手店|Officine Universelle Buly 松屋银座店|松屋银座 1F|本次购买安排在银座；查看当日免税与商场优惠\nPT088|10/11|购物与买手店|Dover Street Market Ginza|银座|先锋设计师品牌与实验性陈列\nPT089|10/11|购物与买手店|GINZA SIX|银座|时装、香氛、书店与多品牌集中\nPT090|10/11|购物与买手店|Ginza Loft|银座|文具、设计杂货与旅行用品\nPT091|10/11|购物与买手店|Bic Camera 有乐町|有乐町／银座|相机、胶卷、电器与旅行用品\nPT092|10/11|购物与买手店|银座茑屋书店|银座|摄影、艺术与设计书\nPT093|10/11|购物与买手店|Onitsuka Tiger Ginza Yellow Concept|银座|仅在御殿场未买到目标款时补购\nPT094|10/11|购物与买手店|MIKIMOTO|银座|珍珠首饰候选\nPT095|10/11|购物与买手店|TASAKI|银座|现代珍珠设计候选；与 MIKIMOTO 二选一\nPT096|10/11|购物与买手店|CHANEL Fragrance & Beauty GINZA SIX|银座六 B1F|香水与美容，不是成衣店\nPT097|10/11|购物与买手店|FUEGUIA 1833 GINZA SIX|银座|小众高阶香氛候选\nPT098|10/11|购物与买手店|LE LABO GINZA SIX|银座六|仅在代官山未完成时补闻，不重复完整试香\nPT099|10/11|购物与买手店|松本清 GINZA FLAG|银座|仅作为10/6药妆未买齐时的备用\nPT100|10/11|购物与买手店|Lemonsha 银座|银座|胶片相机、镜头与钢笔候选\nPT101|10/11|购物与买手店|999.9 银座本店|银座|眼镜备选；仅金子眼镜未买到合适款时前往\nPT102|10/11|购物与买手店|EYETHINK|银座／东京门店待确认|眼镜备选；仅金子眼镜未买到合适款时考虑\nPT103|10/11|购物与买手店|其他眼镜店备选|东京|仅金子眼镜未买到合适款时启用\nPT104|待安排|购物与买手店|AHKAH|东京门店待确认|纤细钻饰与日常首饰候选\nPT105|10/7|购物与买手店|Hirotaka 表参道旗舰店|表参道 Hills B1F／青山|建筑感耳饰、耳骨夹与珍珠；10/7 青山补购候选\nPT106|10/9|餐厅咖啡小吃|箱根／御殿场当天简餐|御殿场|优先选择不影响返程车次的用餐点\nPT107|10/5|餐厅咖啡小吃|Sushi Tokyo Ten|新宿 NEWoMan|板前寿司与 omakase\nPT108|10/5|餐厅咖啡小吃|うどん 慎 Udon Shin|新宿|手打乌冬与天妇罗\nPT109|10/5|餐厅咖啡小吃|風雲児 Fūunji|新宿|浓厚鸡鱼介沾面\nPT110|10/5|餐厅咖啡小吃|新宿つな八 总本店|新宿|传统天妇罗\nPT111|10/5|餐厅咖啡小吃|回忆横丁烧鸟|新宿|烧鸟与居酒屋氛围\nPT112|10/5|餐厅咖啡小吃|Blue Bottle NEWoMan|新宿|咖啡与第一晚简餐\nPT113|10/5|餐厅咖啡小吃|TSUBASA COFFEE|新宿御苑前|水果甜点与创意布丁；需专程安排\nPT114|10/5|餐厅咖啡小吃|Mr. Waffle|新宿站|华夫饼小吃\nPT115|10/5|餐厅咖啡小吃|NEWoMan Food Hall|新宿|抵达延误时的简餐备选\nPT116|10/6|餐厅咖啡小吃|THE GREAT BURGER|原宿|美式汉堡\nPT117|10/6|餐厅咖啡小吃|MENCHIRASHI|原宿|乌冬面\nPT118|10/6|餐厅咖啡小吃|AFURI 原宿店|原宿|柚子盐拉面\nPT119|10/6|餐厅咖啡小吃|原宿饺子楼|原宿|煎饺\nPT120|10/7|餐厅咖啡小吃|Maisen 青山本店|表参道／青山|炸猪排；10/7 青山午餐主选\nPT121|10/7|餐厅咖啡小吃|i2 cafe|南青山|Dutch Baby 松饼与咖啡；10/7 青山咖啡备选\nPT122|10/6|餐厅咖啡小吃|KINTAN 表参道|表参道|烧肉\nPT123|10/6|餐厅咖啡小吃|权八 西麻布|西麻布|日式料理与居酒屋氛围\nPT124|10/6|餐厅咖啡小吃|YOSHIMI|东京门店待确认|日式洋食\nPT125|10/6|餐厅咖啡小吃|Buvette|东京门店待确认|法式餐酒馆\nPT126|10/6|餐厅咖啡小吃|Fuglen Tokyo|原宿周边|咖啡\nPT127|10/7|餐厅咖啡小吃|Ralph's Coffee|表参道／青山|表参道 / 青山咖啡与甜点候选\nPT128|10/7|餐厅咖啡小吃|Koffee Mameya|表参道|表参道手冲咖啡体验候选\nPT129|10/7|餐厅咖啡小吃|GARIGUETTE|表参道|表参道千层酥甜点候选\nPT130|待安排|餐厅咖啡小吃|GARDEN HOUSE Kamakura|镰仓站西口|披萨、沙拉与松饼；未来行程候选；已移至“待安排”\nPT131|待安排|餐厅咖啡小吃|秋本 Akimoto|镰仓|吻仔鱼与天妇罗；未来行程候选；已移至“待安排”\nPT132|待安排|餐厅咖啡小吃|Caraway|镰仓|老派咖喱；未来行程候选；已移至“待安排”\nPT133|待安排|餐厅咖啡小吃|松原庵 Matsubara-an|镰仓由比滨|古民家荞麦面；较适合预约；未来行程候选；已移至“待安排”\nPT134|待安排|餐厅咖啡小吃|Yoridocoro|稻村崎|烤鱼定食；排队可能影响长谷寺；未来行程候选；已移至“待安排”\nPT135|待安排|餐厅咖啡小吃|OXYMORON Komachi|镰仓小町通|香料咖喱与甜点；未来行程候选；已移至“待安排”\nPT136|待安排|餐厅咖啡小吃|VERVE Coffee Kamakura|镰仓|浅焙咖啡；未来行程候选；已移至“待安排”\nPT137|待安排|餐厅咖啡小吃|KANNON COFFEE Kamakura|镰仓长谷|咖啡与甜点；未来行程候选；已移至“待安排”\nPT138|待安排|餐厅咖啡小吃|Pacific Drive-In|七里滨|海边餐厅与蒜香虾；未来行程候选；已移至“待安排”\nPT139|待安排|餐厅咖啡小吃|镰仓吻仔鱼盖饭|镰仓|当地料理候选；未来行程候选；已移至“待安排”\nPT140|待安排|餐厅咖啡小吃|镰仓釜饭|镰仓|当地料理候选；未来行程候选；已移至“待安排”\nPT141|待安排|餐厅咖啡小吃|小町通街头小吃|镰仓|边逛边吃；未来行程候选；已移至“待安排”\nPT142|10/8|餐厅咖啡小吃|初花 Hatsuhana|箱根汤本|山药泥荞麦面；以当日交通时间为准\nPT143|10/10|餐厅咖啡小吃|Sidewalk Coffee|中目黑|咖啡；路线起点候选\nPT144|10/10|餐厅咖啡小吃|Neel|中目黑|Brunch；炸猪排三明治\nPT145|10/10|餐厅咖啡小吃|Onibus Coffee|中目黑|浅焙咖啡与电车景观\nPT146|10/10|餐厅咖啡小吃|I’m Donut?|中目黑|甜甜圈\nPT147|10/10|餐厅咖啡小吃|BIG BABY ICE CREAM|中目黑|冰淇淋\nPT148|10/10|餐厅咖啡小吃|IVY PLACE|代官山|Brunch 与松饼\nPT149|10/10|餐厅咖啡小吃|一芯 Gohan-ya Ichie|代官山|日式定食与土锅饭\nPT150|10/10|餐厅咖啡小吃|Hacienda del cielo|代官山|墨西哥料理与露台\nPT151|10/10|餐厅咖啡小吃|Pizza Slice|代官山／涩谷一带|披萨\nPT152|10/10|餐厅咖啡小吃|Kaikaya by the Sea|涩谷周边|海鲜居酒屋\nPT153|10/10|餐厅咖啡小吃|活美登利 涩谷店|涩谷|回转寿司\nPT154|10/10|餐厅咖啡小吃|Moheji|涩谷宫下公园|铁板文字烧\nPT155|10/11|餐厅咖啡小吃|银座篝 Kagari|银座|鸡白汤拉面\nPT156|10/11|餐厅咖啡小吃|鸟繁 银座店|银座|炭火烧鸟\nPT157|10/11|餐厅咖啡小吃|梅丘寿司美登利|银座|寿司\nPT158|10/11|餐厅咖啡小吃|銀座かつかみ弐|银座|体验型炸猪排；预约候选\nPT159|10/11|餐厅咖啡小吃|Tempura Abe|银座|天妇罗\nPT160|10/11|餐厅咖啡小吃|しゃぶせん|银座|涮涮锅\nPT161|10/11|餐厅咖啡小吃|BEER HALL LION|银座|洋食与啤酒\nPT162|待安排|餐厅咖啡小吃|浅草今半|浅草|寿喜烧\nPT163|待安排|餐厅咖啡小吃|驹形泥鳅锅|浅草|江户料理\nPT164|待安排|餐厅咖啡小吃|金子半之助 日本桥总店|日本桥|江户前天妇罗盖饭\nPT165|10/12|餐厅咖啡小吃|松戸富田麺旦|成田 T1|安检前拉面／沾面\nPT166|10/12|餐厅咖啡小吃|永坂更科 布屋太兵衛|成田 T1|安检前荞麦面\nPT167|10/12|餐厅咖啡小吃|築地寿司岩|成田 T1|安检前寿司\nPT168|10/12|餐厅咖啡小吃|だし茶漬け えん|成田 T1|安检前茶泡饭\nPT169|待安排|餐厅咖啡小吃|Truffle Bakery|东京门店待确认|白松露盐面包与伴手礼候选\nPT170|待安排|餐厅咖啡小吃|Bear Pond Espresso|下北泽|深焙意式咖啡，目前不在主路线\nPT171|待安排|餐厅咖啡小吃|Rojiura Curry Samurai|下北泽|汤咖喱，目前不在主路线\nPT172|10/5|交通路线|成田机场 → 目白：Skyliner 方案|成田—日暮里—目白|目前主方案\nPT173|10/5|交通路线|成田机场 → 东京：N'EX 备选|成田—新宿／东京|作为 Skyliner 以外的备选方案\nPT174|10/8|交通路线|目白 → 箱根：经小田原转乘|东京—小田原—箱根|不搭浪漫特快\nPT175|10/8|交通路线|箱根当地登山巴士／区域交通|箱根|按景点与酒店位置选择\nPT176|10/9|交通路线|箱根 → 御殿场|箱根—御殿场|先确认当天巴士班次\nPT177|10/9|交通路线|御殿场 → 涩谷高速巴士|御殿场—涩谷|需提前确认班次与车票\nPT178|待安排|交通路线|目白 → 镰仓：JR 湘南新宿线|目白—池袋—镰仓|确认停靠镰仓的班次；未来行程候选；已移至“待安排”\nPT179|待安排|交通路线|镰仓当地江之电|镰仓|Suica 逐次刷卡或按需要买一日券；未来行程候选；已移至“待安排”\nPT180|10/11|交通路线|喜来登 → 银座：酒店车＋JR 山手线|白金台—目黑—有乐町|银座日主线进场路线\nPT181|10/12|交通路线|喜来登 → 成田：目黑＋日暮里＋Skyliner|白金台—目黑—日暮里—成田|返程铁路主方案\nPT182|10/6|餐厅咖啡小吃|AMAM DACOTAN 表参道店|北青山／表参道|MY ONLY FRAGRANCE 后的 15 分钟外带；排队或售罄即跳过\nPT183|10/8|街区与景点|成川美术馆|元箱根／芦之湖|芦之湖替代线；不叠加仙石原芒草或玻璃之森\nPT184|10/8|餐厅咖啡小吃|ティーラウンジ「季節風」|成川美术馆内|湖景咖啡、蛋糕套餐与热三明治；与美术馆同一替代线\nPT185|10/11|餐厅咖啡小吃|Comme’N TOKYO 麻布台 Hills店|麻布台 Hills Garden Plaza C|银座前面包与咖啡；可选支线，会推迟购物起步\nPT186|10/11|餐厅咖啡小吃|すき焼き 十二天|丸之内 Brick Square 3F|A5 和牛寿喜烧 / 涮涮锅；10/11 午餐已确认，建议预约 12:30\nPT187|10/10|餐厅咖啡小吃|道玄坂マンモス|涩谷道玄坂|10/10 午餐已安排；11:30 开门后前往，排队购票、不接受预约\nPT188|10/5—10/8|住宿|JR-East Hotel Mets Mejiro|目白 东京|酒店住宿\nPT189|10/8—10/9|住宿|BLISSTIA Hakone Sengokuhara|仙石原 箱根|酒店住宿\nPT191|10/6|餐厅咖啡小吃|Shinjyuku Sushi Bar Nigirite|西新宿|已确认 10/6 晚餐 20:15；周二 17:00—23:00；建议预约\nPT190|10/9—10/12|住宿|Sheraton Miyako Hotel Tokyo|白金台 东京|酒店住宿\nPT192|10/7|街区与景点|南青山购物补漏与休息|南青山／表参道|10/6 原宿与六本木；10/7 青山补购、下午回目白整理箱根行李\nPT193|10/7|餐厅咖啡小吃|焼肉ホルモンぼんず～絆～ 新宿本館|新宿三丁目|照片确认分店；10/7 南青山购物后安排新宿晚餐\nPT194|10/5|餐厅咖啡小吃|Phở Thìn Tokyo 新宿店|西新宿|牛肉河粉；10/5 新宿购物后晚餐候选；官网门店信息列 11:00—21:00，以当日公告为准";
       const tripPointCatalog = tripPointCatalogText.split('\n').filter(Boolean).map(line => {
         const [id,day,category,name,area,note] = line.split('|');
         return {id,day,category,name,area,note,custom:false};
@@ -4059,10 +4145,10 @@
       const tripPointDayOrder = {'10/5':5,'10/6':6,'10/7':7,'10/8':8,'10/9':9,'10/10':10,'10/11':11,'10/12':12,'待安排':99};
       const tripPointDayInfo = {
         '10/5':{weekday:'周一',title:'成田抵达 · 目白入住 · 新宿首晚'},
-        '10/6':{weekday:'周二',title:'原宿 → 表参道 → 南青山'},
-        '10/7':{weekday:'周三',title:'南青山补购与休息缓冲'},
+        '10/6':{weekday:'周二',title:'原宿购物 → 六本木展望台 → 新宿晚餐'},
+        '10/7':{weekday:'周三',title:'南青山补购 → 回目白休息与整理箱根行李'},
         '10/8':{weekday:'周四',title:'目白 → 箱根仙石原 · 温泉入住'},
-        '10/9':{weekday:'周五',title:'御殿场购物 → 涩谷返程 → 六本木机动'},
+        '10/9':{weekday:'周五',title:'御殿场购物 → 涩谷返程 → 喜来登入住'},
         '10/10':{weekday:'周六',title:'祐天寺 → 中目黑 → 代官山 → 涩谷／惠比寿'},
         '10/11':{weekday:'周日',title:'银座购物日 · 松屋百货'},
         '10/12':{weekday:'周一',title:'成田机场 · CA930返程'},
