@@ -3633,7 +3633,7 @@
         heading?.querySelectorAll('.badge').forEach(node => node.remove());
         return (heading?.textContent || '').replace(/\s+/g,' ').trim();
       };
-      document.querySelectorAll('details.day .food').forEach(card => {
+      document.querySelectorAll('details.day .food-grid > article.food').forEach(card => {
         const name = cleanFoodName(card);
         const record = tabelogRatings.find(item => item.re.test(name));
         const previous = [...card.querySelectorAll('a[href]')].find(link => /tabelog\.com/i.test(link.href));
