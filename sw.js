@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v29-20261004-brand-search-ledger-hakone';
+const CACHE_NAME = 'tokyo-2026-guide-v30-20261004-tabelog-card-scope';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
