@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v28-20261004-oct6-donki-nigirite-1700';
+const CACHE_NAME = 'tokyo-2026-guide-v29-20261004-brand-search-ledger-hakone';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
