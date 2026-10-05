@@ -4788,7 +4788,7 @@ details.day .route-board{border-color:var(--day-accent);background:linear-gradie
     if (/伊势丹|Isetan|ODETTE É ODILE 新宿/i.test(s)) return {kind:'counter', label:'可退税 · 先付款，再到伊势丹本馆 6F 免税柜台', detail:'三越伊势丹会收取免税办理手续费；部分商品不适用。'};
     if (/Fa-So-La|TAX FREE AKIHABARA|机场免税|美妆 \/ 香水 \/ 酒类|奢侈品牌 Boutique/i.test(s)) return {kind:'airport', label:'机场免税店 · 结账时按免税价付款', detail:'仅适用于安检后实际营业的免税店与商品。'};
     if (/御殿场|Gotemba Premium Outlets|Gotemba Outlet/i.test(s)) return {kind:'pending', label:'参加店可退税 · 先问店内办理或奥莱柜台', detail:'各品牌店办理方式不同；以当天店铺指引为准。'};
-    if (/堂吉诃德|Don Quijote|ドン・キホーテ/i.test(s)) return {kind:'direct', label:'可退税 · 店内办理，结账前出示护照', detail:'仅符合资格的商品和消费金额；以该店免税柜台指引为准。'};
+    if (/堂吉诃德|Don Quijote|ドン・キホーテ/i.test(s)) return {kind:'counter', label:'可退税 · 店内免税柜台办理（是否当场扣税以门店为准）', detail:'仅符合资格的商品和消费金额；购买当天携护照原件办理。'};
     if (/松本清|Matsumoto Kiyoshi/i.test(s)) return {kind:'pending', label:'该连锁支持免税 · 分店办理位置 / 结账流程现场确认', detail:'带护照原件；以原宿 / 银座具体分店为准。'};
     if (/999\.9|フォーナインズ/i.test(s)) return {kind:'pending', label:'官网标注支持免税 · 具体分店结账流程确认', detail:'结账前出示护照原件，并确认税前金额门槛。'};
     return {kind:'pending', label:'免税资格 / 办理方式：到店确认', detail:'攻略未取得该具体分店的官方免税确认；购买前先问店员。'};
