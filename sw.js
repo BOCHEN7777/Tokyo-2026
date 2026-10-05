@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v34-20261005-sensoji-asakusa-exit';
+const CACHE_NAME = 'tokyo-2026-guide-v35-20261005-asakusa-route-complete';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
