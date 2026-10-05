@@ -4768,5 +4768,55 @@ details.day .route-board{border-color:var(--day-accent);background:linear-gradie
       loadTripWeather(false);
     })();
   </script>
+
+<style id="tax-free-status-style">
+.tax-free-status{display:inline-flex;align-items:center;gap:5px;margin:7px 6px 0 0;padding:5px 9px;border-radius:999px;font-size:.72rem;line-height:1.35;font-weight:850;background:#e6efe8;color:#285039;border:1px solid #c6d8c9}
+.tax-free-status.pending{background:#fff4d9;color:#755617;border-color:#ead7a5}
+.tax-free-status.counter{background:#e8edf2;color:#345364;border-color:#cad6de}
+.tax-free-status.airport{background:#eee8f3;color:#5b4770;border-color:#d9cde4}
+.route-tax-free{display:inline-flex;margin:5px 0 0;padding:3px 7px;border-radius:8px;font-size:.66rem;font-weight:850;background:#eef2e8;color:#40583b}
+.route-tax-free.pending{background:#fff4d9;color:#755617}
+.route-tax-free.counter{background:#e8edf2;color:#345364}
+@media(max-width:600px){.tax-free-status{font-size:.68rem}.route-tax-free{font-size:.62rem}}
+</style>
+<script id="tax-free-status-script">
+(() => {
+  const classify = raw => {
+    const s = String(raw || '').replace(/&amp;/g, '&');
+    if (/Bic Camera|ビックカメラ/i.test(s)) return {kind:'direct', label:'可退税 · 结账时直接免税', detail:'Bic Camera 官方说明付款时从标价扣除消费税。'};
+    if (/GINZA SIX|CHANEL Fragrance & Beauty|FUEGUIA 1833 Ginza|LE LABO GINZA SIX/i.test(s)) return {kind:'counter', label:'参加店可退税 · 先付款，再到 GINZA SIX 1F 免税柜台', detail:'仅限参加免税服务的店铺；部分商品可能不适用。'};
+    if (/伊势丹|Isetan|ODETTE É ODILE 新宿/i.test(s)) return {kind:'counter', label:'可退税 · 先付款，再到伊势丹本馆 6F 免税柜台', detail:'三越伊势丹会收取免税办理手续费；部分商品不适用。'};
+    if (/Fa-So-La|TAX FREE AKIHABARA|机场免税|美妆 \/ 香水 \/ 酒类|奢侈品牌 Boutique/i.test(s)) return {kind:'airport', label:'机场免税店 · 结账时按免税价付款', detail:'仅适用于安检后实际营业的免税店与商品。'};
+    if (/御殿场|Gotemba Premium Outlets|Gotemba Outlet/i.test(s)) return {kind:'pending', label:'参加店可退税 · 先问店内办理或奥莱柜台', detail:'各品牌店办理方式不同；以当天店铺指引为准。'};
+    if (/堂吉诃德|Don Quijote|ドン・キホーテ/i.test(s)) return {kind:'direct', label:'可退税 · 店内办理，结账前出示护照', detail:'仅符合资格的商品和消费金额；以该店免税柜台指引为准。'};
+    if (/松本清|Matsumoto Kiyoshi/i.test(s)) return {kind:'pending', label:'该连锁支持免税 · 分店办理位置 / 结账流程现场确认', detail:'带护照原件；以原宿 / 银座具体分店为准。'};
+    if (/999\.9|フォーナインズ/i.test(s)) return {kind:'pending', label:'官网标注支持免税 · 具体分店结账流程确认', detail:'结账前出示护照原件，并确认税前金额门槛。'};
+    return {kind:'pending', label:'免税资格 / 办理方式：到店确认', detail:'攻略未取得该具体分店的官方免税确认；购买前先问店员。'};
+  };
+  document.querySelectorAll('article.shop, article.brand').forEach(card => {
+    if (card.querySelector('.tax-free-status')) return;
+    const info = classify(card.innerText);
+    const badge = document.createElement('span');
+    badge.className = 'tax-free-status ' + (info.kind === 'pending' ? 'pending' : info.kind);
+    badge.textContent = info.label;
+    badge.title = info.detail;
+    const heading = card.querySelector('h3,h4');
+    (heading || card).appendChild(badge);
+  });
+  document.querySelectorAll('.route-steps li:has(.stop-kind.shop)').forEach(item => {
+    if (item.querySelector('.route-tax-free')) return;
+    const info = classify(item.innerText);
+    const badge = document.createElement('small');
+    badge.className = 'route-tax-free ' + (info.kind === 'pending' ? 'pending' : info.kind);
+    badge.textContent = info.label;
+    item.appendChild(badge);
+  });
+  const ruleNote = document.createElement('aside');
+  ruleNote.className = 'note tax-free-guide-note';
+  ruleNote.innerHTML = '<strong>免税标记说明｜本次行程 2026/10/5—10/12：</strong>「可退税」表示该商场 / 连锁有免税服务，仍须满足旅客资格与金额条件；「结账时直接免税」是收银时直接扣除消费税；「先付款、后柜台办理」是先按含税价付款，再持护照和收据到指定柜台办理（可能收手续费）；「到店确认」表示未查到该具体分店的官方政策，不等于确定不可退税。请携带护照原件，同一人同店同日一般商品税前满 ¥5,000；消费品另有封装及金额规则。10 月仍按购买时免税 / 店内柜台办理，2026/11/1 起才改为出境海关确认后退款。<br><a href="https://www.japan.travel/en/plan/japans-tax-exemption/" target="_blank" rel="noreferrer">日本国家旅游局：免税规则及 11/1 制度变更 ↗</a>　<a href="https://www.biccamera.com/bc/c/super/okaimono/oshiharai/taxfree/index.jsp" target="_blank" rel="noreferrer">Bic Camera 官方免税说明 ↗</a>　<a href="https://www.mistore.jp/store/shinjuku/service/taxfree.html" target="_blank" rel="noreferrer">伊势丹新宿免税柜台 ↗</a>';
+  const target = document.querySelector('#shopping .section-head');
+  if (target && !document.querySelector('.tax-free-guide-note')) target.insertAdjacentElement('afterend', ruleNote);
+})();
+</script>
 </body>
 </html>
