@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v37-20261005-tax-free-status';
+const CACHE_NAME = 'tokyo-2026-guide-v38-20261005-expense-recovery';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
