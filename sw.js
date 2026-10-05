@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v38-20261005-expense-recovery';
+const CACHE_NAME = 'tokyo-2026-guide-v39-20261006-nigirite-reservation';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
