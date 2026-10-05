@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v31-20261004-final-matsuyama-route-polish';
+const CACHE_NAME = 'tokyo-2026-guide-v32-20261005-nigirite-dinner-option';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
