@@ -1946,8 +1946,10 @@ details.day .route-board{border-color:var(--day-accent);background:linear-gradie
         <article class="backup-action"><h3>导出完整备份</h3><p>生成一个 JSON 文件，可保存到云盘或发给同行人；包含当前浏览器中的全部旅行数据。</p><button class="btn red" id="exportAllData" type="button">下载完整备份</button></article>
         <article class="backup-action"><h3>恢复完整备份</h3><p>选择本网站导出的 JSON。恢复将覆盖当前旅行数据，页面随后自动重新载入。</p><label class="btn file-button">选择备份文件<input id="importAllData" type="file" accept="application/json,.json"></label></article>
         <article class="backup-action"><h3>复制文字备份</h3><p>将压缩后的数据复制到剪贴板，适合临时传给另一台设备；截图较多时建议使用文件导出。</p><button class="btn" id="copyAllData" type="button">复制备份内容</button></article>
+        <article class="backup-action"><h3>恢复同步前的记账快照</h3><p id="expenseSnapshotInfo">检查本机是否保留了连接云同步前的记账数据。恢复前会先下载当前记账备份。</p><button class="btn" id="restoreExpenseSnapshot" type="button" disabled>检查快照中…</button></article>
       </div>
       <div class="data-health" id="dataHealth" aria-live="polite">正在统计本地旅行数据…</div>
+      <div class="note"><strong>记账保存说明：</strong>记录默认保存在当前设备、浏览器和网站地址中。清除网站数据、切换设备/浏览器或打开不同域名时，记录不会自动出现；云同步连接后才会同步。普通页面更新和 Service Worker 缓存更新不会删除 localStorage。</div>
       <div class="note"><strong>隐私：</strong>备份文件可能包含预约截图、订单号和消费记录。不要保存护照、银行卡照片或安全码；分享前确认接收对象。</div>
     </section>
 
@@ -3834,8 +3836,9 @@ details.day .route-board{border-color:var(--day-accent);background:linear-gradie
         if (!state?.data || typeof state.data !== 'object') return;
         savePreCloudSnapshot(); cloudApplying = true;
         cloudSyncedKeys.forEach(key => {
+          // Missing keys in older/incomplete cloud payloads mean "no update", not a deletion.
+          // Explicit empty values (for example an empty expenses array) still sync normally.
           if (Object.hasOwn(state.data,key) && typeof state.data[key] === 'string') localStorage.setItem(key,mergeLocalImages(key,state.data[key]));
-          else localStorage.removeItem(key);
         });
         const meta = readCloudMeta(); writeCloudMeta({...meta,dirty:false,lastRemoteAt:Number(state.updatedAt) || Date.now(),lastRemoteBy:state.updatedByName || ''});
         cloudApplying = false;
@@ -4816,6 +4819,54 @@ details.day .route-board{border-color:var(--day-accent);background:linear-gradie
   ruleNote.innerHTML = '<strong>免税标记说明｜本次行程 2026/10/5—10/12：</strong>「可退税」表示该商场 / 连锁有免税服务，仍须满足旅客资格与金额条件；「结账时直接免税」是收银时直接扣除消费税；「先付款、后柜台办理」是先按含税价付款，再持护照和收据到指定柜台办理（可能收手续费）；「到店确认」表示未查到该具体分店的官方政策，不等于确定不可退税。请携带护照原件，同一人同店同日一般商品税前满 ¥5,000；消费品另有封装及金额规则。10 月仍按购买时免税 / 店内柜台办理，2026/11/1 起才改为出境海关确认后退款。<br><a href="https://www.japan.travel/en/plan/japans-tax-exemption/" target="_blank" rel="noreferrer">日本国家旅游局：免税规则及 11/1 制度变更 ↗</a>　<a href="https://www.biccamera.com/bc/c/super/okaimono/oshiharai/taxfree/index.jsp" target="_blank" rel="noreferrer">Bic Camera 官方免税说明 ↗</a>　<a href="https://www.mistore.jp/store/shinjuku/service/taxfree.html" target="_blank" rel="noreferrer">伊势丹新宿免税柜台 ↗</a>';
   const target = document.querySelector('#shopping .section-head');
   if (target && !document.querySelector('.tax-free-guide-note')) target.insertAdjacentElement('afterend', ruleNote);
+})();
+</script>
+
+<script id="expense-snapshot-recovery">
+(() => {
+  const snapshotKey = 'tokyo-2026-pre-cloud-snapshot-v1';
+  const expenseKey = 'tokyo-2026-expenses-v1';
+  const budgetKey = 'tokyo-2026-budget-v1';
+  const info = document.getElementById('expenseSnapshotInfo');
+  const button = document.getElementById('restoreExpenseSnapshot');
+  const readSnapshot = () => {
+    try {
+      const snap = JSON.parse(localStorage.getItem(snapshotKey) || 'null');
+      const raw = snap?.data?.[expenseKey];
+      if (typeof raw !== 'string') return null;
+      const expenses = JSON.parse(raw);
+      if (!Array.isArray(expenses) || !expenses.length) return null;
+      return {snap, expenses};
+    } catch (_) { return null; }
+  };
+  const showSnapshot = () => {
+    const found = readSnapshot();
+    if (!button || !info) return;
+    button.disabled = !found;
+    button.textContent = found ? '恢复这份记账快照' : '未找到可恢复的记账快照';
+    if (found) {
+      const when = found.snap.savedAt ? new Date(found.snap.savedAt).toLocaleString('zh-CN',{hour12:false,timeZone:'Asia/Tokyo'}) + ' JST' : '时间未知';
+      info.textContent = '本机保留一份云同步前快照：' + when + '，含 ' + found.expenses.length + ' 条消费记录。确认后可恢复。';
+    } else {
+      info.textContent = '本机没有发现含消费记录的同步前快照。请确认是否使用了原来的设备、浏览器和网站地址，或查找之前导出的完整备份。';
+    }
+  };
+  button?.addEventListener('click', () => {
+    const found = readSnapshot();
+    if (!found) return showSnapshot();
+    const current = (() => { try { return JSON.parse(localStorage.getItem(expenseKey) || '[]'); } catch (_) { return []; } })();
+    const stamp = new Date().toISOString();
+    const backup = {schema:'tokyo-2026-guide-backup',version:1,exportedAt:stamp,localStorage:{}};
+    [expenseKey,budgetKey].forEach(key => { const value = localStorage.getItem(key); if (value !== null) backup.localStorage[key] = value; });
+    if (!confirm('将恢复快照中的 ' + found.expenses.length + ' 条消费记录（当前有 ' + (Array.isArray(current) ? current.length : 0) + ' 条）。恢复前会下载当前记账备份。继续吗？')) return;
+    const url = URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:'application/json;charset=utf-8'}));
+    const link = document.createElement('a'); link.href = url; link.download = 'Tokyo_2026_Expenses_Before_Restore.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
+    localStorage.setItem(expenseKey,JSON.stringify(found.expenses));
+    if (typeof found.snap.data[budgetKey] === 'string') localStorage.setItem(budgetKey,found.snap.data[budgetKey]);
+    document.dispatchEvent(new Event('tokyo-data-changed'));
+    location.reload();
+  });
+  showSnapshot();
 })();
 </script>
 </body>
