@@ -13,7 +13,7 @@
 Firebase 安全规则保存在 Firebase 服务器上。更新 GitHub 中的规则文件后，还需要到控制台发布一次：
 
 1. 打开 [Firebase Console](https://console.firebase.google.com/) → **Tokyo-2026** → **Realtime Database → 规则**。
-2. 用仓库根目录 [firebase-rules.json](firebase-rules.json) 中的 `rules` 内容替换当前规则。
+2. 将仓库根目录 [firebase-rules.json](firebase-rules.json) 的完整 JSON 粘贴并替换当前规则。
 3. 如果继续使用私人行程协作，在 Realtime Database 数据中保留 `allowedUsers` 下两位用户的完整 UID，且值设为布尔值 `true`。
 4. 发布规则。
 
