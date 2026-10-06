@@ -59,6 +59,48 @@
         }
       }
     },
+    "publicLedger": {
+      ".read": true,
+      "expenses": {
+        "$expenseId": {
+          ".write": "!data.exists() && newData.exists() && $expenseId.matches(/^[A-Za-z0-9_-]{1,100}$/)",
+          ".validate": "newData.hasChildren(['id','date','owner','category','item','note','amount','currency','createdAt']) && newData.numChildren() === 9",
+          "id": {
+            ".validate": "newData.isString() && newData.val() === $expenseId"
+          },
+          "date": {
+            ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)"
+          },
+          "owner": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40"
+          },
+          "category": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60"
+          },
+          "item": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200"
+          },
+          "note": {
+            ".validate": "newData.isString() && newData.val().length <= 2000"
+          },
+          "amount": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 100000000"
+          },
+          "currency": {
+            ".validate": "newData.isString() && (newData.val() === 'JPY' || newData.val() === 'CNY')"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() > 0"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "$other": {
+        ".validate": false
+      }
+    },
     "$other": {
       ".read": false,
       ".write": false
