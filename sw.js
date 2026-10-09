@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tokyo-2026-guide-v43-20261006-public-ledger';
+const CACHE_NAME = 'tokyo-2026-guide-v44-20261009-weekend-route';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
